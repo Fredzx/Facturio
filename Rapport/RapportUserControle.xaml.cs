@@ -1,5 +1,4 @@
-﻿using Facturio.Produits;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Facturio
+namespace Facturio.Rapport
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logique d'interaction pour RapportUserControle.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class RapportUserControle : UserControl
     {
-        public MainWindow()
+        public RapportUserControle()
         {
             InitializeComponent();
         }

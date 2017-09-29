@@ -8,5 +8,13 @@ namespace Facturio.Produits
 {
     class Produit
     {
+        public Produit(int v1, string v2)
+        {
+            this.id = v1;
+            this.nom = v2;
+        }
+
+        public int id { get; set; }
+        public string nom { get; set; }
     }
 }

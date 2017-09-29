@@ -18,11 +18,27 @@ namespace Facturio.Clients
    /// <summary>
    /// Logique d'interaction pour ClientsUserControl.xaml
    /// </summary>
-   public partial class ClientsUserControl : UserControl
+   public partial class ClientsUserControl : System.Windows.Controls.UserControl
    {
+      public Control ControlSelectionne { get; set; }
       public ClientsUserControl()
       {
          InitializeComponent();
+
+
+
+         txtRecherche.Text = "Rechercher un client";
+
+         
+         
+      }
+   
+
+     
+
+      private void TxtRecherche_Selectionne(object sender, EventArgs e)
+      {
+         txtRecherche.Text = "";
       }
    }
 }
