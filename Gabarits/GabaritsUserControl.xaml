@@ -6,7 +6,34 @@
              xmlns:local="clr-namespace:Facturio.Gabarits"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
+    <!-- Resources spécifiques à ce UserControl -->
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+    </UserControl.Resources>
+    
     <Grid>
-        <Label>Salut</Label>
+        <!-- Définitions des rangées/colonnes -->
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
+            
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
+            <Button Content="Ouvrir" />
+            <Button Content="Modifier" />
+            <Button Content="Supprimer" />
+        </StackPanel>
     </Grid>
 </UserControl>
