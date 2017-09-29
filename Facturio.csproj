@@ -88,6 +88,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Clients\Client.cs" />
     <Compile Include="Clients\ClientsUserControl.xaml.cs">
       <DependentUpon>ClientsUserControl.xaml</DependentUpon>
     </Compile>
