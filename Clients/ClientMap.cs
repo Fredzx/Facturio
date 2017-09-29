@@ -15,6 +15,15 @@ namespace Facturio.Clients
 
             LazyLoad();
 
+            Id(x => x.IdClient)
+                .Column("idClient")
+                .CustomType<int>()
+                .Access.Property()
+                .CustomSqlType("INTEGER")
+                .NotNullable()
+                .GeneratedBy.Identity();
+
+            Map(x)
 
         }
 
