@@ -1,5 +1,4 @@
-﻿using Facturio.Produits;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,16 +13,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Facturio
+namespace Facturio.Produits
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logique d'interaction pour RechercherUserControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class RechercherUserControl : UserControl
     {
-        public MainWindow()
+        public RechercherUserControl()
         {
             InitializeComponent();
+            //List<Produit> Produits = new List<Produit>
+            //{
+            //    new Produit(1, "test1"),
+            //    new Produit(2, "test2")
+            //};
+            //DataContext = this;
         }
     }
 }

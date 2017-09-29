@@ -75,15 +75,29 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ProduitUserControl.xaml">
+    <Page Include="Produits\Ajouter_ModifierUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Produits\ProduitUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Produits\RechercherUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Produits\Ajouter_ModifierUserControl.xaml.cs">
+      <DependentUpon>Ajouter_ModifierUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Produits\Produit.cs" />
-    <Compile Include="ProduitUserControl.xaml.cs">
+    <Compile Include="Produits\ProduitUserControl.xaml.cs">
       <DependentUpon>ProduitUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Produits\RechercherUserControl.xaml.cs">
+      <DependentUpon>RechercherUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

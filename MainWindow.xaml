@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Facturio.Clients"
+        xmlns:local="clr-namespace:Facturio.Produits"
+        xmlns:local2="clr-namespace:Facturio.Clients"
         mc:Ignorable="d"
         Title="Facturio Inc." Height="350" Width="525" SizeToContent="WidthAndHeight">
     <Grid>
@@ -15,10 +16,10 @@
 
             </TabItem>
             <TabItem Header="Produits">
-
+                <local:ProduitUserControl/>
             </TabItem>
             <TabItem Header="Clients">
-                <local:ClientsUserControl/>
+                <local2:ClientsUserControl/>
             </TabItem>
             <TabItem Header="Rapports">
                 
