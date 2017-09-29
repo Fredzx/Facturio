@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ucProduits="clr-namespace:Facturio.Produits"
-        xmlns:local="clr-namespace:Facturio.Clients"
+        xmlns:ucClients="clr-namespace:Facturio.Clients"
         xmlns:ucGabarits="clr-namespace:Facturio.Gabarits"
         mc:Ignorable="d"
         Title="Facturio Inc." Height="450" Width="800" SizeToContent="WidthAndHeight" MinWidth="800">
@@ -20,7 +20,7 @@
                 <ucProduits:ProduitUserControl/>
             </TabItem>
             <TabItem Header="Clients">
-                <local2:ClientsUserControl/>
+                <ucClients:ClientsUserControl/>
             </TabItem>
             <TabItem Header="Rapports">
                 

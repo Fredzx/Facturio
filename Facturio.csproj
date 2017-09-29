@@ -108,7 +108,13 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Produits\RechercherUserControl.xaml">
+	  <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+	</Page>
     <Page Include="Rapport\RapportUserControle.xaml">
+	  <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+	</Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Produits\Ajouter_ModifierUserControl.xaml.cs">
