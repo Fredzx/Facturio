@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Facturio
+namespace Facturio.Produits
 {
-    class Rapport
+    class Produit
     {
     }
 }

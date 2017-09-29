@@ -5,11 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Facturio.Clients"
         mc:Ignorable="d"
-        Title="Facturio" Height="400" Width="800">
+        Title="Facturio Inc." Height="450" Width="800" >
     <Grid>
         <TabControl>
+            <TabItem Header="Gabarits">
+                
+            </TabItem>
+            <TabItem Header="Création">
+
+            </TabItem>
+            <TabItem Header="Produits">
+
+            </TabItem>
             <TabItem Header="Clients">
                 <local:ClientsUserControl/>
+            </TabItem>
+            <TabItem Header="Rapports">
+                
             </TabItem>
         </TabControl>
     </Grid>

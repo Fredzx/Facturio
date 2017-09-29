@@ -39,10 +39,10 @@
                         <Grid Grid.Row="1"
                           Grid.Column="0"
                           Grid.ColumnSpan="4"
-                          Grid.RowSpan="3">
+                          Grid.RowSpan="4">
                           
 
-                            <DataGrid Name="dtgClients" BorderBrush="Black" Height="400">
+                            <DataGrid Name="dtgClients" BorderBrush="Black" Height="250" HorizontalAlignment="Center" VerticalAlignment="Top">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="No. Client" Width="5*"   />
                                     <DataGridTextColumn Header="Nom" Width="4*"   />
