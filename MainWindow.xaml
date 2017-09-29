@@ -6,7 +6,7 @@
         xmlns:ucGabarits="clr-namespace:Facturio.Gabarits"
         xmlns:local="clr-namespace:Facturio.Clients"
         mc:Ignorable="d"
-        Title="Facturio Inc." Height="450" Width="800" >
+        Title="Facturio Inc." Height="450" Width="800">
     <Grid>
         <TabControl>
             <TabItem Header="Gabarits">
