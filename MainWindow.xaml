@@ -3,20 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Facturio.Produits"
-        xmlns:local2="clr-namespace:Facturio.Clients"
+        xmlns:ucProduits="clr-namespace:Facturio.Produits"
+        xmlns:local="clr-namespace:Facturio.Clients"
+        xmlns:ucGabarits="clr-namespace:Facturio.Gabarits"
         mc:Ignorable="d"
-        Title="Facturio Inc." Height="350" Width="525" SizeToContent="WidthAndHeight">
+        Title="Facturio Inc." Height="450" Width="800">
     <Grid>
         <TabControl>
             <TabItem Header="Gabarits">
-                
+                <ucGabarits:GabaritsUserControl />
             </TabItem>
             <TabItem Header="Création">
 
             </TabItem>
             <TabItem Header="Produits">
-                <local:ProduitUserControl/>
+                <ucProduits:ProduitUserControl/>
             </TabItem>
             <TabItem Header="Clients">
                 <local2:ClientsUserControl/>
