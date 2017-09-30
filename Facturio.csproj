@@ -58,6 +58,8 @@
     </ApplicationDefinition>
     <Compile Include="Clients\HibernateClientService.cs" />
     <Compile Include="Clients\ClientMap.cs" />
+    <Compile Include="Gabarits\Gabarit.cs" />
+    <Compile Include="Gabarits\GabaritsController.cs" />
     <Compile Include="NHibernateConnexion.cs" />
     <Compile Include="Rapport\Rapport.cs" />
     <Compile Include="Rapport\RapportUserControle.xaml.cs">
