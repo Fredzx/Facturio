@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Gabarits"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="500">
     <!-- Resources spécifiques à ce UserControl -->
     <UserControl.Resources>
         <Style TargetType="Button">
@@ -19,18 +19,21 @@
         <!-- Définitions des rangées/colonnes -->
         <Grid.RowDefinitions>
             <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
         </Grid.ColumnDefinitions>
-
-        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
-            
+        
+        <!-- Gabarits -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Rectangle Width="150" Height="150" Fill="Green" Margin="20" />
+            <Rectangle Width="150" Height="150" Fill="LightGreen" Margin="20" />
+            <Rectangle Width="150" Height="150" Fill="LightGreen" Margin="20" />
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
+        
+        <!-- Boutons -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button Content="Ouvrir" />
             <Button Content="Modifier" />
             <Button Content="Supprimer" />
