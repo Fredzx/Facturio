@@ -51,6 +51,7 @@ namespace Facturio.Gabarits
 
         private void Rectangle_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            // https://stackoverflow.com/a/593288
             Rectangle rectangleClique = (sender as Rectangle);
 
             Gabarit gabarit = rectangleClique.Tag as Gabarit;
