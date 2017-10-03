@@ -66,8 +66,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Clients\ClientsController.cs" />
     <Compile Include="Clients\HibernateClientService.cs" />
     <Compile Include="Clients\ClientMap.cs" />
+    <Compile Include="Clients\Sexe.cs" />
     <Compile Include="Gabarits\Gabarit.cs" />
     <Compile Include="Gabarits\GabaritsController.cs" />
     <Compile Include="NHibernateConnexion.cs" />
@@ -77,7 +79,6 @@
     <Compile Include="Rapport\RapportUserControle.xaml.cs">
       <DependentUpon>RapportUserControle.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sexes\Sexe.cs" />
     <Page Include="Clients\ClientsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -6,92 +6,63 @@
              xmlns:local="clr-namespace:Facturio.Clients"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="500">
-             <Grid>
-                <UserControl>
-                    <TabControl>
-                        <TabItem Header="Rechercher">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*" />
-                                <ColumnDefinition Width="2" />
-                                <ColumnDefinition Width="2" />
-                                
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
+    <Grid>
+        <UserControl>
+            <TabControl>
+                <TabItem Header="Rechercher">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="2" />
 
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                                <RowDefinition />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
                             <RowDefinition />
                             <RowDefinition />
                             <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
+                        </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0"
                           Grid.Column="0"
                           Grid.ColumnSpan="4">
-                            <TextBox Name="txtRecherche" Height="20" Width="400" GotFocus="TxtRecherche_Selectionne"/>
+                            <TextBox Name="txtRecherche" Height="20" Width="400" />
                         </Grid>
                         <Grid Grid.Row="1"
                           Grid.Column="0"
                           Grid.ColumnSpan="4"
-                          Grid.RowSpan="4">                      
-                        <DataGrid Name="dtgClients" BorderBrush="Black" Height="250" HorizontalAlignment="Center" VerticalAlignment="Top">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="No. Client" Width="5*"   />
-                                <DataGridTextColumn Header="Nom" Width="4*"   />
-                                <DataGridTextColumn Header="Prénom" Width="4*" />
-                                <DataGridTextColumn Header="Sexe" Width="3*"/>
-                                <DataGridTextColumn Header="Téléphone" Width="5*" />
-                                <DataGridTextColumn Header="Description" Width="5*"/>
-                                <DataGridTextColumn Header="Adresse" Width="5*"/>
-                                <DataGridTextColumn Header="Code postal" Width="5*"/>
-                                <DataGridTextColumn Header="Escompte" Width="5*"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </Grid>
-                    <StackPanel Grid.Row="4"
+                          Grid.RowSpan="4">
+                            <DataGrid Name="dtgAfficheClients" LoadingRow="DataGrid_LoadingRow" 
+                                      BorderBrush="Black" Height="250" HorizontalAlignment="Center" VerticalAlignment="Top"
+                                      AutoGenerateColumns="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="No. Client" Width="5*" Binding="{Binding NoClient}"   />
+                                    <DataGridTextColumn Header="Nom" Width="4*" Binding="{Binding Nom}"  />
+                                    <DataGridTextColumn Header="Prénom" Width="4*" Binding="{Binding Prenom}" />
+                                    <DataGridTextColumn Header="Sexe" Width="3*" Binding="{Binding Sexe}"/>
+                                    <DataGridTextColumn Header="Téléphone" Width="5*" Binding="{Binding Telephone}" />
+                                    <DataGridTextColumn Header="Description" Width="5*" Binding="{Binding Description}"/>
+                                    <DataGridTextColumn Header="Adresse" Width="5*" Binding="{Binding Adresse}"/>
+                                    <DataGridTextColumn Header="Code postal" Width="5*" />
+                                    <DataGridTextColumn Header="Escompte" Width="5*" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                        <StackPanel Grid.Row="4"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal"
                         Grid.ColumnSpan="4">
 
 
-                        <Button Content="Ajouter" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" />
-                        <Button Content="Modifier" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" />
-                        <Button Content="Supprimer" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100"/>
-                    </StackPanel>
-
-
-
-
-
-
-
-
-
-
-
-
-                        <!-- 
-                            <TextBox  Height="20" TextWrapping="Wrap" Margin="0,0,0,225"  Text="Rechercher" Width="400"/>
-                            <DataGrid BorderBrush="Black" Height="200" Margin="5,20,5,5" >
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="No. Client" Width="5*"   />
-                                    <DataGridTextColumn Header="Nom" Width="4*"   />
-                                    <DataGridTextColumn Header="Prénom" Width="4*" />
-                                    <DataGridTextColumn Header="Sexe" Width="3*"/>
-                                    <DataGridTextColumn Header="Téléphone" Width="5*" />
-                                    <DataGridTextColumn Header="Description" Width="5*"/>
-                                    <DataGridTextColumn Header="Adresse" Width="5*"/>
-                                    <DataGridTextColumn Header="Code postal" Width="5*"/>
-                                    <DataGridTextColumn Header="Escompte" Width="5*"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                            <Button Content="Ajouter" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Margin="0,0,215,13"/>
-                            <Button Content="Modifier" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Margin="0,0,110,13"/>
-                        <Button Content="Supprimer" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Margin="0,0,5,13"/>
-                            -->
+                            <Button Content="Ajouter" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" />
+                            <Button Content="Modifier" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" />
+                            <Button Content="Supprimer" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100"/>
+                        </StackPanel>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Ajouter/Modifer">

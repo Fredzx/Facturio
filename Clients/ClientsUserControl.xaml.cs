@@ -20,25 +20,25 @@ namespace Facturio.Clients
    /// </summary>
    public partial class ClientsUserControl : System.Windows.Controls.UserControl
    {
-      public Control ControlSelectionne { get; set; }
       public ClientsUserControl()
       {
-         InitializeComponent();
+           InitializeComponent();
+
+
+           ClientsController.ChargerListeClients();
+           dtgAfficheClients.ItemsSource = ClientsController.LstClients;
+
+        }
 
 
 
-         txtRecherche.Text = "Rechercher un client";
 
-         
-         
-      }
-   
+        private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = ((e.Row.GetIndex()) + 1).ToString();
 
-     
+        }
 
-      private void TxtRecherche_Selectionne(object sender, EventArgs e)
-      {
-         txtRecherche.Text = "";
-      }
-   }
+
+    }
 }
