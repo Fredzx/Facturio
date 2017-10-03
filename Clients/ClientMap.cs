@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentNHibernate.Mapping;
-using Facturio.Provinces;
-using Facturio.Sexes;
-using Facturio.Rangs;
-
+﻿using FluentNHibernate.Mapping;
+using FluentNHibernate.MappingModel;
 
 namespace Facturio.Clients
 {
@@ -86,6 +78,8 @@ namespace Facturio.Clients
                */
         }
 
-
+        protected ClientMap(AttributeStore attributes, MappingProviderStore providers) : base(attributes, providers)
+        {
+        }
     }
 }
