@@ -18,7 +18,7 @@ namespace Facturio.Clients
 
         public Client()
         {
-            
+            Client client = new Client();
         }
     }
 }

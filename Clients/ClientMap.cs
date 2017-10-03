@@ -1,5 +1,8 @@
 ﻿using FluentNHibernate.Mapping;
 using FluentNHibernate.MappingModel;
+using Facturio.Provinces;
+using Facturio.Rangs;
+using Facturio.Sexes;
 
 namespace Facturio.Clients
 {
@@ -7,11 +10,10 @@ namespace Facturio.Clients
     {
         public ClientMap()
         {
-            /*
-            Table("clients");
+            /*Table("clients");
 
             LazyLoad();
-
+            
             Id(x => x.IdClient)
                 .Column("idClient")
                 .CustomType<int>()
@@ -75,11 +77,9 @@ namespace Facturio.Clients
                .LazyLoad(Laziness.False)
                .Cascade.None()
                .Columns("idProvince");
-               */
-        }
-
-        protected ClientMap(AttributeStore attributes, MappingProviderStore providers) : base(attributes, providers)
-        {
-        }
+               
+        */}
+    
+       
     }
 }

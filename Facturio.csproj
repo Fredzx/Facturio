@@ -71,6 +71,8 @@
     <Compile Include="Gabarits\Gabarit.cs" />
     <Compile Include="Gabarits\GabaritsController.cs" />
     <Compile Include="NHibernateConnexion.cs" />
+    <Compile Include="Produits\HibernateProduitService.cs" />
+    <Compile Include="Produits\ProduitMap.cs" />
     <Compile Include="Provinces\Province.cs" />
     <Compile Include="Rangs\Rang.cs" />
     <Compile Include="Rapport\Rapport.cs" />
