@@ -15,6 +15,7 @@ namespace Facturio.Clients
     {
         public ClientMap()
         {
+            /*
             Table("clients");
 
             LazyLoad();
@@ -82,7 +83,7 @@ namespace Facturio.Clients
                .LazyLoad(Laziness.False)
                .Cascade.None()
                .Columns("idProvince");
-
+               */
         }
 
 

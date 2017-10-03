@@ -10,6 +10,7 @@ namespace Facturio.Clients
 {
     public static class HibernateClientService
     {
+        /*
         private static ISession session = NHibernateConnexion.OpenSession();
 
         public static List<Client> RetrieveAll()
@@ -55,5 +56,6 @@ namespace Facturio.Clients
                 transaction.Commit();
             }
         }
+        */
     }
 }
