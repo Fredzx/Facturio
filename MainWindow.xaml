@@ -6,6 +6,7 @@
         xmlns:ucProduits="clr-namespace:Facturio.Produits"
         xmlns:ucClients="clr-namespace:Facturio.Clients"
         xmlns:ucGabarits="clr-namespace:Facturio.Gabarits"
+        xmlns:ucRapports="clr-namespace:Facturio.Rapport"
         mc:Ignorable="d"
         Title="Facturio Inc." Height="450" Width="800" MinWidth="800" ResizeMode="NoResize">
     <Grid>
@@ -23,7 +24,7 @@
                 <ucClients:ClientsUserControl/>
             </TabItem>
             <TabItem Header="Rapports">
-                
+                <ucRapports:RapportUserControle/>
             </TabItem>
         </TabControl>
     </Grid>

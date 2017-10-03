@@ -1,24 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Facturio.Provinces;
-using Facturio.Sexes;
-using Facturio.Rangs;
-
-namespace Facturio.Clients
+﻿namespace Facturio.Clients
 {
-    
+
     public class Client
     {
-        public Province NomProvince { get; set; }
-        public Sexe LeSexe { get; set; }
-        public Rang LeRang { get; set; }
+        public string Adresse { get; set; }
+        public string NoClient { get; set; }
+        public string Prenom { get; set; }
+        public string Nom { get; set; }
+        public string Sexe { get; set; }
+        public string Telephone { get; set; }
+        public string Description { get; set; }
 
-        public Client()
+        public Client(string prenom, string adresse, string nom, string sexe, 
+                      string telephone, string noClient, string description)
         {
-            
+            Adresse = adresse;
+            NoClient = noClient;
+            Prenom = prenom;
+            Nom = nom;
+            Telephone = telephone;
+            Sexe = sexe;
+            Description = description;
         }
     }
 }
