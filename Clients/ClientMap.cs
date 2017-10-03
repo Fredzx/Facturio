@@ -2,7 +2,7 @@
 using FluentNHibernate.MappingModel;
 using Facturio.Provinces;
 using Facturio.Rangs;
-using Facturio.Sexes;
+
 
 namespace Facturio.Clients
 {
