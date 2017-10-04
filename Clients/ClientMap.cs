@@ -3,42 +3,41 @@ using FluentNHibernate.MappingModel;
 using Facturio.Provinces;
 using Facturio.Rangs;
 
-
 namespace Facturio.Clients
 {
     public class ClientMap : ClassMap<Client>
     {
         public ClientMap()
         {
-            /*Table("clients");
+            Table("Clients");
 
             LazyLoad();
             
             Id(x => x.IdClient)
-                .Column("idClient")
-                .CustomType<int>()
-                .Access.Property()
-                .CustomSqlType("INTEGER")
-                .Not.Nullable()
-                .GeneratedBy.Identity();
+                .Column("idClient")        // Colonne en BD
+                .CustomType<int>()         // Type dans le code
+                .Access.Property()         // Accès par propriété
+                .CustomSqlType("INTEGER")  // Type en BD
+                .Not.Nullable()            // Est pas nullable
+                .GeneratedBy.Identity();   // Est généré par la BD
 
             Map(x => x.Nom)
                .Column("nom")
-               .CustomType<string>
+               .CustomType<string>()
                .Access.Property()
                .CustomSqlType("VARCHAR")
-               .Generated.Never();
+               .Generated.Never();         // N'est pas généré par la BD
 
             Map(x => x.Prenom)
                 .Column("prenom")
-                .CustomType<string>
+                .CustomType<string>()
                 .Access.Property()
                 .CustomSqlType("VARCHAR")
                 .Generated.Never();
 
             Map(x => x.Adresse)
                 .Column("adresse ")
-                .CustomType<string>
+                .CustomType<string>()
                 .Access.Property()
                 .Generated.Never()
                 .CustomSqlType("VARCHAR");
@@ -52,17 +51,17 @@ namespace Facturio.Clients
 
             Map(x => x.Description)
                 .Column("description")
-                .CustomType<string>
+                .CustomType<string>()
                 .Access.Property()
                 .Generated.Never()
                 .CustomSqlType("VARCHAR");
 
-            References(x => x.LeSexe)
+            References(x => x.Sexe)
                 .Class<Sexe>()
                 .Access.Property()
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
-                .Columns("idSexe");
+                .Columns("idSexe");          // Colonne qui fait référence à la table Sexe dans Client
 
             References(x => x.LeRang)
                .Class<Rang>()
@@ -77,9 +76,6 @@ namespace Facturio.Clients
                .LazyLoad(Laziness.False)
                .Cascade.None()
                .Columns("idProvince");
-               
-        */}
-    
-       
+        }
     }
 }
