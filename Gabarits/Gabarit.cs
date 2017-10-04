@@ -2,18 +2,22 @@
 {
     public class Gabarit
     {
-        private readonly uint idGabarit;
+        public int Id { get; set; } = 0;
+        public int PrenomClient { get; set; } = 0;
+        public int NomClient { get; set; } = 0;
+        public int Quantite { get; set; } = 0;
+        public int Prix { get; set; } = 0;
+        public int Description { get; set; } = 0;
+        public int AdresseClient { get; set; } = 0;
+        public int CodePostalClient { get; set; } = 0;
+        public int Escompte { get; set; } = 0;
+        public int CritereLibre { get; set; } = 0;
+        public int NombreHeures { get; set; } = 0;
+        public int TauxHoraire { get; set; } = 0;
 
-        public uint PrenomClient { get; set; }
-        public uint NomClient { get; set; }
-        public uint Quantite { get; set; }
-        public uint Prix { get; set; }
-        public uint Description { get; set; }
-        public uint AdresseClient { get; set; }
-        public uint CodePostalClient { get; set; }
-        public uint Escompte { get; set; }
-        public uint CritereLibre { get; set; }
-        public uint NombreHeures { get; set; }
-        public uint TauxHoraire { get; set; }
+        public Gabarit()
+        {
+
+        }
     }
 }
