@@ -3,24 +3,35 @@
 
     public class Client
     {
-        public string Adresse { get; set; }
-        public string NoClient { get; set; }
-        public string Prenom { get; set; }
-        public string Nom { get; set; }
-        public string Sexe { get; set; }
-        public string Telephone { get; set; }
-        public string Description { get; set; }
+        public int? IdClient { get; set; } = null;
+        public string NoClient { get; set; } = string.Empty;
+        public string Prenom { get; set; } = string.Empty;
+        public string Nom { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public Sexe Sexe { get; set; } = new Sexe(Sexes.Masculin);
+        public string Adresse { get; set; } = string.Empty;
+        public string CodePostal { get; set; } = string.Empty;
+        public string Telephone { get; set; } = string.Empty;
+        public Rang Rang { get; set; } = new Rang();
+        public Province Province { get; set; } = new Province();
 
-        public Client(string prenom, string adresse, string nom, string sexe, 
-                      string telephone, string noClient, string description)
+        public Client() {}
+
+        public Client(string prenom, string nom, string description,
+                      Sexe sexe, string adresse, string codePostal,
+                      string telephone, Rang rang, Province province)
         {
-            Adresse = adresse;
-            NoClient = noClient;
             Prenom = prenom;
             Nom = nom;
-            Telephone = telephone;
-            Sexe = sexe;
             Description = description;
+            Sexe = sexe;
+            Adresse = adresse;
+            CodePostal = codePostal;
+            Telephone = telephone;
+            Rang = rang;
+            Province = province;
+
+            // Ici, affecter un UUID au NoClient (pas trop long le UUID, résonable)
         }
     }
 }

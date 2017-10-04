@@ -69,15 +69,17 @@
     <Compile Include="Clients\ClientsController.cs" />
     <Compile Include="Clients\HibernateClientService.cs" />
     <Compile Include="Clients\ClientMap.cs" />
+    <Compile Include="Clients\Province.cs" />
+    <Compile Include="Clients\Rang.cs" />
     <Compile Include="Clients\Sexe.cs" />
+    <Compile Include="Enums\Provinces.cs" />
+    <Compile Include="Enums\Sexes.cs" />
     <Compile Include="Gabarits\Gabarit.cs" />
     <Compile Include="Gabarits\GabaritsController.cs" />
     <Compile Include="NHibernateConnexion.cs" />
     <Compile Include="Produits\HibernateProduitService.cs" />
     <Compile Include="Produits\ProduitsController.cs" />
     <Compile Include="Produits\ProduitMap.cs" />
-    <Compile Include="Provinces\Province.cs" />
-    <Compile Include="Rangs\Rang.cs" />
     <Compile Include="Rapport\Rapport.cs" />
     <Compile Include="Rapport\RapportUserControle.xaml.cs">
       <DependentUpon>RapportUserControle.xaml</DependentUpon>
