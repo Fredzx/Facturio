@@ -23,12 +23,14 @@ namespace Facturio.Produits
         public RechercherUserControl()
         {
             InitializeComponent();
-            //List<Produit> Produits = new List<Produit>
-            //{
-            //    new Produit(1, "test1"),
-            //    new Produit(2, "test2")
-            //};
-            //DataContext = this;
+            ProduitsController.ChargerListeProduits();
+            dtgAfficheProduits.ItemsSource = ProduitsController.Produits;
+            DataGrid.AutoRe
+        }
+
+        private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = ((e.Row.GetIndex()) + 1).ToString();
         }
     }
 }

@@ -5,11 +5,50 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Produits"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="400" d:DesignWidth="500">
     <Grid>
-        <TextBox Name="txb_Recherche" Width="50" Height="50" Margin="66,26,184,224"></TextBox>
-        <DataGrid Name="dtg_Produits" ItemsSource="{Binding Produits}">
-            
-        </DataGrid>
+       <!-- <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2" />
+            <ColumnDefinition Width="2" />
+
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>-->
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0"
+                          Grid.Column="0"
+                          Grid.ColumnSpan="4">
+            <TextBox Name="txtRechercheProduits" Height="20" Width="400" />
+        </Grid>
+        <Grid Grid.Row="1"
+                          Grid.Column="0"
+                          Grid.ColumnSpan="4"
+                          Grid.RowSpan="4">
+            <DataGrid Name="dtgAfficheProduits" LoadingRow="DataGrid_LoadingRow" 
+                                      BorderBrush="Black" Height="250" HorizontalAlignment="Center" VerticalAlignment="Top"
+                                      AutoGenerateColumns="True">
+                <DataGrid.Columns>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <StackPanel Grid.Row="4"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal"
+                        Grid.ColumnSpan="4">
+
+
+            <Button Content="Ajouter" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" />
+            <Button Content="Modifier" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" />
+            <Button Content="Supprimer" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100"/>
+        </StackPanel>
     </Grid>
 </UserControl>
