@@ -12,7 +12,7 @@
                 <local:RechercherUserControl/>
             </TabItem>
             <TabItem Name="tbi_Ajouter_Modifier" Header="Ajouter/Modifier">
-                <local:FormProduitsUserControl/>
+                <local:AjoutModifUserControl/>
             </TabItem>
         </TabControl>
     </Grid>

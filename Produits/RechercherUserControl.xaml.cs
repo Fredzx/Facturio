@@ -25,7 +25,7 @@ namespace Facturio.Produits
             InitializeComponent();
             ProduitsController.ChargerListeProduits();
             dtgAfficheProduits.ItemsSource = ProduitsController.Produits;
-            DataGrid.AutoRe
+            //DataGrid.AutoRe
         }
 
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
