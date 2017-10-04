@@ -6,15 +6,28 @@ using System.Threading.Tasks;
 
 namespace Facturio.Produits
 {
-    class Produit
+    public class Produit
     {
-        public Produit(int v1, string v2)
+        public Produit()
         {
-            this.id = v1;
-            this.nom = v2;
-        }
 
-        public int id { get; set; }
-        public string nom { get; set; }
+        }
+        public Produit(int id, string nom, string code, string description, double prix, double quantite)
+        {
+            Id = id;
+            Nom = nom;
+            Code = code;
+            Description = description;
+            Prix = prix;
+            Quantite = quantite;
+        }
+        public int Id { get; set; }
+        public string Nom { get; set; }
+        public string Code { get; set; }
+        public string Description { get; set; }
+        public double Prix { get; set; }
+        public double Quantite { get; set; }
+
     }
 }
+    

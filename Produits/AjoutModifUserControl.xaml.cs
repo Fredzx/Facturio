@@ -18,9 +18,9 @@ namespace Facturio.Produits
     /// <summary>
     /// Logique d'interaction pour Ajouter_ModifierUserControl.xaml
     /// </summary>
-    public partial class Ajouter_ModifierUserControl : UserControl
+    public partial class AjoutModifUserControl : UserControl
     {
-        public Ajouter_ModifierUserControl()
+        public AjoutModifUserControl()
         {
             InitializeComponent();
         }

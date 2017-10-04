@@ -81,6 +81,7 @@
     <Compile Include="Gabarits\GabaritsController.cs" />
     <Compile Include="NHibernateConnexion.cs" />
     <Compile Include="Produits\HibernateProduitService.cs" />
+    <Compile Include="Produits\ProduitsController.cs" />
     <Compile Include="Produits\ProduitMap.cs" />
     <Compile Include="Rapport\Rapport.cs" />
     <Compile Include="Rapport\RapportUserControle.xaml.cs">
@@ -117,7 +118,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Produits\Ajouter_ModifierUserControl.xaml">
+    <Page Include="Produits\AjoutModifUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -135,8 +136,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Produits\Ajouter_ModifierUserControl.xaml.cs">
-      <DependentUpon>Ajouter_ModifierUserControl.xaml</DependentUpon>
+    <Compile Include="Produits\AjoutModifUserControl.xaml.cs">
+      <DependentUpon>AjoutModifUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Produits\Produit.cs" />
     <Compile Include="Produits\ProduitUserControl.xaml.cs">
