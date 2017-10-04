@@ -11,10 +11,6 @@ namespace Facturio.Gabarits
         public static void Charge()
         {
             Gabarits.Add(new Gabarit { Id = 1 });
-            /*
-            Gabarits.Add(new Gabarit { Test = "Test2" });
-            Gabarits.Add(new Gabarit { Test = "Test3" });
-            */
         }
 
         public static void UpdateSelection(Gabarit gabarit)

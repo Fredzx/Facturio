@@ -14,10 +14,5 @@
         public int CritereLibre { get; set; } = 0;
         public int NombreHeures { get; set; } = 0;
         public int TauxHoraire { get; set; } = 0;
-
-        public Gabarit()
-        {
-
-        }
     }
 }
