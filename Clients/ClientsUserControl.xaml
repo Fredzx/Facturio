@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Clients"
+             xmlns:ucClients="clr-namespace:Facturio.Clients"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="500">
     <Grid>
@@ -12,11 +13,13 @@
                 <TabItem Header="Rechercher">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="25*" />
+                            <ColumnDefinition Width="103*"/>
+                            <ColumnDefinition Width="199*"/>
                             <ColumnDefinition Width="2" />
                             <ColumnDefinition Width="2" />
 
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="163*" />
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>
@@ -30,33 +33,32 @@
 
                         <Grid Grid.Row="0"
                           Grid.Column="0"
-                          Grid.ColumnSpan="4">
+                          Grid.ColumnSpan="6">
                             <TextBox Name="txtRecherche" Height="20" Width="400" />
                         </Grid>
                         <Grid Grid.Row="1"
                           Grid.Column="0"
-                          Grid.ColumnSpan="4"
+                          Grid.ColumnSpan="6"
                           Grid.RowSpan="4">
                             <DataGrid Name="dtgAfficheClients" LoadingRow="DataGrid_LoadingRow" 
                                       BorderBrush="Black" Height="250" HorizontalAlignment="Center" VerticalAlignment="Top"
                                       AutoGenerateColumns="False">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="No. Client" Width="5*" Binding="{Binding NoClient}"   />
-                                    <DataGridTextColumn Header="Nom" Width="4*" Binding="{Binding Nom}"  />
                                     <DataGridTextColumn Header="Prénom" Width="4*" Binding="{Binding Prenom}" />
+                                    <DataGridTextColumn Header="Nom" Width="4*" Binding="{Binding Nom}"  />
                                     <DataGridTextColumn Header="Sexe" Width="3*" Binding="{Binding Sexe}"/>
                                     <DataGridTextColumn Header="Téléphone" Width="5*" Binding="{Binding Telephone}" />
                                     <DataGridTextColumn Header="Description" Width="5*" Binding="{Binding Description}"/>
                                     <DataGridTextColumn Header="Adresse" Width="5*" Binding="{Binding Adresse}"/>
-                                    <DataGridTextColumn Header="Code postal" Width="5*" />
-                                    <DataGridTextColumn Header="Escompte" Width="5*" />
+                                    <DataGridTextColumn Header="Code postal" Width="5*" Binding="{Binding CodePostal}" />
+                                    <DataGridTextColumn Header="Rang" Width="5*" Binding="{Binding Rang}" />
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Grid>
                         <StackPanel Grid.Row="4"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal"
-                        Grid.ColumnSpan="4">
+                        Grid.ColumnSpan="4" Grid.Column="2">
 
 
                             <Button Content="Ajouter" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" />
@@ -66,6 +68,46 @@
                     </Grid>
                 </TabItem>
                 <TabItem Header="Ajouter/Modifer">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                            <RowDefinition />
+
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0"
+                              Grid.Column="0"
+                              Grid.ColumnSpan="2"
+                              HorizontalAlignment="Center">
+
+                            <Label Name="lblModification" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" FontFamily="calibri" Content="Ajouter un client" />
+                        </Grid>
+
+                        <Grid Grid.Row="1"
+                              Grid.Column="0"
+                              Grid.ColumnSpan="2"                          
+                              >
+
+                            <ucClients:FormClientUserControl />
+
+
+                        </Grid>
+
+
+
+
+
+
+                    </Grid>
+
+
 
                 </TabItem>
 

@@ -67,6 +67,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Clients\ClientsController.cs" />
+    <Compile Include="Clients\FormClientUserControl.xaml.cs">
+      <DependentUpon>FormClientUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Clients\HibernateClientService.cs" />
     <Compile Include="Clients\ClientMap.cs" />
     <Compile Include="Clients\Sexe.cs" />
@@ -82,6 +85,10 @@
       <DependentUpon>RapportUserControle.xaml</DependentUpon>
     </Compile>
     <Page Include="Clients\ClientsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Clients\FormClientUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
