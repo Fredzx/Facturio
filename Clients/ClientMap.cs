@@ -18,6 +18,13 @@ namespace Facturio.Clients
                 .Not.Nullable()            // Est pas nullable
                 .GeneratedBy.Identity();   // Est généré par la BD
 
+            Map(x => x.Prenom)
+                .Column("prenom")
+                .CustomType<string>()
+                .Access.Property()
+                .CustomSqlType("VARCHAR")
+                .Generated.Never();
+
             Map(x => x.Nom)
                .Column("nom")
                .CustomType<string>()
@@ -25,12 +32,19 @@ namespace Facturio.Clients
                .CustomSqlType("VARCHAR")
                .Generated.Never();         // N'est pas généré par la BD
 
-            Map(x => x.Prenom)
-                .Column("prenom")
+            Map(x => x.Description)
+                .Column("description")
                 .CustomType<string>()
                 .Access.Property()
-                .CustomSqlType("VARCHAR")
-                .Generated.Never();
+                .Generated.Never()
+                .CustomSqlType("VARCHAR");
+
+            References(x => x.Sexe)
+                .Class<Sexe>()
+                .Access.Property()
+                .LazyLoad(Laziness.False)
+                .Cascade.None()
+                .Columns("idSexe");        // Colonne qui fait référence à la table Sexe dans Client
 
             Map(x => x.Adresse)
                 .Column("adresse ")
@@ -46,19 +60,12 @@ namespace Facturio.Clients
                 .Generated.Never()
                 .CustomSqlType("VARCHAR");
 
-            Map(x => x.Description)
-                .Column("description")
+            Map(x => x.Telephone)
+                .Column("telephone")
                 .CustomType<string>()
                 .Access.Property()
                 .Generated.Never()
                 .CustomSqlType("VARCHAR");
-
-            References(x => x.Sexe)
-                .Class<Sexe>()
-                .Access.Property()
-                .LazyLoad(Laziness.False)
-                .Cascade.None()
-                .Columns("idSexe");          // Colonne qui fait référence à la table Sexe dans Client
 
             References(x => x.Rang)
                .Class<Rang>()

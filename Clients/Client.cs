@@ -18,15 +18,18 @@
         public Client() {}
 
         public Client(string prenom, string nom, string description,
-                      Sexe sexe, string adresse, string telephone, Rang rang)
+                      Sexe sexe, string adresse, string codePostal,
+                      string telephone, Rang rang, Province province)
         {
             Prenom = prenom;
             Nom = nom;
             Description = description;
             Sexe = sexe;
             Adresse = adresse;
+            CodePostal = codePostal;
             Telephone = telephone;
             Rang = rang;
+            Province = province;
 
             // Ici, affecter un UUID au NoClient (pas trop long le UUID, résonable)
         }
