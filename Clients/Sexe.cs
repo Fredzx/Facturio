@@ -8,18 +8,17 @@ namespace Facturio
 {
     public class Sexe
     {
-        public int IdSexe { get; set; }
-        public string Nom { get; set; }
+        public int? IdSexe { get; set; } = null;
+        public string Nom { get; set; } = string.Empty;
+
+        public Sexe() {}
 
         public Sexe(Sexes sexe)
         {
-            if (sexe == Sexes.Masculin)
+            switch (sexe)
             {
-                Nom = "Masculin";
-            }
-            else if (sexe == Sexes.Feminin)
-            {
-                Nom = "Feminin";
+                case Sexes.Masculin: Nom = "Masculin"; break;
+                case Sexes.Feminin: Nom = "Féminin"; break;
             }
         }
     }

@@ -18,16 +18,16 @@ namespace Facturio.Clients
             return session.Query<Client>().ToList();
         }
 
-        /*public static List<Client> Retrieve(int idClient)
+        public static List<Client> Retrieve(int idClient)
         {
             var client = session.Query<Client>().AsQueryable();
 
             var result = from c in client
-                         where c.IdClient = idClient
+                         where c.IdClient == idClient
                          select c;
 
             return result.ToList();
-        }*/
+        }
 
         public static void Create(ClientMap client)
         {

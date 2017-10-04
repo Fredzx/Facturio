@@ -1,7 +1,4 @@
 ﻿using FluentNHibernate.Mapping;
-using FluentNHibernate.MappingModel;
-using Facturio.Provinces;
-using Facturio.Rangs;
 
 namespace Facturio.Clients
 {
@@ -44,7 +41,7 @@ namespace Facturio.Clients
 
             Map(x => x.CodePostal)
                 .Column("codePostal")
-                .CustomType<string>
+                .CustomType<string>()
                 .Access.Property()
                 .Generated.Never()
                 .CustomSqlType("VARCHAR");
@@ -63,14 +60,14 @@ namespace Facturio.Clients
                 .Cascade.None()
                 .Columns("idSexe");          // Colonne qui fait référence à la table Sexe dans Client
 
-            References(x => x.LeRang)
+            References(x => x.Rang)
                .Class<Rang>()
                .Access.Property()
                .LazyLoad(Laziness.False)
                .Cascade.None()
                .Columns("idRang");
 
-            References(x => x.NomProvince)
+            References(x => x.Province)
                .Class<Province>()
                .Access.Property()
                .LazyLoad(Laziness.False)

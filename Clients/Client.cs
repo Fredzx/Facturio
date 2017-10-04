@@ -10,6 +10,7 @@
         public string Description { get; set; } = string.Empty;
         public Sexe Sexe { get; set; } = new Sexe(Sexes.Masculin);
         public string Adresse { get; set; } = string.Empty;
+        public string CodePostal { get; set; } = string.Empty;
         public string Telephone { get; set; } = string.Empty;
         public Rang Rang { get; set; } = new Rang();
         public Province Province { get; set; } = new Province();
