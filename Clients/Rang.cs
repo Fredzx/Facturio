@@ -4,8 +4,16 @@ namespace Facturio
 {
     public class Rang
     {
-        public int IdRang { get; set; }
-        public string Nom { get; set; }
-        public Image Image { get; set; }
+        public int? IdRang { get; set; } = null;
+        public string Nom { get; set; } = string.Empty;
+        public Image Image { get; set; } = new Image();
+
+        public Rang() {}
+
+        public Rang(string nom, Image image)
+        {
+            Nom = nom;
+            Image = image;
+        }
     }
 }
