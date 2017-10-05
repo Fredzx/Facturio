@@ -262,3 +262,4 @@ __pycache__/
 
 # Won't add the "connection_string.txt" file
 connection_string.txt
+connections.config
