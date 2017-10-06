@@ -18,9 +18,9 @@ namespace Facturio.Clients
     /// <summary>
     /// Logique d'interaction pour FormClientUserControl.xaml
     /// </summary>
-    public partial class FormClientUserControl : UserControl
+    public partial class AjoutModifUserControl : UserControl
     {
-        public FormClientUserControl()
+        public AjoutModifUserControl()
         {
             InitializeComponent();
         }

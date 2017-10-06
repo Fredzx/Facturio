@@ -67,13 +67,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Clients\ClientsController.cs" />
-    <Compile Include="Clients\FormClientUserControl.xaml.cs">
-      <DependentUpon>FormClientUserControl.xaml</DependentUpon>
+    <Compile Include="Clients\AjoutModifUserControl.xaml.cs">
+      <DependentUpon>AjoutModifUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Clients\HibernateClientService.cs" />
     <Compile Include="Clients\ClientMap.cs" />
     <Compile Include="Clients\Province.cs" />
     <Compile Include="Clients\Rang.cs" />
+    <Compile Include="Clients\RechercherUserControl.xaml.cs">
+      <DependentUpon>RechercherUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Clients\Sexe.cs" />
     <Compile Include="Enums\Provinces.cs" />
     <Compile Include="Enums\Sexes.cs" />
@@ -91,7 +94,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Clients\FormClientUserControl.xaml">
+    <Page Include="Clients\AjoutModifUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Clients\RechercherUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -163,9 +170,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="connections.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -177,6 +181,5 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
