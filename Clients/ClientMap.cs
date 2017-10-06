@@ -44,7 +44,7 @@ namespace Facturio.Clients
                 .Access.Property()
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
-                .Columns("idSexe");        // Colonne qui fait référence à la table Sexe dans Client
+                .Columns("idSexe");        // Colonne qui fait référence à la table Sexes dans Clients
 
             Map(x => x.Adresse)
                 .Column("adresse ")

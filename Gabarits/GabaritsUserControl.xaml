@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Gabarits"
              mc:Ignorable="d">
-    <!-- Resources spécifiques à ce UserControl -->
+    <!-- Ressources spécifiques à ce UserControl -->
     <UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="5" />
@@ -34,12 +34,6 @@
                     <Setter Property="Fill" Value="LightGreen" />
                 </Style>
             </StackPanel.Resources>
-            
-            <!--
-            <Rectangle Width="150" Height="150" Fill="Green" Margin="20" />
-            <Rectangle Width="150" Height="150" Fill="LightGreen" Margin="20" />
-            <Rectangle Width="150" Height="150" Fill="LightGreen" Margin="20" />
-            -->
         </StackPanel>
         
         <!-- Boutons -->

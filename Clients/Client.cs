@@ -2,17 +2,17 @@
 {
     public class Client
     {
-        public int? IdClient { get; set; } = null;
-        public string NoClient { get; set; } = string.Empty;
-        public string Prenom { get; set; } = string.Empty;
-        public string Nom { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public Sexe Sexe { get; set; } = new Sexe(Sexes.Masculin);
-        public string Adresse { get; set; } = string.Empty;
-        public string CodePostal { get; set; } = string.Empty;
-        public string Telephone { get; set; } = string.Empty;
-        public Rang Rang { get; set; } = new Rang();
-        public Province Province { get; set; } = new Province();
+        public virtual int? IdClient { get; set; } = null;
+        public virtual string NoClient { get; set; } = string.Empty;
+        public virtual string Prenom { get; set; } = string.Empty;
+        public virtual string Nom { get; set; } = string.Empty;
+        public virtual string Description { get; set; } = string.Empty;
+        public virtual Sexe Sexe { get; set; } = new Sexe(Sexes.Masculin);
+        public virtual string Adresse { get; set; } = string.Empty;
+        public virtual string CodePostal { get; set; } = string.Empty;
+        public virtual string Telephone { get; set; } = string.Empty;
+        public virtual Rang Rang { get; set; } = new Rang();
+        public virtual Province Province { get; set; } = new Province();
 
         public Client() {}
 
