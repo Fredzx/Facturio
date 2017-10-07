@@ -26,6 +26,7 @@ namespace Facturio.Gabarits
 
         public void FaireGabarits()
         {
+            /*
             foreach (Gabarit g in GabaritsController.Gabarits)
             {
                 Rectangle rectangle = new Rectangle()
@@ -35,6 +36,7 @@ namespace Facturio.Gabarits
 
                 Rectangles.Add(rectangle);
             }
+            */
         }
 
         public void AfficheGabarits()
@@ -71,11 +73,6 @@ namespace Facturio.Gabarits
             }
 
             GabaritsController.UpdateSelection(gabarit);
-        }
-
-        private void BtnNouveau_Click(object sender, RoutedEventArgs e)
-        {
-            (Application.Current.MainWindow as FacturioPrincipale).tabMain.SelectedIndex = 1;
         }
     }
 }

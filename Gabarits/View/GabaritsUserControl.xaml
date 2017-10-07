@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Gabarits"
+             xmlns:MyNamespace="clr-namespace:Facturio.Gabarits.View"
              mc:Ignorable="d">
     <!-- Ressources spécifiques à ce UserControl -->
     <UserControl.Resources>
@@ -34,11 +35,13 @@
                     <Setter Property="Fill" Value="LightGreen" />
                 </Style>
             </StackPanel.Resources>
+
+            <MyNamespace:GabaritControl Width="100" Height="100" Background="Orange" Title="Hello" />
         </StackPanel>
         
         <!-- Boutons -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Content="Nouveau" Click="BtnNouveau_Click" />
+            <Button Content="Nouveau" />
             <Button Content="Ouvrir" />
             <Button Content="Modifier" />
             <Button Content="Supprimer" />
