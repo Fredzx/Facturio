@@ -10,6 +10,12 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <TextBlock Text="{TemplateBinding Title}"
+                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            <!--<Button Content="Hello" Command="{TemplateBinding Command}" />-->
+                        </Grid>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

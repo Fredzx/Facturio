@@ -36,7 +36,12 @@
                 </Style>
             </StackPanel.Resources>
 
-            <MyNamespace:GabaritControl Width="100" Height="100" Background="Orange" Title="Hello" />
+            <MyNamespace:GabaritControl
+                Width="100" Height="100"
+                Title="Hello"
+                Background="Orange"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center" />
         </StackPanel>
         
         <!-- Boutons -->

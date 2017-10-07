@@ -74,5 +74,12 @@ namespace Facturio.Gabarits
 
             GabaritsController.UpdateSelection(gabarit);
         }
+
+        ICommand AddDuck { get; set; } = AddDuckCool;
+
+        public void AddDuckCool()
+        {
+            AddDuck.Execute("Salut");
+        }
     }
 }
