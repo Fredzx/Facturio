@@ -1,30 +1,30 @@
-﻿<Window x:Class="Facturio.MainWindow"
+﻿<Window x:Class="Facturio.FacturioPrincipale"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ucGabarits="clr-namespace:Facturio.Gabarits"
         xmlns:ucProduits="clr-namespace:Facturio.Produits"
         xmlns:ucClients="clr-namespace:Facturio.Clients"
-        xmlns:ucGabarits="clr-namespace:Facturio.Gabarits"
         xmlns:ucRapports="clr-namespace:Facturio.Rapport"
         mc:Ignorable="d"
-        Title="Facturio Inc." Height="450" Width="800" MinWidth="800" ResizeMode="NoResize">
+        Title="Facturio Inc." Height="450" Width="800" MinWidth="800">
     <Grid>
-        <TabControl>
+        <TabControl Name="tabMain">
             <TabItem Header="Gabarits">
                 <ucGabarits:GabaritsUserControl />
             </TabItem>
             <TabItem Header="Création">
-
+                <ucGabarits:GenerateurGabaritsUserControl />
             </TabItem>
             <TabItem Header="Produits">
-                <ucProduits:ProduitUserControl/>
+                <ucProduits:ProduitUserControl />
             </TabItem>
             <TabItem Header="Clients">
-                <ucClients:ClientsUserControl/>
+                <ucClients:ClientsUserControl />
             </TabItem>
             <TabItem Header="Rapports">
-                <ucRapports:RapportUserControle/>
+                <ucRapports:RapportUserControle />
             </TabItem>
         </TabControl>
     </Grid>

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -73,6 +71,11 @@ namespace Facturio.Gabarits
             }
 
             GabaritsController.UpdateSelection(gabarit);
+        }
+
+        private void BtnNouveau_Click(object sender, RoutedEventArgs e)
+        {
+            (Application.Current.MainWindow as FacturioPrincipale).tabMain.SelectedIndex = 1;
         }
     }
 }

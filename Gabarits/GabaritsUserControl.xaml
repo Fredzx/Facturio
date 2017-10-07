@@ -38,7 +38,7 @@
         
         <!-- Boutons -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Content="Nouveau" />
+            <Button Content="Nouveau" Click="BtnNouveau_Click" />
             <Button Content="Ouvrir" />
             <Button Content="Modifier" />
             <Button Content="Supprimer" />

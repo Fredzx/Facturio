@@ -1,5 +1,4 @@
-﻿using Facturio.Produits;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Facturio
+namespace Facturio.Gabarits
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for GenerateurGabaritsUserControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GenerateurGabaritsUserControl : UserControl
     {
-        public MainWindow()
+        public GenerateurGabaritsUserControl()
         {
             InitializeComponent();
         }
