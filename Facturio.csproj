@@ -114,7 +114,6 @@
       <DependentUpon>GenerateurGabaritsUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gabarits\ViewModel\ListeGabaritsViewModel.cs" />
-    <Compile Include="Gabarits\View\GabaritControl.cs" />
     <Compile Include="NHibernateConnexion.cs" />
     <Compile Include="Produits\HibernateProduitService.cs" />
     <Compile Include="Produits\ProduitsController.cs" />
@@ -135,7 +134,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Gabarits\View\GabaritsUserControl.xaml">
+    <Page Include="Gabarits\View\GabaritsTabUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -155,8 +154,8 @@
     <Compile Include="Clients\ClientsUserControl.xaml.cs">
       <DependentUpon>ClientsUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Gabarits\View\GabaritsUserControl.xaml.cs">
-      <DependentUpon>GabaritsUserControl.xaml</DependentUpon>
+    <Compile Include="Gabarits\View\GabaritsTabUserControl.xaml.cs">
+      <DependentUpon>GabaritsTabUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="FacturioPrincipale.xaml.cs">
       <DependentUpon>FacturioPrincipale.xaml</DependentUpon>
@@ -177,10 +176,6 @@
     <Page Include="Rapport\RapportUserControle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

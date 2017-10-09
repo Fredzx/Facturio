@@ -17,7 +17,7 @@ namespace Facturio.Gabarits.ViewModel
 
         private void BtnNouveau_Click(object sender, RoutedEventArgs e)
         {
-            (Application.Current.MainWindow as FacturioPrincipale).tabMain.SelectedIndex = 1;
+            //(Application.Current.MainWindow as FacturioPrincipale).tabMain.SelectedIndex = 1;
         }
     }
 }

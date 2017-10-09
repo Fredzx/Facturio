@@ -3,19 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:ucGabarits="clr-namespace:Facturio.Gabarits"
+        xmlns:tabGabaritsUC="clr-namespace:Facturio.Gabarits"
         xmlns:ucProduits="clr-namespace:Facturio.Produits"
         xmlns:ucClients="clr-namespace:Facturio.Clients"
         xmlns:ucRapports="clr-namespace:Facturio.Rapport"
         mc:Ignorable="d"
         Title="Facturio Inc." Height="450" Width="800" MinWidth="800">
     <Grid>
-        <TabControl Name="tabMain">
+        <TabControl>
             <TabItem Header="Gabarits">
-                <ucGabarits:GabaritsUserControl />
+                <tabGabaritsUC:GabaritsTabUserControl />
             </TabItem>
             <TabItem Header="Création">
-                <ucGabarits:GenerateurGabaritsUserControl />
+                <tabGabaritsUC:GenerateurGabaritsUserControl />
             </TabItem>
             <TabItem Header="Produits">
                 <ucProduits:ProduitUserControl />

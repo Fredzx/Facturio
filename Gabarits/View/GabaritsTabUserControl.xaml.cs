@@ -8,14 +8,14 @@ using System.Windows.Shapes;
 namespace Facturio.Gabarits
 {
     /// <summary>
-    /// Logique d'interaction pour GabaritsUserControl.xaml
+    /// Logique d'interaction pour GabaritsTabUserControl.xaml
     /// </summary>
-    public partial class GabaritsUserControl : UserControl
+    public partial class GabaritsTabUserControl : UserControl
     {
         public List<Rectangle> Rectangles { get; set; } = new List<Rectangle>();
         public Rectangle RectangleSelectionne = null;
 
-        public GabaritsUserControl()
+        public GabaritsTabUserControl()
         {
             InitializeComponent();
 
@@ -45,7 +45,7 @@ namespace Facturio.Gabarits
             {
                 r.MouseLeftButtonUp += Rectangle_MouseLeftButtonUp;
 
-                stpGabarits.Children.Add(r);
+                //stpGabarits.Children.Add(r);
             }
         }
 
@@ -73,13 +73,6 @@ namespace Facturio.Gabarits
             }
 
             GabaritsController.UpdateSelection(gabarit);
-        }
-
-        ICommand AddDuck { get; set; } = AddDuckCool;
-
-        public void AddDuckCool()
-        {
-            AddDuck.Execute("Salut");
         }
     }
 }
