@@ -10,6 +10,8 @@ namespace Facturio.Gabarits.ViewModel
         public ObservableCollection<Gabarit> LstGabarits { get; set; }
         public Gabarit SelectionCourante { get; set; }
 
+        public ICommand Selection { get; set; }
+
         public ListeGabaritsViewModel()
         {
             LstGabarits = new ObservableCollection<Gabarit>()
@@ -21,7 +23,20 @@ namespace Facturio.Gabarits.ViewModel
                 new Gabarit() { Titre = "Titre #5" }
             };
 
+            Selection = new RelayCommand(PeutSelectionner, Selectionne);
+
             SelectionCourante = LstGabarits[1];
+        }
+
+        public bool PeutSelectionner(object parameter) => true;
+
+        public void Selectionne(object parameter)
+        {
+            if (parameter == null)
+                return;
+
+            SelectionCourante = parameter as Gabarit;
+            MessageBox.Show(SelectionCourante.Titre);
         }
     }
 }

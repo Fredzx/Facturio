@@ -29,7 +29,7 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Background="AliceBlue" Width="150" Height="150" Margin="10">
+                        <Button Command="{Binding Selection}" CommandParameter="{Binding}" Background="AliceBlue" Width="150" Height="150" Margin="10">
                             <Button.Style>
                                 <Style TargetType="Button">
                                     <Style.Triggers>
