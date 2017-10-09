@@ -1,5 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using Facturio.Base;
+using System.Windows.Input;
+using System.Windows;
 
 namespace Facturio.Gabarits.ViewModel
 {

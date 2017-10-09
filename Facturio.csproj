@@ -110,7 +110,6 @@
     <Compile Include="Enums\Provinces.cs" />
     <Compile Include="Enums\Sexes.cs" />
     <Compile Include="Gabarits\Model\Gabarit.cs" />
-    <Compile Include="Gabarits\ViewModel\GabaritsController.cs" />
     <Compile Include="Gabarits\ViewModel\ListeGabaritsViewModel.cs" />
     <Compile Include="NHibernateConnexion.cs" />
     <Compile Include="Produits\HibernateProduitService.cs" />
