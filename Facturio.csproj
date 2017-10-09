@@ -94,6 +94,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Base\BaseViewModel.cs" />
+    <Compile Include="Base\RelayCommand.cs" />
     <Compile Include="Clients\ClientsController.cs" />
     <Compile Include="Clients\AjoutModifUserControl.xaml.cs">
       <DependentUpon>AjoutModifUserControl.xaml</DependentUpon>
@@ -110,9 +111,6 @@
     <Compile Include="Enums\Sexes.cs" />
     <Compile Include="Gabarits\Model\Gabarit.cs" />
     <Compile Include="Gabarits\ViewModel\GabaritsController.cs" />
-    <Compile Include="Gabarits\GenerateurGabaritsUserControl.xaml.cs">
-      <DependentUpon>GenerateurGabaritsUserControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Gabarits\ViewModel\ListeGabaritsViewModel.cs" />
     <Compile Include="NHibernateConnexion.cs" />
     <Compile Include="Produits\HibernateProduitService.cs" />
@@ -135,10 +133,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Gabarits\View\GabaritsTabUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Gabarits\GenerateurGabaritsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

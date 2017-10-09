@@ -1,23 +1,25 @@
 ﻿using System.Collections.ObjectModel;
-using System.Windows;
 using Facturio.Base;
 
 namespace Facturio.Gabarits.ViewModel
 {
     public class ListeGabaritsViewModel : BaseViewModel
     {
-        private ObservableCollection<Gabarit> _gabarits = new ObservableCollection<Gabarit>();
-
+        public ObservableCollection<Gabarit> LstGabarits { get; set; }
         public Gabarit SelectionCourante { get; set; }
 
         public ListeGabaritsViewModel()
         {
+            LstGabarits = new ObservableCollection<Gabarit>()
+            {
+                new Gabarit() { Titre = "Titre #1" },
+                new Gabarit() { Titre = "Titre #2" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #4" },
+                new Gabarit() { Titre = "Titre #5" }
+            };
 
-        }
-
-        private void BtnNouveau_Click(object sender, RoutedEventArgs e)
-        {
-            //(Application.Current.MainWindow as FacturioPrincipale).tabMain.SelectedIndex = 1;
+            SelectionCourante = LstGabarits[1];
         }
     }
 }

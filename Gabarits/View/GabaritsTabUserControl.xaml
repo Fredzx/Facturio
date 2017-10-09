@@ -1,47 +1,67 @@
-﻿<UserControl x:Class="Facturio.Gabarits.GabaritsTabUserControl"
+﻿<UserControl x:Class="Facturio.Gabarits.View.GabaritsTabUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Facturio.Gabarits"
+             xmlns:local="clr-namespace:Facturio.Gabarits.View"
+             xmlns:vm="clr-namespace:Facturio.Gabarits.ViewModel"
              mc:Ignorable="d">
-    <!-- Ressources spécifiques à ce UserControl -->
-    <UserControl.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="5" />
-            <Setter Property="Width" Value="100" />
-            <Setter Property="Height" Value="30" />
-        </Style>
-    </UserControl.Resources>
-    
+    <!-- DataContext -->
+    <UserControl.DataContext>
+        <vm:ListeGabaritsViewModel />
+    </UserControl.DataContext>
+
     <Grid>
-        <!-- Définitions des rangées/colonnes -->
+        <!-- Rangées -->
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        
+
         <!-- Gabarits -->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
-            <StackPanel.Resources>
-                <Style TargetType="Rectangle">
-                    <Setter Property="Width" Value="150" />
-                    <Setter Property="Height" Value="150" />
-                    <Setter Property="Margin" Value="20" />
-                    <Setter Property="Fill" Value="LightGreen" />
-                </Style>
-            </StackPanel.Resources>
-        </StackPanel>
-        
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding LstGabarits}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Background="AliceBlue" Width="150" Height="150" Margin="10">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="BorderBrush" Value="Black" />
+                                            <Setter Property="BorderThickness" Value="3" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+
+                            <Label Content="{Binding Titre}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
         <!-- Boutons -->
-        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <WrapPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <WrapPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="5" />
+                    <Setter Property="Width" Value="100" />
+                    <Setter Property="Height" Value="30" />
+                </Style>
+            </WrapPanel.Resources>
+
             <Button Content="Nouveau" />
             <Button Content="Ouvrir" />
             <Button Content="Modifier" />
             <Button Content="Supprimer" />
-        </StackPanel>
+        </WrapPanel>
     </Grid>
 </UserControl>
