@@ -28,5 +28,28 @@ namespace Facturio
                 case Provinces.Yukon:                   Nom = "Yukon"; break;
             }
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Province p = obj as Province;
+
+            if (p == null)
+            {
+                return false;
+            }
+
+            return IdProvince == p.IdProvince;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
     }
 }

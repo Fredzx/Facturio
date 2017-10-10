@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NHibernate;
 using NHibernate.Linq;
 
+
 namespace Facturio.Clients
 {
     public static class HibernateClientService

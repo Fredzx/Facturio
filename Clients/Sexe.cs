@@ -21,5 +21,29 @@ namespace Facturio
                 case Sexes.Feminin: Nom = "Féminin"; break;
             }
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Sexe s = obj as Sexe;
+
+            if (s == null)
+            {
+                return false;
+            }
+
+            return this.IdSexe == s.IdSexe;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+
     }
 }

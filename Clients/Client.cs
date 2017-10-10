@@ -32,5 +32,31 @@
 
             // Ici, affecter un UUID au NoClient (pas trop long le UUID, résonable)
         }
+
+
+        // Pour utiliser NHibernate, il faut surcharger Equals et GetHashCode.
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Client c = obj as Client;
+
+            if (c == null)
+            {
+                return false;
+            }
+
+            return this.IdClient == c.IdClient;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+
     }
 }

@@ -17,5 +17,29 @@ namespace Facturio
             Image = image;
             Escompte = escompte;
         }
+
+        // Pour utiliser NHibernate, il faut surcharger Equals et GetHashCode.
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Rang r = obj as Rang;
+
+            if (r == null)
+            {
+                return false;
+            }
+
+            return this.IdRang == r.IdRang;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
     }
 }

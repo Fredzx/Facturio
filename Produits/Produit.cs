@@ -12,7 +12,7 @@ namespace Facturio.Produits
         {
 
         }
-        public Produit(int id, string nom, string code, string description, double prix, double quantite)
+        public Produit(int? id, string nom, string code, string description, float prix, float quantite)
         {
             Id = id;
             Nom = nom;
@@ -21,12 +21,12 @@ namespace Facturio.Produits
             Prix = prix;
             Quantite = quantite;
         }
-        public int Id { get; set; }
-        public string Nom { get; set; }
-        public string Code { get; set; }
-        public string Description { get; set; }
-        public double Prix { get; set; }
-        public double Quantite { get; set; }
+        public virtual int? Id { get; set; } = null;
+        public virtual string Nom { get; set; } = string.Empty;
+        public virtual string Code { get; set; } = string.Empty;
+        public virtual string Description { get; set; } = string.Empty;
+        public virtual float? Prix { get; set; } = null;
+        public virtual float? Quantite { get; set; } = null;
 
     }
 }
