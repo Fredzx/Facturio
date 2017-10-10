@@ -23,6 +23,11 @@ namespace Facturio.Rapport
         public RapportUserControle()
         {
             InitializeComponent();
+
+            
+
+             RapportController.ChargerListeRapport();
+            
         }
     }
 }

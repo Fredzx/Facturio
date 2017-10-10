@@ -25,7 +25,8 @@ namespace Facturio.Produits
 
         public static void UpdateProduit(Produit produitAModifier)
         {
-            Produit ProduitModifie = new Produit(produitAModifier.Id, "updateNom", "updateCode", "updateDescription", 10, 11);
+
+            Produit ProduitModifie = new Produit("updateNom", "updateCode", "updateDescription", 10, 11);
             // TODO: Si le produit est null, retourner à la page d'avant
             // Et afficher un message
             if (produitAModifier == null)

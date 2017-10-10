@@ -12,9 +12,8 @@ namespace Facturio.Produits
         {
 
         }
-        public Produit(int? id, string nom, string code, string description, float prix, float quantite)
+        public Produit(string nom, string code, string description, float prix, float quantite)
         {
-            Id = id;
             Nom = nom;
             Code = code;
             Description = description;

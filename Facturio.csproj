@@ -107,6 +107,9 @@
     <Compile Include="Clients\SexeMap.cs" />
     <Compile Include="Enums\Provinces.cs" />
     <Compile Include="Enums\Sexes.cs" />
+    <Compile Include="Factures\Facture.cs" />
+    <Compile Include="Factures\FactureMap.cs" />
+    <Compile Include="Factures\HibernateFactureService.cs" />
     <Compile Include="Gabarits\Gabarit.cs" />
     <Compile Include="Gabarits\GabaritsController.cs" />
     <Compile Include="Gabarits\GenerateurGabaritsUserControl.xaml.cs">
@@ -116,7 +119,10 @@
     <Compile Include="Produits\HibernateProduitService.cs" />
     <Compile Include="Produits\ProduitsController.cs" />
     <Compile Include="Produits\ProduitMap.cs" />
+    <Compile Include="Rapport\HibernateRapportService.cs" />
     <Compile Include="Rapport\Rapport.cs" />
+    <Compile Include="Rapport\RapportController.cs" />
+    <Compile Include="Rapport\RapportMap.cs" />
     <Compile Include="Rapport\RapportUserControle.xaml.cs">
       <DependentUpon>RapportUserControle.xaml</DependentUpon>
     </Compile>
