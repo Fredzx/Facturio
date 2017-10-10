@@ -8,10 +8,10 @@ namespace Facturio
 {
     public class Sexe
     {
-        public int? IdSexe { get; set; } = null;
-        public string Nom { get; set; } = string.Empty;
+        public virtual int? IdSexe { get; set; } = null;
+        public virtual string Nom { get; set; } = string.Empty;
 
-        public Sexe() {}
+        public Sexe() { }
 
         public Sexe(Sexes sexe)
         {

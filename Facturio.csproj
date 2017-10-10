@@ -93,12 +93,18 @@
     </Compile>
     <Compile Include="Clients\HibernateClientService.cs" />
     <Compile Include="Clients\ClientMap.cs" />
+    <Compile Include="Clients\HibernateProvinceService.cs" />
+    <Compile Include="Clients\HibernateRangService.cs" />
+    <Compile Include="Clients\HibernateSexeService.cs" />
     <Compile Include="Clients\Province.cs" />
+    <Compile Include="Clients\ProvinceMap.cs" />
     <Compile Include="Clients\Rang.cs" />
+    <Compile Include="Clients\RangMap.cs" />
     <Compile Include="Clients\RechercherUserControl.xaml.cs">
       <DependentUpon>RechercherUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Clients\Sexe.cs" />
+    <Compile Include="Clients\SexeMap.cs" />
     <Compile Include="Enums\Provinces.cs" />
     <Compile Include="Enums\Sexes.cs" />
     <Compile Include="Gabarits\Gabarit.cs" />
