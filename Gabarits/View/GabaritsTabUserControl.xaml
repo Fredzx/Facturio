@@ -18,35 +18,45 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
-        <!-- Gabarits -->
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <ItemsControl ItemsSource="{Binding LstGabarits}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
+        <ListBox ItemsSource="{Binding LstGabarits}" SelectedItem="{Binding SelectionCourante}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
 
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Button Command="{Binding Selection}" CommandParameter="{Binding}" Background="AliceBlue" Width="150" Height="150" Margin="10">
-                            <Button.Style>
-                                <Style TargetType="Button">
-                                    <Style.Triggers>
-                                        <Trigger Property="IsPressed" Value="True">
-                                            <Setter Property="BorderBrush" Value="Black" />
-                                            <Setter Property="BorderThickness" Value="3" />
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Style.Setters>
+                        <Setter Property="Width" Value="150" />
+                        <Setter Property="Height" Value="150" />
+                        <Setter Property="Margin" Value="10" />
+                        <Setter Property="Padding" Value="10" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="BorderBrush" Value="Transparent" />
+                        <Setter Property="BorderThickness" Value="10" />
+                        <Setter Property="Background" Value="AliceBlue" />
+                    </Style.Setters>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="Orange" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="BorderBrush" Value="Orange" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListBox.ItemContainerStyle>
 
-                            <Label Content="{Binding Titre}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Button>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" TextBlock.TextAlignment="Center">
+                        <TextBlock Text="{Binding Id}" />
+                        <TextBlock Text="{Binding Titre}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
         <!-- Boutons -->
         <WrapPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
