@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <!-- Liste de gabarits -->
-        <ListBox ItemsSource="{Binding LstGabarits}" SelectedItem="{Binding SelectionCourante}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListBox ItemsSource="{Binding LstGabarits}" SelectedItem="{Binding SelectionCourante}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" />

@@ -14,10 +14,42 @@ namespace Facturio.Gabarits.ViewModel
             {
                 new Gabarit() { Titre = "Titre #1" },
                 new Gabarit() { Titre = "Titre #2" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
+                new Gabarit() { Titre = "Titre #3" },
                 new Gabarit() { Titre = "Titre #3" }
             };
-
-            SelectionCourante = LstGabarits[1];
         }
     }
 }
