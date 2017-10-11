@@ -26,45 +26,65 @@
             </ListBox.ItemsPanel>
 
             <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
+                <Style TargetType="{x:Type ListBoxItem}">
                     <Style.Setters>
                         <Setter Property="Width" Value="150" />
                         <Setter Property="Height" Value="150" />
                         <Setter Property="Margin" Value="10" />
-                        <Setter Property="Padding" Value="10" />
+                        <Setter Property="Padding" Value="0" />
                         <Setter Property="HorizontalContentAlignment" Value="Center" />
-                        <Setter Property="BorderBrush" Value="Transparent" />
-                        <Setter Property="BorderThickness" Value="10" />
+                        <Setter Property="BorderBrush" Value="LightSteelBlue" />
+                        <Setter Property="BorderThickness" Value="0" />
                         <Setter Property="Background" Value="AliceBlue" />
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Grid>
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                            <StackPanel TextBlock.TextAlignment="Center" VerticalAlignment="Center">
+                                                <TextBlock Text="{Binding Id}" />
+                                                <TextBlock Text="{Binding Titre}" />
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="FocusManager.FocusedElement" Value="{Binding RelativeSource={RelativeSource Self}}" />
+                                            <Trigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ThicknessAnimation Duration="0:0:0:0.100" To="5" Storyboard.TargetProperty="BorderThickness" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.EnterActions>
+                                            <Trigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ThicknessAnimation Duration="0" To="0" Storyboard.TargetProperty="BorderThickness" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.ExitActions>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
                     </Style.Setters>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="BorderBrush" Value="Orange" />
-                        </Trigger>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="BorderBrush" Value="Orange" />
-                        </Trigger>
-                    </Style.Triggers>
                 </Style>
             </ListBox.ItemContainerStyle>
-
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Vertical" TextBlock.TextAlignment="Center">
-                        <TextBlock Text="{Binding Id}" />
-                        <TextBlock Text="{Binding Titre}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
         </ListBox>
 
         <!-- Boutons -->
         <WrapPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <WrapPanel.Resources>
                 <Style TargetType="Button">
-                    <Setter Property="Margin" Value="5" />
-                    <Setter Property="Width" Value="100" />
-                    <Setter Property="Height" Value="30" />
+                    <Style.Setters>
+                        <Setter Property="Margin" Value="5" />
+                        <Setter Property="Width" Value="100" />
+                        <Setter Property="Height" Value="30" />
+                    </Style.Setters>
                 </Style>
             </WrapPanel.Resources>
 
