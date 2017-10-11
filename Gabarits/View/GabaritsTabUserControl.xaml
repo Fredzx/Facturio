@@ -34,9 +34,9 @@
                         <Setter Property="Margin" Value="10" />
                         <Setter Property="Padding" Value="0" />
                         <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="Background" Value="AliceBlue" />
                         <Setter Property="BorderBrush" Value="LightSteelBlue" />
                         <Setter Property="BorderThickness" Value="0" />
-                        <Setter Property="Background" Value="AliceBlue" />
                         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
                         <Setter Property="Template">
                             <Setter.Value>
@@ -89,7 +89,7 @@
                 </Style>
             </WrapPanel.Resources>
 
-            <Button Content="Nouveau" />
+            <Button Content="Nouveau" Command="{Binding NouveauGabarit}" />
             <Button Content="Ouvrir" />
             <Button Content="Modifier" />
             <Button Content="Supprimer" />

@@ -10,17 +10,22 @@ namespace Facturio.Base
     {
         #region Champs privés
 
-        private Predicate<object> _canExecute;
-        private Action<object> _execute;
+        private readonly Action<object> _execute;
+        private readonly Predicate<object> _canExecute;
 
         #endregion
 
-        #region Constructeur
+        #region Constructeurs
 
-        public RelayCommand(Predicate<object> canExecute, Action<object> execute)
+        public RelayCommand(Action<object> execute, Predicate<object> canExecute)
         {
+            _execute = execute ?? throw new NullReferenceException(nameof(execute));
             _canExecute = canExecute;
-            _execute = execute;
+        }
+
+        public RelayCommand(Action<object> execute) : this(execute, null)
+        {
+
         }
 
         #endregion
@@ -35,10 +40,12 @@ namespace Facturio.Base
 
         #endregion
 
-        #region Méthodes CanExecute et Execute
+        #region Méthodes Execute et CanExecute
 
-        public bool CanExecute(object parameter) => _canExecute(parameter);
         public void Execute(object parameter) => _execute(parameter);
+
+        public bool CanExecute(object parameter) =>
+            _canExecute == null ? true : _canExecute(parameter);
 
         #endregion
     }
