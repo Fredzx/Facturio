@@ -89,7 +89,7 @@
                 </Style>
             </WrapPanel.Resources>
 
-            <Button Content="Nouveau" Command="{Binding NouveauGabarit}" />
+            <Button Content="Nouveau" Command="{Binding NouveauGabarit}" CommandParameter="Mathieu" />
             <Button Content="Ouvrir" />
             <Button Content="Modifier" />
             <Button Content="Supprimer" />

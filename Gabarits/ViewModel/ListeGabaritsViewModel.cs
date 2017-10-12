@@ -59,7 +59,7 @@ namespace Facturio.Gabarits.ViewModel
 
         private void VaOngletCreation(object parameter)
         {
-            
+            System.Windows.MessageBox.Show((string)parameter);
         }
     }
 }

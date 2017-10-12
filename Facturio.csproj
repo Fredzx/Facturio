@@ -109,6 +109,7 @@
     <Compile Include="Clients\Sexe.cs" />
     <Compile Include="Enums\Provinces.cs" />
     <Compile Include="Enums\Sexes.cs" />
+    <Compile Include="FacturioViewModel.cs" />
     <Compile Include="Gabarits\Model\Gabarit.cs" />
     <Compile Include="Gabarits\ViewModel\ListeGabaritsViewModel.cs" />
     <Compile Include="NHibernateConnexion.cs" />
@@ -135,7 +136,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FacturioPrincipale.xaml">
+    <Page Include="FacturioView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -150,8 +151,8 @@
     <Compile Include="Gabarits\View\GabaritsTabUserControl.xaml.cs">
       <DependentUpon>GabaritsTabUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FacturioPrincipale.xaml.cs">
-      <DependentUpon>FacturioPrincipale.xaml</DependentUpon>
+    <Compile Include="FacturioView.xaml.cs">
+      <DependentUpon>FacturioView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Produits\AjoutModifUserControl.xaml">
