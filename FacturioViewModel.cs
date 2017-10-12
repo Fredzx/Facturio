@@ -1,22 +1,20 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using Facturio.Base;
+using Facturio.Gabarits.ViewModel;
 
 namespace Facturio
 {
     public class FacturioViewModel : BaseViewModel
     {
         public ObservableCollection<TabItem> LstTabItems { get; set; }
+        public TabItem SelectionCourante { get; set; }
 
         public FacturioViewModel()
         {
             LstTabItems = new ObservableCollection<TabItem>()
             {
-                new TabItem() { Header = "Gabarits" },
-                new TabItem() { Header = "Création" },
-                new TabItem() { Header = "Clients" },
-                new TabItem() { Header = "Produits" },
-                new TabItem() { Header = "Rapports" }
+
             };
         }
     }
