@@ -93,7 +93,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Base\BaseViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="Base\RelayCommand.cs" />
     <Compile Include="Clients\ClientsController.cs" />
     <Compile Include="Clients\AjoutModifUserControl.xaml.cs">
@@ -109,9 +109,9 @@
     <Compile Include="Clients\Sexe.cs" />
     <Compile Include="Enums\Provinces.cs" />
     <Compile Include="Enums\Sexes.cs" />
-    <Compile Include="FacturioViewModel.cs" />
-    <Compile Include="Gabarits\Model\Gabarit.cs" />
-    <Compile Include="Gabarits\ViewModel\ListeGabaritsViewModel.cs" />
+    <Compile Include="ViewModels\FacturioViewModel.cs" />
+    <Compile Include="Models\Gabarit.cs" />
+    <Compile Include="ViewModels\ListeGabaritsViewModel.cs" />
     <Compile Include="NHibernateConnexion.cs" />
     <Compile Include="Produits\HibernateProduitService.cs" />
     <Compile Include="Produits\ProduitsController.cs" />
@@ -132,11 +132,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Gabarits\View\GabaritsTabUserControl.xaml">
+    <Page Include="Views\GabaritsTabUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FacturioView.xaml">
+    <Page Include="Views\FacturioView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -148,10 +148,11 @@
     <Compile Include="Clients\ClientsUserControl.xaml.cs">
       <DependentUpon>ClientsUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Gabarits\View\GabaritsTabUserControl.xaml.cs">
+    <Compile Include="ViewModels\IOngletViewModel.cs" />
+    <Compile Include="Views\GabaritsTabUserControl.xaml.cs">
       <DependentUpon>GabaritsTabUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FacturioView.xaml.cs">
+    <Compile Include="Views\FacturioView.xaml.cs">
       <DependentUpon>FacturioView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>

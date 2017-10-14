@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Facturio.Base
+namespace Facturio.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

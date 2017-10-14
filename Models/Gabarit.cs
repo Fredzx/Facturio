@@ -1,4 +1,4 @@
-﻿namespace Facturio.Gabarits
+﻿namespace Facturio.Models
 {
     public class Gabarit
     {
