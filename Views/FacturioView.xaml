@@ -16,10 +16,13 @@
     </Window.DataContext>
 
     <Grid>
-        <TabControl ItemsSource="{Binding Onglets}" SelectedItem="{Binding SelectionCourante}">
+        <TabControl ItemsSource="{Binding Onglets}" SelectedItem="{Binding OngletSelectionne}">
             <TabControl.Resources>
                 <DataTemplate DataType="{x:Type viewModels:GabaritSelecteurViewModel}">
                     <views:GabaritSelecteurView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:GabaritCreateurViewModel}">
+                    <views:GabaritCreateurView />
                 </DataTemplate>
                 <!--
                 <DataTemplate DataType="{x:Type ucProduits:ProduitUserControl}">

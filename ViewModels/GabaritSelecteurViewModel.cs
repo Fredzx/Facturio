@@ -10,14 +10,13 @@ namespace Facturio.ViewModels
         #region Propriétés
 
         public ObservableCollection<Gabarit> Gabarits { get; set; }
-        public Gabarit SelectionCourante { get; set; }
+        public Gabarit GabaritSelectionne { get; set; }
         public string Titre { get; set; }
 
         #endregion
 
         #region Commandes
 
-        public ICommand NouveauGabarit { get; set; }
         public ICommand SupprimerGabarit { get; set; }
 
         #endregion
@@ -37,7 +36,7 @@ namespace Facturio.ViewModels
 
             Titre = "Gabarits";
 
-            SupprimerGabarit = new RelayCommand(SupprimeGabarit, parameter => SelectionCourante != null);
+            SupprimerGabarit = new RelayCommand(SupprimeGabarit, parameter => GabaritSelectionne != null);
         }
 
         #endregion
@@ -46,8 +45,8 @@ namespace Facturio.ViewModels
 
         private void SupprimeGabarit(object parameter)
         {
-            Gabarits.Remove(SelectionCourante);
-            SelectionCourante = null;
+            Gabarits.Remove(GabaritSelectionne);
+            GabaritSelectionne = null;
         }
 
         #endregion

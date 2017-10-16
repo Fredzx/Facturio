@@ -19,8 +19,9 @@
 
         <!-- Liste de gabarits -->
         <ListBox
+            x:Name="LsbGabarits"
             ItemsSource="{Binding Gabarits}"
-            SelectedItem="{Binding SelectionCourante}"
+            SelectedItem="{Binding GabaritSelectionne}"
             SelectionMode="Multiple"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             BorderThickness="0">
@@ -118,10 +119,29 @@
                 </Style>
             </WrapPanel.Resources>
             
-            <Button Content="Nouveau" Command="{Binding NouveauGabarit}" />
+            <Button Content="Nouveau">
+                <Button.Command>
+                    <Binding RelativeSource="{RelativeSource AncestorType={x:Type TabControl}}">
+                        <Binding.Path>DataContext.VaOngletCreation</Binding.Path>
+                    </Binding>
+                </Button.Command>
+            </Button>
             <Button Content="Ouvrir" />
-            <Button Content="Modifier" />
-            <Button Content="Supprimer" Command="{Binding SupprimerGabarit}" />
+            <Button Content="Modifier">
+                <Button.Command>
+                    <Binding RelativeSource="{RelativeSource AncestorType={x:Type TabControl}}">
+                        <Binding.Path>DataContext.VaOngletCreationModifier</Binding.Path>
+                    </Binding>
+                </Button.Command>
+                <Button.CommandParameter>
+                    <Binding Path="GabaritSelectionne" />
+                </Button.CommandParameter>
+            </Button>
+            <Button Content="Supprimer">
+                <Button.Command>
+                    <Binding Path="SupprimerGabarit" />
+                </Button.Command>
+            </Button>
         </WrapPanel>
     </Grid>
 </UserControl>

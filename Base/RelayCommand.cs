@@ -45,7 +45,7 @@ namespace Facturio.Base
         public void Execute(object parameter) => _execute(parameter);
 
         public bool CanExecute(object parameter) =>
-            _canExecute == null ? true : _canExecute(parameter);
+            _canExecute?.Invoke(parameter) ?? true;
 
         #endregion
     }
