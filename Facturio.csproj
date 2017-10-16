@@ -111,7 +111,7 @@
     <Compile Include="Enums\Sexes.cs" />
     <Compile Include="ViewModels\FacturioViewModel.cs" />
     <Compile Include="Models\Gabarit.cs" />
-    <Compile Include="ViewModels\ListeGabaritsViewModel.cs" />
+    <Compile Include="ViewModels\GabaritSelecteurViewModel.cs" />
     <Compile Include="NHibernateConnexion.cs" />
     <Compile Include="Produits\HibernateProduitService.cs" />
     <Compile Include="Produits\ProduitsController.cs" />
@@ -132,7 +132,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GabaritsTabUserControl.xaml">
+    <Page Include="Views\GabaritSelecteurView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -149,8 +149,8 @@
       <DependentUpon>ClientsUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\IOngletViewModel.cs" />
-    <Compile Include="Views\GabaritsTabUserControl.xaml.cs">
-      <DependentUpon>GabaritsTabUserControl.xaml</DependentUpon>
+    <Compile Include="Views\GabaritSelecteurView.xaml.cs">
+      <DependentUpon>GabaritSelecteurView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FacturioView.xaml.cs">
       <DependentUpon>FacturioView.xaml</DependentUpon>

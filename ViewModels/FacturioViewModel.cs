@@ -1,27 +1,27 @@
 ﻿using System.Collections.ObjectModel;
-using Facturio.Base;
 
 namespace Facturio.ViewModels
 {
     public class FacturioViewModel : BaseViewModel
     {
+        #region Propriétés
+
         public ObservableCollection<IOngletViewModel> Onglets { get; set; }
         public IOngletViewModel SelectionCourante { get; set; }
+
+        #endregion
+
+        #region Constructeur
 
         public FacturioViewModel()
         {
             Onglets = new ObservableCollection<IOngletViewModel>
             {
-                new ListeGabaritsViewModel(/* new RelayCommand(VaOngletCreation) */),
-                new ListeGabaritsViewModel(/* new RelayCommand(VaOngletCreation) */)
+                new GabaritSelecteurViewModel(),
+                new GabaritSelecteurViewModel()
             };
         }
 
-        /*
-        private void VaOngletCreation(object parameter)
-        {
-            SelectionCourante = Onglets[1];
-        }
-        */
+        #endregion
     }
 }
