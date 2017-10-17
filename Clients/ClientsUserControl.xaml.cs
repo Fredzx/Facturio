@@ -20,12 +20,13 @@ namespace Facturio.Clients
    /// </summary>
    public partial class ClientsUserControl : System.Windows.Controls.UserControl
    {
-      public ClientsUserControl()
-      {
-           InitializeComponent();          
+        public static TabControl TbcClientPublic { get; set; } = new TabControl();
+        public ClientsUserControl()
+        {
+            InitializeComponent();
+            TbcClientPublic = tbcClient;           
+        }
 
-        }     
-
-
+  
     }
 }

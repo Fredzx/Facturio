@@ -20,9 +20,13 @@ namespace Facturio.Clients
     /// </summary>
     public partial class AjoutModifUserControl : UserControl
     {
+        public static Label LblFormTitle { get; set; } = new Label();
         public AjoutModifUserControl()
         {
             InitializeComponent();
+            LblFormTitle = lblFormTitle;
         }
+
+       
     }
 }

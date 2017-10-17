@@ -51,7 +51,7 @@
                 Grid.RowSpan="2"
                 >
 
-            <Label Name="lblModification" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" FontFamily="calibri" Content="Ajouter un client" />
+            <Label Name="lblFormTitle" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" FontFamily="calibri" Content="Ajouter un client" />
         </Grid>
 
 
@@ -93,9 +93,11 @@
 
         <StackPanel Grid.Column="0"
                     Grid.Row="3"
-                    Grid.ColumnSpan="2" >
+                    Grid.ColumnSpan="2"                   
+                    >
 
-            <Button  Content="Enregistrer" Style="{StaticResource styleButton}" />
+            <Button  Content="Enregistrer" Width="150" />
+            <Button  Content="Vider les champs" Width="150"  />
         </StackPanel>
 
 

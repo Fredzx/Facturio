@@ -35,11 +35,52 @@ namespace Facturio.Clients
 
         }
 
+       
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
-           // TabIndexProperty.SelectedIndex = 1;
+            // Lorsqu'il clique sur ajouter on veut : 
+            // Que le usercontrol Client change d'onglet > direction : onglet Ajout.            
+            ClientsUserControl.TbcClientPublic.SelectedIndex = 1;
+
+            // Ajuster le titre
+            AjoutModifUserControl.LblFormTitle.Content = "Ajouter un client";
 
         }
 
+        private void btnModifier_Click(object sender, RoutedEventArgs e)
+        {
+            // Lorsqu'il clique sur mofifier on veut : 
+            // Que le usercontrol Client change d'onglet > direction : onglet Modifier.
+            ClientsUserControl.TbcClientPublic.SelectedIndex = 1;
+
+            // Ajuster le titre
+            AjoutModifUserControl.LblFormTitle.Content = "Modifier un client";          
+
+
+
+        }
+
+        private void btnSupprimer_Click(object sender, RoutedEventArgs e)
+        {
+            Confirmation();
+        }
+
+        private bool Confirmation()
+        {
+            MessageBoxResult resultat;
+
+            resultat = MessageBox.Show("Voulez-vous vraiment supprimer le client sélectionné ?"
+                , "Supprimer?!"
+                , MessageBoxButton.YesNo
+                , MessageBoxImage.Exclamation
+                , MessageBoxResult.No
+                );
+
+            if (resultat == MessageBoxResult.No)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
