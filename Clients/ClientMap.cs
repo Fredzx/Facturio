@@ -12,7 +12,7 @@ namespace Facturio.Clients
             
             Id(x => x.IdClient)
                 .Column("idClient")        // Colonne en BD
-                .CustomType<int>()         // Type dans le code
+                .CustomType<int?>()         // Type dans le code
                 .Access.Property()         // Accès par propriété
                 .CustomSqlType("INTEGER")  // Type en BD
                 .Not.Nullable()            // Est pas nullable
