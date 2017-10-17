@@ -11,6 +11,18 @@
     </UserControl.DataContext>
     
     <Grid>
-        <TextBlock Text="{Binding GabaritModification}" />
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.Column="0"  BorderBrush="DarkGray" BorderThickness="3">
+            <TextBlock Text="Test" />
+        </Border>
     </Grid>
 </UserControl>
