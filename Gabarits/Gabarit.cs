@@ -16,5 +16,47 @@
         public virtual int TauxHoraire { get; set; } = 0;
 
         public Gabarit() {}
+
+        public Gabarit(int prenomClient, int nomClient, int quantite,
+                        int prix, int description, int adresseClient,
+                        int codePostalClient, int escompte, int critereLibre,
+                        int nombreheures, int tauxHoraire)
+        {
+            PrenomClient = prenomClient;
+            NomClient = nomClient;
+            Quantite = quantite;
+            Prix = prix;
+            Description = description;
+            AdresseClient = adresseClient;
+            CodePostalClient = codePostalClient;
+            Escompte = escompte;
+            CritereLibre = critereLibre;
+            NombreHeures = nombreheures;
+            TauxHoraire = tauxHoraire;
+        }
+
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Gabarit r = obj as Gabarit;
+
+            if (r == null)
+            {
+                return false;
+            }
+
+            return this.Id == r.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
     }
 }
