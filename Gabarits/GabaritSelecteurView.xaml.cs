@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Controls;
 
-namespace Facturio.Views
+namespace Facturio.Gabarits
 {
     /// <summary>
     /// Logique d'interaction pour GabaritsTabUserControl.xaml

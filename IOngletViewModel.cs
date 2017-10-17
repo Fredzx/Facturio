@@ -1,4 +1,4 @@
-﻿namespace Facturio.ViewModels
+﻿namespace Facturio
 {
     public interface IOngletViewModel
     {

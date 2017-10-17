@@ -1,6 +1,6 @@
-﻿using Facturio.Models;
+﻿using Facturio.Base;
 
-namespace Facturio.ViewModels
+namespace Facturio.Gabarits
 {
     public class GabaritCreateurViewModel : BaseViewModel, IOngletViewModel
     {

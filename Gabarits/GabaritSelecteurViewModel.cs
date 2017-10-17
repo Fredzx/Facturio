@@ -1,9 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Facturio.Base;
-using Facturio.Models;
 
-namespace Facturio.ViewModels
+namespace Facturio.Gabarits
 {
     public class GabaritSelecteurViewModel : BaseViewModel, IOngletViewModel
     {

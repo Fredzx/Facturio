@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Facturio.Views
+namespace Facturio
 {
     /// <summary>
     /// Interaction logic for Facturio.xaml
