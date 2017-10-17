@@ -6,9 +6,85 @@
              xmlns:local="clr-namespace:Facturio.Produits"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Label Content="Ajout">
-            
-        </Label> 
+    <UserControl.Resources>
+        <Style x:Key="styleLabel" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontFamily" Value="tahoma" />
+        </Style>
+        <Style x:Key="styleTxtBox" TargetType="{x:Type TextBox}">
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Width" Value="150" />
+            <Setter Property="Padding" Value="5" />
+
+        </Style>
+        <Style  x:Key="styleButton" TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+    </UserControl.Resources>
+
+
+    <Grid HorizontalAlignment="Center" Background="Gray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="225" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="21"  />
+            <RowDefinition Height="29"/>
+            <RowDefinition />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <Grid   Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Center"              
+                Grid.RowSpan="2"
+                >
+
+            <Label Name="lblModification" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" FontFamily="calibri" Content="Ajouter un produit" />
+        </Grid>
+
+
+        <StackPanel Orientation="Vertical"                   
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    Background="LightGray"
+                    >
+
+            <Label Name="lblNom" Content="Nom"  Style="{StaticResource styleLabel}"  />
+            <Label Name="lblCode" Content="Code"  Style="{StaticResource styleLabel}" />
+            <Label Name="lblDescription" Content="Description"  Style="{StaticResource styleLabel}" />
+            <Label Name="lblPrix" Content="Prix"  Style="{StaticResource styleLabel}" />
+            <Label Name="lblQuantite" Content="Quantité"  Style="{StaticResource styleLabel}" />
+        </StackPanel>
+
+        <StackPanel 
+                    Orientation="Vertical"
+                    Grid.Column="1"
+                    Grid.Row="2"
+            Background="LightGray">
+
+            <TextBox  Name="txtNom" Style="{StaticResource styleTxtBox}"  />
+            <TextBox  Name="txtCode" Style="{StaticResource styleTxtBox}" />
+            <TextBox  Name="txtDescription" Style="{StaticResource styleTxtBox}" />
+            <TextBox  Name="txtPrix" Style="{StaticResource styleTxtBox}" />
+            <TextBox  Name="txtQuantite" Style="{StaticResource styleTxtBox}" />
+
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="0"
+                    Grid.Row="3"
+                    Grid.ColumnSpan="2" >
+
+            <Button  Content="Enregistrer" Style="{StaticResource styleButton}" />
+        </StackPanel>
+
+
+
     </Grid>
 </UserControl>

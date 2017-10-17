@@ -8,7 +8,7 @@
         xmlns:ucClients="clr-namespace:Facturio.Clients"
         xmlns:ucRapports="clr-namespace:Facturio.Rapport"
         mc:Ignorable="d"
-        Title="Facturio Inc." Height="450" Width="800" MinWidth="800">
+        Title="Facturio Inc." Height="450" Width="800" MinWidth="800" MinHeight="450">
     <Grid>
         <TabControl Name="tabMain">
             <TabItem Header="Gabarits">
