@@ -7,6 +7,7 @@ using FluentNHibernate.Cfg;
 using NHibernate;
 using NHibernate.Cfg;
 
+
 namespace Facturio
 {
     public class NHibernateConnexion
