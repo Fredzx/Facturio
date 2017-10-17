@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Facturio.Factures;
 
 
-namespace Facturio.Rapport
+namespace Facturio.Rapports
 {
     /// <summary>
     /// Rapport permet de compiler des factures afin d'exercer des calculs

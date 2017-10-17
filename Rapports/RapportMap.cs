@@ -2,7 +2,7 @@
 using System;
 using Facturio.Factures;
 
-namespace Facturio.Rapport
+namespace Facturio.Rapports
 {
     public class RapportMap : ClassMap<Rapport>
     {

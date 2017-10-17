@@ -111,19 +111,24 @@
     <Compile Include="Factures\FactureMap.cs" />
     <Compile Include="Factures\HibernateFactureService.cs" />
     <Compile Include="Gabarits\Gabarit.cs" />
+    <Compile Include="Gabarits\GabaritMap.cs" />
     <Compile Include="Gabarits\GabaritsController.cs" />
     <Compile Include="Gabarits\GenerateurGabaritsUserControl.xaml.cs">
       <DependentUpon>GenerateurGabaritsUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gabarits\HibernateGabaritService.cs" />
     <Compile Include="NHibernateConnexion.cs" />
     <Compile Include="Produits\HibernateProduitService.cs" />
     <Compile Include="Produits\ProduitsController.cs" />
     <Compile Include="Produits\ProduitMap.cs" />
-    <Compile Include="Rapport\HibernateRapportService.cs" />
-    <Compile Include="Rapport\Rapport.cs" />
-    <Compile Include="Rapport\RapportController.cs" />
-    <Compile Include="Rapport\RapportMap.cs" />
-    <Compile Include="Rapport\RapportUserControle.xaml.cs">
+    <Compile Include="RapportFacture\HibernateRapportFactureService.cs" />
+    <Compile Include="RapportFacture\RapportFacture.cs" />
+    <Compile Include="RapportFacture\RapportFactureMap.cs" />
+    <Compile Include="Rapports\HibernateRapportService.cs" />
+    <Compile Include="Rapports\Rapport.cs" />
+    <Compile Include="Rapports\RapportController.cs" />
+    <Compile Include="Rapports\RapportMap.cs" />
+    <Compile Include="Rapports\RapportUserControle.xaml.cs">
       <DependentUpon>RapportUserControle.xaml</DependentUpon>
     </Compile>
     <Page Include="Clients\ClientsUserControl.xaml">
@@ -177,7 +182,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Rapport\RapportUserControle.xaml">
+    <Page Include="Rapports\RapportUserControle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -233,5 +238,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

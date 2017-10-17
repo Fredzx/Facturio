@@ -26,5 +26,27 @@ namespace Facturio.Factures
             Date = date;
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Facture r = obj as Facture;
+
+            if (r == null)
+            {
+                return false;
+            }
+
+            return this.IdFacture == r.IdFacture;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
     }
 }

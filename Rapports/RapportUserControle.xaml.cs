@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Facturio.Rapport
+namespace Facturio.Rapports
 {
     /// <summary>
     /// Logique d'interaction pour RapportUserControle.xaml
