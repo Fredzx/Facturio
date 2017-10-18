@@ -1,0 +1,148 @@
+﻿<UserControl x:Class="Facturio.Gabarits.GabaritSelecteurView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:gabarits="clr-namespace:Facturio.Gabarits"
+             mc:Ignorable="d">
+    <!-- DataContext -->
+    <UserControl.DataContext>
+        <gabarits:GabaritSelecteurViewModel />
+    </UserControl.DataContext>
+
+    <Grid>
+        <!-- Rangées -->
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <!-- Liste de gabarits -->
+        <ListBox
+            x:Name="LsbGabarits"
+            ItemsSource="{Binding Gabarits}"
+            SelectedItem="{Binding GabaritSelectionne}"
+            SelectionMode="Multiple"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            BorderThickness="0">
+            
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" />
+                    
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Style.Setters>
+                        <Setter Property="Width" Value="150" />
+                        <Setter Property="Height" Value="150" />
+                        <Setter Property="Margin" Value="10" />
+                        <Setter Property="Padding" Value="0" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="Background" Value="AliceBlue" />
+                        <Setter Property="BorderBrush" Value="LightSteelBlue" />
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Grid>
+                                        <Border
+                                            Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="10">
+                                            
+                                            <StackPanel
+                                                TextBlock.TextAlignment="Center"
+                                                VerticalAlignment="Center">
+                                                
+                                                <TextBlock Text="{Binding Titre}" />
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter
+                                                Property="FocusManager.FocusedElement"
+                                                Value="{Binding RelativeSource={RelativeSource Self}}" />
+                                            <Trigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ThicknessAnimation
+                                                            Duration="0:0:0:0.100"
+                                                            To="5"
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.EnterActions>
+                                            <Trigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ThicknessAnimation
+                                                            Duration="0:0:0:0.100"
+                                                            To="0"
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.ExitActions>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style.Setters>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+
+        <!-- Boutons -->
+        <WrapPanel
+            Grid.Row="1"
+            Orientation="Horizontal"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+            
+            <WrapPanel.Resources>
+                <Style TargetType="Button">
+                    <Style.Setters>
+                        <Setter Property="Margin" Value="5" />
+                        <Setter Property="Width" Value="100" />
+                        <Setter Property="Height" Value="30" />
+                    </Style.Setters>
+                </Style>
+            </WrapPanel.Resources>
+            
+            <Button Content="Nouveau">
+                <Button.Command>
+                    <Binding RelativeSource="{RelativeSource AncestorType={x:Type TabControl}}">
+                        <Binding.Path>DataContext.VaOngletCreation</Binding.Path>
+                    </Binding>
+                </Button.Command>
+            </Button>
+            <Button Content="Ouvrir" />
+            <Button Content="Modifier">
+                <Button.Command>
+                    <Binding RelativeSource="{RelativeSource AncestorType={x:Type TabControl}}">
+                        <Binding.Path>DataContext.VaOngletCreationModifier</Binding.Path>
+                    </Binding>
+                </Button.Command>
+                <Button.CommandParameter>
+                    <Binding Path="GabaritSelectionne" />
+                </Button.CommandParameter>
+            </Button>
+            <Button Content="Supprimer">
+                <Button.Command>
+                    <Binding Path="SupprimerGabarit" />
+                </Button.Command>
+            </Button>
+        </WrapPanel>
+    </Grid>
+</UserControl>
+

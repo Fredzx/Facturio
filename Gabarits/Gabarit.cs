@@ -2,6 +2,8 @@
 {
     public class Gabarit
     {
+        public string Titre { get; set; }
+
         public virtual int Id { get; set; } = 0;
         public virtual int PrenomClient { get; set; } = 0;
         public virtual int NomClient { get; set; } = 0;

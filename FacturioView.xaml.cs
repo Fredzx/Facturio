@@ -5,9 +5,9 @@ namespace Facturio
     /// <summary>
     /// Interaction logic for Facturio.xaml
     /// </summary>
-    public partial class FacturioPrincipale : Window
+    public partial class FacturioView : Window
     {
-        public FacturioPrincipale()
+        public FacturioView()
         {
             InitializeComponent();
         }
