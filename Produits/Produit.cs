@@ -20,6 +20,7 @@ namespace Facturio.Produits
             Prix = prix;
             Quantite = quantite;
         }
+        public virtual bool EstCache { get; set; }
         public virtual int? Id { get; set; } = null;
         public virtual string Nom { get; set; } = string.Empty;
         public virtual string Code { get; set; } = string.Empty;
