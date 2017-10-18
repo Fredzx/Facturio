@@ -31,10 +31,11 @@
                 <DataTemplate DataType="{x:Type ucProduits:ProduitsController}">
                     <ucProduits:ProduitUserControl />
                 </DataTemplate>
-                <DataTemplate DataType="{x:Type ucRapports:RapportUserControle}">
+                <DataTemplate DataType="{x:Type ucRapports:RapportController}">
                     <ucRapports:RapportUserControle />
                 </DataTemplate>
             </TabControl.Resources>
+            
 
             <TabControl.ItemTemplate>
                 <DataTemplate>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Facturio.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,14 +7,23 @@ using System.Threading.Tasks;
 
 namespace Facturio.Rapports
 {
-    class RapportController
+    class RapportController : BaseViewModel, IOngletViewModel
     {
 
-        public static List<Rapport> lstRapport { get; set; } = new List<Rapport>();
+        public static ICollection<Rapport> LstRapport { get; set; } = new HashSet<Rapport>();
 
-        public static void ChargerListeRapport()
+        public string Titre { get; set; }
+
+        public RapportController()
         {
-            lstRapport.AddRange(HibernateRapportService.RetrieveAll());
+            Titre = "Rapports";
+            ChargerListeRapport();
+        }
+
+        public static ICollection<Rapport> ChargerListeRapport()
+        {
+            //LstRapport.AddRange(HibernateRapportService.RetrieveAll());
+            return HibernateRapportService.RetrieveAll();
             
         }
 

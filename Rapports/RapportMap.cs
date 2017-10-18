@@ -1,6 +1,9 @@
 ﻿using FluentNHibernate.Mapping;
+using FluentNHibernate.MappingModel.Collections;
 using System;
 using Facturio.Factures;
+using System.Collections;
+using System.ComponentModel;
 
 namespace Facturio.Rapports
 {
@@ -27,14 +30,20 @@ namespace Facturio.Rapports
                 .CustomSqlType("DATETIME")
                 .Generated.Never();
 
-            // Avec HasMany, on dit que le rapport a plusieurs factures
-            //HasMany(x => x.LstFacture)
-            //    .Not.LazyLoad()
-            //    .Access.Property()
-            //    .Cascade.All()
-            //    .KeyColumns.Add("idRapport", map => map.Name("idRapport")
-            //                                            .SqlType("INTEGER")
-            //                                            .Nullable());
+            HasManyToMany(x => x.LstFacture)
+                .Access.Property()
+                .AsSet()
+                .Cascade.None()
+                .LazyLoad()
+                .Generic()
+                .Table("FacturesRapports")
+                .FetchType.Join()
+                .ChildKeyColumns.Add("idFacture", mapping => mapping.Name("idFacture")
+                                                                    .SqlType("INTEGER")
+                                                                    .Not.Nullable())
+                .ParentKeyColumns.Add("idRapport", mapping => mapping.Name("idRapport")
+                                                                     .SqlType("INTEGER")
+                                                                     .Not.Nullable());
 
         }
     }

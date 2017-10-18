@@ -38,6 +38,24 @@ namespace Facturio.Factures
                 .Generated.Never()
                 .CustomSqlType("DATETIME");
 
+            //HasManyToMany(x => x.LstRapport)
+            //    .Access.Property()
+            //    .AsSet()
+            //    .Cascade.None()
+            //    .LazyLoad()
+            //    .Inverse()
+            //    .Generic()
+            //    .Table("RapportFacture")
+            //    .FetchType.Join()
+            //    .ChildKeyColumns.Add("idRapport", mapping => mapping.Name("idRapport")
+            //                                                        .SqlType("INTEGER")
+            //                                                        .Not.Nullable())
+            //    .ParentKeyColumns.Add("idFacture", mapping => mapping.Name("idFacture")
+            //                                                         .SqlType("INTEGER")
+            //                                                         .Not.Nullable());
+
+
+
         }
     }
 }

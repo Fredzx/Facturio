@@ -1,48 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Facturio.Rapports;
-using Facturio.Factures;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
+//using Facturio.Rapports;
+//using Facturio.Factures;
 
-namespace Facturio.RapportFacture
-{
-    public class RapportFacture
-    {
-        public virtual int? IdRapportFacture { get; set; } = null;
-        public virtual Rapports.Rapport Rapport { get; set; } = new Rapports.Rapport();
-        public virtual Facture Facture { get; set; } = new Facture();
+//namespace Facturio.RapportFacture
+//{
+//    public class RapportFacture
+//    {
+//        public virtual int? IdRapportFacture { get; set; } = null;
+//        public virtual Rapport Rapport { get; set; } = new Rapport();
+//        public virtual Facture Facture { get; set; } = new Facture();
 
-        public RapportFacture() { }
+//        public RapportFacture() { }
 
-        public RapportFacture (Rapports.Rapport rapport, Facture facture)
-        {
-            Rapport = rapport;
-            Facture = facture;
-        }
+//        public RapportFacture (Rapport rapport, Facture facture)
+//        {
+//            Rapport = rapport;
+//            Facture = facture;
+//        }
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null)
-            {
-                return false;
-            }
+//        public override bool Equals(object obj)
+//        {
+//            if (obj == null)
+//            {
+//                return false;
+//            }
 
-            RapportFacture r = obj as RapportFacture;
+//            RapportFacture r = obj as RapportFacture;
 
-            if (r == null)
-            {
-                return false;
-            }
+//            if (r == null)
+//            {
+//                return false;
+//            }
 
-            return this.IdRapportFacture == r.IdRapportFacture;
-        }
+//            return this.IdRapportFacture == r.IdRapportFacture;
+//        }
 
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+//        public override int GetHashCode()
+//        {
+//            return base.GetHashCode();
+//        }
 
-    }
-}
+//    }
+//}

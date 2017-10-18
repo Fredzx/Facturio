@@ -2,9 +2,12 @@
 using System.Linq;
 using NHibernate;
 using NHibernate.Linq;
+using System.Collections;
+using System.ComponentModel;
 
 namespace Facturio.Rapports
 {
+
     public static class HibernateRapportService
     {
         private static ISession session = NHibernateConnexion.OpenSession();
