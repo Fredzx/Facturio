@@ -35,7 +35,7 @@
                           Grid.Column="0"
                           Grid.ColumnSpan="6"
                           Grid.RowSpan="4">
-                            <DataGrid Name="dtgAfficheClients" LoadingRow="DataGrid_LoadingRow" 
+                            <DataGrid ItemsSource="{Binding LstObClients}" Name="dtgAfficheClients" LoadingRow="DataGrid_LoadingRow" 
                                       BorderBrush="Black" Height="200" HorizontalAlignment="Center" VerticalAlignment="Top"
                                       AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
                                 <DataGrid.Columns>

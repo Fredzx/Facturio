@@ -34,7 +34,7 @@
                           Grid.Column="0"
                           Grid.ColumnSpan="6"
                           Grid.RowSpan="4">
-            <DataGrid Name="dtgAfficheProduits" LoadingRow="DataGrid_LoadingRow" 
+            <DataGrid ItemsSource="{Binding Produits}" Name="dtgAfficheProduits" LoadingRow="DataGrid_LoadingRow" 
                                       BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
                                       AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="40 0 40 10">
                 <DataGrid.Columns>
@@ -52,9 +52,9 @@
                         Grid.ColumnSpan="4" Grid.Column="2">
 
 
-            <Button Content="Ajouter" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" />
-            <Button Content="Modifier" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" />
-            <Button Content="Supprimer" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100"/>
+            <Button Content="Ajouter" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnAjouter_Click" />
+            <Button Content="Modifier" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnModifier_Click" />
+            <Button Content="Supprimer" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnSupprimer_Click" />
         </StackPanel>
     </Grid>
     <!--

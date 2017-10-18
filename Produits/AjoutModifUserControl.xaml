@@ -45,7 +45,7 @@
                 Grid.RowSpan="2"
                 >
 
-            <Label Name="lblModification" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" FontFamily="calibri" Content="Ajouter un produit" />
+            <Label Name="lblFormTitle" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" FontFamily="calibri" Content="Ajouter un produit" />
         </Grid>
 
 
@@ -56,7 +56,7 @@
                     >
 
             <Label Name="lblNom" Content="Nom"  Style="{StaticResource styleLabel}"  />
-            <Label Name="lblCode" Content="Code"  Style="{StaticResource styleLabel}" />
+            <Label Name="lblCode" Content="Code(pt Généré par le programme)"  Style="{StaticResource styleLabel}" />
             <Label Name="lblDescription" Content="Description"  Style="{StaticResource styleLabel}" />
             <Label Name="lblPrix" Content="Prix"  Style="{StaticResource styleLabel}" />
             <Label Name="lblQuantite" Content="Quantité"  Style="{StaticResource styleLabel}" />
@@ -77,14 +77,10 @@
 
         </StackPanel>
 
-        <StackPanel Grid.Column="0"
-                    Grid.Row="3"
-                    Grid.ColumnSpan="2" >
+        <Grid Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" >
 
-            <Button  Content="Enregistrer" Style="{StaticResource styleButton}" />
-        </StackPanel>
-
-
-
+            <Button  Content="Enregistrer" HorizontalAlignment="Left" Style="{StaticResource styleButton}" Click="btnEnregister_Click" />
+            <Button  Content="Retour" HorizontalAlignment="Right" Style="{StaticResource styleButton}" Click="btnRetour_Click" />
+        </Grid>
     </Grid>
 </UserControl>
