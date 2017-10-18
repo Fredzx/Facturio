@@ -9,7 +9,21 @@ namespace Facturio.Gabarits
         #region Propriétés
 
         public ObservableCollection<Gabarit> Gabarits { get; set; }
-        public Gabarit GabaritSelectionne { get; set; }
+
+        private Gabarit _gabaritSelectionne;
+        public Gabarit GabaritSelectionne
+        {
+            get => _gabaritSelectionne;
+            set
+            {
+                if (value == _gabaritSelectionne)
+                    return;
+
+                _gabaritSelectionne = value;
+                RaisePropertyChanged(nameof(GabaritSelectionne));
+            }
+        }
+
         public string Titre { get; set; }
 
         #endregion

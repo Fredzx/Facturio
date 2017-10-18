@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Facturio
+namespace Facturio.Clients
 {
     public class Rang
     {

@@ -1,4 +1,6 @@
-﻿namespace Facturio.Clients
+﻿using Facturio.Enums;
+
+namespace Facturio.Clients
 {
     public class Client
     {

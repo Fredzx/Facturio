@@ -12,6 +12,9 @@
         mc:Ignorable="d"
         Title="Facturio Inc." Height="500" MinHeight="500" Width="900" MinWidth="750">
     <!-- DataContext -->
+    <Window.DataContext>
+        <local:FacturioViewModel />
+    </Window.DataContext>
 
     <Grid>
         <TabControl ItemsSource="{Binding Onglets}" SelectedItem="{Binding OngletSelectionne}">

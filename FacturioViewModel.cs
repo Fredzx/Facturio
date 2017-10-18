@@ -1,16 +1,30 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Facturio.Base;
+using Facturio.Creation;
 using Facturio.Gabarits;
 
-namespace Facturio.ViewModels
+namespace Facturio
 {
     public class FacturioViewModel : BaseViewModel
     {
         #region Propriétés
 
         public ObservableCollection<IOngletViewModel> Onglets { get; set; }
-        public IOngletViewModel OngletSelectionne { get; set; }
+
+        private IOngletViewModel _ongletSelectionne;
+        public IOngletViewModel OngletSelectionne
+        {
+            get => _ongletSelectionne;
+            set
+            {
+                if (value == _ongletSelectionne)
+                    return;
+
+                _ongletSelectionne = value;
+                RaisePropertyChanged(nameof(OngletSelectionne));
+            }
+        }
 
         #endregion
 

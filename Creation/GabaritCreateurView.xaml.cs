@@ -10,8 +10,6 @@ namespace Facturio.Creation
         public GabaritCreateurView()
         {
             InitializeComponent();
-
-            DataContext = new GabaritCreateurViewModel();
         }
     }
 }
