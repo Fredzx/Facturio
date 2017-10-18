@@ -23,9 +23,11 @@ namespace Facturio.Clients
         public RechercherUserControl()
         {
             InitializeComponent();
+            //DataContext = new ClientsController();
 
-            ClientsController.ChargerListeClients();
-            dtgAfficheClients.ItemsSource = ClientsController.LstClients;
+            //ClientsController.LstObClients.Clear();
+            //ClientsController.ChargerListeClients();
+            //dtgAfficheClients.ItemsSource = ClientsController.LstClients;
         }
 
 
@@ -38,7 +40,7 @@ namespace Facturio.Clients
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
             // Lorsqu'il clique sur ajouter on veut : 
-            // Que le usercontrol Client change d'onglet > direction : onglet Ajout.            
+            // Que le usercontrol Client change d'onglet > direction : onglet Ajout.
             ClientsUserControl.TbcClientPublic.SelectedIndex = 1;
 
             // Ajuster le titre
