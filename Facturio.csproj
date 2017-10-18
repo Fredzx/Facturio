@@ -120,13 +120,8 @@
     <Compile Include="Factures\HibernateFactureService.cs" />
     <Compile Include="Gabarits\Gabarit.cs" />
     <Compile Include="Gabarits\GabaritMap.cs" />
-    <Compile Include="Gabarits\GabaritsController.cs" />
-    <Compile Include="Gabarits\GenerateurGabaritsUserControl.xaml.cs">
-      <DependentUpon>GenerateurGabaritsUserControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Gabarits\HibernateGabaritService.cs" />
     <Compile Include="FacturioViewModel.cs" />
-    <Compile Include="Gabarits\Gabarit.cs" />
     <Compile Include="Creation\GabaritCreateurViewModel.cs" />
     <Compile Include="Gabarits\GabaritSelecteurViewModel.cs" />
     <Compile Include="NHibernateConnexion.cs" />

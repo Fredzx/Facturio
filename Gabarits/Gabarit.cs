@@ -20,9 +20,9 @@
         public Gabarit() {}
 
         public Gabarit(int prenomClient, int nomClient, int quantite,
-                        int prix, int description, int adresseClient,
-                        int codePostalClient, int escompte, int critereLibre,
-                        int nombreheures, int tauxHoraire)
+                       int prix, int description, int adresseClient,
+                       int codePostalClient, int escompte, int critereLibre,
+                       int nombreheures, int tauxHoraire)
         {
             PrenomClient = prenomClient;
             NomClient = nomClient;
@@ -36,7 +36,6 @@
             NombreHeures = nombreheures;
             TauxHoraire = tauxHoraire;
         }
-
 
         public override bool Equals(object obj)
         {
@@ -59,6 +58,5 @@
         {
             return base.GetHashCode();
         }
-
     }
 }
