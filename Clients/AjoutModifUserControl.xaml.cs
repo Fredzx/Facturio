@@ -42,10 +42,10 @@ namespace Facturio.Clients
 
 
                 // TODO : Ajouter le client à la liste.
-                ClientsController.AjouterClient(new Client(txtPrenom.Text.ToString(), txtNom.Text.ToString()
-                                                         , txtDescription.Text.ToString(), new Sexe(Sexes.Feminin)
-                                                         , txtAdresse.Text.ToString(), txtCodePostal.Text.ToString()
-                                                         , "4506665555", new Rang(), new Province(Enums.Provinces.Quebec)));
+                //ClientsController.AjouterClient(new Client(txtPrenom.Text.ToString(), txtNom.Text.ToString()
+                //                                         , txtDescription.Text.ToString(), new Sexe(Sexes.Feminin)
+                //                                         , txtAdresse.Text.ToString(), txtCodePostal.Text.ToString()
+                //                                         , "4506665555", new Rang(), new Province(Enums.Provinces.Quebec)));
 
                 // TODO : Ajouter le client en BD.
 

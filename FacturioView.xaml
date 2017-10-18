@@ -24,8 +24,7 @@
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type creation:GabaritCreateurViewModel}">
                     <creation:GabaritCreateurView />
-                </DataTemplate>
-                <!--
+                </DataTemplate>         
                 <DataTemplate DataType="{x:Type ucProduits:ProduitUserControl}">
                     <ucProduits:ProduitUserControl />
                 </DataTemplate>
@@ -34,9 +33,9 @@
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type ucRapports:RapportUserControle}">
                     <ucRapports:RapportUserControle />
-                </DataTemplate>
-                -->
+                </DataTemplate>       
             </TabControl.Resources>
+            
 
             <TabControl.ItemTemplate>
                 <DataTemplate>
