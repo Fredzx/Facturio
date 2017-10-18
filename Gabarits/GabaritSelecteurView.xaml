@@ -20,8 +20,8 @@
         <!-- Liste de gabarits -->
         <ListBox
             x:Name="LsbGabarits"
-            ItemsSource="{Binding Gabarits}"
-            SelectedItem="{Binding GabaritSelectionne}"
+            ItemsSource="{Binding Gabarits, Mode=TwoWay}"
+            SelectedItem="{Binding GabaritSelectionne, Mode=TwoWay}"
             SelectionMode="Multiple"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             BorderThickness="0">
@@ -32,7 +32,6 @@
                         Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center" />
-                    
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
 
@@ -57,11 +56,9 @@
                                             BorderBrush="{TemplateBinding BorderBrush}"
                                             BorderThickness="{TemplateBinding BorderThickness}"
                                             CornerRadius="10">
-                                            
                                             <StackPanel
                                                 TextBlock.TextAlignment="Center"
                                                 VerticalAlignment="Center">
-                                                
                                                 <TextBlock Text="{Binding Titre}" />
                                             </StackPanel>
                                         </Border>
@@ -108,7 +105,6 @@
             Orientation="Horizontal"
             VerticalAlignment="Center"
             HorizontalAlignment="Center">
-            
             <WrapPanel.Resources>
                 <Style TargetType="Button">
                     <Style.Setters>
