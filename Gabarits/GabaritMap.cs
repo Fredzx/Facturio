@@ -18,7 +18,7 @@ namespace Facturio.Gabarits
                 .GeneratedBy.Identity();
 
             Map(x => x.TitreGabarit)
-                .Column("idGabarit")
+                .Column("titreGabarit")
                 .CustomType<string>()
                 .Access.Property()
                 .CustomSqlType("VARCHAR")
