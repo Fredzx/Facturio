@@ -96,7 +96,7 @@
                     Grid.ColumnSpan="2"                   
                     >
 
-            <Button  Content="Enregistrer" Width="150" />
+            <Button Name="btnEnregistrer" Content="Enregistrer" Width="150" Click="btnEnregistrer_Click"  />
             <Button  Content="Vider les champs" Width="150"  />
         </StackPanel>
 

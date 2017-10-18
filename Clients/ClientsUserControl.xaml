@@ -8,11 +8,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="500">
     <Grid>
-        <TabControl Name="tbcClient">
-            <TabItem Name="tbiRechercher" Header="Rechercher" IsEnabled="true">
+        <TabControl Name="tbcClient" SelectionChanged="tbcClient_SelectionChanged">
+            <TabItem Name="tbiRechercher" Header="Rechercher" >
                 <ucClients:RechercherUserControl />
             </TabItem>
-            <TabItem Name="tbiAjoutModif" Header="Ajouter/Modifer">
+            <TabItem Name="tbiAjoutModif" Header="Ajouter/Modifer" >
                 <ucClients:AjoutModifUserControl />
             </TabItem>
         </TabControl>

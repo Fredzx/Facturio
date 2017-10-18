@@ -32,7 +32,6 @@ namespace Facturio.Clients
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
             e.Row.Header = ((e.Row.GetIndex()) + 1).ToString();
-
         }
 
        
@@ -44,7 +43,6 @@ namespace Facturio.Clients
 
             // Ajuster le titre
             AjoutModifUserControl.LblFormTitle.Content = "Ajouter un client";
-
         }
 
         private void btnModifier_Click(object sender, RoutedEventArgs e)
@@ -54,10 +52,7 @@ namespace Facturio.Clients
             ClientsUserControl.TbcClientPublic.SelectedIndex = 1;
 
             // Ajuster le titre
-            AjoutModifUserControl.LblFormTitle.Content = "Modifier un client";          
-
-
-
+            AjoutModifUserControl.LblFormTitle.Content = "Modifier un client"; 
         }
 
         private void btnSupprimer_Click(object sender, RoutedEventArgs e)
