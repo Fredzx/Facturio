@@ -17,7 +17,7 @@ namespace Facturio.Rapports
         public RapportController()
         {
             Titre = "Rapports";
-            ChargerListeRapport();
+            LstRapport = ChargerListeRapport();
         }
 
         public static ICollection<Rapport> ChargerListeRapport()

@@ -1,4 +1,7 @@
 ﻿using Facturio.Clients;
+using Facturio.Produits;
+using Facturio.Factures;
+using Facturio.ProduitsFactures;
 using FluentNHibernate.Mapping;
 using System;
 using System.Collections.Generic;
@@ -38,21 +41,31 @@ namespace Facturio.Factures
                 .Generated.Never()
                 .CustomSqlType("DATETIME");
 
-            //HasManyToMany(x => x.LstRapport)
-            //    .Access.Property()
-            //    .AsSet()
-            //    .Cascade.None()
-            //    .LazyLoad()
-            //    .Inverse()
-            //    .Generic()
-            //    .Table("RapportFacture")
-            //    .FetchType.Join()
-            //    .ChildKeyColumns.Add("idRapport", mapping => mapping.Name("idRapport")
-            //                                                        .SqlType("INTEGER")
-            //                                                        .Not.Nullable())
-            //    .ParentKeyColumns.Add("idFacture", mapping => mapping.Name("idFacture")
-            //                                                         .SqlType("INTEGER")
-            //                                                         .Not.Nullable());
+            HasManyToMany<ProduitFacture>(x => x.LstProduit)
+                .Access.Property()
+                .AsSet()
+                .Cascade.None()
+                .LazyLoad()
+                .Inverse()
+                .Generic()
+                .Component(p =>
+                {
+                    p.Map(x => x.Quantite)
+                        .Column("quantite")
+                        .CustomType<string>()
+                        .Access.Property()
+                        .Generated.Never()
+                        .CustomSqlType("DECIMAL");
+                    p.References<Produit>(r => r.Produit, "idProduit");                        
+                })
+                .Table("ProduitsFactures")
+                .FetchType.Join()
+                .ChildKeyColumns.Add("idProduit", mapping => mapping.Name("idProduit")
+                                                                    .SqlType("INTEGER")
+                                                                    .Not.Nullable())
+                .ParentKeyColumns.Add("idFacture", mapping => mapping.Name("idFacture")
+                                                                     .SqlType("INTEGER")
+                                                                     .Not.Nullable());
 
 
 

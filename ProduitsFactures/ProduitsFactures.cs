@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Facturio.Factures;
+using Facturio.Produits;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,14 +8,21 @@ using System.Threading.Tasks;
 
 namespace Facturio.ProduitsFactures
 {
-    class ProduitsFactures
+    class ProduitFacture
     {
         public virtual int? IdProduitFactures { get; set; } = null;
-        public virtual int? IdProduit { get; set; } = null;
-        public virtual int? IdFacture { get; set; } = null;
-        public virtual int? Quantite { get; set; } = 0;
+        public virtual Produit Produit { get; set; } = new Produit();
+        public virtual Facture Facture { get; set; } = new Facture();
+        public virtual float Quantite { get; set; } = 0;
 
-        ProduitsFactures() { }
+        public ProduitFacture() { }
+
+        public ProduitFacture(Produit produit, Facture facture, float quantite)
+        {
+            Produit = produit;
+            Facture = facture;
+            Quantite = quantite;
+        }
 
 
         public override bool Equals(object obj)
@@ -23,14 +32,14 @@ namespace Facturio.ProduitsFactures
                 return false;
             }
 
-            ProduitsFactures pf = obj as ProduitsFactures;
+            ProduitFacture pf = obj as ProduitFacture;
 
             if (pf == null)
             {
                 return false;
             }
 
-            return this.IdProduitFactures == pf.IdProduit;
+            return this.IdProduitFactures == pf.IdProduitFactures;
         }
 
         public override int GetHashCode()
