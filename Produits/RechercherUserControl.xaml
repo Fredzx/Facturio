@@ -34,7 +34,7 @@
                           Grid.Column="0"
                           Grid.ColumnSpan="6"
                           Grid.RowSpan="4">
-            <DataGrid Name="dtgAfficheProduits" LoadingRow="DataGrid_LoadingRow" 
+            <DataGrid ItemsSource="{Binding Produits}" Name="dtgAfficheProduits" LoadingRow="DataGrid_LoadingRow" 
                                       BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
                                       AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="40 0 40 10">
                 <DataGrid.Columns>

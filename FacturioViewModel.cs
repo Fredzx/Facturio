@@ -4,6 +4,7 @@ using Facturio.Base;
 using Facturio.Creation;
 using Facturio.Gabarits;
 using Facturio.Clients;
+using Facturio.Produits;
 
 namespace Facturio
 {
@@ -44,7 +45,8 @@ namespace Facturio
             {
                 new GabaritSelecteurViewModel(),
                 new GabaritCreateurViewModel(),
-                new ClientsController()
+                new ClientsController(),
+                new ProduitsController()
             };
 
             VaOngletCreation = new RelayCommand(SelectionneOngletCreation, parameter => true);

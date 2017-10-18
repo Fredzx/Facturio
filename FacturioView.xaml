@@ -28,7 +28,7 @@
                 <DataTemplate DataType="{x:Type ucClients:ClientsController}">
                     <ucClients:ClientsUserControl />
                 </DataTemplate>
-                <DataTemplate DataType="{x:Type ucProduits:ProduitUserControl}">
+                <DataTemplate DataType="{x:Type ucProduits:ProduitsController}">
                     <ucProduits:ProduitUserControl />
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type ucRapports:RapportUserControle}">
