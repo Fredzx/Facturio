@@ -1,6 +1,6 @@
 ﻿using Facturio.Enums;
 
-namespace Facturio
+namespace Facturio.Clients
 {
     public class Province
     {

@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="Facturio.Creation.GabaritCreateurView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:creation="clr-namespace:Facturio.Creation"
+             mc:Ignorable="d">
+    <!-- DataContext -->
+    <UserControl.DataContext>
+        <creation:GabaritCreateurViewModel />
+    </UserControl.DataContext>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.Column="0"  BorderBrush="DarkGray" BorderThickness="3">
+            <TextBlock Text="Test" />
+        </Border>
+    </Grid>
+</UserControl>
+
