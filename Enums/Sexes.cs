@@ -1,4 +1,4 @@
-﻿namespace Facturio
+﻿namespace Facturio.Enums
 {
     public enum Sexes
     {

@@ -28,6 +28,9 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -38,6 +41,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,6 +51,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>
@@ -87,6 +92,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Enums\Onglets.cs" />
+    <Compile Include="Base\BaseViewModel.cs" />
+    <Compile Include="Base\RelayCommand.cs" />
     <Compile Include="Clients\ClientsController.cs" />
     <Compile Include="Clients\AjoutModifUserControl.xaml.cs">
       <DependentUpon>AjoutModifUserControl.xaml</DependentUpon>
@@ -112,11 +120,10 @@
     <Compile Include="Factures\HibernateFactureService.cs" />
     <Compile Include="Gabarits\Gabarit.cs" />
     <Compile Include="Gabarits\GabaritMap.cs" />
-    <Compile Include="Gabarits\GabaritsController.cs" />
-    <Compile Include="Gabarits\GenerateurGabaritsUserControl.xaml.cs">
-      <DependentUpon>GenerateurGabaritsUserControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Gabarits\HibernateGabaritService.cs" />
+    <Compile Include="FacturioViewModel.cs" />
+    <Compile Include="Creation\GabaritCreateurViewModel.cs" />
+    <Compile Include="Gabarits\GabaritSelecteurViewModel.cs" />
     <Compile Include="NHibernateConnexion.cs" />
     <Compile Include="Produits\HibernateProduitService.cs" />
     <Compile Include="Produits\ProduitsController.cs" />
@@ -143,15 +150,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Gabarits\GabaritsUserControl.xaml">
+    <Page Include="Creation\GabaritCreateurView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Gabarits\GenerateurGabaritsUserControl.xaml">
+    <Page Include="Gabarits\GabaritSelecteurView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FacturioPrincipale.xaml">
+    <Page Include="FacturioView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -163,11 +170,15 @@
     <Compile Include="Clients\ClientsUserControl.xaml.cs">
       <DependentUpon>ClientsUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Gabarits\GabaritsUserControl.xaml.cs">
-      <DependentUpon>GabaritsUserControl.xaml</DependentUpon>
+    <Compile Include="Base\IOngletViewModel.cs" />
+    <Compile Include="Creation\GabaritCreateurView.xaml.cs">
+      <DependentUpon>GabaritCreateurView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FacturioPrincipale.xaml.cs">
-      <DependentUpon>FacturioPrincipale.xaml</DependentUpon>
+    <Compile Include="Gabarits\GabaritSelecteurView.xaml.cs">
+      <DependentUpon>GabaritSelecteurView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FacturioView.xaml.cs">
+      <DependentUpon>FacturioView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Produits\AjoutModifUserControl.xaml">

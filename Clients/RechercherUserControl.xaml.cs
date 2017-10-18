@@ -23,28 +23,28 @@ namespace Facturio.Clients
         public RechercherUserControl()
         {
             InitializeComponent();
+            //DataContext = new ClientsController();
 
-            ClientsController.ChargerListeClients();
-            dtgAfficheClients.ItemsSource = ClientsController.LstClients;
+            //ClientsController.LstObClients.Clear();
+            //ClientsController.ChargerListeClients();
+            //dtgAfficheClients.ItemsSource = ClientsController.LstClients;
         }
 
 
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
             e.Row.Header = ((e.Row.GetIndex()) + 1).ToString();
-
         }
 
        
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
             // Lorsqu'il clique sur ajouter on veut : 
-            // Que le usercontrol Client change d'onglet > direction : onglet Ajout.            
+            // Que le usercontrol Client change d'onglet > direction : onglet Ajout.
             ClientsUserControl.TbcClientPublic.SelectedIndex = 1;
 
             // Ajuster le titre
             AjoutModifUserControl.LblFormTitle.Content = "Ajouter un client";
-
         }
 
         private void btnModifier_Click(object sender, RoutedEventArgs e)
@@ -54,10 +54,7 @@ namespace Facturio.Clients
             ClientsUserControl.TbcClientPublic.SelectedIndex = 1;
 
             // Ajuster le titre
-            AjoutModifUserControl.LblFormTitle.Content = "Modifier un client";          
-
-
-
+            AjoutModifUserControl.LblFormTitle.Content = "Modifier un client"; 
         }
 
         private void btnSupprimer_Click(object sender, RoutedEventArgs e)

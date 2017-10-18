@@ -24,9 +24,16 @@ namespace Facturio.Clients
         public ClientsUserControl()
         {
             InitializeComponent();
-            TbcClientPublic = tbcClient;           
+            TbcClientPublic = tbcClient;
+            
         }
 
-  
+        private void tbcClient_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(tbcClient.SelectedItem == tbiRechercher)
+            {
+                AjoutModifUserControl.LblFormTitle.Content = "Ajouter un client";
+            }
+        }
     }
 }

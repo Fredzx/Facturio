@@ -2,6 +2,8 @@
 {
     public class Gabarit
     {
+        public virtual string Titre { get; set; }
+
         public virtual int Id { get; set; } = 0;
         public virtual int PrenomClient { get; set; } = 0;
         public virtual int NomClient { get; set; } = 0;
@@ -18,9 +20,9 @@
         public Gabarit() {}
 
         public Gabarit(int prenomClient, int nomClient, int quantite,
-                        int prix, int description, int adresseClient,
-                        int codePostalClient, int escompte, int critereLibre,
-                        int nombreheures, int tauxHoraire)
+                       int prix, int description, int adresseClient,
+                       int codePostalClient, int escompte, int critereLibre,
+                       int nombreheures, int tauxHoraire)
         {
             PrenomClient = prenomClient;
             NomClient = nomClient;
@@ -35,28 +37,19 @@
             TauxHoraire = tauxHoraire;
         }
 
-
         public override bool Equals(object obj)
         {
             if (obj == null)
-            {
                 return false;
-            }
 
-            Gabarit r = obj as Gabarit;
+            Gabarit gabarit = obj as Gabarit;
 
-            if (r == null)
-            {
-                return false;
-            }
-
-            return this.Id == r.Id;
+            return Id == gabarit?.Id;
         }
 
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
-
     }
 }
