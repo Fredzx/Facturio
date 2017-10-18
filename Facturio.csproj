@@ -125,6 +125,9 @@
     <Compile Include="Creation\GabaritCreateurViewModel.cs" />
     <Compile Include="Gabarits\GabaritSelecteurViewModel.cs" />
     <Compile Include="NHibernateConnexion.cs" />
+    <Compile Include="ProduitsFactures\HibernateProduitFacturesService.cs" />
+    <Compile Include="ProduitsFactures\ProduitsFactures.cs" />
+    <Compile Include="ProduitsFactures\ProduitsFacturesMap.cs" />
     <Compile Include="Produits\HibernateProduitService.cs" />
     <Compile Include="Produits\ProduitsController.cs" />
     <Compile Include="Produits\ProduitMap.cs" />

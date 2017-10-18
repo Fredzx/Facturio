@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Facturio.Base;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -8,9 +9,17 @@ using System.Threading.Tasks;
 namespace Facturio.Produits
 {
     // CRUD
-    public static class ProduitsController
+    public class ProduitsController : BaseViewModel, IOngletViewModel
     {
         public static List<Produit> Produits { get; set; } = new List<Produit>();
+
+        public string Titre { get; set; }
+
+        public ProduitsController()
+        {
+            Titre = "Produits";
+            ChargerListeProduits();
+        }
 
         public static void ChargerListeProduits()
         {

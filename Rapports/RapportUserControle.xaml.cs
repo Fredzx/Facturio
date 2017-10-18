@@ -20,13 +20,13 @@ namespace Facturio.Rapports
     /// </summary>
     public partial class RapportUserControle : UserControl
     {
+        public ICollection<Rapport> LstRapport { get; set; }
+
         public RapportUserControle()
         {
             InitializeComponent();
 
-            
-
-             RapportController.ChargerListeRapport();
+             LstRapport = RapportController.ChargerListeRapport();
             
         }
     }
