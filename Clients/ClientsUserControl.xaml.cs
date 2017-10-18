@@ -35,7 +35,5 @@ namespace Facturio.Clients
                 AjoutModifUserControl.LblFormTitle.Content = "Ajouter un client";
             }
         }
-
-     
     }
 }

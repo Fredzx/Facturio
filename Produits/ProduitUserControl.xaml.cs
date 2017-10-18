@@ -20,9 +20,11 @@ namespace Facturio.Produits
     /// </summary>
     public partial class ProduitUserControl : UserControl
     {
+        public static TabControl TbcProduitPublic { get; set; } = new TabControl();
         public ProduitUserControl()
         {
             InitializeComponent();
+            TbcProduitPublic = tbcProduit;
         }
     }
 }

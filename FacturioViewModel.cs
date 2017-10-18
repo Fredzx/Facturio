@@ -3,6 +3,7 @@ using System.Windows.Input;
 using Facturio.Base;
 using Facturio.Creation;
 using Facturio.Gabarits;
+using Facturio.Clients;
 
 namespace Facturio
 {
@@ -42,7 +43,8 @@ namespace Facturio
             Onglets = new ObservableCollection<IOngletViewModel>
             {
                 new GabaritSelecteurViewModel(),
-                new GabaritCreateurViewModel()
+                new GabaritCreateurViewModel(),
+                new ClientsController()
             };
 
             VaOngletCreation = new RelayCommand(SelectionneOngletCreation, parameter => true);

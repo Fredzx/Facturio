@@ -20,9 +20,23 @@ namespace Facturio.Produits
     /// </summary>
     public partial class AjoutModifUserControl : UserControl
     {
+        public static Label LblFormTitle { get; set; } = new Label();
         public AjoutModifUserControl()
         {
             InitializeComponent();
+            LblFormTitle = lblFormTitle;
+        }
+
+        private void btnEnregister_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnRetour_Click(object sender, RoutedEventArgs e)
+        {
+            // Lorsqu'il clique sur Retour on veut : 
+            // Que le usercontrol Produit change d'onglet > direction : onglet rechercher.
+            ProduitUserControl.TbcProduitPublic.SelectedIndex = 0;
         }
     }
 }
