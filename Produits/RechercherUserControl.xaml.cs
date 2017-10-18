@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,8 +24,8 @@ namespace Facturio.Produits
         public RechercherUserControl()
         {
             InitializeComponent();
-            ProduitsController.ChargerListeProduits();
-            dtgAfficheProduits.ItemsSource = ProduitsController.Produits;
+            //ProduitsController.ChargerListeProduits();
+            //dtgAfficheProduits.ItemsSource = ProduitsController.Produits;
             //DataGrid.AutoRe
         }
 
@@ -107,10 +108,34 @@ namespace Facturio.Produits
 
         }
 
-        private void OnTextBoxTextChanged(object sender, TextChangedEventArgs e)
+        private void txtRechercherProduit_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ProduitsController.ToutVisible();
-           // foreach (var produitFiltre in Produits.Where(vm => vm.Name == ))
+            //ObservableCollection<Produit> filtered = new ObservableCollection<Produit>();
+            //ObservableCollection<Produit> bck = new ObservableCollection<Produit>(ProduitsController.Produits);
+            //filtered.Clear();
+            //foreach(var item in bck)
+            //{
+            //    if(item.Nom.Contains(txtRechercherProduit.Text.ToString()) || item.Code.Contains(txtRechercherProduit.Text.ToString()))
+            //    {
+            //        filtered.Add(item);
+            //    }
+            //    ProduitsController.ocProduits = filtered;
+            //}
+            //    dtgAfficheProduits.Items.Refresh();
+
+            if (txtRechercherProduit.Text.ToString() == "")
+            {
+                //ProduitsController.ChargerListeProduits();
+                ProduitsController.Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
+            }
+            else
+            {
+                ProduitsController.LiveFiltering(txtRechercherProduit.Text.ToString());
+               // System.Windows.Forms.MessageBox.Show("Allo");
+            }
+            dtgAfficheProduits.ItemsSource = null;
+            dtgAfficheProduits.ItemsSource = ProduitsController.Produits;
+// dtgAfficheProduits.Items.Refresh();
         }
     }
 }
