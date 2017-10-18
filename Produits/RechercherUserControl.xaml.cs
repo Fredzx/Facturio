@@ -24,9 +24,7 @@ namespace Facturio.Produits
         public RechercherUserControl()
         {
             InitializeComponent();
-            //ProduitsController.ChargerListeProduits();
-            //dtgAfficheProduits.ItemsSource = ProduitsController.Produits;
-            //DataGrid.AutoRe
+            ProduitsController.Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
         }
 
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
@@ -63,6 +61,9 @@ namespace Facturio.Produits
             if (Confirmation())
             {
                 // Delete
+                //Produit p = (Produit)dtgAfficheProduits.SelectedItem;
+                ProduitsController.DeleteProduit((Produit)dtgAfficheProduits.SelectedItem);
+                dtgAfficheProduits.SelectedIndex = -1;
             }
         }
 
@@ -83,9 +84,6 @@ namespace Facturio.Produits
                     dtgAfficheProduits.SelectedIndex = -1;
                     return false;
                 }
-                
-                dtgAfficheProduits.SelectedIndex = -1;
-
                 return true;
             }
             return false;
