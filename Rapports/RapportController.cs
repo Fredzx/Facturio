@@ -9,11 +9,12 @@ namespace Facturio.Rapports
     class RapportController
     {
 
-        public static List<Rapport> lstRapport { get; set; } = new List<Rapport>();
+        public static ICollection<Rapport> LstRapport { get; set; } = new HashSet<Rapport>();
 
-        public static void ChargerListeRapport()
+        public static ICollection<Rapport> ChargerListeRapport()
         {
-            lstRapport.AddRange(HibernateRapportService.RetrieveAll());
+            //LstRapport.AddRange(HibernateRapportService.RetrieveAll());
+            return HibernateRapportService.RetrieveAll();
             
         }
 
