@@ -8,7 +8,7 @@
         xmlns:creation="clr-namespace:Facturio.Creation"
         xmlns:ucProduits="clr-namespace:Facturio.Produits"
         xmlns:ucClients="clr-namespace:Facturio.Clients"
-        xmlns:ucRapports="clr-namespace:Facturio.Rapport"
+        xmlns:ucRapports="clr-namespace:Facturio.Rapports"
         mc:Ignorable="d"
         Title="Facturio Inc." Height="500" MinHeight="500" Width="900" MinWidth="750">
     <!-- DataContext -->
