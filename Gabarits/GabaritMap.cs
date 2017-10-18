@@ -17,6 +17,14 @@ namespace Facturio.Gabarits
                 .Not.Nullable()
                 .GeneratedBy.Identity();
 
+            Map(x => x.TitreGabarit)
+                .Column("idGabarit")
+                .CustomType<string>()
+                .Access.Property()
+                .CustomSqlType("VARCHAR")
+                .Not.Nullable()
+                .Generated.Never();
+
             Map(x => x.PrenomClient)
                 .Column("prenomClient")
                 .CustomType<int>()
