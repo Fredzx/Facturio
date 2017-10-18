@@ -38,14 +38,7 @@ namespace Facturio.Gabarits
 
         public GabaritSelecteurViewModel()
         {
-            Gabarits = new ObservableCollection<Gabarit>
-            {
-                new Gabarit { Titre = "Titre #1", Id = 1 },
-                new Gabarit { Titre = "Titre #2", Id = 2 },
-                new Gabarit { Titre = "Titre #3", Id = 3 },
-                new Gabarit { Titre = "Titre #4", Id = 4 },
-                new Gabarit { Titre = "Titre #5", Id = 5 }
-            };
+            Gabarits = new ObservableCollection<Gabarit>(HibernateGabaritService.RetrieveAll());
 
             Titre = "Gabarits";
 
