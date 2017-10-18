@@ -11,7 +11,7 @@ namespace Facturio.Clients
     public class ClientsController : BaseViewModel, IOngletViewModel
     {
         public static ObservableCollection<Client> LstObClients { get; set; } = new ObservableCollection<Client>();
-        public static List<Client> LstClients { get; set; } = new List<Client>();
+       // public static List<Client> LstClients { get; set; } = new List<Client>();
 
         public string Titre { get; set; }
 
@@ -34,7 +34,7 @@ namespace Facturio.Clients
 
         public static void AjouterClient(Client client)
         {
-            LstClients.Add(client);
+            LstObClients.Add(client);
         }
     }
 }

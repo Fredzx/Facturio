@@ -59,7 +59,7 @@
                                             <StackPanel
                                                 TextBlock.TextAlignment="Center"
                                                 VerticalAlignment="Center">
-                                                <TextBlock Text="{Binding Titre}" />
+                                                <TextBlock Text="{Binding TitreGabarit}" />
                                             </StackPanel>
                                         </Border>
                                     </Grid>

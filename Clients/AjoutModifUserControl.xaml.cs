@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Facturio.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,12 +41,12 @@ namespace Facturio.Clients
             {
                 // TODO : Validation des informations entrées.
 
-
+                
                 // TODO : Ajouter le client à la liste.
-                //ClientsController.AjouterClient(new Client(txtPrenom.Text.ToString(), txtNom.Text.ToString()
-                //                                         , txtDescription.Text.ToString(), new Sexe(Sexes.Feminin)
-                //                                         , txtAdresse.Text.ToString(), txtCodePostal.Text.ToString()
-                //                                         , "4506665555", new Rang(), new Province(Enums.Provinces.Quebec)));
+                ClientsController.AjouterClient(new Client(txtPrenom.Text.ToString(), txtNom.Text.ToString()
+                                                         , txtDescription.Text.ToString(), new Sexe(Sexes.Masculin) 
+                                                         , txtAdresse.Text.ToString(), txtCodePostal.Text.ToString()
+                                                         , "4506665555", new Rang(), new Province(Provinces.Quebec)));
 
                 // TODO : Ajouter le client en BD.
 
