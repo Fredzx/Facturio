@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Facturio.Produits"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="500">
+    
     <Grid VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
