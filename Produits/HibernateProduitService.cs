@@ -39,7 +39,7 @@ namespace Facturio.Produits
             return result.ToList();
         }
 
-        public static void Create(ProduitMap produit)
+        public static void Create(Produit produit)
         {
             using (var transaction = session.BeginTransaction())
             {
