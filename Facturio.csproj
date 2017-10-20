@@ -138,9 +138,6 @@
     <Compile Include="ProduitsFactures\HibernateProduitFacturesService.cs" />
     <Compile Include="ProduitsFactures\ProduitsFactures.cs" />
     <Compile Include="ProduitsFactures\ProduitsFacturesMap.cs" />
-    <Compile Include="Produits\Generic.xaml.cs">
-      <DependentUpon>Generic.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Produits\HibernateProduitService.cs" />
     <Compile Include="Produits\ProduitsController.cs" />
     <Compile Include="Produits\ProduitMap.cs" />
@@ -200,9 +197,6 @@
     <Page Include="Produits\AjoutModifUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Produits\Generic.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Page>
     <Page Include="Produits\ProduitUserControl.xaml">
       <SubType>Designer</SubType>

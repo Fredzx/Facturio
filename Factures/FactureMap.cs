@@ -46,7 +46,6 @@ namespace Facturio.Factures
                 .AsSet()
                 .Cascade.None()
                 .LazyLoad()
-                .Inverse()
                 .Generic()
                 .Component(p =>
                 {
