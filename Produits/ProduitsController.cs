@@ -12,6 +12,7 @@ namespace Facturio.Produits
     public class ProduitsController : BaseViewModel, IOngletViewModel
     {
         public static ObservableCollection<Produit> Produits { get; set; }
+        public static Produit Produit { get; set; }
         /*
         public static ObservableCollection<Produit> ocProduits { get; set; } = new ObservableCollection<Produit>();
         public static List<Produit> Produits { get; set; } = new List<Produit>();
@@ -34,19 +35,21 @@ namespace Facturio.Produits
             //    ocProduits.Add(produit);
         }
 
-        public static void UpdateProduit(Produit produitAModifier)
+        public static void UpdateProduit()
         {
 
             Produit ProduitModifie = new Produit("updateNom", "updateCode", "updateDescription", 10, 11);
             // TODO: Si le produit est null, retourner à la page d'avant
             // Et afficher un message
-            if (produitAModifier == null)
+            if (Produit == null)
                 return;
             // TODO: UPDATE en BD
-
             // TEST
-            Produits.Remove(produitAModifier);
-            Produits.Add(ProduitModifie);
+            DeleteProduit(Produit);
+            AjoutProduit();
+
+            //Produits.Remove(p);
+            //Produits.Add(ProduitModifie);
         }
 
         public static void DeleteProduit(Produit produitADeleter)
@@ -63,17 +66,18 @@ namespace Facturio.Produits
             HibernateProduitService.Delete(produitADeleter);
         }
 
-        public static void AjoutProduit(Produit produitAAjouter)
+        public static void AjoutProduit()
         {
             // TODO: Si le produit est null, retourner à la page d'avant
             // Et afficher un message
-            if (produitAAjouter == null)
+            if (Produit == null)
                 return;
 
             // TODO: Ajouter en BD
-
             // TEST
-            Produits.Add(produitAAjouter);
+            HibernateProduitService.Create(Produit);
+            
+            //Produits.Add(Produit);
         }
 
         public static void LiveFiltering(string filter)
@@ -81,9 +85,10 @@ namespace Facturio.Produits
             Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveFilter(filter));
         }
 
-        public static void ToutVisible()
+        public static void ConstruireModifUserControl()
         {
-            //Produits.ForEach(i => i.EstCache = false);
+            //AjoutModifUserControl m = new AjoutModifUserControl(Produit);
+            //AjoutModifUserControl.
         }
     }
 }

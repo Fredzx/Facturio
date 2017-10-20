@@ -25,22 +25,24 @@ namespace Facturio.Gabarits
                 .Not.Nullable()
                 .Generated.Never();
 
-            Map(x => x.PrenomClient)
-                .Column("prenomClient")
+            Map(x => x.CodeProduit)
+                .Column("codeProduit")
                 .CustomType<int>()
                 .Access.Property()
                 .CustomSqlType("INTEGER")
+                .Not.Nullable()
                 .Generated.Never();
 
-            Map(x => x.NomClient)
-                .Column("nomClient")
+            Map(x => x.NomProduit)
+                .Column("nomProduit")
                 .CustomType<int>()
                 .Access.Property()
                 .CustomSqlType("INTEGER")
+                .Not.Nullable()
                 .Generated.Never();
 
-            Map(x => x.Quantite)
-                .Column("quantite")
+            Map(x => x.Description)
+                .Column("description")
                 .CustomType<int>()
                 .Access.Property()
                 .CustomSqlType("INTEGER")
@@ -53,8 +55,22 @@ namespace Facturio.Gabarits
                 .CustomSqlType("INTEGER")
                 .Generated.Never();
 
-            Map(x => x.Description)
-                .Column("description")
+            Map(x => x.Quantite)
+                .Column("quantite")
+                .CustomType<int>()
+                .Access.Property()
+                .CustomSqlType("INTEGER")
+                .Generated.Never();
+
+            Map(x => x.PrenomClient)
+                .Column("prenomClient")
+                .CustomType<int>()
+                .Access.Property()
+                .CustomSqlType("INTEGER")
+                .Generated.Never();
+
+            Map(x => x.NomClient)
+                .Column("nomClient")
                 .CustomType<int>()
                 .Access.Property()
                 .CustomSqlType("INTEGER")
@@ -102,6 +118,5 @@ namespace Facturio.Gabarits
                 .CustomSqlType("INTEGER")
                 .Generated.Never();
         }
-
     }
 }
