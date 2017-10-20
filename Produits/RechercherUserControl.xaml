@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Facturio.Produits"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="500">
+    
     <Grid VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -28,7 +29,7 @@
         <Grid Grid.Row="0"
                           Grid.Column="0"
                           Grid.ColumnSpan="6">
-            <TextBox Name="txtRechercherProduit" Height="20" Margin="120 0 120 0" />
+            <TextBox Name="txtRechercherProduit" Height="20" Margin="120 0 120 0" TextChanged="txtRechercherProduit_TextChanged" />
         </Grid>
         <Grid Grid.Row="1"
                           Grid.Column="0"

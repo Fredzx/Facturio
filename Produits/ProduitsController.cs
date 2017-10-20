@@ -11,19 +11,27 @@ namespace Facturio.Produits
     // CRUD
     public class ProduitsController : BaseViewModel, IOngletViewModel
     {
+        public static ObservableCollection<Produit> Produits { get; set; }
+        /*
+        public static ObservableCollection<Produit> ocProduits { get; set; } = new ObservableCollection<Produit>();
         public static List<Produit> Produits { get; set; } = new List<Produit>();
+        */
 
         public string Titre { get; set; }
 
         public ProduitsController()
         {
+            Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
             Titre = "Produits";
-            ChargerListeProduits();
+            // ChargerListeProduits();
         }
 
         public static void ChargerListeProduits()
         {
-            Produits = HibernateProduitService.RetrieveAll();
+            //Produits = HibernateProduitService.RetrieveAll();
+
+            //foreach (Produit produit in Produits)
+            //    ocProduits.Add(produit);
         }
 
         public static void UpdateProduit(Produit produitAModifier)
@@ -70,13 +78,12 @@ namespace Facturio.Produits
 
         public static void LiveFiltering(string filter)
         {
-            Produits = HibernateProduitService.RetrieveFilter(filter);
-
+            Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveFilter(filter));
         }
 
         public static void ToutVisible()
         {
-         //   Produits.ForEach(i => i.EstCache = false);
+            //Produits.ForEach(i => i.EstCache = false);
         }
     }
 }
