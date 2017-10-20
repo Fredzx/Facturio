@@ -7,6 +7,7 @@ using Facturio.Clients;
 using Facturio.Gabarits;
 using Facturio.Rapports;
 using Facturio.Produits;
+using Facturio.ProduitsFactures;
 
 namespace Facturio.Factures
 {
@@ -18,7 +19,8 @@ namespace Facturio.Factures
 
         public virtual DateTime? Date { get; set; } = null;
 
-        public virtual ISet<Produit> LstProduit { get; set; } = new HashSet<Produit>();
+        public virtual IList<Produit> LstProduit { get; set; }
+        
         public Facture() { }
 
 
@@ -26,7 +28,7 @@ namespace Facturio.Factures
         {
             LeClient = client;
             Date = date;
-            LstProduit = new HashSet<Produit>();
+            LstProduit = new List<Produit>();
         }
 
         public override bool Equals(object obj)

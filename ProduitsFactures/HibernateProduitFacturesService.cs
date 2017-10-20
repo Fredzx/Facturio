@@ -28,7 +28,7 @@ namespace Facturio.ProduitsFactures
             return result.ToList();
         }
 
-        public static void Create(ProduitsFacturesMap produitFacture)
+        public static void Create(ProduitFacture produitFacture)
         {
             using (var transaction = session.BeginTransaction())
             {

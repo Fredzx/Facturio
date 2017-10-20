@@ -1,4 +1,6 @@
 ﻿using FluentNHibernate.Mapping;
+using Facturio.ProduitsFactures;
+using Facturio.Factures;
 
 namespace Facturio.Produits
 {
@@ -52,6 +54,9 @@ namespace Facturio.Produits
                 .Access.Property()
                 .CustomSqlType("DECIMAL")
                 .Generated.Never();
+
+       
+                
         }
     }
 }

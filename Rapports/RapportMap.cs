@@ -30,11 +30,12 @@ namespace Facturio.Rapports
                 .CustomSqlType("DATETIME")
                 .Generated.Never();
 
-            HasManyToMany(x => x.LstFacture)
+            HasManyToMany<Facture>(x => x.LstFacture)
                 .Access.Property()
                 .AsSet()
                 .Cascade.None()
                 .LazyLoad()
+                .Inverse()
                 .Generic()
                 .Table("FacturesRapports")
                 .FetchType.Join()

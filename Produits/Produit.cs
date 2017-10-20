@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Facturio.Factures;
+using Facturio.ProduitsFactures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +29,28 @@ namespace Facturio.Produits
         public virtual string Description { get; set; } = string.Empty;
         public virtual float? Prix { get; set; } = null;
         public virtual float? Quantite { get; set; } = null;
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Produit p = obj as Produit;
+
+            if (p == null)
+            {
+                return false;
+            }
+
+            return this.Id == p.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
 
     }
 }

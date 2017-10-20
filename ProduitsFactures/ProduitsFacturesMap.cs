@@ -45,9 +45,6 @@ namespace Facturio.ProduitsFactures
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
                 .Columns("idProduit");
-
-
         }
-
     }
 }

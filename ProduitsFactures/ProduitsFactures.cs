@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Facturio.ProduitsFactures
 {
-    class ProduitFacture
+    public class ProduitFacture
     {
         public virtual int? IdProduitFactures { get; set; } = null;
         public virtual Produit Produit { get; set; } = new Produit();

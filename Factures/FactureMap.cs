@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FluentNHibernate.MappingModel.Collections;
 
 namespace Facturio.Factures
 {
@@ -21,7 +22,7 @@ namespace Facturio.Factures
 
             Id(x => x.IdFacture)
                 .Column("idFacture")
-                .CustomType<int>()
+                .CustomType<int?>()
                 .Access.Property()
                 .CustomSqlType("INTEGER")
                 .Not.Nullable()
@@ -51,11 +52,11 @@ namespace Facturio.Factures
                 {
                     p.Map(x => x.Quantite)
                         .Column("quantite")
-                        .CustomType<string>()
+                        .CustomType<float>()
                         .Access.Property()
                         .Generated.Never()
                         .CustomSqlType("DECIMAL");
-                    p.References<Produit>(r => r.Produit, "idProduit");                        
+                    p.References<Produit>(r => r.Produit, "idProduit");
                 })
                 .Table("ProduitsFactures")
                 .FetchType.Join()
