@@ -12,14 +12,14 @@ namespace Facturio.ProduitsFactures
     {
         private static ISession session = NHibernateConnexion.OpenSession();
 
-        public static List<ProduitsFactures> RetrieveAll()
+        public static List<ProduitFacture> RetrieveAll()
         {
-            return session.Query<ProduitsFactures>().ToList();
+            return session.Query<ProduitFacture>().ToList();
         }
 
-        public static List<ProduitsFactures> Retrieve(int idProduitFacture)
+        public static List<ProduitFacture> Retrieve(int idProduitFacture)
         {
-            var produitFacture = session.Query<ProduitsFactures>().AsQueryable();
+            var produitFacture = session.Query<ProduitFacture>().AsQueryable();
 
             var result = from pf in produitFacture
                          where pf.IdProduitFactures == idProduitFacture
@@ -28,7 +28,7 @@ namespace Facturio.ProduitsFactures
             return result.ToList();
         }
 
-        public static void Create(ProduitsFacturesMap produitFacture)
+        public static void Create(ProduitFacture produitFacture)
         {
             using (var transaction = session.BeginTransaction())
             {
@@ -38,7 +38,7 @@ namespace Facturio.ProduitsFactures
 
         }
 
-        public static void Update(ProduitsFactures produitFacture)
+        public static void Update(ProduitFacture produitFacture)
         {
             using (var transaction = session.BeginTransaction())
             {
@@ -47,7 +47,7 @@ namespace Facturio.ProduitsFactures
             }
         }
 
-        public static void Delete(ProduitsFactures produitFacture)
+        public static void Delete(ProduitFacture produitFacture)
         {
             using (var transaction = session.BeginTransaction())
             {

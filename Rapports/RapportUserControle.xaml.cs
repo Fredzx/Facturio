@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,13 +21,13 @@ namespace Facturio.Rapports
     /// </summary>
     public partial class RapportUserControle : UserControl
     {
-        public ICollection<Rapport> LstRapport { get; set; }
+        public ObservableCollection<Rapport> LstRapport { get; set; }
 
         public RapportUserControle()
         {
             InitializeComponent();
 
-             LstRapport = RapportController.ChargerListeRapport();
+             LstRapport = new ObservableCollection<Rapport>(RapportController.ChargerListeRapport());
             
         }
     }

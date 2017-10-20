@@ -1,4 +1,6 @@
 ﻿using FluentNHibernate.Mapping;
+using Facturio.ProduitsFactures;
+using Facturio.Factures;
 
 namespace Facturio.Produits
 {
@@ -41,17 +43,20 @@ namespace Facturio.Produits
 
             Map(x => x.Prix)
                 .Column("prix")
-                .CustomType<float?>()
+                .CustomType<double?>()
                 .Access.Property()
                 .CustomSqlType("DECIMAL")
                 .Generated.Never();
 
             Map(x => x.Quantite)
                 .Column("quantite")
-                .CustomType<float?>()
+                .CustomType<double?>()
                 .Access.Property()
                 .CustomSqlType("DECIMAL")
                 .Generated.Never();
+
+       
+                
         }
     }
 }

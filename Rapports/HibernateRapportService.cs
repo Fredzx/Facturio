@@ -4,6 +4,7 @@ using NHibernate;
 using NHibernate.Linq;
 using System.Collections;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace Facturio.Rapports
 {
@@ -14,7 +15,8 @@ namespace Facturio.Rapports
 
         public static List<Rapport> RetrieveAll()
         {
-            return session.Query<Rapport>().ToList();
+            //return session.Query<Rapport>().ToList();
+            return new List<Rapport>();
         }
 
         public static List<Rapport> Retrieve(int idRapport)
@@ -28,14 +30,13 @@ namespace Facturio.Rapports
             return result.ToList();
         }
 
-        public static void Create(RapportMap rapport)
+        public static void Create(Rapport rapport)
         {
             using (var transaction = session.BeginTransaction())
             {
                 session.Save(rapport);
                 transaction.Commit();
             }
-
         }
 
         public static void Update(Rapport rapport)
@@ -55,7 +56,5 @@ namespace Facturio.Rapports
                 transaction.Commit();
             }
         }
-
-
     }
 }

@@ -49,10 +49,16 @@ namespace Facturio.Produits
             {
                 // Lorsqu'il clique sur mofifier on veut : 
                 // Que le usercontrol Produti change d'onglet > direction : onglet Modifier.
-                ProduitUserControl.TbcProduitPublic.SelectedIndex = 1;
-
+                
                 // Ajuster le titre
                 AjoutModifUserControl.LblFormTitle.Content = "Modifier un produit";
+                ProduitsController.Produit = (Produit)dtgAfficheProduits.SelectedItem;
+                AjoutModifUserControl.TxtCode.Text = ProduitsController.Produit.Code;
+                //AjoutModifUserControl.RemplirChamps(ProduitsController.Produit);
+               // ProduitsController.ConstruireModifUserControl();
+                ProduitUserControl.TbcProduitPublic.SelectedIndex = 1;
+                
+                //AjoutModifUserControl.
             }
         }
 
@@ -61,7 +67,6 @@ namespace Facturio.Produits
             if (Confirmation())
             {
                 // Delete
-                //Produit p = (Produit)dtgAfficheProduits.SelectedItem;
                 ProduitsController.DeleteProduit((Produit)dtgAfficheProduits.SelectedItem);
                 dtgAfficheProduits.SelectedIndex = -1;
             }
@@ -93,7 +98,7 @@ namespace Facturio.Produits
         private bool SiProduitSelectionne()
         {
             MessageBoxResult resultat;
-            if (dtgAfficheProduits.SelectedIndex == -1)
+            if (dtgAfficheProduits.SelectedItem == null)
             {
                 resultat = MessageBox.Show("Vous devez sélectionner un produit pour pouvoir supprimer"
                     , "Info"
@@ -108,32 +113,16 @@ namespace Facturio.Produits
 
         private void txtRechercherProduit_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //ObservableCollection<Produit> filtered = new ObservableCollection<Produit>();
-            //ObservableCollection<Produit> bck = new ObservableCollection<Produit>(ProduitsController.Produits);
-            //filtered.Clear();
-            //foreach(var item in bck)
-            //{
-            //    if(item.Nom.Contains(txtRechercherProduit.Text.ToString()) || item.Code.Contains(txtRechercherProduit.Text.ToString()))
-            //    {
-            //        filtered.Add(item);
-            //    }
-            //    ProduitsController.ocProduits = filtered;
-            //}
-            //    dtgAfficheProduits.Items.Refresh();
-
             if (txtRechercherProduit.Text.ToString() == "")
             {
-                //ProduitsController.ChargerListeProduits();
                 ProduitsController.Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
             }
             else
             {
                 ProduitsController.LiveFiltering(txtRechercherProduit.Text.ToString());
-               // System.Windows.Forms.MessageBox.Show("Allo");
             }
             dtgAfficheProduits.ItemsSource = null;
             dtgAfficheProduits.ItemsSource = ProduitsController.Produits;
-// dtgAfficheProduits.Items.Refresh();
         }
     }
 }

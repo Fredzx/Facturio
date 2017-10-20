@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Facturio.Factures;
-
+using System.Collections.ObjectModel;
 
 namespace Facturio.Rapports
 {
@@ -15,7 +15,7 @@ namespace Facturio.Rapports
         // virtual pcq Nhibernate l'oblige
         public virtual int? IdRapport { get; set; } = null;
         public virtual DateTime? Date { get; set; } = null;
-        public virtual ISet<Facture> LstFacture { get; set; } = new HashSet<Facture>();
+        public virtual ObservableCollection<Facture> LstFacture { get; set; }
         public Rapport() { }
         /// <summary>
         /// 
@@ -24,7 +24,7 @@ namespace Facturio.Rapports
         public Rapport(DateTime dateRapport)
         {
             Date = dateRapport;
-            LstFacture = new HashSet<Facture>();
+            LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveAll());
         }
 
         public override bool Equals(object obj)

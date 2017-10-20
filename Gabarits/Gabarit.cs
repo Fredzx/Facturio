@@ -5,11 +5,13 @@
         public virtual string TitreGabarit { get; set; }
 
         public virtual int Id { get; set; } = 0;
+        public virtual int CodeProduit { get; set; } = 0;
+        public virtual int NomProduit { get; set; } = 0;
+        public virtual int Description { get; set; } = 0;
+        public virtual int Prix { get; set; } = 0;
+        public virtual int Quantite { get; set; } = 0;
         public virtual int PrenomClient { get; set; } = 0;
         public virtual int NomClient { get; set; } = 0;
-        public virtual int Quantite { get; set; } = 0;
-        public virtual int Prix { get; set; } = 0;
-        public virtual int Description { get; set; } = 0;
         public virtual int AdresseClient { get; set; } = 0;
         public virtual int CodePostalClient { get; set; } = 0;
         public virtual int Escompte { get; set; } = 0;
@@ -19,21 +21,24 @@
 
         public Gabarit() {}
 
-        public Gabarit(int prenomClient, int nomClient, int quantite,
-                       int prix, int description, int adresseClient,
-                       int codePostalClient, int escompte, int critereLibre,
-                       int nombreheures, int tauxHoraire)
+        public Gabarit(string titreGabarit, int codeProduit, int nomProduit, int description,
+                       int prix, int quantite, int prenomClient, int nomClient,
+                       int adresseClient, int codePostalClient, int escompte, int critereLibre,
+                       int nombreHeures, int tauxHoraire)
         {
+            TitreGabarit = titreGabarit;
+            CodeProduit = codeProduit;
+            NomProduit = nomProduit;
+            Description = description;
+            Prix = prix;
+            Quantite = quantite;
             PrenomClient = prenomClient;
             NomClient = nomClient;
-            Quantite = quantite;
-            Prix = prix;
-            Description = description;
             AdresseClient = adresseClient;
             CodePostalClient = codePostalClient;
             Escompte = escompte;
             CritereLibre = critereLibre;
-            NombreHeures = nombreheures;
+            NombreHeures = nombreHeures;
             TauxHoraire = tauxHoraire;
         }
 
