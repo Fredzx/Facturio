@@ -9,13 +9,14 @@ namespace Facturio.Clients
         public virtual Image Image { get; set; } = new Image();
         public virtual float? Escompte { get; set; } = null;
 
-        public Rang() { }
+        public Rang() {}
 
         public Rang(string nom, Image image, float escompte)
         {
             Nom = nom;
             Image = image;
             Escompte = escompte;
+            
         }
 
         // Pour utiliser NHibernate, il faut surcharger Equals et GetHashCode.

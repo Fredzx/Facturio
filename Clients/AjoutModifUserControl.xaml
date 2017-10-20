@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Clients"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="450">
+             mc:Ignorable="d" Height="382.667" Width="503.334">
     <UserControl.Resources>
         <Style x:Key="styleLabel" TargetType="{x:Type Label}">
             <Setter Property="FontSize" Value="15" />
@@ -64,9 +63,14 @@
             <Label Name="lblNom" Content="Nom"  Style="{StaticResource styleLabel}"  />
             <Label Name="lblPrenom" Content="Prénom"  Style="{StaticResource styleLabel}" />
             <Label Name="lblAdresse" Content="Adresse"  Style="{StaticResource styleLabel}" />
+            <Label Name="lblProvince" Content="Province"  Style="{StaticResource styleLabel}" />
             <Label Name="lblCodePostal" Content="Code postal"  Style="{StaticResource styleLabel}" />
             <Label Name="lblDescription" Content="Description"  Style="{StaticResource styleLabel}" />
+            <Label Name="lblTelephone" Content="Téléphone" Style="{StaticResource styleLabel}" />
             <Label Name="lblRang" Content="Rang"  Style="{StaticResource styleLabel}" />
+            <Label Name="lblHomme" Content="Homme" Style="{StaticResource styleLabel}" />
+            <Label Name="lblFemme" Content="Femme" Style="{StaticResource styleLabel}" />
+
         </StackPanel>
 
         <StackPanel 
@@ -78,15 +82,36 @@
             <TextBox  Name="txtNom" Style="{StaticResource styleTxtBox}"  />
             <TextBox  Name="txtPrenom" Style="{StaticResource styleTxtBox}" />
             <TextBox  Name="txtAdresse" Style="{StaticResource styleTxtBox}" />
+            <ComboBox Name="cboProvince" Style="{StaticResource styleComboBox}">
+
+                <ComboBoxItem>Alberta</ComboBoxItem>
+                <ComboBoxItem>Colombie-Britannique</ComboBoxItem>
+                <ComboBoxItem>île-du-Prince-Edouar</ComboBoxItem>
+                <ComboBoxItem>Manitoba</ComboBoxItem>
+                <ComboBoxItem>Nouveau-Brunswick</ComboBoxItem>
+                <ComboBoxItem>Nouvelle-Écosse</ComboBoxItem>
+                <ComboBoxItem>Nunavut</ComboBoxItem>
+                <ComboBoxItem>Ontario</ComboBoxItem>
+                <ComboBoxItem>Québec</ComboBoxItem>
+                <ComboBoxItem>Saskatchewan</ComboBoxItem>
+                <ComboBoxItem>Terre-Neuve-et-Labrador</ComboBoxItem>
+                <ComboBoxItem>Territoires du Nord-Ouest</ComboBoxItem>
+                <ComboBoxItem>Yukon</ComboBoxItem>
+            </ComboBox>
             <TextBox  Name="txtCodePostal" Style="{StaticResource styleTxtBox}" />
             <TextBox  Name="txtDescription" Style="{StaticResource styleTxtBox}" />
+            <TextBox  Name="txtTelephone" Style="{StaticResource styleTxtBox}" />
+
 
             <ComboBox Style="{StaticResource styleComboBox}">
-                <ComboBoxItem IsSelected="True">Sans rang</ComboBoxItem>
+                <ComboBoxItem Name="cboRang" IsSelected="True">Sans rang</ComboBoxItem>
                 <ComboBoxItem>Bronze</ComboBoxItem>
                 <ComboBoxItem>Argent</ComboBoxItem>
                 <ComboBoxItem>Or</ComboBoxItem>
             </ComboBox>
+
+            <RadioButton Name="rdbHomme" VerticalAlignment="Center" />
+            <RadioButton Name="rdbFemme" VerticalAlignment="Bottom"/>
 
 
         </StackPanel>

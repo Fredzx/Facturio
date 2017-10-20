@@ -25,7 +25,7 @@ namespace Facturio.Clients
             return result.ToList();
         }
 
-        public static void Create(RangMap rang)
+        public static void Create(Rang rang)
         {
             using (var transaction = session.BeginTransaction())
             {

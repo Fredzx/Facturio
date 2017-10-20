@@ -34,7 +34,30 @@ namespace Facturio.Clients
 
         public static void AjouterClient(Client client)
         {
+           
+
+
+            // Retrieve les infos (sexe, rang et province)
+            client.Sexe.IdSexe = HibernateSexeService.RetrieveByName(client.Sexe.Nom)[0].IdSexe;
+
+            client.Rang.IdRang = 1;
+
+            client.Province.IdProvince = HibernateProvinceClient.RetrieveByName(client.Province.Nom)[0].IdProvince;
+
+
+            // Ajouter le client en BD.
+            HibernateClientService.Create(client);
+
+            // Ajouter le client à la liste.
             LstObClients.Add(client);
+
+
+
+
+
+
+
+
         }
     }
 }

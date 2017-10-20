@@ -9,12 +9,12 @@ namespace Facturio.Clients
         public virtual string Prenom { get; set; } = string.Empty;
         public virtual string Nom { get; set; } = string.Empty;
         public virtual string Description { get; set; } = string.Empty;
-        public virtual Sexe Sexe { get; set; } = new Sexe(Sexes.Masculin);
+        public virtual Sexe Sexe { get; set; }
         public virtual string Adresse { get; set; } = string.Empty;
         public virtual string CodePostal { get; set; } = string.Empty;
         public virtual string Telephone { get; set; } = string.Empty;
-        public virtual Rang Rang { get; set; } = new Rang();
-        public virtual Province Province { get; set; } = new Province();
+        public virtual Rang Rang { get; set; }
+        public virtual Province Province { get; set; }
 
         public Client() {}
 

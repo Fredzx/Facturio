@@ -15,18 +15,19 @@ namespace Facturio.Clients
             return session.Query<Sexe>().ToList();
         }
 
-        public static List<Sexe> Retrieve(int idSexe)
+        public static List<Sexe> RetrieveByName(string nomSexe)
         {
-            var sexe = session.Query<Sexe>().AsQueryable();
+            var sexe = session.Query<Sexe>().AsQueryable(); 
+
 
             var result = from s in sexe
-                         where s.IdSexe == idSexe
+                         where s.Nom == nomSexe[0].ToString()
                          select s;
 
             return result.ToList();
         }
 
-        public static void Create(SexeMap sexe)
+        public static void Create(Sexe sexe)
         {
             using (var transaction = session.BeginTransaction())
             {

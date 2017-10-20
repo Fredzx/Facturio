@@ -14,18 +14,18 @@ namespace Facturio.Clients
             return session.Query<Province>().ToList();
         }
 
-        public static List<Province> Retrieve(int idProvince)
+        public static List<Province> RetrieveByName(string nomProvince)
         {
             var province = session.Query<Province>().AsQueryable();
 
             var result = from p in province
-                         where p.IdProvince == idProvince
+                         where p.Nom == nomProvince
                          select p;
 
             return result.ToList();
         }
 
-        public static void Create(ProvinceMap province)
+        public static void Create(Province province)
         {
             using (var transaction = session.BeginTransaction())
             {

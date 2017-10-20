@@ -30,7 +30,7 @@ namespace Facturio.Clients
             return result.ToList();
         }
 
-        public static void Create(ClientMap client)
+        public static void Create(Client client)
         {
             using (var transaction = session.BeginTransaction())
             {

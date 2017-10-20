@@ -41,13 +41,14 @@
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Prénom" Width="4*" Binding="{Binding Prenom}" />
                                     <DataGridTextColumn Header="Nom" Width="4*" Binding="{Binding Nom}"  />
-                                    <DataGridTextColumn Header="Sexe" Width="3*" Binding="{Binding Sexe}"/>
+                                    <DataGridTextColumn Header="Sexe" Width="3*" Binding="{Binding Sexe.Nom}"/>
                                     <DataGridTextColumn Header="Téléphone" Width="5*" Binding="{Binding Telephone}" />
                                     <DataGridTextColumn Header="Description" Width="5*" Binding="{Binding Description}"/>
+                                    <DataGridTextColumn Header="Province" Width="5*" Binding="{Binding Province.Nom}"/>
                                     <DataGridTextColumn Header="Adresse" Width="5*" Binding="{Binding Adresse}"/>
                                     <DataGridTextColumn Header="Code postal" Width="5*" Binding="{Binding CodePostal}" />
-                                    <DataGridTextColumn Header="Rang" Width="5*" Binding="{Binding Rang}" />
-                                </DataGrid.Columns>
+                                    <DataGridTextColumn Header="Rang" Width="5*" Binding="{Binding Rang.Nom}" />
+                </DataGrid.Columns>
                             </DataGrid>
                         </Grid>
                         <StackPanel Grid.Row="4"

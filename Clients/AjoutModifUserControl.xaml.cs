@@ -39,18 +39,93 @@ namespace Facturio.Clients
             // Vérifier si on est en ajout ou en modification.
             if (Ajout)
             {
-                // TODO : Validation des informations entrées.
+                // TODO : Validation des informations entrées.  
+                if (ValiderInformationsClient())
+                {
+                    // Ajouter le client à la liste et en BD.
+                    ClientsController.AjouterClient(new Client(txtPrenom.Text.ToString(), txtNom.Text.ToString()
+                                                             , txtDescription.Text.ToString(), new Sexe(SetSex())
+                                                             , txtAdresse.Text.ToString(), txtCodePostal.Text.ToString()
+                                                             , txtTelephone.Text.ToString(), new Rang(), new Province(SetProvince())));
 
-                
-                // TODO : Ajouter le client à la liste.
-                ClientsController.AjouterClient(new Client(txtPrenom.Text.ToString(), txtNom.Text.ToString()
-                                                         , txtDescription.Text.ToString(), new Sexe(Sexes.Masculin) 
-                                                         , txtAdresse.Text.ToString(), txtCodePostal.Text.ToString()
-                                                         , "4506665555", new Rang(), new Province(Provinces.Quebec)));
-
-                // TODO : Ajouter le client en BD.
-
+                    // TODO :  Afficher un message qui dit que le client a été ajouter.
+                    MessageBox.Show("Client ajouter avec succès");
+                }     
             }    
+        }
+
+        private Provinces SetProvince()
+        {
+            switch (cboProvince.SelectedIndex)
+            {
+                case 1: return Provinces.Alberta;
+                case 2: return Provinces.ColombieBritannique;
+                case 3: return Provinces.IleDuPrinceEdouard;
+                case 4: return Provinces.Manitoba;
+                case 5: return Provinces.NouveauBrunswick;
+                case 6: return Provinces.NouvelleEcosse;
+                case 7: return Provinces.Ontario;
+                case 8: return Provinces.Quebec;
+                case 9: return Provinces.Saskatchewan;
+                case 10: return Provinces.TerreNeuveEtLabrador;
+                case 11: return Provinces.Nunavut;
+                case 12: return Provinces.TerritoiresDuNordOuest;
+                case 13: return Provinces.Yukon;
+                default: return Provinces.Alberta;
+            }
+
+        }
+
+        private Sexes SetSex()
+        {
+            if ((bool)rdbHomme.IsChecked)
+            {
+                return Sexes.Masculin;
+            }
+            else
+            {
+                return Sexes.Feminin;
+            }
+        }
+
+        private bool ValiderInformationsClient()
+        {
+            if (txtNom.Text.ToString() != "")
+            {
+                if (txtPrenom.Text.ToString() != "")
+                {
+                    if(txtAdresse.Text.ToString() != "")
+                    {
+                        if(cboProvince.SelectedIndex != -1)
+                        {
+                            if(txtCodePostal.Text.ToString() != "" && txtCodePostal.Text.ToString().Length == 6 )
+                            {
+                                if(txtTelephone.Text.ToString() != "")
+                                {
+                                    if((bool)rdbFemme.IsChecked || (bool)rdbHomme.IsChecked)
+                                    {
+                                        return true;
+                                    }
+                                    MessageBox.Show("Veuillez cocher un sexe.");
+                                    return false;
+                                }
+                                MessageBox.Show("Veuillez entrer un numéro de téléphone");
+                                return false;
+                            }
+                            MessageBox.Show("Veuillez entrer un code postal.");
+                            return false;
+                        }
+                        MessageBox.Show("Veuillez choisir une province.");
+                        return false;
+                    }
+                    MessageBox.Show("Veuillez entrer une adresse.");
+                    return false;
+                }
+                MessageBox.Show("Veuillez entrer un prénom.");
+                return false;
+            }
+            MessageBox.Show("Veuillez entrer un nom");
+            return false;
         }
     }
 }
