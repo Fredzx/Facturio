@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Facturio.Base;
-using System;
 
 namespace Facturio.Gabarits
 {
@@ -40,8 +39,6 @@ namespace Facturio.Gabarits
         public GabaritSelecteurViewModel()
         {
             Gabarits = new ObservableCollection<Gabarit>(HibernateGabaritService.RetrieveAll());
-
-            Console.WriteLine(Gabarits[0].TitreGabarit);
 
             Titre = "Gabarits";
 
