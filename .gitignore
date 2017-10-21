@@ -261,4 +261,4 @@ __pycache__/
 *.pyc
 
 # Won't add the "connection_string.txt" file
-connections.config
+connection_string.txt

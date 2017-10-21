@@ -19,9 +19,6 @@
     </UserControl.Resources>
     
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
@@ -60,11 +57,21 @@
 
         <GroupBox Header="Aperçu du gabarit de facture" Grid.Column="2" Margin="5, 5, 10, 5" Padding="10">
             <DockPanel LastChildFill="True">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Bottom" Margin="0, 8, 0, 0">
+                <StackPanel>
+                    <StackPanel.Resources>
+                        <Style TargetType="StackPanel">
+                            <Setter Property="Orientation" Value="Horizontal" />
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                            <Setter Property="DockPanel.Dock" Value="Bottom" />
+                            <Setter Property="Margin" Value="0, 8, 0, 0" />
+                        </Style>
+                    </StackPanel.Resources>
+                    
                     <Button Content="Enregistrer" />
                     <Button Content="Ouvrir" Margin="8, 0, 0, 0"/>
                 </StackPanel>
-                <DataGrid AutoGenerateColumns="False" Margin="0, 5, 0, 5"></DataGrid>
+                
+                <DataGrid AutoGenerateColumns="False" Margin="0, 5, 0, 5" />
             </DockPanel>
         </GroupBox>
     </Grid>
