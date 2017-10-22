@@ -25,7 +25,7 @@ namespace Facturio.Gabarits
             return result.ToList();
         }
 
-        public static void Create(GabaritMap gabarit)
+        public static void Create(Gabarit gabarit)
         {
             using (var transaction = session.BeginTransaction())
             {
