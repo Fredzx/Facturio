@@ -14,6 +14,13 @@ namespace Facturio.Gabarits
             return session.Query<Gabarit>().ToList();
         }
 
+        public static List<Gabarit> RetrieveAllOrderedByCreationDateDesc()
+        {
+            return session.Query<Gabarit>()
+                .OrderByDescending(x => x.DateCreation)
+                .ToList();
+        }
+
         public static List<Gabarit> Retrieve(int idGabarit)
         {
             var gabarit = session.Query<Gabarit>().AsQueryable();
