@@ -1,32 +1,36 @@
-﻿namespace Facturio.Gabarits
+﻿using System;
+
+namespace Facturio.Gabarits
 {
     public class Gabarit
     {
         public virtual string TitreGabarit { get; set; }
 
-        public virtual int Id { get; set; } = 0;
-        public virtual int CodeProduit { get; set; } = 0;
-        public virtual int NomProduit { get; set; } = 0;
-        public virtual int Description { get; set; } = 0;
-        public virtual int Prix { get; set; } = 0;
-        public virtual int Quantite { get; set; } = 0;
-        public virtual int PrenomClient { get; set; } = 0;
-        public virtual int NomClient { get; set; } = 0;
-        public virtual int AdresseClient { get; set; } = 0;
-        public virtual int CodePostalClient { get; set; } = 0;
-        public virtual int Escompte { get; set; } = 0;
-        public virtual int CritereLibre { get; set; } = 0;
-        public virtual int NombreHeures { get; set; } = 0;
-        public virtual int TauxHoraire { get; set; } = 0;
+        public virtual int Id { get; set; }
+        public virtual DateTime DateCreation { get; set; }
+        public virtual int CodeProduit { get; set; }
+        public virtual int NomProduit { get; set; }
+        public virtual int Description { get; set; }
+        public virtual int Prix { get; set; }
+        public virtual int Quantite { get; set; }
+        public virtual int PrenomClient { get; set; }
+        public virtual int NomClient { get; set; }
+        public virtual int AdresseClient { get; set; }
+        public virtual int CodePostalClient { get; set; }
+        public virtual int Escompte { get; set; }
+        public virtual int CritereLibre { get; set; }
+        public virtual int NombreHeures { get; set; }
+        public virtual int TauxHoraire { get; set; }
 
         public Gabarit() {}
 
-        public Gabarit(string titreGabarit, int codeProduit, int nomProduit, int description,
-                       int prix, int quantite, int prenomClient, int nomClient,
+        public Gabarit(string titreGabarit, DateTime dateCreation, int codeProduit, int nomProduit,
+                       int description, int prix, int quantite, int prenomClient, int nomClient,
                        int adresseClient, int codePostalClient, int escompte, int critereLibre,
                        int nombreHeures, int tauxHoraire)
         {
             TitreGabarit = titreGabarit;
+            DateCreation = dateCreation;
             CodeProduit = codeProduit;
             NomProduit = nomProduit;
             Description = description;
@@ -44,9 +48,6 @@
 
         public override bool Equals(object obj)
         {
-            if (obj == null)
-                return false;
-
             Gabarit gabarit = obj as Gabarit;
 
             return Id == gabarit?.Id;

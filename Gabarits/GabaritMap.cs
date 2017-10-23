@@ -1,4 +1,5 @@
-﻿using FluentNHibernate.Mapping;
+﻿using System;
+using FluentNHibernate.Mapping;
 
 namespace Facturio.Gabarits
 {
@@ -22,6 +23,14 @@ namespace Facturio.Gabarits
                 .CustomType<string>()
                 .Access.Property()
                 .CustomSqlType("VARCHAR")
+                .Not.Nullable()
+                .Generated.Never();
+
+            Map(x => x.DateCreation)
+                .Column("dateCreation")
+                .CustomType<DateTime>()
+                .Access.Property()
+                .CustomSqlType("DATETIME")
                 .Not.Nullable()
                 .Generated.Never();
 

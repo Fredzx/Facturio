@@ -1,0 +1,3 @@
+Gabarit -> idGabarit, titre, dateCreation
+GabaritsColonnes -> idGabaritColonne, idGabarit, idColonne
+Colonnes -> idColonne, nom, ordre, largeur

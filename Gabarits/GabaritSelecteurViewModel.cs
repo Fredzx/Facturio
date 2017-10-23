@@ -38,7 +38,9 @@ namespace Facturio.Gabarits
 
         public GabaritSelecteurViewModel()
         {
-            Gabarits = new ObservableCollection<Gabarit>(HibernateGabaritService.RetrieveAll());
+            Gabarits = new ObservableCollection<Gabarit>(
+                HibernateGabaritService.RetrieveAllOrderedByCreationDateDesc()
+            );
 
             Titre = "Gabarits";
 
@@ -51,6 +53,10 @@ namespace Facturio.Gabarits
 
         private void SupprimeGabarit(object parameter)
         {
+            // Supprime le gabarit de la BD
+            HibernateGabaritService.Delete(GabaritSelectionne);
+
+            // Supprime le gabarit de la mémoire
             Gabarits.Remove(GabaritSelectionne);
             GabaritSelectionne = null;
         }
