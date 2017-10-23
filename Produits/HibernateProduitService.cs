@@ -53,7 +53,7 @@ namespace Facturio.Produits
         {
             using (var transaction = session.BeginTransaction())
             {
-                session.Update(produit);
+                session.Update(produit, produit.Id);
                 transaction.Commit();
             }
         }

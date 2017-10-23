@@ -27,7 +27,7 @@ namespace Facturio.Produits
         public static TextBox TxtDescription { get; set; } = new TextBox();
         public static TextBox TxtPrix { get; set; } = new TextBox();
         public static TextBox TxtQuantite { get; set; } = new TextBox();
-        public bool EstModif { get; set; }
+        public static bool EstModif { get; set; }
 
         public AjoutModifUserControl()
         {
@@ -52,19 +52,19 @@ namespace Facturio.Produits
             EstModif = true;
         }
 
-        public void RemplirChamps(Produit p)
+        private void updateChampsProduit()
         {
-            TxtNom.Text = p.Nom;
-            TxtCode.Text = p.Code;
-            TxtDescription.Text = p.Description;
-            TxtPrix.Text = p.Prix.ToString();
-            TxtQuantite.Text = p.Quantite.ToString();
-            EstModif = true;
+            ProduitsController.Produit.Code = txtCode.Text;
+            ProduitsController.Produit.Description = txtDescription.Text;
+            ProduitsController.Produit.Nom = txtNom.Text;
+            ProduitsController.Produit.Prix = Convert.ToDouble(txtPrix.Text);
+            ProduitsController.Produit.Quantite = Convert.ToDouble(txtQuantite.Text);
         }
 
         private void btnEnregister_Click(object sender, RoutedEventArgs e)
         {
-            ProduitsController.Produit = new Produit(txtNom.Text, txtCode.Text, txtDescription.Text, Convert.ToDouble(txtPrix.Text), Convert.ToDouble(txtQuantite.Text));
+            //ProduitsController.Produit = new Produit(txtNom.Text, txtCode.Text, txtDescription.Text, Convert.ToDouble(txtPrix.Text), Convert.ToDouble(txtQuantite.Text));
+            updateChampsProduit();
             if (EstModif)
             {
                 ProduitsController.UpdateProduit();

@@ -53,7 +53,8 @@ namespace Facturio.Produits
                 // Ajuster le titre
                 AjoutModifUserControl.LblFormTitle.Content = "Modifier un produit";
                 ProduitsController.Produit = (Produit)dtgAfficheProduits.SelectedItem;
-                AjoutModifUserControl.TxtCode.Text = ProduitsController.Produit.Code;
+                ProduitsController.RemplirChampsModif(ProduitsController.Produit);
+                //AjoutModifUserControl.TxtCode.Text = ProduitsController.Produit.Code;
                 //AjoutModifUserControl.RemplirChamps(ProduitsController.Produit);
                // ProduitsController.ConstruireModifUserControl();
                 ProduitUserControl.TbcProduitPublic.SelectedIndex = 1;

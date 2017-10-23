@@ -45,9 +45,9 @@ namespace Facturio.Produits
                 return;
             // TODO: UPDATE en BD
             // TEST
-            DeleteProduit(Produit);
-            AjoutProduit();
-
+            //DeleteProduit(Produit);
+            //AjoutProduit();
+            HibernateProduitService.Update(Produit);
             //Produits.Remove(p);
             //Produits.Add(ProduitModifie);
         }
@@ -89,6 +89,16 @@ namespace Facturio.Produits
         {
             //AjoutModifUserControl m = new AjoutModifUserControl(Produit);
             //AjoutModifUserControl.
+        }
+
+        public static void RemplirChampsModif(Produit p)
+        {
+            AjoutModifUserControl.TxtNom.Text = p.Nom;
+            AjoutModifUserControl.TxtCode.Text = p.Code;
+            AjoutModifUserControl.TxtDescription.Text = p.Description;
+            AjoutModifUserControl.TxtPrix.Text = p.Prix.ToString();
+            AjoutModifUserControl.TxtQuantite.Text = p.Quantite.ToString();
+            AjoutModifUserControl.EstModif = true;
         }
     }
 }
