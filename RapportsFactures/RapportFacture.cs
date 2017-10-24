@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Facturio.Rapports;
 using Facturio.Factures;
 
-namespace Facturio.RapportFacture
+namespace Facturio.RapportsFactures
 {
     public class RapportFacture
     {

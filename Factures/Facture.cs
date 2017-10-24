@@ -9,6 +9,7 @@ using Facturio.Rapports;
 using Facturio.Produits;
 using Facturio.ProduitsFactures;
 using System.Collections.ObjectModel;
+using Facturio.RapportsFactures;
 
 namespace Facturio.Factures
 {
@@ -19,11 +20,8 @@ namespace Facturio.Factures
         public virtual Client LeClient { get; set; } = new Client();
 
         public virtual DateTime? Date { get; set; } = null;
-
-        public virtual ObservableCollection<Produit> LstProduit { get; set; }
-        public virtual ObservableCollection<Rapport> LstRapport { get; set; }
-
-        public virtual ObservableCollection<ProduitFacture> LstProduitFacture { get; set; }
+        public virtual ISet<RapportFacture> LstRapport { get; set; }
+        public virtual ISet<ProduitFacture> LstProduit { get; set; }
 
 
         public Facture() { }
@@ -33,7 +31,8 @@ namespace Facturio.Factures
         {
             LeClient = client;
             Date = date;
-            LstProduit = new ObservableCollection<Produit>();
+            LstProduit = new HashSet<ProduitFacture>();
+            LstRapport = new HashSet<RapportFacture>();
         }
 
         public override bool Equals(object obj)

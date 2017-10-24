@@ -102,6 +102,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Criteres\Critere.cs" />
+    <Compile Include="Criteres\CritereMap.cs" />
     <Compile Include="Enums\Onglets.cs" />
     <Compile Include="Base\BaseViewModel.cs" />
     <Compile Include="Base\RelayCommand.cs" />
@@ -129,6 +131,8 @@
     <Compile Include="Factures\FactureController.cs" />
     <Compile Include="Factures\FactureMap.cs" />
     <Compile Include="Factures\HibernateFactureService.cs" />
+    <Compile Include="GabaritsCriteres\GabaritCritere.cs" />
+    <Compile Include="GabaritsCriteres\GabaritCritereMap.cs" />
     <Compile Include="Gabarits\Gabarit.cs" />
     <Compile Include="Gabarits\GabaritMap.cs" />
     <Compile Include="Gabarits\HibernateGabaritService.cs" />
@@ -137,14 +141,14 @@
     <Compile Include="Gabarits\GabaritSelecteurViewModel.cs" />
     <Compile Include="NHibernateConnexion.cs" />
     <Compile Include="ProduitsFactures\HibernateProduitFacturesService.cs" />
-    <Compile Include="ProduitsFactures\ProduitsFactures.cs" />
+    <Compile Include="ProduitsFactures\ProduitFacture.cs" />
     <Compile Include="ProduitsFactures\ProduitsFacturesMap.cs" />
     <Compile Include="Produits\HibernateProduitService.cs" />
     <Compile Include="Produits\ProduitsController.cs" />
     <Compile Include="Produits\ProduitMap.cs" />
-    <Compile Include="RapportFacture\HibernateRapportFactureService.cs" />
-    <Compile Include="RapportFacture\RapportFacture.cs" />
-    <Compile Include="RapportFacture\RapportFactureMap.cs" />
+    <Compile Include="RapportsFactures\HibernateRapportFactureService.cs" />
+    <Compile Include="RapportsFactures\RapportFacture.cs" />
+    <Compile Include="RapportsFactures\RapportFactureMap.cs" />
     <Compile Include="Rapports\HibernateRapportService.cs" />
     <Compile Include="Rapports\Rapport.cs" />
     <Compile Include="Rapports\RapportController.cs" />

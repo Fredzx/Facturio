@@ -3,7 +3,7 @@ using Facturio.Rapports;
 using FluentNHibernate.Mapping;
 
 
-namespace Facturio.RapportFacture
+namespace Facturio.RapportsFactures
 {
     public class RapportFactureMap : ClassMap<RapportFacture>
     {

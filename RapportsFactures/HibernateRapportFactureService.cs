@@ -3,7 +3,7 @@ using System.Linq;
 using NHibernate;
 using NHibernate.Linq;
 
-namespace Facturio.RapportFacture
+namespace Facturio.RapportsFactures
 {
     public static class HibernateRapportFactureService
     {

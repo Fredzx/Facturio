@@ -49,12 +49,18 @@ namespace Facturio.Clients
 
         private void btnModifier_Click(object sender, RoutedEventArgs e)
         {
-            // Lorsqu'il clique sur mofifier on veut : 
+            // Lorsqu'il clique sur modifier on veut : 
             // Que le usercontrol Client change d'onglet > direction : onglet Modifier.
             ClientsUserControl.TbcClientPublic.SelectedIndex = 1;
 
             // Ajuster le titre
-            AjoutModifUserControl.LblFormTitle.Content = "Modifier un client"; 
+            AjoutModifUserControl.LblFormTitle.Content = "Modifier un client";
+
+
+            // Passer le client au controleur
+            ClientsController.ModifierClient((Client)dtgAfficheClients.SelectedItem);
+
+
         }
 
         private void btnSupprimer_Click(object sender, RoutedEventArgs e)

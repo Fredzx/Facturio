@@ -10,14 +10,14 @@ namespace Facturio.Factures
 {
     class FactureController : BaseViewModel, IOngletViewModel
     {
-        public static ObservableCollection<Facture> Factures { get; set; } = new ObservableCollection<Facture>(HibernateFactureService.RetrieveAll());
+        public static ISet<Facture> Factures { get; set; }
         public static Facture Facture { get; set; }
         public string Titre { get; set; }
 
 
         public FactureController()
         {
-            Factures = new ObservableCollection<Facture>(HibernateFactureService.RetrieveAll());
+            Factures = new HashSet<Facture>(HibernateFactureService.RetrieveAll());
             Titre = "Factures";
         }
     }
