@@ -1,22 +1,25 @@
-﻿namespace Facturio.GabaritsCriteres
+﻿using Facturio.Criteres;
+using Facturio.Gabarits;
+
+namespace Facturio.GabaritsCriteres
 {
     public class GabaritCritere
     {
         public virtual int Id { get; set; }
-        public virtual int IdGabarit { get; set; }
-        public virtual int IdCritere { get; set; }
+        public virtual Gabarit Gabarit { get; set; }
+        public virtual Critere Critere { get; set; }
         public virtual int Position { get; set; }
         public virtual int Largeur { get; set; }
         public virtual bool EstUtilise { get; set; }
 
         public GabaritCritere() {}
 
-        public GabaritCritere(int idGabarit, int idCritere,
+        public GabaritCritere(Gabarit gabarit, Critere critere,
                               int position, int largeur,
                               bool estUtilise)
         {
-            IdGabarit = idGabarit;
-            IdCritere = idCritere;
+            Gabarit = gabarit;
+            Critere = critere;
             Position = position;
             Largeur = largeur;
             EstUtilise = estUtilise;

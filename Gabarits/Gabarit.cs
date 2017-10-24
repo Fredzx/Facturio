@@ -1,6 +1,7 @@
-﻿using Facturio.Criteres;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Facturio.GabaritsCriteres;
 
 namespace Facturio.Gabarits
 {
@@ -9,7 +10,7 @@ namespace Facturio.Gabarits
         public virtual int Id { get; set; }
         public virtual string TitreGabarit { get; set; }
         public virtual DateTime DateCreation { get; set; }
-        public virtual ObservableCollection<Critere> Criteres { get; set; }
+        public virtual ISet<GabaritCritere> Criteres { get; set; }
         public virtual int CodeProduit { get; set; }
         public virtual int NomProduit { get; set; }
         public virtual int Description { get; set; }
@@ -46,6 +47,7 @@ namespace Facturio.Gabarits
             CritereLibre = critereLibre;
             NombreHeures = nombreHeures;
             TauxHoraire = tauxHoraire;
+            Criteres = new HashSet<GabaritCritere>();
         }
 
         public override bool Equals(object obj)

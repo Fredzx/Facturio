@@ -1,6 +1,7 @@
 ﻿using System;
 using FluentNHibernate.Mapping;
 using Facturio.GabaritsCriteres;
+using Facturio.Criteres;
 
 namespace Facturio.Gabarits
 {
@@ -35,11 +36,38 @@ namespace Facturio.Gabarits
                 .Not.Nullable()
                 .Generated.Never();
 
-            /*
             HasManyToMany<GabaritCritere>(x => x.Criteres)
-                .Access.Property();
-            */
-
+                .Access.Property()
+                .AsSet()
+                .Cascade.None()
+                .LazyLoad()
+                .Generic()
+                .Component(c =>
+                {
+                    c.Map(x => x.Position)
+                        .Column("position")
+                        .CustomType<int>()
+                        .Access.Property()
+                        .Generated.Never()
+                        .CustomSqlType("INTEGER");
+                    c.Map(x => x.Largeur)
+                        .Column("largeur")
+                        .CustomType<int>()
+                        .Access.Property()
+                        .Generated.Never()
+                        .CustomSqlType("INTEGER");
+                    c.References<Critere>(r => r.Critere, "idCritere");
+                })
+                .Table("GabaritsCriteres")
+                .FetchType.Join()
+                .ChildKeyColumns.Add("idCritere", mapping => mapping.Name("idCritere")
+                                                                    .SqlType("INTEGER")
+                                                                    .Not.Nullable())
+                .ParentKeyColumns.Add("idGabarit", mapping => mapping.Name("idGabarit")
+                                                                     .SqlType("INTEGER")
+                                                                     .Not.Nullable());
+            
+            /*
             Map(x => x.CodeProduit)
                 .Column("codeProduit")
                 .CustomType<int>()
@@ -132,6 +160,7 @@ namespace Facturio.Gabarits
                 .Access.Property()
                 .CustomSqlType("INTEGER")
                 .Generated.Never();
+            */
         }
     }
 }

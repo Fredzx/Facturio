@@ -1,4 +1,6 @@
-﻿using FluentNHibernate.Mapping;
+﻿using Facturio.Criteres;
+using Facturio.Gabarits;
+using FluentNHibernate.Mapping;
 
 namespace Facturio.GabaritsCriteres
 {
@@ -17,21 +19,19 @@ namespace Facturio.GabaritsCriteres
                 .Not.Nullable()
                 .GeneratedBy.Identity();
 
-            Map(x => x.IdGabarit)
-                .Column("idCritere")
-                .CustomType<int>()
+            References(x => x.Gabarit)
+                .Class<Gabarit>()
                 .Access.Property()
-                .CustomSqlType("INTEGER")
-                .Not.Nullable()
-                .Generated.Never();
+                .LazyLoad(Laziness.False)
+                .Cascade.None()
+                .Columns("idGabarit");
 
-            Map(x => x.IdCritere)
-                .Column("idCritere")
-                .CustomType<int>()
-                .Access.Property()
-                .CustomSqlType("INTEGER")
-                .Not.Nullable()
-                .Generated.Never();
+            References(x => x.Critere)
+                 .Class<Critere>()
+                 .Access.Property()
+                 .LazyLoad(Laziness.False)
+                 .Cascade.None()
+                 .Columns("idCritere");
 
             Map(x => x.Position)
                 .Column("position")
