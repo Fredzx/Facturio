@@ -23,13 +23,33 @@ namespace Facturio.Clients
     {
         public bool Ajout { get; set; } = true;
         public static Label LblFormTitle { get; set; } = new Label();
+
+        public static TextBox TxtNom { get; set; } = new TextBox();
+        public static TextBox TxtPrenom { get; set; } = new TextBox(); 
+        public static TextBox TxtAdresse { get; set; } = new TextBox();
+        public static ComboBox CboProvince { get; set; } = new ComboBox();
+        public static TextBox TxtCodePostal { get; set; } = new TextBox();
+        public static TextBox TxtDescription { get; set; } = new TextBox();
+        public static TextBox TxtTelephone { get; set; } = new TextBox();
+        public static ComboBox CboRang { get; set; } = new ComboBox();
+        public static RadioButton RdbHomme { get; set; } = new RadioButton();
+        public static RadioButton RdbFemme { get; set; } = new RadioButton();
+
+
         public AjoutModifUserControl()
         {
             InitializeComponent();
             LblFormTitle = lblFormTitle;
-
-     
-
+            TxtNom = txtNom;
+            TxtPrenom = txtPrenom;
+            TxtAdresse = txtAdresse;
+            CboProvince = cboProvince;
+            TxtCodePostal = txtCodePostal;
+            TxtDescription = txtDescription;
+            TxtTelephone = txtTelephone;
+            CboRang = cboRang;
+            RdbHomme = rdbHomme;
+            RdbFemme = rdbFemme;
         }
        
 
@@ -51,9 +71,13 @@ namespace Facturio.Clients
                     // TODO :  Afficher un message qui dit que le client a été ajouter.
                     MessageBox.Show("Client ajouter avec succès");
                 }     
-            }    
-        }
+            }
+            else
+            {
 
+            }
+        }
+        
         private Rang SetRang()
         {
             Rang rang = new Rang();

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Clients"
-             mc:Ignorable="d" Height="382.667" Width="503.334">
+             mc:Ignorable="d" Height="382.667" Width="474.724">
     <UserControl.Resources>
         <Style x:Key="styleLabel" TargetType="{x:Type Label}">
             <Setter Property="FontSize" Value="15" />
@@ -99,7 +99,8 @@
                 <ComboBoxItem>Yukon</ComboBoxItem>
             </ComboBox>
             <TextBox  Name="txtCodePostal" Style="{StaticResource styleTxtBox}" />
-            <TextBox  Name="txtDescription" Style="{StaticResource styleTxtBox}" />
+            
+            <TextBox  Name="txtDescription"   Style="{StaticResource styleTxtBox}" />
             <TextBox  Name="txtTelephone" Style="{StaticResource styleTxtBox}" />
 
 
