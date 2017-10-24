@@ -22,6 +22,7 @@ namespace Facturio.Produits
             Description = description;
             Prix = prix;
             Quantite = quantite;
+            LstFacture = new HashSet<ProduitFacture>();
         }
 
         public virtual int? Id { get; set; } = null;
@@ -30,7 +31,7 @@ namespace Facturio.Produits
         public virtual string Description { get; set; } = string.Empty;
         public virtual double? Prix { get; set; } = null;
         public virtual double? Quantite { get; set; } = null;
-        public virtual ObservableCollection<Facture> LstFacture { get; set; }
+        public virtual ISet<ProduitFacture> LstFacture { get; set; }
         
 
         public override bool Equals(object obj)
