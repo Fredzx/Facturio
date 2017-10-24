@@ -2,6 +2,7 @@
 using Facturio.ProduitsFactures;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,13 +23,15 @@ namespace Facturio.Produits
             Prix = prix;
             Quantite = quantite;
         }
-        
+
         public virtual int? Id { get; set; } = null;
         public virtual string Nom { get; set; } = string.Empty;
         public virtual string Code { get; set; } = string.Empty;
         public virtual string Description { get; set; } = string.Empty;
         public virtual double? Prix { get; set; } = null;
         public virtual double? Quantite { get; set; } = null;
+        public virtual ObservableCollection<Facture> LstFacture { get; set; }
+        
 
         public override bool Equals(object obj)
         {

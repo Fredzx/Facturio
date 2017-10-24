@@ -25,10 +25,7 @@ namespace Facturio.Rapports
 
         public RapportUserControle()
         {
-            InitializeComponent();
-
-             LstRapport = new ObservableCollection<Rapport>(RapportController.ChargerListeRapport());
-            
+            InitializeComponent();            
         }
     }
 }

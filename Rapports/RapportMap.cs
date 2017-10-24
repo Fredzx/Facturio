@@ -30,21 +30,20 @@ namespace Facturio.Rapports
                 .CustomSqlType("DATETIME")
                 .Generated.Never();
 
-            HasManyToMany<Facture>(x => x.LstFacture)
-                .Access.Property()
-                .AsSet()
-                .Cascade.None()
-                .LazyLoad()
-                .Inverse()
-                .Generic()
-                .Table("FacturesRapports")
-                .FetchType.Join()
-                .ChildKeyColumns.Add("idFacture", mapping => mapping.Name("idFacture")
-                                                                    .SqlType("INTEGER")
-                                                                    .Not.Nullable())
-                .ParentKeyColumns.Add("idRapport", mapping => mapping.Name("idRapport")
-                                                                     .SqlType("INTEGER")
-                                                                     .Not.Nullable());
+            //HasManyToMany<Facture>(x => x.LstFacture)
+            //    .Access.Property()
+            //    .AsSet()
+            //    .Cascade.None()
+            //    .LazyLoad()
+            //    .Generic()
+            //    .Table("FacturesRapports")
+            //    .FetchType.Join()
+            //    .ChildKeyColumns.Add("idFacture", mapping => mapping.Name("idFacture")
+            //                                                        .SqlType("INTEGER")
+            //                                                        .Not.Nullable())
+            //    .ParentKeyColumns.Add("idRapport", mapping => mapping.Name("idRapport")
+            //                                                         .SqlType("INTEGER")
+            //                                                         .Not.Nullable());
 
         }
     }

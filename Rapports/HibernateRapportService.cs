@@ -15,8 +15,7 @@ namespace Facturio.Rapports
 
         public static List<Rapport> RetrieveAll()
         {
-            //return session.Query<Rapport>().ToList();
-            return new List<Rapport>();
+            return session.Query<Rapport>().ToList();
         }
 
         public static List<Rapport> Retrieve(int idRapport)
