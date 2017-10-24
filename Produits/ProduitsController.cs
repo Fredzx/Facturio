@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Facturio.Produits
 {
     // CRUD
     public class ProduitsController : BaseViewModel, IOngletViewModel
     {
+        public static AjoutModifUserControl AjoutModifUserControl { get; set; } = new AjoutModifUserControl();
+        public static RechercherUserControl RechercherUserControl { get; set; } = new RechercherUserControl();
         public static ObservableCollection<Produit> Produits { get; set; }
         public static Produit Produit { get; set; }
         /*
@@ -27,7 +30,6 @@ namespace Facturio.Produits
         {
             Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
             Titre = "Produits";
-            // ChargerListeProduits();
         }
 
         public static void ChargerListeProduits()
@@ -76,11 +78,145 @@ namespace Facturio.Produits
             if (Produit == null)
                 return;
 
-            // TODO: Ajouter en BD
-            // TEST
             HibernateProduitService.Create(Produit);
-            
-            //Produits.Add(Produit);
+        }
+
+        public static bool Existe(Produit p)
+        {
+            foreach(Produit produit in Produits)
+            {
+                if(p.Code == produit.Code)
+                {
+                    ErreurAjout();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static void ErreurAjout()
+        {
+            if (AjoutModifUserControl.TxtNom.Text == "")
+            {
+                AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
+                AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
+                AjoutModifUserControl.LblInfo.Content = "ERREUR: Vous devez entrer un nom";
+            }
+            else
+            {
+                if (AjoutModifUserControl.TxtDescription.Text == "")
+                {
+                    AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
+                    AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
+                    AjoutModifUserControl.LblInfo.Content = "ERREUR: Vous devez entrer une description";
+                }
+                else
+                {
+                    if (AjoutModifUserControl.TxtPrix.Text == "")
+                    {
+                        AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
+                        AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
+                        AjoutModifUserControl.LblInfo.Content = "ERREUR: Vous devez entrer un prix";
+                    }
+                    else
+                    {
+                        if (AjoutModifUserControl.TxtQuantite.Text == "")
+                        {
+                            AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
+                            AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
+                            AjoutModifUserControl.LblInfo.Content = "ERREUR: Vous devez entrer une quantité";
+                        }
+                        else
+                        {
+                            AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
+                            AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
+                            AjoutModifUserControl.LblInfo.Content = "ERREUR: le produit n'a pas pu être ajouté";
+                        }
+                    }
+                }
+            }
+        }
+
+        public static void ErreurModif(int e)
+        {
+            switch (e)
+            {
+                case 0:
+                    AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
+                    AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
+                    AjoutModifUserControl.LblInfo.Content = "ERREUR: Vous devez entrer un nom";
+                    break;
+                case 1:
+                    AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
+                    AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
+                    AjoutModifUserControl.LblInfo.Content = "ERREUR: Vous devez entrer une description";
+                    break;
+                case 2:
+                    AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
+                    AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
+                    AjoutModifUserControl.LblInfo.Content = "ERREUR: Vous devez entrer un prix";
+                    break;
+                case 3:
+                    AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
+                    AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
+                    AjoutModifUserControl.LblInfo.Content = "ERREUR: Vous devez entrer une quantité";
+                    break;
+                case 4:
+                    AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
+                    AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
+                    AjoutModifUserControl.LblInfo.Content = "ERREUR: le produit n'a pas pu être modifié";
+                    break;
+            }
+        }
+        /// <summary>
+        /// ////////////////////////////////////////////////////////
+        /// </summary>
+        /// <returns></returns>
+        /*
+        public static int ValiderAjout()
+        {
+            int e = 0;
+            if (AjoutModifUserControl.TxtNom.Text == "")
+            {
+                ErreurAjout(0);
+            } else
+            {
+                if (AjoutModifUserControl.TxtDescription.Text == "")
+                {
+                    ErreurAjout(0);
+                } else
+                {
+                    if (AjoutModifUserControl.TxtPrix.Text == "")
+                    {
+                        ErreurAjout(0);
+                    } else
+                    {
+                        if (AjoutModifUserControl.TxtQuantite.Text == "")
+                        {
+                            ErreurAjout(0);
+                        } else
+                        {
+                            ErreurAjout(0);
+                        }
+                    }
+                }
+
+            }
+            return e;
+        }
+        */
+        public static void SuccesAjout()
+        {
+            AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
+            AjoutModifUserControl.LblInfo.Foreground = Brushes.Green;
+            AjoutModifUserControl.LblInfo.Content = "Le produit a été ajouté avec succès!";
+        }
+
+        public static void SuccesModif()
+        {
+            AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
+            AjoutModifUserControl.LblInfo.Foreground = Brushes.Green;
+            AjoutModifUserControl.LblInfo.Content = "Le produit a été modifié avec succès!";
         }
 
         public static void LiveFiltering(string filter)
@@ -94,15 +230,15 @@ namespace Facturio.Produits
             //AjoutModifUserControl.
         }
 
-        public static void RemplirChampsModif(Produit p)
-        {
-            AjoutModifUserControl.TxtNom.Text = p.Nom;
-            AjoutModifUserControl.TxtCode.Text = p.Code;
-            AjoutModifUserControl.TxtDescription.Text = p.Description;
-            AjoutModifUserControl.TxtPrix.Text = p.Prix.ToString();
-            AjoutModifUserControl.TxtQuantite.Text = p.Quantite.ToString();
-            AjoutModifUserControl.EstModif = true;
-        }
+        //public static void RemplirChampsModif(Produit p)
+        //{
+        //    AjoutModifUserControl.TxtNom.Text = p.Nom;
+        //    AjoutModifUserControl.TxtCode.Text = p.Code;
+        //    AjoutModifUserControl.TxtDescription.Text = p.Description;
+        //    AjoutModifUserControl.TxtPrix.Text = p.Prix.ToString();
+        //    AjoutModifUserControl.TxtQuantite.Text = p.Quantite.ToString();
+        //    AjoutModifUserControl.EstModif = true;
+        //}
 
         public static void RafraichirGrille()
         {

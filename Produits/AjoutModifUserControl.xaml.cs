@@ -56,6 +56,16 @@ namespace Facturio.Produits
             EstModif = true;
         }
 
+        public void RemplirChampsModif(Produit p)
+        {
+            txtNom.Text = p.Nom;
+            AjoutModifUserControl.TxtCode.Text = p.Code;
+            AjoutModifUserControl.TxtDescription.Text = p.Description;
+            AjoutModifUserControl.TxtPrix.Text = p.Prix.ToString();
+            AjoutModifUserControl.TxtQuantite.Text = p.Quantite.ToString();
+            AjoutModifUserControl.EstModif = true;
+        }
+
         private void updateChampsProduit()
         {
                 ProduitsController.Produit.Code = txtCode.Text;
@@ -67,23 +77,25 @@ namespace Facturio.Produits
 
         private void btnEnregister_Click(object sender, RoutedEventArgs e)
         {
+            //ProduitsController.reinitialiserOnglet();
             //ProduitsController.Produit = new Produit(txtNom.Text, txtCode.Text, txtDescription.Text, Convert.ToDouble(txtPrix.Text), Convert.ToDouble(txtQuantite.Text));
             if (EstModif)
             {
                 updateChampsProduit();
                 ProduitsController.UpdateProduit();
                 //if(Valide)
-                grdTitre.SetValue(Grid.RowProperty, 2);
-                lblInfo.Content = "Le produit a été modifié avec succès!";
+                ProduitsController.SuccesModif();
             }
             else
             {
                 // TODO: VALIDER SI TOUS LES CHAMPS SONT REMPLIS!!!
                 ProduitsController.Produit = new Produit(txtNom.Text, txtCode.Text, txtDescription.Text, Convert.ToDouble(txtPrix.Text), Convert.ToDouble(txtQuantite.Text));
-                ProduitsController.AjoutProduit();
-                grdTitre.SetValue(Grid.RowProperty, 2);
-                lblInfo.Content = "Le produit a été ajouté avec succès!";
-                viderChamps();
+                if(!ProduitsController.Existe(ProduitsController.Produit))
+                {
+                    ProduitsController.AjoutProduit();
+                    ProduitsController.SuccesModif();
+                    viderChamps();
+                }
             }
             ProduitsController.Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
         }
