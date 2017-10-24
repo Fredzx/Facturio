@@ -11,10 +11,9 @@ namespace Facturio.Clients
 
         public Rang() {}
 
-        public Rang(string nom, Image image, float escompte)
+        public Rang(string nom, float escompte)
         {
-            Nom = nom;
-            Image = image;
+            Nom = nom;           
             Escompte = escompte;
             
         }

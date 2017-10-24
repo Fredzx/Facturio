@@ -86,7 +86,7 @@
 
                 <ComboBoxItem>Alberta</ComboBoxItem>
                 <ComboBoxItem>Colombie-Britannique</ComboBoxItem>
-                <ComboBoxItem>île-du-Prince-Edouar</ComboBoxItem>
+                <ComboBoxItem>Île-du-Prince-Édouard</ComboBoxItem>
                 <ComboBoxItem>Manitoba</ComboBoxItem>
                 <ComboBoxItem>Nouveau-Brunswick</ComboBoxItem>
                 <ComboBoxItem>Nouvelle-Écosse</ComboBoxItem>
@@ -103,8 +103,8 @@
             <TextBox  Name="txtTelephone" Style="{StaticResource styleTxtBox}" />
 
 
-            <ComboBox Style="{StaticResource styleComboBox}">
-                <ComboBoxItem Name="cboRang" IsSelected="True">Sans rang</ComboBoxItem>
+            <ComboBox Name="cboRang" Style="{StaticResource styleComboBox}">
+                <ComboBoxItem  IsSelected="True">Sans rang</ComboBoxItem>
                 <ComboBoxItem>Bronze</ComboBoxItem>
                 <ComboBoxItem>Argent</ComboBoxItem>
                 <ComboBoxItem>Or</ComboBoxItem>

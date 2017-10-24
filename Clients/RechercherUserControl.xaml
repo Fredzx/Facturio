@@ -37,7 +37,7 @@
                           Grid.RowSpan="4">
                             <DataGrid ItemsSource="{Binding LstObClients}" Name="dtgAfficheClients" LoadingRow="DataGrid_LoadingRow" 
                                       BorderBrush="Black" Height="200" HorizontalAlignment="Center" VerticalAlignment="Top"
-                                      AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+                                      AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectionChanged="dtgAfficheClients_SelectionChanged">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Prénom" Width="4*" Binding="{Binding Prenom}" />
                                     <DataGridTextColumn Header="Nom" Width="4*" Binding="{Binding Nom}"  />
@@ -58,8 +58,8 @@
 
 
                             <Button Name="btnAjouter" Content="Ajouter" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnAjouter_Click"  />
-                            <Button Name="btnModifier" Content="Modifier" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnModifier_Click" />
-                            <Button Name="btnSupprimer" Content="Supprimer" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnSupprimer_Click"/>
+                            <Button Name="btnModifier" IsEnabled="False" Content="Modifier" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnModifier_Click" />
+            <Button Name="btnSupprimer" IsEnabled="False" Content="Supprimer" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnSupprimer_Click"/>
                         </StackPanel>
                     </Grid>
 </UserControl>
