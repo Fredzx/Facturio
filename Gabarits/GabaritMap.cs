@@ -1,5 +1,6 @@
 ﻿using System;
 using FluentNHibernate.Mapping;
+using Facturio.GabaritsCriteres;
 
 namespace Facturio.Gabarits
 {
@@ -33,6 +34,11 @@ namespace Facturio.Gabarits
                 .CustomSqlType("DATETIME")
                 .Not.Nullable()
                 .Generated.Never();
+
+            /*
+            HasManyToMany<GabaritCritere>(x => x.Criteres)
+                .Access.Property();
+            */
 
             Map(x => x.CodeProduit)
                 .Column("codeProduit")
