@@ -21,10 +21,12 @@ namespace Facturio.Produits
     /// </summary>
     public partial class RechercherUserControl : UserControl
     {
+        public static DataGrid DtgProduits { get; set; } = new DataGrid();
         public RechercherUserControl()
         {
             InitializeComponent();
             ProduitsController.Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
+            DtgProduits = dtgAfficheProduits;
         }
 
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
@@ -34,6 +36,7 @@ namespace Facturio.Produits
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
+            AjoutModifUserControl.EstModif = false;
             // Lorsqu'il clique sur ajouter on veut : 
             // Que le usercontrol Produit change d'onglet > direction : onglet Ajout.            
             ProduitUserControl.TbcProduitPublic.SelectedIndex = 1;
@@ -47,9 +50,10 @@ namespace Facturio.Produits
         {
             if (SiProduitSelectionne())
             {
+                AjoutModifUserControl.EstModif = true;
                 // Lorsqu'il clique sur mofifier on veut : 
                 // Que le usercontrol Produti change d'onglet > direction : onglet Modifier.
-                
+
                 // Ajuster le titre
                 AjoutModifUserControl.LblFormTitle.Content = "Modifier un produit";
                 ProduitsController.Produit = (Produit)dtgAfficheProduits.SelectedItem;
@@ -122,8 +126,7 @@ namespace Facturio.Produits
             {
                 ProduitsController.LiveFiltering(txtRechercherProduit.Text.ToString());
             }
-            dtgAfficheProduits.ItemsSource = null;
-            dtgAfficheProduits.ItemsSource = ProduitsController.Produits;
+            ProduitsController.RafraichirGrille();
         }
     }
 }

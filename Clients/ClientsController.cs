@@ -40,7 +40,7 @@ namespace Facturio.Clients
             // Retrieve les infos (sexe, rang et province)
             client.Sexe.IdSexe = HibernateSexeService.RetrieveByName(client.Sexe.Nom)[0].IdSexe;
 
-            client.Rang.IdRang = 1;
+            client.Rang.IdRang = HibernateRangService.RetrieveByName(client.Rang.Nom)[0].IdRang;
 
             client.Province.IdProvince = HibernateProvinceClient.RetrieveByName(client.Province.Nom)[0].IdProvince;
 
@@ -55,6 +55,20 @@ namespace Facturio.Clients
 
 
 
+
+
+
+        }
+
+        public static void SupprimerClient(Client client)
+        {
+            if(client != null)
+            {
+                HibernateClientService.Delete(client);
+                LstObClients.Remove(client);
+
+            }
+            return; 
 
 
 

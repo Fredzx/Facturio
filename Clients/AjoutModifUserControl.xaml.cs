@@ -46,12 +46,26 @@ namespace Facturio.Clients
                     ClientsController.AjouterClient(new Client(txtPrenom.Text.ToString(), txtNom.Text.ToString()
                                                              , txtDescription.Text.ToString(), new Sexe(SetSex())
                                                              , txtAdresse.Text.ToString(), txtCodePostal.Text.ToString()
-                                                             , txtTelephone.Text.ToString(), new Rang(), new Province(SetProvince())));
+                                                             , txtTelephone.Text.ToString(), SetRang(), new Province(SetProvince())));
 
                     // TODO :  Afficher un message qui dit que le client a été ajouter.
                     MessageBox.Show("Client ajouter avec succès");
                 }     
             }    
+        }
+
+        private Rang SetRang()
+        {
+            Rang rang = new Rang();
+
+            switch (cboRang.SelectedIndex)
+            {
+                case 1: rang.Nom = "Bronze"; break;
+                case 2: rang.Nom = "Argent"; break;
+                case 3: rang.Nom = "Or"; break;
+                default: rang.Nom = "Sans Rang"; break;
+            }
+            return rang;
         }
 
         private Provinces SetProvince()

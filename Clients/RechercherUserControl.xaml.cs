@@ -20,14 +20,14 @@ namespace Facturio.Clients
     /// </summary>
     public partial class RechercherUserControl : UserControl
     {
+        public object ClientController { get; private set; }
+
         public RechercherUserControl()
         {
             InitializeComponent();
-            //DataContext = new ClientsController();
+            
+            
 
-            //ClientsController.LstObClients.Clear();
-            //ClientsController.ChargerListeClients();
-            //dtgAfficheClients.ItemsSource = ClientsController.LstClients;
         }
 
 
@@ -59,7 +59,9 @@ namespace Facturio.Clients
 
         private void btnSupprimer_Click(object sender, RoutedEventArgs e)
         {
-            Confirmation();
+            ClientsController.SupprimerClient((Client)dtgAfficheClients.SelectedItem);
+            dtgAfficheClients.SelectedIndex = -1;
+      
         }
 
         private bool Confirmation()
@@ -78,6 +80,20 @@ namespace Facturio.Clients
                 return false;
             }
             return true;
+        }
+
+        private void dtgAfficheClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(dtgAfficheClients.CurrentCell != null)
+            {
+                btnModifier.IsEnabled = true;
+                btnSupprimer.IsEnabled = true;
+            }
+            else
+            {
+                btnModifier.IsEnabled = false;
+                btnSupprimer.IsEnabled = false;
+            }
         }
     }
 }
