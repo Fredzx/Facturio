@@ -64,13 +64,15 @@ namespace Facturio.Produits
         private void btnEnregister_Click(object sender, RoutedEventArgs e)
         {
             //ProduitsController.Produit = new Produit(txtNom.Text, txtCode.Text, txtDescription.Text, Convert.ToDouble(txtPrix.Text), Convert.ToDouble(txtQuantite.Text));
-            updateChampsProduit();
             if (EstModif)
             {
+                updateChampsProduit();
                 ProduitsController.UpdateProduit();
             }
             else
             {
+                // TODO: VALIDER SI TOUS LES CHAMPS SONT REMPLIS!!!
+                ProduitsController.Produit = new Produit(txtNom.Text, txtCode.Text, txtDescription.Text, Convert.ToDouble(txtPrix.Text), Convert.ToDouble(txtQuantite.Text));
                 ProduitsController.AjoutProduit();
             }
             ProduitsController.Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
@@ -81,6 +83,7 @@ namespace Facturio.Produits
             // Lorsqu'il clique sur Retour on veut : 
             // Que le usercontrol Produit change d'onglet > direction : onglet rechercher.
             ProduitUserControl.TbcProduitPublic.SelectedIndex = 0;
+            ProduitsController.RafraichirGrille();
         }
     }
 }
