@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NHibernate;
 using NHibernate.Linq;
@@ -51,6 +52,17 @@ namespace Facturio.Clients
                 session.Delete(rang);
                 transaction.Commit();
             }
+        }
+
+        public  static List<Rang> RetrieveByName(string nomRang)
+        {
+            var rang = session.Query<Rang>().AsQueryable();
+
+            var result = from r in rang
+                         where r.Nom == nomRang
+                         select r;
+
+            return result.ToList();
         }
     }
 }

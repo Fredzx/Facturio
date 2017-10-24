@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Facturio.Produits
 {
@@ -119,9 +120,22 @@ namespace Facturio.Produits
                     , MessageBoxResult.No);
         }
 
+        public static void reinitialiserOnglet()
+        {
+            AjoutModifUserControl.LblFormTitle.Content = "Ajouter un produit";
+            AjoutModifUserControl.viderChamps();
+            AjoutModifUserControl.EstModif = false;
+            AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 1);
+            AjoutModifUserControl.LblInfo.Content = "";
+        }
+
         public static void ChangementNotificateur(ObservableCollection<Produit> lstProduits)
         {
             //https://stackoverflow.com/questions/8691202/comparing-two-observablecollections-to-see-if-they-are-different
+
+            
+
+
         }
 
         public static void ChangementNotificateur(Produit produit)

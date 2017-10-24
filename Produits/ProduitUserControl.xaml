@@ -7,11 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <TabControl Name="tbcProduit">
-            <TabItem Name="tbiRechercherProduit" Header="Rechercher">
+        <TabControl x:Name="tbcProduit" SelectionChanged="tbcProduit_SelectionChanged">
+            <TabItem x:Name="tbiRechercherProduit" Header="Rechercher">
                 <local:RechercherUserControl/>
             </TabItem>
-            <TabItem Name="tbiAjouterModifierProduit" Header="Ajouter/Modifier">
+            <TabItem x:Name="tbiAjouterModifierProduit" Header="Ajouter/Modifier">
                 <local:AjoutModifUserControl/>
             </TabItem>
         </TabControl>

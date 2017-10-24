@@ -14,7 +14,7 @@ namespace Facturio.Clients
             switch (province)
             {
                 case Provinces.Alberta:                 Nom = "Alberta"; break;
-                case Provinces.ColombieBritannique:     Nom = "Columbien-Britannique"; break;
+                case Provinces.ColombieBritannique:     Nom = "Colombie-Britannique"; break;
                 case Provinces.IleDuPrinceEdouard:      Nom = "Île-du-Prince-Édouard"; break;
                 case Provinces.Manitoba:                Nom = "Manitoba"; break;
                 case Provinces.NouveauBrunswick:        Nom = "Nouveau-Brunswick"; break;
@@ -24,7 +24,7 @@ namespace Facturio.Clients
                 case Provinces.Saskatchewan:            Nom = "Saskatchewan"; break;
                 case Provinces.TerreNeuveEtLabrador:    Nom = "Terre-Neuve-et-Labrador"; break;
                 case Provinces.Nunavut:                 Nom = "Nunavut"; break;
-                case Provinces.TerritoiresDuNordOuest:  Nom = "Territoires de Nord-Ouest"; break;
+                case Provinces.TerritoiresDuNordOuest:  Nom = "Territoires du Nord-Ouest"; break;
                 case Provinces.Yukon:                   Nom = "Yukon"; break;
             }
         }
