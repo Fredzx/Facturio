@@ -2,9 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace Facturio.Produits
 {
@@ -99,6 +102,45 @@ namespace Facturio.Produits
             AjoutModifUserControl.TxtPrix.Text = p.Prix.ToString();
             AjoutModifUserControl.TxtQuantite.Text = p.Quantite.ToString();
             AjoutModifUserControl.EstModif = true;
+        }
+
+        public static void RafraichirGrille()
+        {
+            RechercherUserControl.DtgProduits.ItemsSource = null;
+            RechercherUserControl.DtgProduits.ItemsSource = ProduitsController.Produits;
+            Produits.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(DataGrid_CollectionChanged);
+        }
+
+        private static void DataGrid_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            MessageBoxResult a = MessageBox.Show("Nouvel élément"
+                    , "Supprimer?!"
+                    , MessageBoxButton.YesNo
+                    , MessageBoxImage.Warning
+                    , MessageBoxResult.No);
+        }
+
+        public static void reinitialiserOnglet()
+        {
+            AjoutModifUserControl.LblFormTitle.Content = "Ajouter un produit";
+            AjoutModifUserControl.viderChamps();
+            AjoutModifUserControl.EstModif = false;
+            AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 1);
+            AjoutModifUserControl.LblInfo.Content = "";
+        }
+
+        public static void ChangementNotificateur(ObservableCollection<Produit> lstProduits)
+        {
+            //https://stackoverflow.com/questions/8691202/comparing-two-observablecollections-to-see-if-they-are-different
+
+            
+
+
+        }
+
+        public static void ChangementNotificateur(Produit produit)
+        {
+
         }
     }
 }

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Produits"
+             xmlns:xctk="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
@@ -25,20 +26,22 @@
     </UserControl.Resources>
 
 
-    <Grid HorizontalAlignment="Center" Background="Gray">
+    <Grid Name="Contenu" HorizontalAlignment="Center" Background="Gray">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition  Width="225" />
+            <ColumnDefinition  Width="2*" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="21"  />
-            <RowDefinition Height="29"/>
+            <RowDefinition Height="0.1*"  />
+            <RowDefinition Height="0.1*"  />
+            <RowDefinition Height="0.1*"  />
+            <RowDefinition Height="0.2*"/>
             <RowDefinition />
-            <RowDefinition Height="50" />
+            <RowDefinition Height="0.5*" />
         </Grid.RowDefinitions>
-
-        <Grid   Grid.Row="0"
+<!--https://blogs.msdn.microsoft.com/bethmassi/2008/06/27/displaying-data-validation-messages-in-wpf/-->
+        <Grid  Name="grdTitre" Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 HorizontalAlignment="Center"              
@@ -48,10 +51,20 @@
             <Label Name="lblFormTitle" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" FontFamily="calibri" Content="Ajouter un produit" />
         </Grid>
 
+        <Grid  Name="Info" Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Center"              
+                Grid.RowSpan="2"
+                >
+
+            <Label Name="lblInfo" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" FontFamily="calibri" Content="" />
+        </Grid>
+
 
         <StackPanel Orientation="Vertical"                   
                     Grid.Column="0"
-                    Grid.Row="2"
+                    Grid.Row="4"
                     Background="LightGray"
                     >
 
@@ -65,10 +78,12 @@
         <StackPanel 
                     Orientation="Vertical"
                     Grid.Column="1"
-                    Grid.Row="2"
+                    Grid.Row="4"
             Background="LightGray">
 
-            <TextBox  Name="txtNom" Style="{StaticResource styleTxtBox}"  />
+            <!--https://social.msdn.microsoft.com/Forums/vstudio/en-US/fc112396-e8e9-41b7-97d1-e413850a59c9/how-to-create-a-masked-textbox-usnig-wpf?forum=wpf
+            <xctk:MaskedTextBox x:Name="txtNom" Mask:="0000-0000" CaretIndex="0" ValueDataType="{x:Type s:String}" FontSize="14"</xctk:MaskedTextBox>-->
+            <TextBox  Name="txtNom"  Style="{StaticResource styleTxtBox}"  />
             <TextBox  Name="txtCode" Style="{StaticResource styleTxtBox}" />
             <TextBox  Name="txtDescription" Style="{StaticResource styleTxtBox}" />
             <TextBox  Name="txtPrix" Style="{StaticResource styleTxtBox}" />
@@ -77,7 +92,7 @@
 
         </StackPanel>
 
-        <Grid Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" >
+        <Grid Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" >
 
             <Button  Content="Enregistrer" HorizontalAlignment="Left" Style="{StaticResource styleButton}" Click="btnEnregister_Click" />
             <Button  Content="Retour" HorizontalAlignment="Right" Style="{StaticResource styleButton}" Click="btnRetour_Click" />
