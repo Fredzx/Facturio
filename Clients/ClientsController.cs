@@ -10,20 +10,24 @@ namespace Facturio.Clients
 {
     public class ClientsController : BaseViewModel, IOngletViewModel
     {
-        public static ObservableCollection<Client> LstObClients { get; set; } = new ObservableCollection<Client>();
-       // public static List<Client> LstClients { get; set; } = new List<Client>();
+        public static ObservableCollection<Client> LstObClients { get; set; } = new ObservableCollection<Client>();      
 
         public string Titre { get; set; }
+ 
 
         public ClientsController()
         {
             Titre = "Clients";
             ChargerListeClients();
+
+          
         }
 
         public static void ChargerListeClients()
         {
             List<Client> lstClient = new List<Client>(HibernateClientService.RetrieveAll());
+
+            LstObClients.Clear();
 
             foreach (Client client in lstClient)
                 LstObClients.Add(client);
@@ -34,9 +38,6 @@ namespace Facturio.Clients
 
         public static void AjouterClient(Client client)
         {
-           
-
-
             // Retrieve les infos (sexe, rang et province)
             client.Sexe.IdSexe = HibernateSexeService.RetrieveByName(client.Sexe.Nom)[0].IdSexe;
 
@@ -50,14 +51,6 @@ namespace Facturio.Clients
 
             // Ajouter le client à la liste.
             LstObClients.Add(client);
-
-
-
-
-
-
-
-
         }
 
         public static void SupprimerClient(Client client)
@@ -69,9 +62,28 @@ namespace Facturio.Clients
 
             }
             return; 
+        }
 
+        public static void ModifierClient(Client client)
+        {
+            // Initialiser les champs de la fenêtre.         
+            AjoutModifUserControl.TxtNom.Text = client.Nom;
+            AjoutModifUserControl.TxtPrenom.Text = client.Prenom;
+            AjoutModifUserControl.TxtAdresse.Text = client.Adresse;
+            AjoutModifUserControl.CboProvince.SelectedIndex = (int)client.Province.IdProvince;
+            AjoutModifUserControl.TxtCodePostal.Text = client.CodePostal;
+            AjoutModifUserControl.TxtDescription.Text = client.Description;
+            AjoutModifUserControl.TxtTelephone.Text = client.Telephone;
+            AjoutModifUserControl.CboRang.SelectedIndex = (int)client.Rang.IdRang;
 
-
+            if(client.Sexe.IdSexe == 1)
+            {
+                AjoutModifUserControl.RdbHomme.IsChecked = true;
+            }
+            else
+            {
+                AjoutModifUserControl.RdbFemme.IsChecked = true;
+            }
         }
     }
 }
