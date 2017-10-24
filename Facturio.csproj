@@ -126,6 +126,7 @@
     <Compile Include="Enums\Provinces.cs" />
     <Compile Include="Enums\Sexes.cs" />
     <Compile Include="Factures\Facture.cs" />
+    <Compile Include="Factures\FactureController.cs" />
     <Compile Include="Factures\FactureMap.cs" />
     <Compile Include="Factures\HibernateFactureService.cs" />
     <Compile Include="Gabarits\Gabarit.cs" />

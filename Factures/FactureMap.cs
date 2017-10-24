@@ -42,30 +42,41 @@ namespace Facturio.Factures
                 .Generated.Never()
                 .CustomSqlType("DATETIME");
 
-            HasManyToMany<ProduitFacture>(x => x.LstProduit)
+            HasMany<ProduitFacture>(x => x.LstProduitFacture)
                 .Access.Property()
                 .AsSet()
                 .Cascade.None()
                 .LazyLoad()
+                .Inverse()
                 .Generic()
-                .Component(p =>
-                {
-                    p.Map(x => x.Quantite)
-                        .Column("quantite")
-                        .CustomType<float>()
-                        .Access.Property()
-                        .Generated.Never()
-                        .CustomSqlType("DECIMAL");
-                    p.References<Produit>(r => r.Produit, "idProduit");
-                })
-                .Table("ProduitsFactures")
-                .FetchType.Join()
-                .ChildKeyColumns.Add("idProduit", mapping => mapping.Name("idProduit")
-                                                                    .SqlType("INTEGER")
-                                                                    .Not.Nullable())
-                .ParentKeyColumns.Add("idFacture", mapping => mapping.Name("idFacture")
-                                                                     .SqlType("INTEGER")
-                                                                     .Not.Nullable());
+                .KeyColumns.Add("idFacture", mapping => mapping.Name("idFacture")
+                                                               .SqlType("INTEGER")
+                                                               .Not.Nullable());
+
+            //HasManyToMany<ProduitFacture>(x => x.LstProduit)
+            //    .Access.Property()
+            //    .AsSet()
+            //    .Cascade.None()
+            //    .LazyLoad()
+            //    .Generic()
+            //    .Component(p =>
+            //    {
+            //        p.Map(x => x.Quantite)
+            //            .Column("quantite")
+            //            .CustomType<float>()
+            //            .Access.Property()
+            //            .Generated.Never()
+            //            .CustomSqlType("DECIMAL");
+            //        p.References<Produit>(r => r.Produit, "idProduit");
+            //    })
+            //    .Table("ProduitsFactures")
+            //    .FetchType.Join()
+            //    .ChildKeyColumns.Add("idProduit", mapping => mapping.Name("idProduit")
+            //                                                        .SqlType("INTEGER")
+            //                                                        .Not.Nullable())
+            //    .ParentKeyColumns.Add("idFacture", mapping => mapping.Name("idFacture")
+            //                                                         .SqlType("INTEGER")
+            //                                                         .Not.Nullable());
 
 
 
