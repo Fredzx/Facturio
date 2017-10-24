@@ -102,6 +102,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Criteres\Critere.cs" />
+    <Compile Include="Criteres\CritereMap.cs" />
     <Compile Include="Enums\Onglets.cs" />
     <Compile Include="Base\BaseViewModel.cs" />
     <Compile Include="Base\RelayCommand.cs" />
@@ -129,6 +131,8 @@
     <Compile Include="Factures\FactureController.cs" />
     <Compile Include="Factures\FactureMap.cs" />
     <Compile Include="Factures\HibernateFactureService.cs" />
+    <Compile Include="GabaritsCriteres\GabaritCritere.cs" />
+    <Compile Include="GabaritsCriteres\GabaritCritereMap.cs" />
     <Compile Include="Gabarits\Gabarit.cs" />
     <Compile Include="Gabarits\GabaritMap.cs" />
     <Compile Include="Gabarits\HibernateGabaritService.cs" />
