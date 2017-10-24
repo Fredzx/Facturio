@@ -26,5 +26,13 @@ namespace Facturio.Produits
             InitializeComponent();
             TbcProduitPublic = tbcProduit;
         }
+
+        private void tbcProduit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (tbiRechercherProduit.IsSelected)
+            {
+                ProduitsController.reinitialiserOnglet();
+            }
+        }
     }
 }

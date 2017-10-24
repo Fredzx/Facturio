@@ -27,6 +27,8 @@ namespace Facturio.Produits
         public static TextBox TxtDescription { get; set; } = new TextBox();
         public static TextBox TxtPrix { get; set; } = new TextBox();
         public static TextBox TxtQuantite { get; set; } = new TextBox();
+        public static Label LblInfo { get; set; } = new Label();
+        public static Grid GrdTitre { get; set; } = new Grid();
         public static bool EstModif { get; set; }
 
         public AjoutModifUserControl()
@@ -38,6 +40,8 @@ namespace Facturio.Produits
             TxtQuantite = txtQuantite;
             TxtDescription = txtDescription;
             TxtCode = txtCode;
+            LblInfo = lblInfo;
+            GrdTitre = grdTitre;
         }
 
         public AjoutModifUserControl(Produit p)
@@ -54,11 +58,11 @@ namespace Facturio.Produits
 
         private void updateChampsProduit()
         {
-            ProduitsController.Produit.Code = txtCode.Text;
-            ProduitsController.Produit.Description = txtDescription.Text;
-            ProduitsController.Produit.Nom = txtNom.Text;
-            ProduitsController.Produit.Prix = Convert.ToDouble(txtPrix.Text);
-            ProduitsController.Produit.Quantite = Convert.ToDouble(txtQuantite.Text);
+                ProduitsController.Produit.Code = txtCode.Text;
+                ProduitsController.Produit.Description = txtDescription.Text;
+                ProduitsController.Produit.Nom = txtNom.Text;
+                ProduitsController.Produit.Prix = Convert.ToDouble(txtPrix.Text);
+                ProduitsController.Produit.Quantite = Convert.ToDouble(txtQuantite.Text);
         }
 
         private void btnEnregister_Click(object sender, RoutedEventArgs e)
@@ -68,22 +72,38 @@ namespace Facturio.Produits
             {
                 updateChampsProduit();
                 ProduitsController.UpdateProduit();
+                //if(Valide)
+                grdTitre.SetValue(Grid.RowProperty, 2);
+                lblInfo.Content = "Le produit a été modifié avec succès!";
             }
             else
             {
                 // TODO: VALIDER SI TOUS LES CHAMPS SONT REMPLIS!!!
                 ProduitsController.Produit = new Produit(txtNom.Text, txtCode.Text, txtDescription.Text, Convert.ToDouble(txtPrix.Text), Convert.ToDouble(txtQuantite.Text));
                 ProduitsController.AjoutProduit();
+                grdTitre.SetValue(Grid.RowProperty, 2);
+                lblInfo.Content = "Le produit a été ajouté avec succès!";
+                viderChamps();
             }
             ProduitsController.Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)
         {
+            ProduitsController.reinitialiserOnglet();
             // Lorsqu'il clique sur Retour on veut : 
             // Que le usercontrol Produit change d'onglet > direction : onglet rechercher.
             ProduitUserControl.TbcProduitPublic.SelectedIndex = 0;
             ProduitsController.RafraichirGrille();
+        }
+
+        public static void viderChamps()
+        {
+            TxtNom.Text = "";
+            TxtCode.Text = "";
+            TxtDescription.Text = "";
+            TxtPrix.Text = "";
+            TxtQuantite.Text = "";
         }
     }
 }
