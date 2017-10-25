@@ -58,12 +58,12 @@ namespace Facturio.Produits
 
         public void RemplirChampsModif(Produit p)
         {
-            txtNom.Text = p.Nom;
-            AjoutModifUserControl.TxtCode.Text = p.Code;
-            AjoutModifUserControl.TxtDescription.Text = p.Description;
-            AjoutModifUserControl.TxtPrix.Text = p.Prix.ToString();
-            AjoutModifUserControl.TxtQuantite.Text = p.Quantite.ToString();
-            AjoutModifUserControl.EstModif = true;
+            TxtNom.Text = p.Nom;
+            TxtCode.Text = p.Code;
+            TxtDescription.Text = p.Description;
+            TxtPrix.Text = p.Prix.ToString();
+            TxtQuantite.Text = p.Quantite.ToString();
+            EstModif = true;
         }
 
         private void updateChampsProduit()
@@ -89,11 +89,11 @@ namespace Facturio.Produits
             else
             {
                 // TODO: VALIDER SI TOUS LES CHAMPS SONT REMPLIS!!!
-                ProduitsController.Produit = new Produit(txtNom.Text, txtCode.Text, txtDescription.Text, Convert.ToDouble(txtPrix.Text), Convert.ToDouble(txtQuantite.Text));
-                if(!ProduitsController.Existe(ProduitsController.Produit))
+                if (ProduitsController.ValiderAjout())
                 {
+                    ProduitsController.Produit = new Produit(txtNom.Text, txtCode.Text, txtDescription.Text, Convert.ToDouble(txtPrix.Text), Convert.ToDouble(txtQuantite.Text));
                     ProduitsController.AjoutProduit();
-                    ProduitsController.SuccesModif();
+                    ProduitsController.SuccesAjout();
                     viderChamps();
                 }
             }
