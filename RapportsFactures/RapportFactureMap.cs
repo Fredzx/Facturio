@@ -1,5 +1,6 @@
 ﻿using Facturio.Factures;
 using Facturio.Rapports;
+using Facturio.Rapports.Entities;
 using FluentNHibernate.Mapping;
 
 

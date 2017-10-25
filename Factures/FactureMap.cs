@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentNHibernate.MappingModel.Collections;
 using Facturio.Rapports;
+using Facturio.Rapports.Entities;
 
 namespace Facturio.Factures
 {

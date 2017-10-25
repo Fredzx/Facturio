@@ -10,29 +10,23 @@ namespace Facturio.Clients
 {
     public class ClientsController : BaseViewModel, IOngletViewModel
     {
-        public static ObservableCollection<Client> LstObClients { get; set; } = new ObservableCollection<Client>();      
-
+        public static ObservableCollection<Client> LstObClients { get; set; } = new ObservableCollection<Client>();
+        public static Client LeClient { get; set; }
         public string Titre { get; set; }
  
 
         public ClientsController()
         {
             Titre = "Clients";
-            ChargerListeClients();
+           
 
-          
+            LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveAll());
+
         }
 
         public static void ChargerListeClients()
         {
-            List<Client> lstClient = new List<Client>(HibernateClientService.RetrieveAll());
-
-            LstObClients.Clear();
-
-            foreach (Client client in lstClient)
-                LstObClients.Add(client);
-
-            //LstClients.AddRange(HibernateClientService.RetrieveAll());
+            LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveAll());
 
         }
 
@@ -64,26 +58,51 @@ namespace Facturio.Clients
             return; 
         }
 
-        public static void ModifierClient(Client client)
+        public static void AfficherClient()
         {
-            // Initialiser les champs de la fenêtre.         
-            AjoutModifUserControl.TxtNom.Text = client.Nom;
-            AjoutModifUserControl.TxtPrenom.Text = client.Prenom;
-            AjoutModifUserControl.TxtAdresse.Text = client.Adresse;
-            AjoutModifUserControl.CboProvince.SelectedIndex = (int)client.Province.IdProvince;
-            AjoutModifUserControl.TxtCodePostal.Text = client.CodePostal;
-            AjoutModifUserControl.TxtDescription.Text = client.Description;
-            AjoutModifUserControl.TxtTelephone.Text = client.Telephone;
-            AjoutModifUserControl.CboRang.SelectedIndex = (int)client.Rang.IdRang;
+            // Afficher les infos
+            AjoutModifUserControl.SetChampsModifier();
+            
+        }
 
-            if(client.Sexe.IdSexe == 1)
-            {
-                AjoutModifUserControl.RdbHomme.IsChecked = true;
-            }
-            else
-            {
-                AjoutModifUserControl.RdbFemme.IsChecked = true;
-            }
+        public static void ModifierClient(Sexe sexe, Province province, Rang rang)
+        {
+
+            // Setter les champs
+            LeClient.Prenom = AjoutModifUserControl.TxtPrenom.Text.ToString();
+            LeClient.Nom = AjoutModifUserControl.TxtNom.Text.ToString();
+            LeClient.Description = AjoutModifUserControl.TxtDescription.Text.ToString();
+
+            
+            LeClient.Adresse = AjoutModifUserControl.TxtAdresse.Text.ToString();
+            LeClient.CodePostal = AjoutModifUserControl.TxtCodePostal.Text.ToString();
+            LeClient.Telephone = AjoutModifUserControl.TxtTelephone.Text.ToString();
+
+
+            // Sexe
+            LeClient.Sexe.Nom = sexe.Nom;
+            LeClient.Sexe.IdSexe = HibernateSexeService.RetrieveByName(LeClient.Sexe.Nom)[0].IdSexe;
+
+            // Rang
+            LeClient.Rang.Nom = rang.Nom;
+            LeClient.Rang.IdRang = HibernateRangService.RetrieveByName(LeClient.Rang.Nom)[0].IdRang;
+
+            // Province
+            //LeClient.Province.Nom = province.Nom;
+            Province p;
+            p=HibernateProvinceClient.RetrieveByName(province.Nom)[0];
+            LeClient.Province = p;
+
+            //LeClient.Province.IdProvince = HibernateProvinceClient.RetrieveByName(LeClient.Province.Nom)[0].IdProvince;
+
+            
+            // Update en BD.
+
+            HibernateClientService.Update(LeClient);
+
+            // Update en liste
+            LstObClients.Remove(LeClient);
+            LstObClients.Add(LeClient);
         }
     }
 }

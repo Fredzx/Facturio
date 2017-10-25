@@ -14,18 +14,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Facturio.Rapports
+namespace Facturio.Rapports.Vues
 {
     /// <summary>
     /// Logique d'interaction pour RapportUserControle.xaml
     /// </summary>
     public partial class RapportUserControle : UserControl
     {
-        public ObservableCollection<Rapport> LstRapport { get; set; }
+        //public ISet<Rapport> LstRapport { get; set; }
 
         public RapportUserControle()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            //LstRapport = new HashSet<Rapport>(HibernateRapportService.RetrieveAll());
+
         }
     }
 }

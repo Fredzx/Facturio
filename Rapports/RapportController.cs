@@ -1,4 +1,7 @@
 ﻿using Facturio.Base;
+using Facturio.Rapports.Entities;
+using Facturio.Rapports.Hibernate;
+using Facturio.Rapports.Vues;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +14,7 @@ namespace Facturio.Rapports
     class RapportController : BaseViewModel, IOngletViewModel
     {
         public static ISet<Rapport> LstRapport { get; set; }
-        //public static IList<Factures.Facture> LstFacture { get; set; } 
+        public static ListeRapportUserControl RapportUserControl { get; set; } = new ListeRapportUserControl(); 
 
         public string Titre { get; set; }
 
@@ -19,7 +22,8 @@ namespace Facturio.Rapports
         {
             Titre = "Rapports";
             LstRapport = new HashSet<Rapport>(HibernateRapportService.RetrieveAll());
-            //LstFacture = new ObservableCollection<Factures.Facture>(Facturio.Factures.HibernateFactureService.RetrieveAll());
+
+            
         }
     }
 }

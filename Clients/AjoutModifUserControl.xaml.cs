@@ -23,9 +23,8 @@ namespace Facturio.Clients
     {
         public bool Ajout { get; set; } = true;
         public static Label LblFormTitle { get; set; } = new Label();
-
         public static TextBox TxtNom { get; set; } = new TextBox();
-        public static TextBox TxtPrenom { get; set; } = new TextBox(); 
+        public static TextBox TxtPrenom { get; set; } = new TextBox();
         public static TextBox TxtAdresse { get; set; } = new TextBox();
         public static ComboBox CboProvince { get; set; } = new ComboBox();
         public static TextBox TxtCodePostal { get; set; } = new TextBox();
@@ -34,6 +33,7 @@ namespace Facturio.Clients
         public static ComboBox CboRang { get; set; } = new ComboBox();
         public static RadioButton RdbHomme { get; set; } = new RadioButton();
         public static RadioButton RdbFemme { get; set; } = new RadioButton();
+
 
 
         public AjoutModifUserControl()
@@ -51,13 +51,14 @@ namespace Facturio.Clients
             RdbHomme = rdbHomme;
             RdbFemme = rdbFemme;
         }
+
        
 
         private void btnEnregistrer_Click(object sender, RoutedEventArgs e)
         {
             // L'utilisateur veut enregistrer les informations du client.
             // Vérifier si on est en ajout ou en modification.
-            if (Ajout)
+            if (LblFormTitle.Content.ToString() == "Ajouter un client")
             {
                 // TODO : Validation des informations entrées.  
                 if (ValiderInformationsClient())
@@ -74,19 +75,54 @@ namespace Facturio.Clients
             }
             else
             {
+                if (ValiderInformationsClient())
+                {
+                    // Envoyer le   sexe
+                    //            , province
+                    //            , Rang
 
+
+                    ClientsController.ModifierClient(new Sexe(SetSex()), new Province(SetProvince()), SetRang());
+
+                    MessageBox.Show("Client modifié avec succès");
+                }
             }
         }
         
+        public static void SetChampsModifier()
+        {
+            
+            // Initialiser les champs de la fenêtre.         
+            TxtNom.Text = ClientsController.LeClient.Nom;
+            TxtPrenom.Text = ClientsController.LeClient.Prenom;
+            TxtAdresse.Text = ClientsController.LeClient.Adresse;
+            CboProvince.SelectedIndex = (int)ClientsController.LeClient.Province.IdProvince - 1;
+            TxtCodePostal.Text = ClientsController.LeClient.CodePostal;
+            TxtDescription.Text = ClientsController.LeClient.Description;
+            TxtTelephone.Text = ClientsController.LeClient.Telephone;
+            CboRang.SelectedIndex = (int)ClientsController.LeClient.Rang.IdRang - 1;            
+            
+            if (ClientsController.LeClient.Sexe.IdSexe == 1)
+            {
+                AjoutModifUserControl.RdbHomme.IsChecked = true;
+            }
+            else
+            {
+                AjoutModifUserControl.RdbFemme.IsChecked = true;
+            }
+        }
+
         private Rang SetRang()
         {
             Rang rang = new Rang();
 
-            switch (cboRang.SelectedIndex)
+            switch (cboRang.SelectedIndex + 1)
             {
-                case 1: rang.Nom = "Bronze"; break;
-                case 2: rang.Nom = "Argent"; break;
-                case 3: rang.Nom = "Or"; break;
+                
+                case 1: rang.Nom = "Sans Rang"; break;
+                case 2: rang.Nom = "Bronze"; break;
+                case 3: rang.Nom = "Argent"; break;
+                case 4: rang.Nom = "Or"; break;
                 default: rang.Nom = "Sans Rang"; break;
             }
             return rang;
@@ -94,7 +130,7 @@ namespace Facturio.Clients
 
         private Provinces SetProvince()
         {
-            switch (cboProvince.SelectedIndex)
+            switch (cboProvince.SelectedIndex + 1)
             {
                 case 1: return Provinces.Alberta;
                 case 2: return Provinces.ColombieBritannique;
@@ -113,6 +149,8 @@ namespace Facturio.Clients
             }
 
         }
+
+     
 
         private Sexes SetSex()
         {
