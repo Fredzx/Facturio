@@ -53,7 +53,7 @@ namespace Facturio.GabaritsCriteres
                 .Column("estUtilise")
                 .CustomType<bool>()
                 .Access.Property()
-                .CustomSqlType("INTEGER")
+                .CustomSqlType("BOOLEAN")
                 .Not.Nullable()
                 .Generated.Never();
         }

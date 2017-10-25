@@ -16,7 +16,7 @@ namespace Facturio.Gabarits
             get => _gabaritSelectionne;
             set
             {
-                if (value == _gabaritSelectionne)
+                if (Equals(value, _gabaritSelectionne))
                     return;
 
                 _gabaritSelectionne = value;

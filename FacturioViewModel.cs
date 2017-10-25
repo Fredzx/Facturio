@@ -6,7 +6,6 @@ using Facturio.Gabarits;
 using Facturio.Clients;
 using Facturio.Produits;
 using Facturio.Rapports;
-using Facturio.Factures;
 
 namespace Facturio
 {
@@ -62,6 +61,7 @@ namespace Facturio
 
         private void SelectionneOngletCreation(object parameter)
         {
+            Onglets[(int)Enums.Onglets.Creation] = new GabaritCreateurViewModel(null);
             OngletSelectionne = Onglets[(int)Enums.Onglets.Creation];
         }
 

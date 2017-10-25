@@ -7,7 +7,24 @@ namespace Facturio.Creation
     {
         #region Propriétés
 
-        public Gabarit GabaritModification { get; set; }
+        private static Gabarit _gabarit;
+        public Gabarit Gabarit
+        {
+            get => _gabarit;
+            set
+            {
+                if (Equals(value, _gabarit))
+                    return;
+
+                // TODO: M'arranger pour pogner un "default" gabarit... avec les critères de base.
+                if (_gabarit == null)
+                    _gabarit = new Gabarit();
+
+                _gabarit = value;
+                RaisePropertyChanged(nameof(Gabarit));
+            }
+        }
+
         public string Titre { get; set; }
 
         #endregion
@@ -21,7 +38,7 @@ namespace Facturio.Creation
 
         public GabaritCreateurViewModel(Gabarit gabarit) : this()
         {
-            GabaritModification = gabarit;
+            Gabarit = gabarit;
         }
 
         #endregion

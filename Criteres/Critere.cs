@@ -1,22 +1,33 @@
-﻿using Facturio.GabaritsCriteres;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using Facturio.GabaritsCriteres;
+using Facturio.Base;
 
 namespace Facturio.Criteres
 {
     public class Critere
     {
+        #region Propriétés
+
         public virtual int Id { get; set; }
         public virtual string Titre { get; set; }
         public virtual ISet<GabaritCritere> Gabarits { get; set; }
+
+        #endregion
+
+        #region Constructeurs
 
         public Critere() {}
 
         public Critere(string titre)
         {
             Titre = titre;
-            Gabarits = new HashSet<GabaritCritere>();
+            Gabarits = new ObservableHashSet<GabaritCritere>();
+            // Gabarits = new HashSet<GabaritCritere>();
         }
+
+        #endregion
+
+        #region Méthodes
 
         public override bool Equals(object obj)
         {
@@ -29,5 +40,7 @@ namespace Facturio.Criteres
         {
             return base.GetHashCode();
         }
+
+        #endregion
     }
 }

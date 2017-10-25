@@ -102,6 +102,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Base\ObservableHashSet.cs" />
     <Compile Include="Criteres\Critere.cs" />
     <Compile Include="Criteres\CritereMap.cs" />
     <Compile Include="Enums\Onglets.cs" />

@@ -1,6 +1,6 @@
-﻿using Facturio.Gabarits;
+﻿using FluentNHibernate.Mapping;
+using Facturio.Gabarits;
 using Facturio.GabaritsCriteres;
-using FluentNHibernate.Mapping;
 
 namespace Facturio.Criteres
 {
@@ -42,6 +42,18 @@ namespace Facturio.Criteres
                         .Access.Property()
                         .Generated.Never()
                         .CustomSqlType("INTEGER");
+                    c.Map(x => x.Largeur)
+                        .Column("largeur")
+                        .CustomType<int>()
+                        .Access.Property()
+                        .Generated.Never()
+                        .CustomSqlType("INTEGER");
+                    c.Map(x => x.EstUtilise)
+                        .Column("estUtilise")
+                        .CustomType<bool>()
+                        .Access.Property()
+                        .Generated.Never()
+                        .CustomSqlType("BOOLEAN");
                     c.References<Gabarit>(r => r.Gabarit, "idGabarit");
                 })
                 .Table("GabaritsCriteres")

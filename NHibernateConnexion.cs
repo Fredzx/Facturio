@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentNHibernate.Cfg;
+﻿using FluentNHibernate.Cfg;
 using NHibernate;
 using NHibernate.Cfg;
-
 
 namespace Facturio
 {
@@ -17,7 +11,6 @@ namespace Facturio
 
         static NHibernateConnexion()
         {
-
             if (IS_FLUENT)
             {
                 _sessionFactory = Fluently.Configure().Mappings(m => m.FluentMappings.AddFromAssemblyOf<NHibernateConnexion>()).BuildSessionFactory();
@@ -26,23 +19,13 @@ namespace Facturio
             {
                 _sessionFactory = new Configuration().AddAssembly(typeof(NHibernateConnexion).Assembly).BuildSessionFactory();
             }
-
         }
 
-        private static ISessionFactory SessionFactory
-        {
-            get
-            {
-                return _sessionFactory;
-            }
-        }
+        private static ISessionFactory SessionFactory => _sessionFactory;
 
         public static ISession OpenSession()
         {
             return SessionFactory.OpenSession();
-
         }
-        
     }
 }
-

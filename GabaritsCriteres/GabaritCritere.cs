@@ -1,5 +1,5 @@
-﻿using Facturio.Criteres;
-using Facturio.Gabarits;
+﻿using Facturio.Gabarits;
+using Facturio.Criteres;
 
 namespace Facturio.GabaritsCriteres
 {
@@ -29,7 +29,8 @@ namespace Facturio.GabaritsCriteres
         {
             GabaritCritere gabaritCritere = obj as GabaritCritere;
 
-            return Id == gabaritCritere?.Id;
+            return Gabarit?.Id == gabaritCritere?.Gabarit?.Id && Critere?.Id == gabaritCritere?.Critere?.Id;
+            // return Id == gabaritCritere?.Id;
         }
 
         public override int GetHashCode()
