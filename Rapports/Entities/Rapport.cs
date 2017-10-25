@@ -4,7 +4,7 @@ using Facturio.Factures;
 using System.Collections.ObjectModel;
 using Facturio.RapportsFactures;
 
-namespace Facturio.Rapports
+namespace Facturio.Rapports.Entities
 {
     /// <summary>
     /// Rapport permet de compiler des factures afin d'exercer des calculs

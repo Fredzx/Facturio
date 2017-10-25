@@ -4,8 +4,9 @@ using System;
 using Facturio.Factures;
 using System.Collections;
 using System.ComponentModel;
+using Facturio.Rapports.Entities;
 
-namespace Facturio.Rapports
+namespace Facturio.Rapports.Hibernate
 {
     public class RapportMap : ClassMap<Rapport>
     {
@@ -47,4 +48,35 @@ namespace Facturio.Rapports
 
         }
     }
+
+    public class RapportFacturationClienteMap : SubclassMap<Rapport>
+    {
+        public RapportFacturationClienteMap()
+        {
+            Table("RapportsFacturationCliente");
+            LazyLoad();
+            KeyColumn("idRapportFacturationCliente");
+        }
+    }
+
+    public class RapportSommaireMap : SubclassMap<Rapport>
+    {
+        public RapportSommaireMap()
+        {
+            Table("RapportsSommaires");
+            LazyLoad();
+            KeyColumn("idRapportSommaire");
+        }
+    }
+
+    public class RapportVenteProduitMap : SubclassMap<Rapport>
+    {
+        public RapportVenteProduitMap()
+        {
+            Table("RapportsVentesProduit");
+            LazyLoad();
+            KeyColumn("idRapportVenteProduit");
+        }
+    }
+
 }

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Facturio.Rapports.ListeRapportUserControl"
+﻿<UserControl x:Class="Facturio.Rapports.Vues.ListeRapportUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -30,7 +30,7 @@
             Grid.ColumnSpan="6"
             Grid.RowSpan="4">
 
-            <DataGrid ItemsSource="{Binding Rapports}" Name="dtgAfficherRapport" LoadingRow="dtgAfficherRapport_LoadingRow"
+            <DataGrid ItemsSource="{Binding Rapports}" Name="dtgAfficherRapport"
                                     BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
                                     AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="40 0 40 10">
                 <DataGrid.Columns>

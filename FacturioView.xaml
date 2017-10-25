@@ -9,6 +9,7 @@
         xmlns:ucProduits="clr-namespace:Facturio.Produits"
         xmlns:ucClients="clr-namespace:Facturio.Clients"
         xmlns:ucRapports="clr-namespace:Facturio.Rapports"
+        xmlns:ucRapports1="clr-namespace:Facturio.Rapports.Vues"
         mc:Ignorable="d"
         Title="Facturio Inc." Height="500" MinHeight="500" Width="900" MinWidth="750">
     <!-- DataContext -->
@@ -32,7 +33,7 @@
                     <ucProduits:ProduitUserControl />
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type ucRapports:RapportController}">
-                    <ucRapports:RapportUserControle />
+                    <ucRapports1:RapportUserControle />
                 </DataTemplate>
             </TabControl.Resources>
             

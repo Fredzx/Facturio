@@ -5,8 +5,9 @@ using NHibernate.Linq;
 using System.Collections;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using Facturio.Rapports.Entities;
 
-namespace Facturio.Rapports
+namespace Facturio.Rapports.Hibernate
 {
 
     public static class HibernateRapportService

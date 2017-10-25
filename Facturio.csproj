@@ -149,14 +149,14 @@
     <Compile Include="RapportsFactures\HibernateRapportFactureService.cs" />
     <Compile Include="RapportsFactures\RapportFacture.cs" />
     <Compile Include="RapportsFactures\RapportFactureMap.cs" />
-    <Compile Include="Rapports\HibernateRapportService.cs" />
-    <Compile Include="Rapports\ListeRapportUserControl.xaml.cs">
+    <Compile Include="Rapports\Hibernate\HibernateRapportService.cs" />
+    <Compile Include="Rapports\Vues\ListeRapportUserControl.xaml.cs">
       <DependentUpon>ListeRapportUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Rapports\Rapport.cs" />
+    <Compile Include="Rapports\Entities\Rapport.cs" />
     <Compile Include="Rapports\RapportController.cs" />
-    <Compile Include="Rapports\RapportMap.cs" />
-    <Compile Include="Rapports\RapportUserControle.xaml.cs">
+    <Compile Include="Rapports\Hibernate\RapportMap.cs" />
+    <Compile Include="Rapports\Vues\RapportUserControle.xaml.cs">
       <DependentUpon>RapportUserControle.xaml</DependentUpon>
     </Compile>
     <Page Include="Clients\ClientsUserControl.xaml">
@@ -214,11 +214,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Rapports\ListeRapportUserControl.xaml">
+    <Page Include="Rapports\Vues\ListeRapportUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Rapports\RapportUserControle.xaml">
+    <Page Include="Rapports\Vues\RapportUserControle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

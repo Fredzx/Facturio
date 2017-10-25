@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Facturio.Rapports;
 using Facturio.Factures;
+using Facturio.Rapports.Entities;
 
 namespace Facturio.RapportsFactures
 {

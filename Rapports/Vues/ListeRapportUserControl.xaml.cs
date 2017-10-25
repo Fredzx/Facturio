@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Facturio.Rapports.Hibernate;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Facturio.Rapports
+namespace Facturio.Rapports.Vues
 {
     /// <summary>
     /// Logique d'interaction pour ListeRapport.xaml
@@ -28,9 +29,6 @@ namespace Facturio.Rapports
             DtgRapports.ItemsSource = HibernateRapportService.RetrieveAll();
         }
 
-        private void dtgAfficherRapport_LoadingRow(object sender, DataGridRowEventArgs e)
-        {
-            DtgRapports = dtgAfficherRapport;
-        }
+        
     }
 }
