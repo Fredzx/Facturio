@@ -58,7 +58,7 @@ namespace Facturio.Produits
             HasManyToMany<ProduitFacture>(x => x.LstFacture)
                 .Access.Property()
                 .AsSet()
-                .Cascade.None()
+                .Cascade.AllDeleteOrphan()
                 .LazyLoad()
                 .Inverse()
                 .Generic()

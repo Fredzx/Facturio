@@ -25,7 +25,8 @@ namespace Facturio.Produits
         public RechercherUserControl()
         {
             InitializeComponent();
-            ProduitsController.Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
+            ProduitsController.RafraichirGrille();
+//            ProduitsController.Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
             DtgProduits = dtgAfficheProduits;
         }
 
@@ -57,17 +58,8 @@ namespace Facturio.Produits
                 // Ajuster le titre
                 AjoutModifUserControl.LblFormTitle.Content = "Modifier un produit";
                 ProduitsController.Produit = (Produit)dtgAfficheProduits.SelectedItem;
-                //AjoutModifUserControl.RemplirChampsModif(ProduitsController.Produit);
-                
-                
-                
-                
-                //AjoutModifUserControl.TxtCode.Text = ProduitsController.Produit.Code;
-                //AjoutModifUserControl.RemplirChamps(ProduitsController.Produit);
-               // ProduitsController.ConstruireModifUserControl();
+                ProduitsController.AjoutModifUC.RemplirChampsModif(ProduitsController.Produit);
                 ProduitUserControl.TbcProduitPublic.SelectedIndex = 1;
-                
-                //AjoutModifUserControl.
             }
         }
 
