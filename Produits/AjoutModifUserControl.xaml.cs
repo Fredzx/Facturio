@@ -44,18 +44,6 @@ namespace Facturio.Produits
             GrdTitre = grdTitre;
         }
 
-        public AjoutModifUserControl(Produit p)
-        {
-            InitializeComponent();
-            LblFormTitle = lblFormTitle;
-            txtNom.Text = p.Nom;
-            txtCode.Text = p.Code;
-            txtDescription.Text = p.Description;
-            txtPrix.Text = p.Prix.ToString();
-            txtQuantite.Text = p.Quantite.ToString();
-            EstModif = true;
-        }
-
         public void RemplirChampsModif(Produit p)
         {
             TxtNom.Text = p.Nom;
@@ -77,27 +65,31 @@ namespace Facturio.Produits
 
         private void btnEnregister_Click(object sender, RoutedEventArgs e)
         {
-            //ProduitsController.reinitialiserOnglet();
-            //ProduitsController.Produit = new Produit(txtNom.Text, txtCode.Text, txtDescription.Text, Convert.ToDouble(txtPrix.Text), Convert.ToDouble(txtQuantite.Text));
+            bool EstSucces = false;
             if (EstModif)
             {
-                updateChampsProduit();
-                ProduitsController.UpdateProduit();
-                //if(Valide)
-                ProduitsController.SuccesModif();
+                if (ProduitsController.ValiderModif())
+                {
+                    updateChampsProduit();
+                    ProduitsController.UpdateProduit();
+                    ProduitsController.SuccesModif();
+                    EstSucces = true;
+                }
             }
             else
             {
-                // TODO: VALIDER SI TOUS LES CHAMPS SONT REMPLIS!!!
                 if (ProduitsController.ValiderAjout())
                 {
-                    ProduitsController.Produit = new Produit(txtNom.Text, txtCode.Text, txtDescription.Text, Convert.ToDouble(txtPrix.Text), Convert.ToDouble(txtQuantite.Text));
+                    ProduitsController.Produit = new Produit(txtNom.Text, "", txtDescription.Text, Convert.ToDouble(txtPrix.Text), Convert.ToDouble(txtQuantite.Text));
+                    ProduitsController.Produit.Code = ProduitsController.GenererCodeProduit();
                     ProduitsController.AjoutProduit();
                     ProduitsController.SuccesAjout();
                     viderChamps();
+                    EstSucces = true;
                 }
             }
-            ProduitsController.Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
+            if (EstSucces)
+                ProduitsController.RafraichirGrille();
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)
@@ -105,8 +97,8 @@ namespace Facturio.Produits
             ProduitsController.reinitialiserOnglet();
             // Lorsqu'il clique sur Retour on veut : 
             // Que le usercontrol Produit change d'onglet > direction : onglet rechercher.
-            ProduitUserControl.TbcProduitPublic.SelectedIndex = 0;
             ProduitsController.RafraichirGrille();
+            ProduitUserControl.TbcProduitPublic.SelectedIndex = 0;
         }
 
         public static void viderChamps()

@@ -17,13 +17,8 @@ namespace Facturio.Produits
     public class ProduitsController : BaseViewModel, IOngletViewModel
     {
         public static AjoutModifUserControl AjoutModifUC { get; set; } = new AjoutModifUserControl();
-        public static RechercherUserControl RechercherUC { get; set; } = new RechercherUserControl();
         public static ObservableCollection<Produit> Produits { get; set; }
         public static Produit Produit { get; set; }
-        /*
-        public static ObservableCollection<Produit> ocProduits { get; set; } = new ObservableCollection<Produit>();
-        public static List<Produit> Produits { get; set; } = new List<Produit>();
-        */
 
         public string Titre { get; set; }
 
@@ -34,52 +29,19 @@ namespace Facturio.Produits
             Titre = "Produits";
         }
 
-        public static void ChargerListeProduits()
-        {
-            //Produits = HibernateProduitService.RetrieveAll();
-
-            //foreach (Produit produit in Produits)
-            //    ocProduits.Add(produit);
-        }
-
         public static void UpdateProduit()
         {
-
-            Produit ProduitModifie = new Produit("updateNom", "updateCode", "updateDescription", 10, 11);
-            // TODO: Si le produit est null, retourner à la page d'avant
-            // Et afficher un message
-            if (Produit == null)
-                return;
-            // TODO: UPDATE en BD
-            // TEST
-            //DeleteProduit(Produit);
-            //AjoutProduit();
             HibernateProduitService.Update(Produit);
-            //Produits.Remove(p);
-            //Produits.Add(ProduitModifie);
         }
 
         public static void DeleteProduit(Produit produitADeleter)
         {
-            // TODO: Si le produit est null, retourner à la page d'avant
-            // Et afficher un message
-            if (produitADeleter == null)
-                return;
-
-            // TODO: DELETE en BD
-
-            // TEST
             Produits.Remove(produitADeleter);
             HibernateProduitService.Delete(produitADeleter);
         }
 
         public static void AjoutProduit()
         {
-            // TODO: Si le produit est null, retourner à la page d'avant
-            // Et afficher un message
-            if (Produit == null)
-                return;
-
             HibernateProduitService.Create(Produit);
         }
 
@@ -95,7 +57,7 @@ namespace Facturio.Produits
             return false;
         }
 
-        public static void ErreurAjout(int e)
+        public static void GestionErreurs(int e)
         {
             switch (e)
             {
@@ -117,39 +79,8 @@ namespace Facturio.Produits
                 case 3:
                     AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
                     AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
-                    AjoutModifUserControl.LblInfo.Content = "ERREUR: Vous devez entrer une quantité";
-                    break;
-                case 4:
-                    AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
-                    AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
-                    AjoutModifUserControl.LblInfo.Content = "ERREUR: le produit existe déjà";
-                    break;
-            }
-        }
-
-        public static void ErreurModif(int e)
-        {
-            switch (e)
-            {
-                case 0:
-                    AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
-                    AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
-                    AjoutModifUserControl.LblInfo.Content = "ERREUR: Vous devez entrer un nom";
-                    break;
-                case 1:
-                    AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
-                    AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
-                    AjoutModifUserControl.LblInfo.Content = "ERREUR: Vous devez entrer une description";
-                    break;
-                case 2:
-                    AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
-                    AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
-                    AjoutModifUserControl.LblInfo.Content = "ERREUR: Vous devez entrer un prix";
-                    break;
-                case 3:
-                    AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
-                    AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
-                    AjoutModifUserControl.LblInfo.Content = "ERREUR: Le prix doit être un nombre";
+                    AjoutModifUserControl.LblInfo.FontSize = 15;
+                    AjoutModifUserControl.LblInfo.Content = "ERREUR: Le prix doit correspondre au format XX,XX";
                     break;
                 case 4:
                     AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
@@ -164,7 +95,7 @@ namespace Facturio.Produits
                 case 6:
                     AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
                     AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
-                    AjoutModifUserControl.LblInfo.Content = "ERREUR: le produit n'a pas pu être modifié";
+                    AjoutModifUserControl.LblInfo.Content = "ERREUR: le produit n'a pas pu être ajouté";
                     break;
             }
         }
@@ -173,47 +104,47 @@ namespace Facturio.Produits
         {
             if (AjoutModifUserControl.TxtNom.Text == "")
             {
-                ErreurAjout(0);
+                GestionErreurs(0);
                 return false;
             }
             else
             {
                 if (AjoutModifUserControl.TxtDescription.Text == "")
                 {
-                    ErreurAjout(1);
+                    GestionErreurs(1);
                     return false;
                 }
                 else
                 {
                     if (AjoutModifUserControl.TxtPrix.Text == "")
                     {
-                        ErreurAjout(2);
+                        GestionErreurs(2);
                         return false;
                     }
-                    var regex = new Regex(@"^[0-9]*(?:\.[0-9]*)?$");
+                    var regex = new Regex(@"^[0-9]*([\,]?\d{1,2})");
                     if (!regex.IsMatch(AjoutModifUserControl.TxtPrix.Text))
                     {
-                        ErreurAjout(3);
+                        GestionErreurs(3);
                         return false;
                     }
                     else
                     {
                         if (AjoutModifUserControl.TxtQuantite.Text == "")
                         {
-                            ErreurAjout(4);
+                            GestionErreurs(4);
                             return false;
                         }
                         regex = new Regex("^[0-9]*$");
                         if (!regex.IsMatch(AjoutModifUserControl.TxtQuantite.Text))
                         {
-                            ErreurAjout(5);
+                            GestionErreurs(5);
                             return false;
                         }
                         else
                         {
-                            if (Existe(GenererCodeProduit()))
+                            if (Existe(GenererCodeProduit(AjoutModifUserControl.TxtNom.Text, AjoutModifUserControl.TxtDescription.Text)))
                             {
-                                ErreurAjout(6);
+                                GestionErreurs(6);
                                 return false;
                             }
                         }
@@ -223,45 +154,74 @@ namespace Facturio.Produits
             return true;
         }
 
-        private static string GenererCodeProduit()
+        public static string GenererCodeProduit(string nom, string description)
         {
-            return "";
+            string code = "";
+
+            for (int i = 0; i < nom.Length || i < description.Length || i < 3; i++)
+            {
+                code += nom[i] + description[i];
+            }
+            return code;
         }
 
-        public static int ValiderModif()
+        public static string GenererCodeProduit()
         {
-            int e = 0;
+            string nom = Produit.Nom;
+            string description = Produit.Description;
+            string code = "";
+
+            for (int i = 0; i < nom.Length || i < description.Length || i < 3; i++)
+            {
+                code += nom[i] + description[i];
+            }
+            return code;
+        }
+
+        public static bool ValiderModif()
+        {
             if (AjoutModifUserControl.TxtNom.Text == "")
             {
-                ErreurModif(0);
+                GestionErreurs(0);
+                return false;
             }
             else
             {
                 if (AjoutModifUserControl.TxtDescription.Text == "")
                 {
-                    ErreurModif(1);
+                    GestionErreurs(1);
+                    return false;
                 }
                 else
                 {
                     if (AjoutModifUserControl.TxtPrix.Text == "")
                     {
-                        ErreurModif(2);
+                        GestionErreurs(2);
+                        return false;
+                    }
+                    var regex = new Regex(@"^[0-9]*(?:[\,][0-9]*)?$");
+                    if (!regex.IsMatch(AjoutModifUserControl.TxtPrix.Text))
+                    {
+                        GestionErreurs(3);
+                        return false;
                     }
                     else
                     {
                         if (AjoutModifUserControl.TxtQuantite.Text == "")
                         {
-                            ErreurModif(3);
+                            GestionErreurs(4);
+                            return false;
                         }
-                        else
+                        regex = new Regex("^[0-9]*$");
+                        if (!regex.IsMatch(AjoutModifUserControl.TxtQuantite.Text))
                         {
-                            ErreurModif(4);
+                            GestionErreurs(5);
+                            return false;
                         }
                     }
                 }
-
             }
-            return e;
+            return true;
         }
 
         public static void SuccesAjout()
@@ -283,27 +243,11 @@ namespace Facturio.Produits
             Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveFilter(filter));
         }
 
-        public static void ConstruireModifUserControl()
-        {
-            //AjoutModifUserControl m = new AjoutModifUserControl(Produit);
-            //AjoutModifUserControl.
-        }
-
-        //public static void RemplirChampsModif(Produit p)
-        //{
-        //    AjoutModifUserControl.TxtNom.Text = p.Nom;
-        //    AjoutModifUserControl.TxtCode.Text = p.Code;
-        //    AjoutModifUserControl.TxtDescription.Text = p.Description;
-        //    AjoutModifUserControl.TxtPrix.Text = p.Prix.ToString();
-        //    AjoutModifUserControl.TxtQuantite.Text = p.Quantite.ToString();
-        //    AjoutModifUserControl.EstModif = true;
-        //}
-
         public static void RafraichirGrille()
         {
+            Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
             RechercherUserControl.DtgProduits.ItemsSource = null;
-            RechercherUserControl.DtgProduits.ItemsSource = ProduitsController.Produits;
-            Produits.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(DataGrid_CollectionChanged);
+            RechercherUserControl.DtgProduits.ItemsSource = Produits;
         }
 
         private static void DataGrid_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -322,20 +266,6 @@ namespace Facturio.Produits
             AjoutModifUserControl.EstModif = false;
             AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 1);
             AjoutModifUserControl.LblInfo.Content = "";
-        }
-
-        public static void ChangementNotificateur(ObservableCollection<Produit> lstProduits)
-        {
-            //https://stackoverflow.com/questions/8691202/comparing-two-observablecollections-to-see-if-they-are-different
-
-            
-
-
-        }
-
-        public static void ChangementNotificateur(Produit produit)
-        {
-
         }
     }
 }
