@@ -150,6 +150,9 @@
     <Compile Include="RapportsFactures\RapportFacture.cs" />
     <Compile Include="RapportsFactures\RapportFactureMap.cs" />
     <Compile Include="Rapports\HibernateRapportService.cs" />
+    <Compile Include="Rapports\ListeRapportUserControl.xaml.cs">
+      <DependentUpon>ListeRapportUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Rapports\Rapport.cs" />
     <Compile Include="Rapports\RapportController.cs" />
     <Compile Include="Rapports\RapportMap.cs" />
@@ -208,6 +211,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Produits\RechercherUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Rapports\ListeRapportUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

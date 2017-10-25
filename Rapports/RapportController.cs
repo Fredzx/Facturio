@@ -11,7 +11,7 @@ namespace Facturio.Rapports
     class RapportController : BaseViewModel, IOngletViewModel
     {
         public static ISet<Rapport> LstRapport { get; set; }
-        //public static IList<Factures.Facture> LstFacture { get; set; } 
+        
 
         public string Titre { get; set; }
 
@@ -19,7 +19,6 @@ namespace Facturio.Rapports
         {
             Titre = "Rapports";
             LstRapport = new HashSet<Rapport>(HibernateRapportService.RetrieveAll());
-            //LstFacture = new ObservableCollection<Factures.Facture>(Facturio.Factures.HibernateFactureService.RetrieveAll());
         }
     }
 }

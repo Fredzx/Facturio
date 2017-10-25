@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,17 +16,21 @@ using System.Windows.Shapes;
 namespace Facturio.Rapports
 {
     /// <summary>
-    /// Logique d'interaction pour RapportUserControle.xaml
+    /// Logique d'interaction pour ListeRapport.xaml
     /// </summary>
-    public partial class RapportUserControle : UserControl
+    public partial class ListeRapportUserControl : UserControl
     {
-        public ISet<Rapport> LstRapport { get; set; }
-
-        public RapportUserControle()
+        public static DataGrid DtgRapports { get; set; }
+        public ListeRapportUserControl()
         {
             InitializeComponent();
-            LstRapport = new HashSet<Rapport>(HibernateRapportService.RetrieveAll());
+            DtgRapports = dtgAfficherRapport;
+            DtgRapports.ItemsSource = HibernateRapportService.RetrieveAll();
+        }
 
+        private void dtgAfficherRapport_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            DtgRapports = dtgAfficherRapport;
         }
     }
 }
