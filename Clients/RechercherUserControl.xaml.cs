@@ -26,7 +26,6 @@ namespace Facturio.Clients
         {
             InitializeComponent();
             
-            
 
         }
 
@@ -54,13 +53,14 @@ namespace Facturio.Clients
             ClientsUserControl.TbcClientPublic.SelectedIndex = 1;
 
             // Ajuster le titre
-            AjoutModifUserControl.LblFormTitle.Content = "Modifier un client";
+            AjoutModifUserControl.LblFormTitle.Content = "Modifier un client"; 
+            
 
+            // Setter le client a modifier
+            ClientsController.LeClient = (Client)dtgAfficheClients.SelectedItem;
 
             // Passer le client au controleur
-            ClientsController.ModifierClient((Client)dtgAfficheClients.SelectedItem);
-
-
+            ClientsController.AfficherClient();            
         }
 
         private void btnSupprimer_Click(object sender, RoutedEventArgs e)

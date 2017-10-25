@@ -41,7 +41,7 @@
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Prénom" Width="4*" Binding="{Binding Prenom}" />
                                     <DataGridTextColumn Header="Nom" Width="4*" Binding="{Binding Nom}"  />
-                                    <DataGridTextColumn Header="Sexe" Width="1.5*" Binding="{Binding Sexe.Nom}"/>
+                                
                                     <DataGridTextColumn Header="Téléphone" Width="3*" Binding="{Binding Telephone}" />
                                     
                                     <DataGridTextColumn Header="Province" Width="3*" Binding="{Binding Province.Nom}"/>
