@@ -150,7 +150,18 @@
     <Compile Include="RapportsFactures\HibernateRapportFactureService.cs" />
     <Compile Include="RapportsFactures\RapportFacture.cs" />
     <Compile Include="RapportsFactures\RapportFactureMap.cs" />
+    <Compile Include="Rapports\Entities\RapportFacturationCliente.cs" />
+    <Compile Include="Rapports\Entities\RapportSommaire.cs" />
+    <Compile Include="Rapports\Entities\RapportVenteProduit.cs" />
+    <Compile Include="Rapports\Hibernate\HibernateRapportFacturationCliente.cs" />
     <Compile Include="Rapports\Hibernate\HibernateRapportService.cs" />
+    <Compile Include="Rapports\Hibernate\HibernateRapportSommaire.cs" />
+    <Compile Include="Rapports\Hibernate\RapportFacturationClienteMap.cs" />
+    <Compile Include="Rapports\Hibernate\RapportSommaireMap.cs" />
+    <Compile Include="Rapports\Hibernate\RapportVenteProduitMap.cs" />
+    <Compile Include="Rapports\Vues\FacturationCliente.xaml.cs">
+      <DependentUpon>FacturationCliente.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Rapports\Vues\ListeRapportUserControl.xaml.cs">
       <DependentUpon>ListeRapportUserControl.xaml</DependentUpon>
     </Compile>
@@ -159,6 +170,9 @@
     <Compile Include="Rapports\Hibernate\RapportMap.cs" />
     <Compile Include="Rapports\Vues\RapportUserControle.xaml.cs">
       <DependentUpon>RapportUserControle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Rapports\Vues\Sommaire.xaml.cs">
+      <DependentUpon>Sommaire.xaml</DependentUpon>
     </Compile>
     <Page Include="Clients\ClientsUserControl.xaml">
       <SubType>Designer</SubType>
@@ -215,11 +229,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Rapports\Vues\FacturationCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Rapports\Vues\ListeRapportUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Rapports\Vues\RapportUserControle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Rapports\Vues\Sommaire.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
