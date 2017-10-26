@@ -156,9 +156,10 @@
     <Compile Include="Rapports\Hibernate\HibernateRapportFacturationCliente.cs" />
     <Compile Include="Rapports\Hibernate\HibernateRapportService.cs" />
     <Compile Include="Rapports\Hibernate\HibernateRapportSommaire.cs" />
-    <Compile Include="Rapports\Hibernate\RapportFacturationClienteMap.cs" />
-    <Compile Include="Rapports\Hibernate\RapportSommaireMap.cs" />
-    <Compile Include="Rapports\Hibernate\RapportVenteProduitMap.cs" />
+    <Compile Include="Rapports\Hibernate\HibernateRapportVenteProduit.cs" />
+    <Compile Include="Rapports\Vues\CalendarUI.xaml.cs">
+      <DependentUpon>CalendarUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Rapports\Vues\FacturationCliente.xaml.cs">
       <DependentUpon>FacturationCliente.xaml</DependentUpon>
     </Compile>
@@ -226,6 +227,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Produits\RechercherUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Rapports\Vues\CalendarUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

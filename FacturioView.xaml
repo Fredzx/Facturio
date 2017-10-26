@@ -11,7 +11,7 @@
         xmlns:ucRapports="clr-namespace:Facturio.Rapports"
         xmlns:ucRapports1="clr-namespace:Facturio.Rapports.Vues"
         mc:Ignorable="d"
-        Title="Facturio Inc." Height="500" MinHeight="500" Width="900" MinWidth="750">
+        Title="Facturio Inc." Height="750" MinHeight="500" Width="900" MinWidth="750">
     <!-- DataContext -->
     <Window.DataContext>
         <local:FacturioViewModel />

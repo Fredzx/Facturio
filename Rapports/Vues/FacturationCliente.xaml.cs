@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Facturio.Clients;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,14 @@ namespace Facturio.Rapports.Vues
     /// </summary>
     public partial class FacturationCliente : UserControl
     {
+        public IList<Client> LstClient { get; set; }
+
         public FacturationCliente()
         {
             InitializeComponent();
+
+            LstClient = ClientsController.LstObClients;
+            dtgAfficherClient.ItemsSource = LstClient;
         }
     }
 }

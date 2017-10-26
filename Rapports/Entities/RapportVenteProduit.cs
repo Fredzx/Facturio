@@ -6,7 +6,33 @@ using System.Threading.Tasks;
 
 namespace Facturio.Rapports.Entities
 {
-    class RapportVenteProduit
+    public class RapportVenteProduit : Rapport
     {
+        public virtual int? IdRapportVenteProduit { get { return base.IdRapport; } set { base.IdRapport = value; } }
+
+        public RapportVenteProduit() { }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            RapportVenteProduit r = obj as RapportVenteProduit;
+
+            if (r == null)
+            {
+                return false;
+            }
+
+            return this.IdRapportVenteProduit == r.IdRapportVenteProduit;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
     }
 }

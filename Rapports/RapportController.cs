@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace Facturio.Rapports
 {
-    class RapportController : BaseViewModel, IOngletViewModel
+    public class RapportController : BaseViewModel, IOngletViewModel
     {
-        public static ISet<Rapport> LstRapport { get; set; }
+        //public static ISet<Rapport> LstRapport { get; set; }
         public static ListeRapportUserControl RapportUserControl { get; set; } = new ListeRapportUserControl(); 
 
         public string Titre { get; set; }
@@ -21,7 +21,7 @@ namespace Facturio.Rapports
         public RapportController()
         {
             Titre = "Rapports";
-            LstRapport = new HashSet<Rapport>(HibernateRapportService.RetrieveAll());
+            //LstRapport = new HashSet<Rapport>(HibernateRapportService.RetrieveAll());
 
             
         }

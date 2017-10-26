@@ -9,49 +9,49 @@ using System.Threading.Tasks;
 
 namespace Facturio.Rapports.Hibernate
 {
-    class HibernateRapportSommaire
+    class HibernateRapportVenteProduit
     {
         private static ISession session = NHibernateConnexion.OpenSession();
 
-        public static List<RapportSommaire> RetrieveAll()
+        public static List<RapportVenteProduit> RetrieveAll()
         {
-            return session.Query<RapportSommaire>().ToList();
+            return session.Query<RapportVenteProduit>().ToList();
         }
 
-        public static List<RapportSommaire> Retrieve(int idRapportSommaire)
+        public static List<RapportVenteProduit> Retrieve(int idRapportVenteProduit)
         {
-            var rapport = session.Query<RapportSommaire>().AsQueryable();
+            var rapportVP = session.Query<RapportVenteProduit>().AsQueryable();
 
-            var result = from r in rapport
-                         where r.IdRapportSommaire == idRapportSommaire
+            var result = from r in rapportVP
+                         where r.IdRapportVenteProduit == idRapportVenteProduit
                          select r;
 
             return result.ToList();
         }
 
-        public static void Create(RapportSommaire rapportSommaire)
+        public static void Create(RapportVenteProduit rapportVenteProduit)
         {
             using (var transaction = session.BeginTransaction())
             {
-                session.Save(rapportSommaire);
+                session.Save(rapportVenteProduit);
                 transaction.Commit();
             }
         }
 
-        public static void Update(RapportSommaire rapportSommaire)
+        public static void Update(RapportVenteProduit rapportVenteProduit)
         {
             using (var transaction = session.BeginTransaction())
             {
-                session.Update(rapportSommaire);
+                session.Update(rapportVenteProduit);
                 transaction.Commit();
             }
         }
 
-        public static void Delete(RapportSommaire rapportSommaire)
+        public static void Delete(RapportVenteProduit rapportVenteProduit)
         {
             using (var transaction = session.BeginTransaction())
             {
-                session.Delete(rapportSommaire);
+                session.Delete(rapportVenteProduit);
                 transaction.Commit();
             }
         }

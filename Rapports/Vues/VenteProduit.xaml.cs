@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +16,11 @@ using System.Windows.Shapes;
 namespace Facturio.Rapports.Vues
 {
     /// <summary>
-    /// Logique d'interaction pour RapportUserControle.xaml
+    /// Interaction logic for VenteProduit.xaml
     /// </summary>
-    public partial class RapportUserControle : UserControl
+    public partial class VenteProduit : UserControl
     {
-        public RapportUserControle()
+        public VenteProduit()
         {
             InitializeComponent();
         }

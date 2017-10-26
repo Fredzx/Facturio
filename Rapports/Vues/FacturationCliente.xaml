@@ -5,8 +5,70 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Rapports.Vues"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="600" d:DesignWidth="500">
     <Grid>
+        <Grid VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="4"
+                  Grid.RowSpan="9">
+                
+                <local:CalendarUI/>
+
+            </Grid>
+
+            <!--
+            <StackPanel>
+                    <Label Content="Date de Début" HorizontalAlignment="Center" Background="#E8E8E8" MaxWidth="180px"></Label>
+                    <Calendar Margin="10">
+
+                    </Calendar>
+                    <Label Content="Date de Fin" HorizontalAlignment="Center" Background="#E8E8E8" MaxWidth="180px"></Label>
+                    <Calendar Margin="10"></Calendar>
+
+                    <Button Name="btnObtenirRapport" Content="Obtenir Rapport" Margin="10" MaxWidth="180px"></Button>
+            </StackPanel>
+            -->
             
+            <Grid Grid.Row="1"
+            Grid.Column="3"
+            Grid.ColumnSpan="8"
+            Grid.RowSpan="9">
+                <DataGrid ItemsSource="{Binding Client}" Name="dtgAfficherClient"
+                                    BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
+                                    AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="40 0 40 10">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Nom" Width="6*" Binding="{Binding Nom}"/>
+                        <DataGridTextColumn Header="Prénom" Width="6*" Binding="{Binding Prenom}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>
