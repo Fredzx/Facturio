@@ -10,24 +10,28 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Facturio.Rapports.Vues
 {
     /// <summary>
-    /// Interaction logic for Sommaire.xaml
+    /// Logique d'interaction pour DetailFacturationCliente.xaml
     /// </summary>
-    public partial class Sommaire : UserControl
+    public partial class DetailFacturationCliente : Window
     {
-        public Sommaire()
+        public DateTime DateDebut { get; set; }
+        public DateTime DateFin { get; set; }
+        public int IdClient { get; set; }
+        public DetailFacturationCliente(DateTime dateDebut, DateTime dateFin, int id)
         {
             InitializeComponent();
+
+            DateDebut = dateDebut;
+            DateFin = dateFin;
+            IdClient = id;
         }
 
-        private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
-        {
-            e.Row.Header = ((e.Row.GetIndex()) + 1).ToString();
-        }
+
+
     }
 }

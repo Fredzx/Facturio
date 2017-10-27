@@ -18,6 +18,7 @@ namespace Facturio.Rapports.Hibernate
             return session.Query<RapportFacturationCliente>().ToList();
         }
 
+    
         public static List<RapportFacturationCliente> Retrieve(int idRapportFactClient)
         {
             var rapport = session.Query<RapportFacturationCliente>().AsQueryable();

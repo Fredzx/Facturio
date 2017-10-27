@@ -89,7 +89,7 @@ namespace Facturio.Produits
                 }
             }
             if (EstSucces)
-                ProduitsController.RafraichirGrille();
+                ProduitsController.RafraichirGrille(false);
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)
@@ -97,7 +97,7 @@ namespace Facturio.Produits
             ProduitsController.reinitialiserOnglet();
             // Lorsqu'il clique sur Retour on veut : 
             // Que le usercontrol Produit change d'onglet > direction : onglet rechercher.
-            ProduitsController.RafraichirGrille();
+            ProduitsController.RafraichirGrille(false);
             ProduitUserControl.TbcProduitPublic.SelectedIndex = 0;
         }
 

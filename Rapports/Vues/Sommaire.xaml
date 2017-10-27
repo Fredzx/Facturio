@@ -50,7 +50,7 @@
                 
                 <Rectangle Margin="10,10,20,20" Fill="White" RadiusX="8" RadiusY="8"/>
                 <Border Margin="4" BorderBrush="Black"  BorderThickness="1,1,1,1"/>
-                <DataGrid>
+                <DataGrid LoadingRow="DataGrid_LoadingRow">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Produit" Width="6*" />
                         <DataGridTextColumn Header="Nb fois vendu" Width="6*" />
