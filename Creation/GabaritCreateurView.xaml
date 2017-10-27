@@ -34,7 +34,7 @@
                 </StackPanel.Resources>
 
                 <ItemsControl
-                    ItemsSource="{Binding Gabarit.Criteres}"
+                    ItemsSource="{Binding Gabarit.GabaritCriteres}"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                     BorderThickness="0">
                     <ItemsControl.ItemsPanel>
@@ -44,7 +44,7 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <CheckBox Content="{Binding Critere.Titre}" />
+                            <CheckBox Content="{Binding Critere.Titre}" IsChecked="{Binding EstUtilise}" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>

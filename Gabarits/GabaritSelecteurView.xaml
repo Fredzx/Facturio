@@ -122,7 +122,14 @@
                     </Binding>
                 </Button.Command>
             </Button>
-            <Button Content="Ouvrir" />
+            <Button Content="Ouvrir">
+                <Button.Command>
+                    <Binding Path="OuvrirFacture" />
+                </Button.Command>
+                <Button.CommandParameter>
+                    <Binding Path="GabaritSelectionne" />
+                </Button.CommandParameter>
+            </Button>
             <Button Content="Modifier">
                 <Button.Command>
                     <Binding RelativeSource="{RelativeSource AncestorType={x:Type TabControl}}">

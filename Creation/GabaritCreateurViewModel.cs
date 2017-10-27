@@ -18,7 +18,9 @@ namespace Facturio.Creation
 
                 // TODO: M'arranger pour pogner un "default" gabarit... avec les critères de base.
                 if (_gabarit == null)
+                {
                     _gabarit = new Gabarit();
+                }
 
                 _gabarit = value;
                 RaisePropertyChanged(nameof(Gabarit));

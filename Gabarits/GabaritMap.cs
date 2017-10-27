@@ -36,7 +36,7 @@ namespace Facturio.Gabarits
                 .Not.Nullable()
                 .Generated.Never();
 
-            HasManyToMany<GabaritCritere>(x => x.Criteres)
+            HasManyToMany<GabaritCritere>(x => x.GabaritCriteres)
                 .Access.Property()
                 .AsSet()
                 .Cascade.None()
