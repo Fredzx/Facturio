@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:Facturio.Rapports.Vues"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="300">
-    <Grid>
-        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Center">
+    <Grid >
+        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -33,22 +33,24 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            
             <Grid Grid.Row="0"
                   Grid.Column="0"
-                
-                  Grid.ColumnSpan="9"
-                  Grid.RowSpan="9">
+                  Grid.ColumnSpan="8"
+                  Grid.RowSpan="10">
                 <StackPanel>
-                    <Label Content="Date de Début" HorizontalAlignment="Center" Background="#E8E8E8" MaxWidth="180px"></Label>
+                    <Label Content="Date de Début" Name="cldDateDebut" HorizontalAlignment="Center" Background="#E8E8E8" MaxWidth="180px"></Label>
                     <Calendar Margin="10">
 
                     </Calendar>
-                    <Label Content="Date de Fin" HorizontalAlignment="Center" Background="#E8E8E8" MaxWidth="180px"></Label>
+                    <Label Content="Date de Fin" Name="cldDateFin" HorizontalAlignment="Center" Background="#E8E8E8" MaxWidth="180px"></Label>
                     <Calendar Margin="10"></Calendar>
 
-                    <Button Name="btnObtenirRapport" Content="Obtenir Rapport" Margin="10" MaxWidth="180px"></Button>
+                    <Button Name="btnObtenirRapport" Content="Obtenir Rapport" Margin="5" MaxWidth="180px" Height="25" Click="btnObtenirRapport_Click"></Button>
+                    <Button Name="btnRapportPDF" Content="Convertir en PDF" Margin="5" MaxWidth="180px" Height="25" Click="btnRapportPDF_Click"></Button>
                 </StackPanel>
             </Grid>
+      
         </Grid>
     </Grid>
 </UserControl>

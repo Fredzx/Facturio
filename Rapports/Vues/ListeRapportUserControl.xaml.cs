@@ -22,6 +22,7 @@ namespace Facturio.Rapports.Vues
     public partial class ListeRapportUserControl : UserControl
     {
         public static DataGrid DtgRapports { get; set; }
+
         public ListeRapportUserControl()
         {
             InitializeComponent();
@@ -29,6 +30,9 @@ namespace Facturio.Rapports.Vues
             DtgRapports.ItemsSource = HibernateRapportService.RetrieveAll();
         }
 
-        
+        private void dtgAfficherRapport_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = ((e.Row.GetIndex()) + 1).ToString();
+        }
     }
 }

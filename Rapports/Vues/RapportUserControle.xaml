@@ -13,12 +13,15 @@
                 <Local:ListeRapportUserControl/>
 
             </TabItem>
-            <TabItem Header="Sommaire"></TabItem>
+            <TabItem Header="Sommaire">
+                <Local:Sommaire/>
+            </TabItem>
             <TabItem Header="Facturation Cliente">
                 <Local:FacturationCliente/>
-
             </TabItem>
-            <TabItem Header="Facturation Produit"></TabItem>
+            <TabItem Header="Facturation Produit">
+                <Local:VenteProduit/>
+            </TabItem>
             
         </TabControl>
     </Grid>

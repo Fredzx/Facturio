@@ -24,5 +24,15 @@ namespace Facturio.Rapports.Vues
         {
             InitializeComponent();
         }
+
+        private void btnRapportPDF_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnObtenirRapport_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

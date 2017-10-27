@@ -175,6 +175,9 @@
     <Compile Include="Rapports\Vues\Sommaire.xaml.cs">
       <DependentUpon>Sommaire.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Rapports\Vues\VenteProduit.xaml.cs">
+      <DependentUpon>VenteProduit.xaml</DependentUpon>
+    </Compile>
     <Page Include="Clients\ClientsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -247,6 +250,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Rapports\Vues\Sommaire.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Rapports\Vues\VenteProduit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Rapports.Vues"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="500">
+             d:DesignHeight="650" d:DesignWidth="500">
     <Grid>
         <Grid VerticalAlignment="Stretch">
             <Grid.ColumnDefinitions>
@@ -35,27 +35,31 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="1"
                   Grid.Column="0"                
-                  Grid.ColumnSpan="5"
-                  Grid.RowSpan="9">
-                
+                  Grid.ColumnSpan="4"
+                  Grid.RowSpan="8">
+
                 <!-- Les controles de calendriers -->
                 <local:CalendarUI/>
             </Grid>
 
             <Grid Grid.Row="1"
-                  Grid.Column="4"                
-                  Grid.ColumnSpan="6"
-                  Grid.RowSpan="9"
-                  Margin="10">
+                  Grid.Column="3"                
+                  Grid.ColumnSpan="7"
+                  Grid.RowSpan="8"
+                  Margin="0,20,20,0">
                 
-                
-                
+                <Rectangle Margin="10,10,20,20" Fill="White" RadiusX="8" RadiusY="8"/>
+                <Border Margin="4" BorderBrush="Black"  BorderThickness="1,1,1,1"/>
+                <DataGrid>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Produit" Width="6*" />
+                        <DataGridTextColumn Header="Nb fois vendu" Width="6*" />
+                        <DataGridTextColumn Header="Prix de vente" Width="6*"/>
+                        <DataGridTextColumn Header="Total" Width="6*"/>
+                    </DataGrid.Columns>
+
+                </DataGrid>
             </Grid>
-
-            
         </Grid>
-
-
-
     </Grid>
 </UserControl>

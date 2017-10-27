@@ -38,7 +38,6 @@
                   Grid.Column="0"
                   Grid.ColumnSpan="4"
                   Grid.RowSpan="9">
-                
                 <local:CalendarUI/>
 
             </Grid>
@@ -55,14 +54,19 @@
                     <Button Name="btnObtenirRapport" Content="Obtenir Rapport" Margin="10" MaxWidth="180px"></Button>
             </StackPanel>
             -->
+            <Grid Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3">
+                <Label Content="Vos Clients" Margin="40,30,0,0"/>
+            </Grid>
+                
             
             <Grid Grid.Row="1"
             Grid.Column="3"
-            Grid.ColumnSpan="8"
-            Grid.RowSpan="9">
+            Grid.ColumnSpan="7"
+            Grid.RowSpan="8">
+               
                 <DataGrid ItemsSource="{Binding Client}" Name="dtgAfficherClient"
                                     BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
-                                    AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="40 0 40 10">
+                                    AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="10 10 20 20">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Nom" Width="6*" Binding="{Binding Nom}"/>
                         <DataGridTextColumn Header="Prénom" Width="6*" Binding="{Binding Prenom}"/>

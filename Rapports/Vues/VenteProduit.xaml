@@ -35,12 +35,23 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="1"
                   Grid.Column="0"                
-                  Grid.ColumnSpan="5"
+                  Grid.ColumnSpan="4"
                   Grid.RowSpan="9">
 
                 <!-- Les controles de calendriers -->
                 <local:CalendarUI/>
             </Grid>
+            <Grid Grid.Row="1"
+                  Grid.Column="3"                
+                  Grid.ColumnSpan="7"
+                  Grid.RowSpan="8"
+                  Margin="10">
+
+                <Rectangle Margin="20,0,20,20" Fill="White" RadiusX="8" RadiusY="8"/>
+                <Border Margin="4" BorderBrush="Black"  BorderThickness="1,1,1,1"/>
+
+            </Grid>
+
         </Grid>
     </Grid>
 </UserControl>

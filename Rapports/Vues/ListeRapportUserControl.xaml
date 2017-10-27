@@ -30,7 +30,7 @@
             Grid.ColumnSpan="6"
             Grid.RowSpan="4">
 
-            <DataGrid ItemsSource="{Binding Rapports}" Name="dtgAfficherRapport"
+            <DataGrid ItemsSource="{Binding Rapports}" Name="dtgAfficherRapport" LoadingRow="dtgAfficherRapport_LoadingRow"
                                     BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
                                     AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="40 0 40 10">
                 <DataGrid.Columns>
