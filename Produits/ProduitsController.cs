@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -142,11 +143,11 @@ namespace Facturio.Produits
                         }
                         else
                         {
-                            if (Existe(GenererCodeProduit(AjoutModifUserControl.TxtNom.Text, AjoutModifUserControl.TxtDescription.Text)))
-                            {
-                                GestionErreurs(6);
-                                return false;
-                            }
+                            //if (Existe(GenererCodeProduit(AjoutModifUserControl.TxtNom.Text, AjoutModifUserControl.TxtDescription.Text)))
+                            //{
+                            //    GestionErreurs(6);
+                            //    return false;
+                            //}
                         }
                     }
                 }
@@ -169,13 +170,36 @@ namespace Facturio.Produits
         {
             string nom = Produit.Nom;
             string description = Produit.Description;
-            string code = "";
+            
+            string salt = Produit.Nom + Produit.Description;
 
-            for (int i = 0; i < nom.Length || i < description.Length || i < 3; i++)
-            {
-                code += nom[i] + description[i];
-            }
-            return code;
+            string n = (Produit.Nom[0] + Produit.Nom[1] + Produit.Description[0] + Produit.Description[1] + Produit.Nom.Length.ToString());
+
+            //Guid code = new Guid(seed);
+            ////ShortGuid sguid = code;
+
+            ////for (int i = 0; i < nom.Length || i < description.Length || i < 3; i++)
+            ////{
+            ////    code += nom[i] + description[i];
+            ////}
+            ////string input = "asdfasdf";
+            //using (SHA512 sha512 = SHA512.Create())
+            //{
+            //    byte[] hash = sha512.ComputeHash(Encoding.Default.GetBytes(seed));
+            //    Guid result = new Guid(hash);
+            //}
+            ////string base64Guid = Convert.ToBase64String(code.ToByteArray());
+            //return ;
+            /*
+            SHA512 shaM = new SHA512Managed();
+            byte[] data = new byte[salt.Length];
+            byte[] result;
+
+            data = Encoding.UTF8.GetBytes(salt);
+            result = shaM.ComputeHash(data);
+            return Convert.ToBase64String(result);
+            */
+            return n;
         }
 
         public static bool ValiderModif()
