@@ -243,8 +243,9 @@ namespace Facturio.Produits
             Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveFilter(filter));
         }
 
-        public static void RafraichirGrille()
+        public static void RafraichirGrille(bool estFiltre)
         {
+            if(!estFiltre)
             Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
             RechercherUserControl.DtgProduits.ItemsSource = null;
             RechercherUserControl.DtgProduits.ItemsSource = Produits;
