@@ -18,6 +18,13 @@ namespace Facturio.Clients
                 .Not.Nullable()            // Est pas nullable
                 .GeneratedBy.Identity();   // Est généré par la BD
 
+            Map(x => x.NoClient)
+                .Column("codeClient")
+                .CustomType<string>()
+                .Access.Property()
+                .CustomSqlType("VARCHAR")
+                .Generated.Never();
+
             Map(x => x.Prenom)
                 .Column("prenom")
                 .CustomType<string>()

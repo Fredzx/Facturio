@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Clients"
-             mc:Ignorable="d" Height="382.667" Width="474.724">
+             mc:Ignorable="d" Height="500" Width="800">
     <UserControl.Resources>
         <Style x:Key="styleLabel" TargetType="{x:Type Label}">
             <Setter Property="FontSize" Value="15" />
@@ -32,7 +32,7 @@
 
     <Grid HorizontalAlignment="Center" Background="Gray">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition  Width="225" />
+            <ColumnDefinition Width="600" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
@@ -40,7 +40,7 @@
             <RowDefinition Height="21"  />
             <RowDefinition Height="29"/>
             <RowDefinition />
-            <RowDefinition Height="50" />
+            <RowDefinition Height="80" />
         </Grid.RowDefinitions>
 
         <Grid   Grid.Row="0"
@@ -90,11 +90,11 @@
                 <ComboBoxItem>Manitoba</ComboBoxItem>
                 <ComboBoxItem>Nouveau-Brunswick</ComboBoxItem>
                 <ComboBoxItem>Nouvelle-Écosse</ComboBoxItem>
-                <ComboBoxItem>Nunavut</ComboBoxItem>
                 <ComboBoxItem>Ontario</ComboBoxItem>
                 <ComboBoxItem>Québec</ComboBoxItem>
                 <ComboBoxItem>Saskatchewan</ComboBoxItem>
                 <ComboBoxItem>Terre-Neuve-et-Labrador</ComboBoxItem>
+                <ComboBoxItem>Nunavut</ComboBoxItem>
                 <ComboBoxItem>Territoires du Nord-Ouest</ComboBoxItem>
                 <ComboBoxItem>Yukon</ComboBoxItem>
             </ComboBox>
@@ -122,8 +122,8 @@
                     Grid.ColumnSpan="2"                   
                     >
 
-            <Button Name="btnEnregistrer" Content="Enregistrer" Width="150" Click="btnEnregistrer_Click"  />
-            <Button  Content="Vider les champs" Width="150"  />
+            <Button Name="btnEnregistrer" Content="Enregistrer" Width="150" Click="btnEnregistrer_Click" Style="{StaticResource styleButton}" />
+            <Button  Name="btnViderChamps" Content="Vider les champs" Width="150" Style="{StaticResource styleButton}" Click="btnViderChamps_Click"  />
         </StackPanel>
 
 

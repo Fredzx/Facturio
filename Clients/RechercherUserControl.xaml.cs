@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,11 +22,12 @@ namespace Facturio.Clients
     public partial class RechercherUserControl : UserControl
     {
         public object ClientController { get; private set; }
+        public static DataGrid DtgClients { get; set; } = new DataGrid();
 
         public RechercherUserControl()
         {
             InitializeComponent();
-            
+            DtgClients = dtgAfficheClients;
 
         }
 
@@ -65,8 +67,11 @@ namespace Facturio.Clients
 
         private void btnSupprimer_Click(object sender, RoutedEventArgs e)
         {
-            ClientsController.SupprimerClient((Client)dtgAfficheClients.SelectedItem);
-            dtgAfficheClients.SelectedIndex = -1;
+            if (Confirmation())
+            {
+                ClientsController.SupprimerClient((Client)dtgAfficheClients.SelectedItem);
+                dtgAfficheClients.SelectedIndex = -1;
+            }
       
         }
 
@@ -100,6 +105,20 @@ namespace Facturio.Clients
                 btnModifier.IsEnabled = false;
                 btnSupprimer.IsEnabled = false;
             }
+        }
+
+        private void txtRecherche_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtRecherche.Text.ToString() == "")
+            {
+                ClientsController.LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveAll());
+            }
+            else
+            {
+                ClientsController.LiveFiltering(txtRecherche.Text.ToString());
+            }
+
+            ClientsController.RafraichirGrille();
         }
     }
 }

@@ -29,7 +29,7 @@
                         <Grid Grid.Row="0"
                           Grid.Column="0"
                           Grid.ColumnSpan="6">
-                            <TextBox Name="txtRecherche" Height="20" Width="400" />
+                            <TextBox Name="txtRecherche" Height="20" Width="400" TextChanged="txtRecherche_TextChanged" />
                         </Grid>
                         <Grid Grid.Row="1"
                           Grid.Column="0"
@@ -39,16 +39,18 @@
                                       BorderBrush="Black" Height="200" HorizontalAlignment="Center" VerticalAlignment="Top"
                                       AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectionChanged="dtgAfficheClients_SelectionChanged">
                                 <DataGrid.Columns>
+
+                                    <DataGridTextColumn Header="No. Client" Width="3*" Binding="{Binding NoClient}" />
                                     <DataGridTextColumn Header="Prénom" Width="4*" Binding="{Binding Prenom}" />
                                     <DataGridTextColumn Header="Nom" Width="4*" Binding="{Binding Nom}"  />
-                                
+
                                     <DataGridTextColumn Header="Téléphone" Width="3*" Binding="{Binding Telephone}" />
-                                    
+
                                     <DataGridTextColumn Header="Province" Width="3*" Binding="{Binding Province.Nom}"/>
                                     <DataGridTextColumn Header="Adresse" Width="7*" Binding="{Binding Adresse}"/>
                                     <DataGridTextColumn Header="Code postal" Width="4*" Binding="{Binding CodePostal}" />
                                     <DataGridTextColumn Header="Rang" Width="3*" Binding="{Binding Rang.Nom}" />
-                </DataGrid.Columns>
+                                </DataGrid.Columns>
                             </DataGrid>
                         </Grid>
                         <StackPanel Grid.Row="4"

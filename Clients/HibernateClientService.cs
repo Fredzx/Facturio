@@ -57,6 +57,18 @@ namespace Facturio.Clients
                 transaction.Commit();
             }
         }
-        
+
+        public static List<Client> RetrieveFilter(string filter)
+        {
+            var client = session.Query<Client>().AsQueryable();
+            
+            var result = from c in client
+                         where c.Nom.Contains(filter) || c.NoClient.Contains(filter)
+                         orderby c.NoClient ascending
+                         select c;
+
+            return result.ToList();
+        }
+
     }
 }

@@ -33,8 +33,7 @@ namespace Facturio.Clients
         public static ComboBox CboRang { get; set; } = new ComboBox();
         public static RadioButton RdbHomme { get; set; } = new RadioButton();
         public static RadioButton RdbFemme { get; set; } = new RadioButton();
-
-
+       
 
         public AjoutModifUserControl()
         {
@@ -64,7 +63,7 @@ namespace Facturio.Clients
                 if (ValiderInformationsClient())
                 {
                     // Ajouter le client à la liste et en BD.
-                    ClientsController.AjouterClient(new Client(txtPrenom.Text.ToString(), txtNom.Text.ToString()
+                    ClientsController.AjouterClient(new Client(ClientsController.SetNoClient(), txtPrenom.Text.ToString(), txtNom.Text.ToString()
                                                              , txtDescription.Text.ToString(), new Sexe(SetSex())
                                                              , txtAdresse.Text.ToString(), txtCodePostal.Text.ToString()
                                                              , txtTelephone.Text.ToString(), SetRang(), new Province(SetProvince())));
@@ -77,14 +76,13 @@ namespace Facturio.Clients
             {
                 if (ValiderInformationsClient())
                 {
-                    // Envoyer le   sexe
-                    //            , province
-                    //            , Rang
-
-
                     ClientsController.ModifierClient(new Sexe(SetSex()), new Province(SetProvince()), SetRang());
 
+                    // Afficher le message de succès.
                     MessageBox.Show("Client modifié avec succès");
+
+                    // Changer d'onglet.
+                    ClientsController.AfficherOngletRechercher();                    
                 }
             }
         }
@@ -96,6 +94,7 @@ namespace Facturio.Clients
             TxtNom.Text = ClientsController.LeClient.Nom;
             TxtPrenom.Text = ClientsController.LeClient.Prenom;
             TxtAdresse.Text = ClientsController.LeClient.Adresse;
+            CboProvince.SelectedIndex = 0;
             CboProvince.SelectedIndex = (int)ClientsController.LeClient.Province.IdProvince - 1;
             TxtCodePostal.Text = ClientsController.LeClient.CodePostal;
             TxtDescription.Text = ClientsController.LeClient.Description;
@@ -203,5 +202,25 @@ namespace Facturio.Clients
             MessageBox.Show("Veuillez entrer un nom");
             return false;
         }
+
+       
+
+        private void btnViderChamps_Click(object sender, RoutedEventArgs e)
+        {
+            txtNom.Clear();
+            txtPrenom.Clear();
+            txtAdresse.Clear();
+            cboProvince.SelectedIndex = -1;
+            txtCodePostal.Clear();
+            txtDescription.Clear();
+            txtTelephone.Clear();
+            cboRang.SelectedIndex = 0;
+            rdbFemme.IsChecked = false;
+            rdbHomme.IsChecked = false;
+
+        }
+
+
+       
     }
 }

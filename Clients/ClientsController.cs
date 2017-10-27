@@ -49,6 +49,7 @@ namespace Facturio.Clients
 
         public static void SupprimerClient(Client client)
         {
+            
             if(client != null)
             {
                 HibernateClientService.Delete(client);
@@ -80,29 +81,56 @@ namespace Facturio.Clients
 
 
             // Sexe
-            LeClient.Sexe.Nom = sexe.Nom;
-            LeClient.Sexe.IdSexe = HibernateSexeService.RetrieveByName(LeClient.Sexe.Nom)[0].IdSexe;
+            Sexe s;
+            s = HibernateSexeService.RetrieveByName(sexe.Nom)[0];
+            LeClient.Sexe = s;
 
             // Rang
-            LeClient.Rang.Nom = rang.Nom;
-            LeClient.Rang.IdRang = HibernateRangService.RetrieveByName(LeClient.Rang.Nom)[0].IdRang;
+            Rang r;
+            r = HibernateRangService.RetrieveByName(rang.Nom)[0];
+            LeClient.Rang = r;
 
             // Province
             //LeClient.Province.Nom = province.Nom;
             Province p;
-            p=HibernateProvinceClient.RetrieveByName(province.Nom)[0];
-            LeClient.Province = p;
-
-            //LeClient.Province.IdProvince = HibernateProvinceClient.RetrieveByName(LeClient.Province.Nom)[0].IdProvince;
+            p = HibernateProvinceClient.RetrieveByName(province.Nom)[0];
+            LeClient.Province = p;           
 
             
             // Update en BD.
-
             HibernateClientService.Update(LeClient);
 
             // Update en liste
             LstObClients.Remove(LeClient);
             LstObClients.Add(LeClient);
+
+           
+        }
+
+        public static string SetNoClient()
+        {
+            int no = LstObClients.Count;
+
+            
+
+            return no.ToString();
+        }
+
+        public static void AfficherOngletRechercher()
+        {
+            ClientsUserControl.TbcClientPublic.SelectedIndex = 0;
+        }
+
+        public static void LiveFiltering(string filter)
+        {
+            LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveFilter(filter));
+        }
+
+        public static void RafraichirGrille()
+        {
+            LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveAll());
+            RechercherUserControl.DtgClients.ItemsSource = null;
+            RechercherUserControl.DtgClients.ItemsSource = LstObClients;
         }
     }
 }

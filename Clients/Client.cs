@@ -18,10 +18,11 @@ namespace Facturio.Clients
 
         public Client() {}
 
-        public Client(string prenom, string nom, string description,
+        public Client(string noClient, string prenom, string nom, string description,
                       Sexe sexe, string adresse, string codePostal,
                       string telephone, Rang rang, Province province)
         {
+            NoClient = noClient;
             Prenom = prenom;
             Nom = nom;
             Description = description;
