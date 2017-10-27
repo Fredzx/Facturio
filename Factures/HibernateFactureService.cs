@@ -28,6 +28,17 @@ namespace Facturio.Factures
             return result.ToList();
         }
 
+        public static List<Facture> RetrieveFacturationCliente(DateTime dateDebut, DateTime dateFin, int idClient)
+        {
+            var facture = session.Query<Facture>().AsQueryable();
+
+            var result = from f in facture
+                         where f.LeClient.IdClient == idClient
+                         select f;
+
+            return result.ToList();
+        }
+
         public static void Create(Facture facture)
         {
             using (var transaction = session.BeginTransaction())

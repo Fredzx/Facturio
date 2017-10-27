@@ -14,6 +14,10 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
         <Grid.RowDefinitions>
@@ -23,19 +27,30 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="1"
+        <Grid Grid.Column="0"
+              Grid.Row="1"
+              Grid.ColumnSpan="3"
+              >
+            <Label Content="Vos Rapports" Margin="20 10 0 0" FontSize="14" FontWeight="Bold"/>
+        </Grid>
+        
+        <Grid Grid.Row="2"
             Grid.Column="0"
-            Grid.ColumnSpan="6"
-            Grid.RowSpan="4">
+            Grid.ColumnSpan="10"
+            Grid.RowSpan="10">
 
-            <DataGrid ItemsSource="{Binding Rapports}" Name="dtgAfficherRapport" LoadingRow="dtgAfficherRapport_LoadingRow"
+            <DataGrid ItemsSource="{Binding Rapports}" Name="dtgAfficherRapport" LoadingRow="dtgAfficherRapport_LoadingRow" MouseDoubleClick="dtgAfficherRapport_MouseDoubleClick"
                                     BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
-                                    AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="40 0 40 10">
+                                    AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="20,0,20,20">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Type de rapport" Width="6*" />
-                    <DataGridTextColumn Header="Client" Width="6*" />
+                    <DataGridTextColumn Header="Type de rapport" Width="6*" Binding="{Binding TypeRapport}"/>
+                    <DataGridTextColumn Header="Client" Width="6*" Binding="{Binding Client}"/>
                     <DataGridTextColumn Header="Date" Width="6*" Binding="{Binding Date}"/>
 
                 </DataGrid.Columns>
