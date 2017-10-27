@@ -1,5 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
+using System.Collections.ObjectModel;
 using Facturio.Base;
 
 namespace Facturio.Gabarits
@@ -30,6 +32,7 @@ namespace Facturio.Gabarits
 
         #region Commandes
 
+        public ICommand OuvrirFacture { get; set; }
         public ICommand SupprimerGabarit { get; set; }
 
         #endregion
@@ -44,12 +47,31 @@ namespace Facturio.Gabarits
 
             Titre = "Gabarits";
 
+            OuvrirFacture = new RelayCommand((object parameter) =>
+            {
+                try
+                {
+                    OuvrirFenetreFacture(parameter);
+                }
+                catch (NotImplementedException)
+                {
+                    MessageBox.Show("Cette fonctionalité n'est pas encore implémentée.", "Oups!", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }, parameter => GabaritSelectionne != null);
+
             SupprimerGabarit = new RelayCommand(SupprimeGabarit, parameter => GabaritSelectionne != null);
         }
 
         #endregion
 
         #region Méthodes
+
+        private void OuvrirFenetreFacture(object parameter)
+        {
+            // TODO: Ouvrir la fenêtre de la création de facture
+            // TODO: Faire un petit gestionnaire pour ouvrir/fermer des fenêtres
+            throw new NotImplementedException();
+        }
 
         private void SupprimeGabarit(object parameter)
         {

@@ -37,7 +37,7 @@ namespace Facturio.Criteres
                 .Component(c =>
                 {
                     c.Map(x => x.Position)
-                        .Column("position")
+                        .Column("positionCritere")
                         .CustomType<int>()
                         .Access.Property()
                         .Generated.Never()

@@ -34,7 +34,7 @@
                 </StackPanel.Resources>
 
                 <ItemsControl
-                    ItemsSource="{Binding Gabarit.Criteres}"
+                    ItemsSource="{Binding Gabarit.GabaritCriteres}"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                     BorderThickness="0">
                     <ItemsControl.ItemsPanel>
@@ -44,15 +44,30 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <CheckBox Content="{Binding Critere.Titre}" />
+                            <CheckBox Content="{Binding Critere.Titre}" IsChecked="{Binding EstUtilise}" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
 
-                <StackPanel Orientation="Horizontal" Margin="0, 5, 0, 0">
-                    <TextBox Width="150" VerticalContentAlignment="Center" Padding="2, 0, 0, 0" />
-                    <Button Content="Ajouter" Margin="8, 0, 0, 0" />
-                </StackPanel>
+                <Grid Width="230" Margin="0, 5, 0, 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Critère libre:" Padding="0, 4, 4, 4" />
+                    <TextBox Grid.Column="1" Padding="4" Margin="0, 0, 0, 5" MaxLength="30" />
+                    
+                    <TextBlock Grid.Row="1" Text="Type du critère:" Padding="0, 4, 4, 4" />
+                    <ComboBox Grid.Row="1" Grid.Column="1" Padding="4" Margin="0, 0, 0, 5" />
+
+                    <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Ajouter" Width="Auto" HorizontalAlignment="Stretch" />
+                </Grid>
             </StackPanel>
         </GroupBox>
 

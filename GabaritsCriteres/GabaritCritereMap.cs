@@ -34,7 +34,7 @@ namespace Facturio.GabaritsCriteres
                  .Columns("idCritere");
 
             Map(x => x.Position)
-                .Column("position")
+                .Column("positionCritere")
                 .CustomType<int>()
                 .Access.Property()
                 .CustomSqlType("INTEGER")

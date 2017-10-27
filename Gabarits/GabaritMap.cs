@@ -36,7 +36,7 @@ namespace Facturio.Gabarits
                 .Not.Nullable()
                 .Generated.Never();
 
-            HasManyToMany<GabaritCritere>(x => x.Criteres)
+            HasManyToMany<GabaritCritere>(x => x.GabaritCriteres)
                 .Access.Property()
                 .AsSet()
                 .Cascade.None()
@@ -45,7 +45,7 @@ namespace Facturio.Gabarits
                 .Component(c =>
                 {
                     c.Map(x => x.Position)
-                        .Column("position")
+                        .Column("positionCritere")
                         .CustomType<int>()
                         .Access.Property()
                         .Generated.Never()

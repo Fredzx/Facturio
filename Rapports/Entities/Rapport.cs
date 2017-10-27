@@ -16,7 +16,11 @@ namespace Facturio.Rapports.Entities
         public virtual int? IdRapport { get; set; } = null;
         public virtual DateTime? Date { get; set; } = null;
         public virtual ISet<Facture> LstFacture { get; set; }
-        
+
+        //temporaire
+        public virtual string Client { get; set; }
+        public virtual string TypeRapport { get; set; }
+
         public Rapport() { }
         /// <summary>
         /// 
@@ -26,6 +30,14 @@ namespace Facturio.Rapports.Entities
         {
             Date = dateRapport;
             LstFacture = new HashSet<Facture>();
+        }
+        // Ce constructeur est temporaire, seulement pour la version 0.5
+        public Rapport(string client, DateTime date, List<Facture> lstFacture, string typeRapport)
+        {
+            Client = client;
+            Date = date;
+            LstFacture = new HashSet<Facture>(lstFacture);
+            TypeRapport = typeRapport;
         }
 
         public override bool Equals(object obj)

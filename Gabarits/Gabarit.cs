@@ -12,7 +12,7 @@ namespace Facturio.Gabarits
         public virtual int Id { get; set; }
         public virtual string TitreGabarit { get; set; }
         public virtual DateTime DateCreation { get; set; }
-        public virtual ISet<GabaritCritere> Criteres { get; set; }
+        public virtual ISet<GabaritCritere> GabaritCriteres { get; set; }
 
         #endregion
 
@@ -24,8 +24,8 @@ namespace Facturio.Gabarits
         {
             TitreGabarit = titreGabarit;
             DateCreation = dateCreation;
-            Criteres = new ObservableHashSet<GabaritCritere>();
-            // Criteres = new HashSet<GabaritCritere>();
+            GabaritCriteres = new ObservableHashSet<GabaritCritere>();
+            // GabaritCriteres = new HashSet<GabaritCritere>();
         }
 
         #endregion
