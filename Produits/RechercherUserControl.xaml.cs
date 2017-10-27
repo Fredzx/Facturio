@@ -25,7 +25,7 @@ namespace Facturio.Produits
         public RechercherUserControl()
         {
             InitializeComponent();
-            ProduitsController.RafraichirGrille();
+            ProduitsController.RafraichirGrille(false);
 //            ProduitsController.Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
             DtgProduits = dtgAfficheProduits;
         }
@@ -122,7 +122,7 @@ namespace Facturio.Produits
             {
                 ProduitsController.LiveFiltering(txtRechercherProduit.Text.ToString());
             }
-            ProduitsController.RafraichirGrille();
+            ProduitsController.RafraichirGrille(true);
         }
     }
 }
