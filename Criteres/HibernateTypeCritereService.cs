@@ -11,7 +11,7 @@ namespace Facturio.Criteres
 
         public static List<TypeCritere> RetrieveAll()
         {
-            return session.Query<TypeCritere>().ToList();
+            return session.Query<TypeCritere>().OrderBy(x => x.Id).ToList();
         }
 
         public static List<TypeCritere> Retrieve(int idTypeCritere)
