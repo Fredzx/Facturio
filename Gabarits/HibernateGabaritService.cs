@@ -39,7 +39,6 @@ namespace Facturio.Gabarits
                 session.Save(gabarit);
                 transaction.Commit();
             }
-
         }
 
         public static void Update(Gabarit gabarit)
