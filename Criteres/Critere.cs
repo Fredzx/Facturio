@@ -9,6 +9,7 @@ namespace Facturio.Criteres
         #region Propriétés
 
         public virtual int Id { get; set; }
+        public virtual TypeCritere TypeCritere { get; set; }
         public virtual string Titre { get; set; }
         public virtual ISet<GabaritCritere> Gabarits { get; set; }
 
@@ -18,9 +19,10 @@ namespace Facturio.Criteres
 
         public Critere() {}
 
-        public Critere(string titre)
+        public Critere(string titre, TypeCritere typeCritere)
         {
             Titre = titre;
+            TypeCritere = typeCritere;
             Gabarits = new ObservableHashSet<GabaritCritere>();
             // Gabarits = new HashSet<GabaritCritere>();
         }

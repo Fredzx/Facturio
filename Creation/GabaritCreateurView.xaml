@@ -25,14 +25,28 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <GroupBox Header="Critères" Margin="10, 5, 5, 5" Padding="10">
-            <StackPanel>
-                <StackPanel.Resources>
-                    <Style TargetType="CheckBox">
-                        <Setter Property="Margin" Value="0, 0, 0, 6" />
-                    </Style>
-                </StackPanel.Resources>
+        <GroupBox Header="Critères" Margin="10, 5, 5, 5" Padding="10, 15, 10, 10">
+            <DockPanel LastChildFill="True">
+                <Grid Width="260" DockPanel.Dock="Bottom">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="1.8*" />
+                    </Grid.ColumnDefinitions>
 
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Critère libre:" Padding="0, 4, 4, 4" />
+                    <TextBox Grid.Row="0" Grid.Column="1" Padding="4" Margin="0, 0, 0, 10" MaxLength="30" />
+                    
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Type du critère:" Padding="0, 4, 4, 4" />
+                    <ComboBox Grid.Row="1" Grid.Column="1" Padding="4" Margin="0, 0, 0, 10" />
+
+                    <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Ajouter" Width="Auto" HorizontalAlignment="Stretch" />
+                </Grid>
+                
                 <ItemsControl
                     ItemsSource="{Binding Gabarit.GabaritCriteres}"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -44,31 +58,11 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <CheckBox Content="{Binding Critere.Titre}" IsChecked="{Binding EstUtilise}" />
+                            <CheckBox Content="{Binding Critere.Titre}" IsChecked="{Binding EstUtilise}" Margin="0, 0, 0, 6" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-
-                <Grid Width="230" Margin="0, 5, 0, 0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock Text="Critère libre:" Padding="0, 4, 4, 4" />
-                    <TextBox Grid.Column="1" Padding="4" Margin="0, 0, 0, 5" MaxLength="30" />
-                    
-                    <TextBlock Grid.Row="1" Text="Type du critère:" Padding="0, 4, 4, 4" />
-                    <ComboBox Grid.Row="1" Grid.Column="1" Padding="4" Margin="0, 0, 0, 5" />
-
-                    <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Ajouter" Width="Auto" HorizontalAlignment="Stretch" />
-                </Grid>
-            </StackPanel>
+            </DockPanel>
         </GroupBox>
 
         <!-- <GridSplitter Grid.Column="1" Background="DimGray" Width="1" Panel.ZIndex="1" /> -->
@@ -81,7 +75,6 @@
                             <Setter Property="Orientation" Value="Horizontal" />
                             <Setter Property="HorizontalAlignment" Value="Right" />
                             <Setter Property="DockPanel.Dock" Value="Bottom" />
-                            <Setter Property="Margin" Value="0, 8, 0, 0" />
                         </Style>
                     </StackPanel.Resources>
                     
@@ -89,7 +82,7 @@
                     <Button Content="Ouvrir" Margin="8, 0, 0, 0"/>
                 </StackPanel>
                 
-                <DataGrid AutoGenerateColumns="False" Margin="0, 5, 0, 5" />
+                <DataGrid AutoGenerateColumns="False" Margin="0, 5, 0, 10" />
             </DockPanel>
         </GroupBox>
     </Grid>

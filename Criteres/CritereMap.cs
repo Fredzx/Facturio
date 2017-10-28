@@ -27,6 +27,13 @@ namespace Facturio.Criteres
                 .Not.Nullable()
                 .Generated.Never();
 
+            References(x => x.TypeCritere)
+                .Class<TypeCritere>()
+                .Access.Property()
+                .LazyLoad(Laziness.False)
+                .Cascade.None()
+                .Columns("idTypeCritere");
+
             HasManyToMany<GabaritCritere>(x => x.Gabarits)
                 .Access.Property()
                 .AsSet()

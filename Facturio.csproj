@@ -105,6 +105,8 @@
     <Compile Include="Base\ObservableHashSet.cs" />
     <Compile Include="Criteres\Critere.cs" />
     <Compile Include="Criteres\CritereMap.cs" />
+    <Compile Include="Criteres\TypeCritere.cs" />
+    <Compile Include="Criteres\TypeCritereMap.cs" />
     <Compile Include="Enums\Onglets.cs" />
     <Compile Include="Base\BaseViewModel.cs" />
     <Compile Include="Base\RelayCommand.cs" />
