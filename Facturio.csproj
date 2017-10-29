@@ -93,9 +93,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Base\ObservableSet.cs" />
     <Compile Include="Criteres\Critere.cs" />
     <Compile Include="Criteres\CritereMap.cs" />
+    <Compile Include="Criteres\HibernateCritereService.cs" />
     <Compile Include="Criteres\HibernateTypeCritereService.cs" />
     <Compile Include="Criteres\TypeCritere.cs" />
     <Compile Include="Criteres\TypeCritereMap.cs" />
@@ -296,6 +296,7 @@
   <ItemGroup>
     <None Include="App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
