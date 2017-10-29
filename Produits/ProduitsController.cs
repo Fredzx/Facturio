@@ -70,33 +70,43 @@ namespace Facturio.Produits
                 case 1:
                     AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
                     AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
-                    AjoutModifUserControl.LblInfo.Content = "ERREUR: Vous devez entrer une description";
+                    AjoutModifUserControl.LblInfo.Content = "ERREUR: Le nom doit contenir au moins 3 caractères";
                     break;
                 case 2:
                     AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
                     AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
-                    AjoutModifUserControl.LblInfo.Content = "ERREUR: Vous devez entrer un prix";
+                    AjoutModifUserControl.LblInfo.Content = "ERREUR: Vous devez entrer une description";
                     break;
                 case 3:
+                    AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
+                    AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
+                    AjoutModifUserControl.LblInfo.Content = "ERREUR: La description doit contenir au moins 3 caractères";
+                    break;
+                case 4:
+                    AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
+                    AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
+                    AjoutModifUserControl.LblInfo.Content = "ERREUR: Vous devez entrer un prix";
+                    break;
+                case 5:
                     AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
                     AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
                     AjoutModifUserControl.LblInfo.FontSize = 15;
                     AjoutModifUserControl.LblInfo.Content = "ERREUR: Le prix doit correspondre au format XX,XX";
                     break;
-                case 4:
+                case 6:
                     AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
                     AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
                     AjoutModifUserControl.LblInfo.Content = "ERREUR: Vous devez entrer une quantité";
                     break;
-                case 5:
+                case 7:
                     AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
                     AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
                     AjoutModifUserControl.LblInfo.Content = "ERREUR: La quantité doit être un nombre entier";
                     break;
-                case 6:
+                case 8:
                     AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
                     AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
-                    AjoutModifUserControl.LblInfo.Content = "ERREUR: le produit n'a pas pu être ajouté";
+                    AjoutModifUserControl.LblInfo.Content = "ERREUR: le produit existe déjà";
                     break;
             }
         }
@@ -110,44 +120,66 @@ namespace Facturio.Produits
             }
             else
             {
-                if (AjoutModifUserControl.TxtDescription.Text == "")
+                if (AjoutModifUserControl.TxtNom.ToString().Length < 3)
                 {
                     GestionErreurs(1);
                     return false;
                 }
                 else
                 {
-                    if (AjoutModifUserControl.TxtPrix.Text == "")
+                    if (AjoutModifUserControl.TxtDescription.Text == "")
                     {
                         GestionErreurs(2);
                         return false;
                     }
-                    var regex = new Regex(@"^[0-9]*([\,]?\d{1,2})");
-                    if (!regex.IsMatch(AjoutModifUserControl.TxtPrix.Text))
-                    {
-                        GestionErreurs(3);
-                        return false;
-                    }
                     else
                     {
-                        if (AjoutModifUserControl.TxtQuantite.Text == "")
+                        if (AjoutModifUserControl.TxtDescription.ToString().Length < 3)
                         {
-                            GestionErreurs(4);
-                            return false;
-                        }
-                        regex = new Regex("^[0-9]*$");
-                        if (!regex.IsMatch(AjoutModifUserControl.TxtQuantite.Text))
-                        {
-                            GestionErreurs(5);
+                            GestionErreurs(3);
                             return false;
                         }
                         else
                         {
-                            //if (Existe(GenererCodeProduit(AjoutModifUserControl.TxtNom.Text, AjoutModifUserControl.TxtDescription.Text)))
-                            //{
-                            //    GestionErreurs(6);
-                            //    return false;
-                            //}
+                            if (AjoutModifUserControl.TxtPrix.Text == "")
+                            {
+                                GestionErreurs(4);
+                                return false;
+                            }
+                            else
+                            {
+                                var regex = new Regex(@"^[0-9]*([\,]?\d{1,2})");
+                                if (!regex.IsMatch(AjoutModifUserControl.TxtPrix.Text))
+                                {
+                                    GestionErreurs(5);
+                                    return false;
+                                }
+                                else
+                                {
+                                    if (AjoutModifUserControl.TxtQuantite.Text == "")
+                                    {
+                                        GestionErreurs(6);
+                                        return false;
+                                    }
+                                    else
+                                    {
+                                        regex = new Regex("^[0-9]*$");
+                                        if (!regex.IsMatch(AjoutModifUserControl.TxtQuantite.Text))
+                                        {
+                                            GestionErreurs(7);
+                                            return false;
+                                        }
+                                        else
+                                        {
+                                            if (Existe(GenererCodeProduit(AjoutModifUserControl.TxtNom.Text, AjoutModifUserControl.TxtDescription.Text)))
+                                            {
+                                                GestionErreurs(8);
+                                                return false;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -157,49 +189,16 @@ namespace Facturio.Produits
 
         public static string GenererCodeProduit(string nom, string description)
         {
-            string code = "";
-
-            for (int i = 0; i < nom.Length || i < description.Length || i < 3; i++)
-            {
-                code += nom[i] + description[i];
-            }
-            return code;
+            StringBuilder code = new StringBuilder();
+            code.Append(nom[0]).Append(nom[1]).Append(nom[2]).Append(description[0]).Append(description[1]).Append(description[2]).Append('-').Append(nom.Length.ToString());
+            return code.ToString();
         }
 
         public static string GenererCodeProduit()
         {
-            string nom = Produit.Nom;
-            string description = Produit.Description;
-            
-            string salt = Produit.Nom + Produit.Description;
-
-            string n = (Produit.Nom[0] + Produit.Nom[1] + Produit.Description[0] + Produit.Description[1] + Produit.Nom.Length.ToString());
-
-            //Guid code = new Guid(seed);
-            ////ShortGuid sguid = code;
-
-            ////for (int i = 0; i < nom.Length || i < description.Length || i < 3; i++)
-            ////{
-            ////    code += nom[i] + description[i];
-            ////}
-            ////string input = "asdfasdf";
-            //using (SHA512 sha512 = SHA512.Create())
-            //{
-            //    byte[] hash = sha512.ComputeHash(Encoding.Default.GetBytes(seed));
-            //    Guid result = new Guid(hash);
-            //}
-            ////string base64Guid = Convert.ToBase64String(code.ToByteArray());
-            //return ;
-            /*
-            SHA512 shaM = new SHA512Managed();
-            byte[] data = new byte[salt.Length];
-            byte[] result;
-
-            data = Encoding.UTF8.GetBytes(salt);
-            result = shaM.ComputeHash(data);
-            return Convert.ToBase64String(result);
-            */
-            return n;
+            StringBuilder code = new StringBuilder();
+            code.Append(Produit.Nom[0]).Append(Produit.Nom[1]).Append(Produit.Nom[2]).Append(Produit.Description[0]).Append(Produit.Description[1]).Append(Produit.Description[2]).Append('-').Append(Produit.Nom.Length.ToString());
+            return code.ToString();
         }
 
         public static bool ValiderModif()
