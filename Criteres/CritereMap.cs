@@ -27,6 +27,13 @@ namespace Facturio.Criteres
                 .Not.Nullable()
                 .Generated.Never();
 
+            References(x => x.TypeCritere)
+                .Class<TypeCritere>()
+                .Access.Property()
+                .LazyLoad(Laziness.False)
+                .Cascade.None()
+                .Columns("idTypeCritere");
+
             HasManyToMany<GabaritCritere>(x => x.Gabarits)
                 .Access.Property()
                 .AsSet()
@@ -37,7 +44,7 @@ namespace Facturio.Criteres
                 .Component(c =>
                 {
                     c.Map(x => x.Position)
-                        .Column("position")
+                        .Column("positionCritere")
                         .CustomType<int>()
                         .Access.Property()
                         .Generated.Never()

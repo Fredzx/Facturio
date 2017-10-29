@@ -20,6 +20,13 @@ namespace Facturio.Rapports.Vues
     /// </summary>
     public partial class CalendarUI : UserControl
     {
+        public static event EventHandler<DateEventArgs> ButtonClick;
+    
+        public void OnObtenirRapportClicked(DateEventArgs e)
+        {
+            ButtonClick?.Invoke(this, e);
+        }
+
         public CalendarUI()
         {
             InitializeComponent();
@@ -32,7 +39,18 @@ namespace Facturio.Rapports.Vues
 
         private void btnObtenirRapport_Click(object sender, RoutedEventArgs e)
         {
+            OnObtenirRapportClicked(new DateEventArgs(cldDateDebut.SelectedDate.Value, cldDateFin.SelectedDate.Value));
+        }
+    }
 
+    public class DateEventArgs : EventArgs
+    {
+        public DateTime DateDebut { get; set; }
+        public DateTime DateFin { get; set; }
+        public DateEventArgs(DateTime dateDebut, DateTime dateFin)
+        {
+            DateDebut = dateDebut;
+            DateFin = dateFin;
         }
     }
 }

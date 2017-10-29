@@ -55,7 +55,7 @@
             </StackPanel>
             -->
             <Grid Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3">
-                <Label Content="Vos Clients" Margin="40,30,0,0"/>
+                <Label Content="Vos Clients" Margin="40,30,0,0"  FontSize="14" FontWeight="Bold"/>
             </Grid>
                 
             
@@ -64,7 +64,7 @@
             Grid.ColumnSpan="7"
             Grid.RowSpan="8">
                
-                <DataGrid ItemsSource="{Binding Client}" Name="dtgAfficherClient"
+                <DataGrid ItemsSource="{Binding Client}" Name="dtgAfficherClient" LoadingRow="dtgAfficherClient_LoadingRow"
                                     BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
                                     AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="10 10 20 20">
                     <DataGrid.Columns>

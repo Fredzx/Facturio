@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Facturio.Factures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,5 +36,11 @@ namespace Facturio.Rapports.Entities
         {
             return base.GetHashCode();
         }
+
+        public void RetriveFactureClient()
+        {
+            LstFacture = new HashSet<Facture>(HibernateFactureService.RetrieveFacturationCliente(new DateTime(2017, 10, 03, 0, 0, 0), new DateTime(2017, 11, 04, 0, 0, 0), 1));
+        }
+
     }
 }

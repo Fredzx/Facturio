@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using NHibernate.Collection.Generic;
 using Xamarin.Forms.Internals;
 
 namespace Facturio.Base
