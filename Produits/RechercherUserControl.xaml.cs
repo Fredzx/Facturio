@@ -38,6 +38,9 @@ namespace Facturio.Produits
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
             AjoutModifUserControl.EstModif = false;
+            btnModifier.IsEnabled = false;
+            btnSupprimer.IsEnabled = false;
+            dtgAfficheProduits.SelectedIndex = -1;
             // Lorsqu'il clique sur ajouter on veut : 
             // Que le usercontrol Produit change d'onglet > direction : onglet Ajout.            
             ProduitUserControl.TbcProduitPublic.SelectedIndex = 1;
@@ -55,10 +58,13 @@ namespace Facturio.Produits
                 // Lorsqu'il clique sur mofifier on veut : 
                 // Que le usercontrol Produti change d'onglet > direction : onglet Modifier.
 
+                btnModifier.IsEnabled = false;
+                btnSupprimer.IsEnabled = false;
                 // Ajuster le titre
                 AjoutModifUserControl.LblFormTitle.Content = "Modifier un produit";
                 ProduitsController.Produit = (Produit)dtgAfficheProduits.SelectedItem;
                 ProduitsController.AjoutModifUC.RemplirChampsModif(ProduitsController.Produit);
+                dtgAfficheProduits.SelectedIndex = -1;
                 ProduitUserControl.TbcProduitPublic.SelectedIndex = 1;
             }
         }
@@ -88,6 +94,8 @@ namespace Facturio.Produits
                 if (resultat == MessageBoxResult.No)
                 {
                     dtgAfficheProduits.SelectedIndex = -1;
+                    btnModifier.IsEnabled = false;
+                    btnSupprimer.IsEnabled = false;
                     return false;
                 }
                 return true;
@@ -123,6 +131,20 @@ namespace Facturio.Produits
                 ProduitsController.LiveFiltering(txtRechercherProduit.Text.ToString());
             }
             ProduitsController.RafraichirGrille(true);
+        }
+
+        private void dtgAfficheProduits_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dtgAfficheProduits.CurrentCell != null)
+            {
+                btnModifier.IsEnabled = true;
+                btnSupprimer.IsEnabled = true;
+            }
+            else
+            {
+                btnModifier.IsEnabled = false;
+                btnSupprimer.IsEnabled = false;
+            }
         }
     }
 }

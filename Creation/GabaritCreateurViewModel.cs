@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using Facturio.Base;
 using Facturio.Criteres;
@@ -19,12 +21,6 @@ namespace Facturio.Creation
             {
                 if (Equals(value, _gabarit))
                     return;
-
-                // TODO: M'arranger pour pogner un "default" gabarit... avec les critères de base. Je pourrais en créer un en BD et le retrieve ici.
-                if (_gabarit == null)
-                {
-                    _gabarit = new Gabarit();
-                }
 
                 _gabarit = value;
                 RaisePropertyChanged(nameof(Gabarit));
@@ -84,7 +80,7 @@ namespace Facturio.Creation
 
         public GabaritCreateurViewModel(Gabarit gabarit) : this()
         {
-            Gabarit = gabarit;
+            Gabarit = gabarit ?? CreerNouveauGabarit();
         }
 
         #endregion
@@ -96,14 +92,40 @@ namespace Facturio.Creation
             GabaritCritere gabaritCritere = new GabaritCritere
             {
                 Gabarit = Gabarit,
-                Critere = new Critere { Titre = TitreCritereLibre, TypeCritere = TypeCritereSelectionne },
+                Critere = new Critere { Titre = TitreCritereLibre.Trim(), TypeCritere = TypeCritereSelectionne },
                 Position = 0,
                 Largeur = 50,
                 EstUtilise = false
             };
 
-            //((ObservableHashSet<GabaritCritere>)Gabarit.GabaritCriteres).Add(gabaritCritere);
             Gabarit.GabaritCriteres.Add(gabaritCritere);
+        }
+
+        private Gabarit CreerNouveauGabarit()
+        {
+            const int POSITION = 0;
+            const int LARGEUR = 50;
+
+            Gabarit gabarit = new Gabarit();
+
+            List<GabaritCritere> gabaritCriteres = new List<GabaritCritere>();
+            for (int i = 0; i < 12; ++i)
+            {
+                GabaritCritere gabaritCritere = new GabaritCritere
+                {
+                    Gabarit = gabarit,
+                    Critere = HibernateCritereService.Retrieve(i + 1).First(),
+                    Position = POSITION,
+                    Largeur = LARGEUR,
+                    EstUtilise = false
+                };
+                
+                gabaritCriteres.Add(gabaritCritere);
+            }
+
+            gabarit.GabaritCriteres = gabaritCriteres;
+
+            return gabarit;
         }
 
         #endregion
