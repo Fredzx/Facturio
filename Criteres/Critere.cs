@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Facturio.GabaritsCriteres;
-using Facturio.Base;
 
 namespace Facturio.Criteres
 {
@@ -11,7 +11,7 @@ namespace Facturio.Criteres
         public virtual int Id { get; set; }
         public virtual TypeCritere TypeCritere { get; set; }
         public virtual string Titre { get; set; }
-        public virtual ISet<GabaritCritere> Gabarits { get; set; }
+        public virtual ICollection<GabaritCritere> Gabarits { get; set; }
 
         #endregion
 
@@ -23,8 +23,7 @@ namespace Facturio.Criteres
         {
             Titre = titre;
             TypeCritere = typeCritere;
-            Gabarits = new ObservableHashSet<GabaritCritere>();
-            // Gabarits = new HashSet<GabaritCritere>();
+            Gabarits = new ObservableCollection<GabaritCritere>();
         }
 
         #endregion

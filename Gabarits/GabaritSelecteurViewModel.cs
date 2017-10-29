@@ -47,11 +47,11 @@ namespace Facturio.Gabarits
 
             Titre = "Gabarits";
 
-            OuvrirFacture = new RelayCommand((object parameter) =>
+            OuvrirFacture = new RelayCommand(parameter =>
             {
                 try
                 {
-                    OuvrirFenetreFacture(parameter);
+                    OuvrirFenetreFacture();
                 }
                 catch (NotImplementedException)
                 {
@@ -66,7 +66,7 @@ namespace Facturio.Gabarits
 
         #region Méthodes
 
-        private void OuvrirFenetreFacture(object parameter)
+        private void OuvrirFenetreFacture()
         {
             // TODO: Ouvrir la fenêtre de la création de facture
             // TODO: Faire un petit gestionnaire pour ouvrir/fermer des fenêtres

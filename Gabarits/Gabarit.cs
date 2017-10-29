@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Facturio.GabaritsCriteres;
-using Facturio.Base;
 
 namespace Facturio.Gabarits
 {
@@ -12,7 +12,7 @@ namespace Facturio.Gabarits
         public virtual int Id { get; set; }
         public virtual string TitreGabarit { get; set; }
         public virtual DateTime DateCreation { get; set; }
-        public virtual ISet<GabaritCritere> GabaritCriteres { get; set; }
+        public virtual ICollection<GabaritCritere> GabaritCriteres { get; set; }
 
         #endregion
 
@@ -24,8 +24,7 @@ namespace Facturio.Gabarits
         {
             TitreGabarit = titreGabarit;
             DateCreation = dateCreation;
-            GabaritCriteres = new ObservableHashSet<GabaritCritere>();
-            // GabaritCriteres = new HashSet<GabaritCritere>();
+            GabaritCriteres = new ObservableCollection<GabaritCritere>();
         }
 
         #endregion

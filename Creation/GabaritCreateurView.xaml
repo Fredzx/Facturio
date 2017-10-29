@@ -27,7 +27,7 @@
 
         <GroupBox Header="Critères" Margin="10, 5, 5, 5" Padding="10, 15, 10, 10">
             <DockPanel LastChildFill="True">
-                <Grid Width="260" DockPanel.Dock="Bottom">
+                <Grid Width="260" DockPanel.Dock="Bottom" Margin="0, 20, 0, 0">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
@@ -39,29 +39,42 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Critère libre:" Padding="0, 4, 4, 4" />
-                    <TextBox Grid.Row="0" Grid.Column="1" Padding="4" Margin="0, 0, 0, 10" MaxLength="30" />
+                    <TextBox Grid.Row="0" Grid.Column="1" Padding="4" Margin="0, 0, 0, 10" MaxLength="30"
+                             Text="{Binding TitreCritereLibre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Type du critère:" Padding="0, 4, 4, 4" />
-                    <ComboBox Grid.Row="1" Grid.Column="1" Padding="4" Margin="0, 0, 0, 10" />
+                    <ComboBox Grid.Row="1" Grid.Column="1" Padding="4" Margin="0, 0, 0, 10"
+                              ItemsSource="{Binding TypesCriteres}" SelectedItem="{Binding TypeCritereSelectionne}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Nom}" Padding="4, 0, 0, 0" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ComboBox>
 
-                    <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Ajouter" Width="Auto" HorizontalAlignment="Stretch" />
+                    <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Ajouter" Width="Auto" HorizontalAlignment="Stretch">
+                        <Button.Command>
+                            <Binding Path="AjouterCritere" />
+                        </Button.Command>
+                    </Button>
                 </Grid>
-                
-                <ItemsControl
-                    ItemsSource="{Binding Gabarit.GabaritCriteres}"
-                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                    BorderThickness="0">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Vertical" />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <CheckBox Content="{Binding Critere.Titre}" IsChecked="{Binding EstUtilise}" Margin="0, 0, 0, 6" />
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ItemsControl
+                        ItemsSource="{Binding Gabarit.GabaritCriteres, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        BorderThickness="0">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox Content="{Binding Critere.Titre}" IsChecked="{Binding EstUtilise}" Margin="0, 0, 0, 6" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
             </DockPanel>
         </GroupBox>
 

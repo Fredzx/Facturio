@@ -103,8 +103,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Base\ObservableHashSet.cs" />
+    <Compile Include="Base\ObservableSet.cs" />
     <Compile Include="Criteres\Critere.cs" />
     <Compile Include="Criteres\CritereMap.cs" />
+    <Compile Include="Criteres\HibernateTypeCritereService.cs" />
     <Compile Include="Criteres\TypeCritere.cs" />
     <Compile Include="Criteres\TypeCritereMap.cs" />
     <Compile Include="Enums\Onglets.cs" />
