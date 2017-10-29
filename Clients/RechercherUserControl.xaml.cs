@@ -112,13 +112,14 @@ namespace Facturio.Clients
             if (txtRecherche.Text.ToString() == "")
             {
                 ClientsController.LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveAll());
+                
             }
             else
             {
                 ClientsController.LiveFiltering(txtRecherche.Text.ToString());
             }
 
-            ClientsController.RafraichirGrille();
+            ClientsController.RafraichirGrille(true);
         }
     }
 }

@@ -33,6 +33,10 @@ namespace Facturio.Clients
             if(tbcClient.SelectedItem == tbiRechercher)
             {
                 AjoutModifUserControl.LblFormTitle.Content = "Ajouter un client";
+                AjoutModifUserControl.LblTxtNoClient.Content = "En cours de génération...";
+                AjoutModifUserControl.ViderChamps();
+                AjoutModifUserControl.LblInfo.Content = "";
+                
             }
         }
     }

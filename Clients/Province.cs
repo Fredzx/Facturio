@@ -15,16 +15,16 @@ namespace Facturio.Clients
             {
                 case Provinces.Alberta:                 Nom = "Alberta"; break;
                 case Provinces.ColombieBritannique:     Nom = "Colombie-Britannique"; break;
-                case Provinces.IleDuPrinceEdouard:      Nom = "Île-du-Prince-Édouard"; break;
+                case Provinces.IleDuPrinceEdouard:      Nom = "île-du-Prince-Edouar"; break;
                 case Provinces.Manitoba:                Nom = "Manitoba"; break;
                 case Provinces.NouveauBrunswick:        Nom = "Nouveau-Brunswick"; break;
-                case Provinces.NouvelleEcosse:          Nom = "Nouvelle-Écosse"; break;
+                case Provinces.NouvelleEcosse:          Nom = "Nouvelle-Ecosse"; break;
+                case Provinces.Nunavut:                 Nom = "Nunavut"; break;
                 case Provinces.Ontario:                 Nom = "Ontario"; break;
                 case Provinces.Quebec:                  Nom = "Québec"; break;
                 case Provinces.Saskatchewan:            Nom = "Saskatchewan"; break;
-                case Provinces.TerreNeuveEtLabrador:    Nom = "Terre-Neuve-et-Labrador"; break;
-                case Provinces.Nunavut:                 Nom = "Nunavut"; break;
-                case Provinces.TerritoiresDuNordOuest:  Nom = "Territoires du Nord-Ouest"; break;
+                case Provinces.TerreNeuveEtLabrador:    Nom = "Terre-Neuve-et-Labra"; break;                
+                case Provinces.TerritoiresDuNordOuest:  Nom = "Territoires du Nord-"; break;
                 case Provinces.Yukon:                   Nom = "Yukon"; break;
             }
         }

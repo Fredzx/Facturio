@@ -8,7 +8,7 @@ namespace Facturio.Clients
         {
             Table("Clients");
 
-            LazyLoad();
+            LazyLoad();            
             
             Id(x => x.IdClient)
                 .Column("idClient")        // Colonne en BD
@@ -73,6 +73,13 @@ namespace Facturio.Clients
                 .Access.Property()
                 .Generated.Never()
                 .CustomSqlType("VARCHAR");
+
+            Map(x => x.EstActif)
+                .Column("estActif")
+                .CustomType<bool>()
+                .Access.Property()
+                .Generated.Never()
+                .CustomSqlType("BOOLEAN");
 
             References(x => x.Rang)
                .Class<Rang>()

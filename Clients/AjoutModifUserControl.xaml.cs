@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,6 +23,7 @@ namespace Facturio.Clients
     public partial class AjoutModifUserControl : UserControl
     {
         public bool Ajout { get; set; } = true;
+        public static Label LblTxtNoClient { get; set; } = new Label();
         public static Label LblFormTitle { get; set; } = new Label();
         public static TextBox TxtNom { get; set; } = new TextBox();
         public static TextBox TxtPrenom { get; set; } = new TextBox();
@@ -33,11 +35,14 @@ namespace Facturio.Clients
         public static ComboBox CboRang { get; set; } = new ComboBox();
         public static RadioButton RdbHomme { get; set; } = new RadioButton();
         public static RadioButton RdbFemme { get; set; } = new RadioButton();
-       
+        public static Label LblInfo { get; set; } = new Label();
+
+
 
         public AjoutModifUserControl()
         {
             InitializeComponent();
+            LblTxtNoClient = txtNoClient;
             LblFormTitle = lblFormTitle;
             TxtNom = txtNom;
             TxtPrenom = txtPrenom;
@@ -49,6 +54,8 @@ namespace Facturio.Clients
             CboRang = cboRang;
             RdbHomme = rdbHomme;
             RdbFemme = rdbFemme;
+            LblInfo = lblInfo;
+            
         }
 
        
@@ -61,15 +68,16 @@ namespace Facturio.Clients
             {
                 // TODO : Validation des informations entrées.  
                 if (ValiderInformationsClient())
-                {
+                {                    
+                    LblTxtNoClient.Content = "En cours de génération...";
                     // Ajouter le client à la liste et en BD.
-                    ClientsController.AjouterClient(new Client(ClientsController.SetNoClient(), txtPrenom.Text.ToString(), txtNom.Text.ToString()
+                    ClientsController.AjouterClient(new Client(txtPrenom.Text.ToString(), txtNom.Text.ToString()
                                                              , txtDescription.Text.ToString(), new Sexe(SetSex())
                                                              , txtAdresse.Text.ToString(), txtCodePostal.Text.ToString()
-                                                             , txtTelephone.Text.ToString(), SetRang(), new Province(SetProvince())));
+                                                             , txtTelephone.Text.ToString(), SetRang(), new Province(SetProvince()), true));
 
-                    // TODO :  Afficher un message qui dit que le client a été ajouter.
-                    MessageBox.Show("Client ajouter avec succès");
+                    ViderChamps();
+                    AfficherSuccesAjout();
                 }     
             }
             else
@@ -78,19 +86,31 @@ namespace Facturio.Clients
                 {
                     ClientsController.ModifierClient(new Sexe(SetSex()), new Province(SetProvince()), SetRang());
 
-                    // Afficher le message de succès.
-                    MessageBox.Show("Client modifié avec succès");
+                    
 
-                    // Changer d'onglet.
-                    ClientsController.AfficherOngletRechercher();                    
+                    // Afficher le succès de la modification.
+                    AfficherSuccesModif();
                 }
             }
         }
-        
+
+        private void AfficherSuccesModif()
+        {                    
+            LblInfo.Foreground = Brushes.Green;
+            LblInfo.Content = "Le client a été modifié avec succès!";
+        }
+
+        private void AfficherSuccesAjout()
+        {
+            LblInfo.Foreground = Brushes.Green;
+            LblInfo.Content = "Le client a été ajouté avec succès!";
+        }
+
         public static void SetChampsModifier()
         {
-            
-            // Initialiser les champs de la fenêtre.         
+
+            // Initialiser les champs de la fenêtre.       
+            LblTxtNoClient.Content = ClientsController.LeClient.NoClient;
             TxtNom.Text = ClientsController.LeClient.Nom;
             TxtPrenom.Text = ClientsController.LeClient.Prenom;
             TxtAdresse.Text = ClientsController.LeClient.Adresse;
@@ -118,11 +138,11 @@ namespace Facturio.Clients
             switch (cboRang.SelectedIndex + 1)
             {
                 
-                case 1: rang.Nom = "Sans Rang"; break;
+                case 1: rang.Nom = "unranked"; break;
                 case 2: rang.Nom = "Bronze"; break;
                 case 3: rang.Nom = "Argent"; break;
                 case 4: rang.Nom = "Or"; break;
-                default: rang.Nom = "Sans Rang"; break;
+                default: rang.Nom = "unranked"; break;
             }
             return rang;
         }
@@ -137,11 +157,11 @@ namespace Facturio.Clients
                 case 4: return Provinces.Manitoba;
                 case 5: return Provinces.NouveauBrunswick;
                 case 6: return Provinces.NouvelleEcosse;
-                case 7: return Provinces.Ontario;
-                case 8: return Provinces.Quebec;
-                case 9: return Provinces.Saskatchewan;
-                case 10: return Provinces.TerreNeuveEtLabrador;
-                case 11: return Provinces.Nunavut;
+                case 7: return Provinces.Nunavut;
+                case 8: return Provinces.Ontario;
+                case 9: return Provinces.Quebec;
+                case 10: return Provinces.Saskatchewan;
+                case 11: return Provinces.TerreNeuveEtLabrador;                
                 case 12: return Provinces.TerritoiresDuNordOuest;
                 case 13: return Provinces.Yukon;
                 default: return Provinces.Alberta;
@@ -173,54 +193,100 @@ namespace Facturio.Clients
                     {
                         if(cboProvince.SelectedIndex != -1)
                         {
-                            if(txtCodePostal.Text.ToString() != "" && txtCodePostal.Text.ToString().Length == 6 )
+                            var regexPC = new Regex(@"^[A-Z]\d[A-Z]\d[A-Z]\d$");                           
+                            if (regexPC.IsMatch(txtCodePostal.Text))
                             {
-                                if(txtTelephone.Text.ToString() != "")
+                                var regexNT = new Regex(@"^\d\d\d\d\d\d\d\d\d\d$");
+                                if (regexNT.IsMatch(txtTelephone.Text))
                                 {
                                     if((bool)rdbFemme.IsChecked || (bool)rdbHomme.IsChecked)
                                     {
                                         return true;
                                     }
-                                    MessageBox.Show("Veuillez cocher un sexe.");
+                                    AfficherErreur(7);
                                     return false;
                                 }
-                                MessageBox.Show("Veuillez entrer un numéro de téléphone");
+                                AfficherErreur(6);
                                 return false;
                             }
-                            MessageBox.Show("Veuillez entrer un code postal.");
+                            AfficherErreur(5);
                             return false;
                         }
-                        MessageBox.Show("Veuillez choisir une province.");
+                        AfficherErreur(4);
                         return false;
                     }
-                    MessageBox.Show("Veuillez entrer une adresse.");
+                    AfficherErreur(3);
                     return false;
                 }
-                MessageBox.Show("Veuillez entrer un prénom.");
+                AfficherErreur(2);
                 return false;
             }
-            MessageBox.Show("Veuillez entrer un nom");
+            AfficherErreur(1);
             return false;
+        }
+
+        private void AfficherErreur(int noErr)
+        {
+            LblInfo.Foreground = Brushes.Red;
+
+            switch (noErr)
+            {
+                case 1: LblInfo.Content = "Veuillez entrer un nom pour le client."      ; break;
+                case 2: LblInfo.Content = "Veuillez entrer prénom pour le client."      ; break;
+                case 3: LblInfo.Content = "Veuillez entrer une adresse pour le client." ; break;
+                case 4: LblInfo.Content = "Veuillez choisir une province pour le client."; break;
+                case 5: LblInfo.Content = "Veuillez entrer un code postal valide pour le client.\n Voici un exemple de format valide : J5K8E6 "; break;
+                case 6: LblInfo.Content = "Veuillez entrer un numéro de téléphone valide pour le client.\n Voici un exemple de format valide: 4504567891 "; break;
+                case 7: LblInfo.Content = "Veuillez choisir le sexe pour le client."; break;
+                default:
+                    break;
+            }
         }
 
        
 
         private void btnViderChamps_Click(object sender, RoutedEventArgs e)
         {
-            txtNom.Clear();
-            txtPrenom.Clear();
-            txtAdresse.Clear();
-            cboProvince.SelectedIndex = -1;
-            txtCodePostal.Clear();
-            txtDescription.Clear();
-            txtTelephone.Clear();
-            cboRang.SelectedIndex = 0;
-            rdbFemme.IsChecked = false;
-            rdbHomme.IsChecked = false;
+            ViderChamps();
 
         }
 
+        public static void ViderChamps()
+        {
+            TxtNom.Clear();
+            TxtPrenom.Clear();
+            TxtAdresse.Clear();
+            CboProvince.SelectedIndex = -1;            
+            TxtCodePostal.Clear();
+            TxtDescription.Clear();
+            TxtTelephone.Clear();
+            CboRang.SelectedIndex = 0;
+            RdbFemme.IsChecked = false;
+            RdbHomme.IsChecked = false;
+        }
 
-       
+        private bool ValiderTelephone()
+        {
+            int valide = 0;
+            if (txtTelephone.Text.Length == 10)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    if (txtTelephone.Text[i] >= '0' && txtTelephone.Text[i] <= '9')
+                    {
+                        valide++;
+                        if (valide == 10)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
     }
+
+
+   
 }

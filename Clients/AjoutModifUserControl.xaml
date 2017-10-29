@@ -23,7 +23,7 @@
         </Style>
         <Style  x:Key="styleButton" TargetType="{x:Type Button}">
             <Setter Property="Margin" Value="5" />
-            <Setter Property="Width" Value="100" />
+            <Setter Property="Width" Value="150" />
             <Setter Property="Height" Value="30" />
         </Style>
     </UserControl.Resources>
@@ -40,6 +40,7 @@
             <RowDefinition Height="21"  />
             <RowDefinition Height="29"/>
             <RowDefinition />
+            <RowDefinition Height="50" />
             <RowDefinition Height="80" />
         </Grid.RowDefinitions>
 
@@ -59,7 +60,7 @@
                     Grid.Row="2"
                     Background="LightGray"
                     >
-
+            <Label Name="lblNoClient" Content="No. Client"  Style="{StaticResource styleLabel}"  />
             <Label Name="lblNom" Content="Nom"  Style="{StaticResource styleLabel}"  />
             <Label Name="lblPrenom" Content="Prénom"  Style="{StaticResource styleLabel}" />
             <Label Name="lblAdresse" Content="Adresse"  Style="{StaticResource styleLabel}" />
@@ -72,13 +73,16 @@
             <Label Name="lblFemme" Content="Femme" Style="{StaticResource styleLabel}" />
 
         </StackPanel>
+        
+        
 
         <StackPanel 
                     Orientation="Vertical"
                     Grid.Column="1"
                     Grid.Row="2"
             Background="LightGray">
-
+            
+            <Label Name="txtNoClient" Style="{StaticResource styleLabel}"  />
             <TextBox  Name="txtNom" Style="{StaticResource styleTxtBox}"  />
             <TextBox  Name="txtPrenom" Style="{StaticResource styleTxtBox}" />
             <TextBox  Name="txtAdresse" Style="{StaticResource styleTxtBox}" />
@@ -90,17 +94,17 @@
                 <ComboBoxItem>Manitoba</ComboBoxItem>
                 <ComboBoxItem>Nouveau-Brunswick</ComboBoxItem>
                 <ComboBoxItem>Nouvelle-Écosse</ComboBoxItem>
+                <ComboBoxItem>Nunavut</ComboBoxItem>
                 <ComboBoxItem>Ontario</ComboBoxItem>
                 <ComboBoxItem>Québec</ComboBoxItem>
                 <ComboBoxItem>Saskatchewan</ComboBoxItem>
-                <ComboBoxItem>Terre-Neuve-et-Labrador</ComboBoxItem>
-                <ComboBoxItem>Nunavut</ComboBoxItem>
+                <ComboBoxItem>Terre-Neuve-et-Labrador</ComboBoxItem>                
                 <ComboBoxItem>Territoires du Nord-Ouest</ComboBoxItem>
                 <ComboBoxItem>Yukon</ComboBoxItem>
             </ComboBox>
             <TextBox  Name="txtCodePostal" Style="{StaticResource styleTxtBox}" />
             
-            <TextBox  Name="txtDescription"   Style="{StaticResource styleTxtBox}" />
+            <TextBox   Name="txtDescription"   Style="{StaticResource styleTxtBox}" />
             <TextBox  Name="txtTelephone" Style="{StaticResource styleTxtBox}" />
 
 
@@ -117,13 +121,22 @@
 
         </StackPanel>
 
+        <Grid   Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Background="LightGray"
+                >
+
+            <Label Name="lblInfo" FontSize="14" />
+        </Grid>
+
         <StackPanel Grid.Column="0"
-                    Grid.Row="3"
+                    Grid.Row="4"
                     Grid.ColumnSpan="2"                   
                     >
 
-            <Button Name="btnEnregistrer" Content="Enregistrer" Width="150" Click="btnEnregistrer_Click" Style="{StaticResource styleButton}" />
-            <Button  Name="btnViderChamps" Content="Vider les champs" Width="150" Style="{StaticResource styleButton}" Click="btnViderChamps_Click"  />
+            <Button Name="btnEnregistrer" Content="Enregistrer" Click="btnEnregistrer_Click" Style="{StaticResource styleButton}" />
+            <Button  Name="btnViderChamps" Content="Vider les champs" Style="{StaticResource styleButton}" Click="btnViderChamps_Click"  />
         </StackPanel>
 
 

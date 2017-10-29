@@ -14,9 +14,23 @@ namespace Facturio.Clients
         
         private static ISession session = NHibernateConnexion.OpenSession();
 
+
+        // Avant modification : 29 Oct. 12h37
+        //public static List<Client> RetrieveAll()
+        //{
+        //    return session.Query<Client>().ToList();
+        //}
+
+
         public static List<Client> RetrieveAll()
         {
-            return session.Query<Client>().ToList();
+            var client = session.Query<Client>().AsQueryable();
+
+            var result = from c in client
+                         where c.EstActif == true
+                         select c;
+
+            return result.ToList();
         }
 
         public static List<Client> Retrieve(int idClient)
