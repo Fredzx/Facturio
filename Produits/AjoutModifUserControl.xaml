@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Facturio.Produits"
              xmlns:xctk="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
              mc:Ignorable="d" 
+			 Title="Ajouter/Modifier un produit"
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
         <Style x:Key="styleLabel" TargetType="{x:Type Label}">
