@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Facturio.Rapports.Vues"
         mc:Ignorable="d"
-        Title="DetailFacturationCliente" Height="300" Width="300">
+        Title="Détails des factures" Height="500" Width="500">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -32,18 +32,19 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Grid.Column="1" Grid.ColumnSpan="3" ></Label>
+        <Label Grid.Column="1" Grid.ColumnSpan="3" Name="lblNoFacture"></Label>
         <Label Grid.Column="4" Grid.ColumnSpan="5" Content="Liste des Facutres"></Label>
-        <DataGrid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="8" Grid.RowSpan="7" Name="dtgProduits" ItemsSource="{Binding Produit}">
+        <DataGrid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="8" Grid.RowSpan="7" Name="dtgProduits" 
+                  AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Produit}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Produit" Width="10*" Binding="{Binding Nom}"/>
+                <DataGridTextColumn Header="Produit" Width="10*" Binding="{Binding Produit.Nom}"/>
                 <DataGridTextColumn Header="Quantité" Width="10*" Binding="{Binding Quantite}"/>
-                <DataGridTextColumn Header="Prix" Width="10*" Binding="{Binding Prix}"/>
+                <DataGridTextColumn Header="Prix" Width="10*" Binding="{Binding Produit.Prix}"/>
                 <DataGridTextColumn Header="Total" Width="10*" Binding="{Binding Total}"/>
             </DataGrid.Columns>
 
         </DataGrid>
-        <Button Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" Content="Précédent" Click="Button_Click_Precedent"></Button>
-        <Button Grid.Row="8" Grid.Column="6" Grid.ColumnSpan="2" Content="Suivant" Click="Button_Click_Suivant"></Button>
+        <Button Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" Content="Précédent" Margin="0 5 0 0" Padding="2" Click="Button_Click_Precedent"></Button>
+        <Button Grid.Row="8" Grid.Column="6" Grid.ColumnSpan="2" Content="Suivant" Margin="0 5 0 0" Padding="2" Click="Button_Click_Suivant"></Button>
     </Grid>
 </Window>

@@ -23,7 +23,7 @@ namespace Facturio.Produits
     {
         public static Label LblFormTitle { get; set; } = new Label();
         public static TextBox TxtNom { get; set; } = new TextBox();
-        public static TextBox TxtCode { get; set; } = new TextBox();
+       // public static TextBox TxtCode { get; set; } = new TextBox();
         public static TextBox TxtDescription { get; set; } = new TextBox();
         public static TextBox TxtPrix { get; set; } = new TextBox();
         public static TextBox TxtQuantite { get; set; } = new TextBox();
@@ -39,7 +39,7 @@ namespace Facturio.Produits
             TxtPrix = txtPrix;
             TxtQuantite = txtQuantite;
             TxtDescription = txtDescription;
-            TxtCode = txtCode;
+           // TxtCode = txtCode;
             LblInfo = lblInfo;
             GrdTitre = grdTitre;
         }
@@ -47,7 +47,7 @@ namespace Facturio.Produits
         public void RemplirChampsModif(Produit p)
         {
             TxtNom.Text = p.Nom;
-            TxtCode.Text = p.Code;
+           // TxtCode.Text = p.Code;
             TxtDescription.Text = p.Description;
             TxtPrix.Text = p.Prix.ToString();
             TxtQuantite.Text = p.Quantite.ToString();
@@ -56,7 +56,7 @@ namespace Facturio.Produits
 
         private void updateChampsProduit()
         {
-                ProduitsController.Produit.Code = txtCode.Text;
+              //  ProduitsController.Produit.Code = txtCode.Text;
                 ProduitsController.Produit.Description = txtDescription.Text;
                 ProduitsController.Produit.Nom = txtNom.Text;
                 ProduitsController.Produit.Prix = Convert.ToDouble(txtPrix.Text);
@@ -104,7 +104,7 @@ namespace Facturio.Produits
         public static void viderChamps()
         {
             TxtNom.Text = "";
-            TxtCode.Text = "";
+            //TxtCode.Text = "";
             TxtDescription.Text = "";
             TxtPrix.Text = "";
             TxtQuantite.Text = "";

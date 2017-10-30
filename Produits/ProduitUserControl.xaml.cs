@@ -21,10 +21,12 @@ namespace Facturio.Produits
     public partial class ProduitUserControl : UserControl
     {
         public static TabControl TbcProduitPublic { get; set; } = new TabControl();
+        public static TabItem TbiAjouterModifierProduit { get; set; } = new TabItem();
         public ProduitUserControl()
         {
             InitializeComponent();
             TbcProduitPublic = tbcProduit;
+            TbiAjouterModifierProduit = tbiAjouterModifierProduit;
         }
 
         private void tbcProduit_SelectionChanged(object sender, SelectionChangedEventArgs e)

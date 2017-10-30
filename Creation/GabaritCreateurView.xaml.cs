@@ -15,13 +15,9 @@ namespace Facturio.Creation
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            var dc = DataContext;
-            DataContext = null;
-            DataContext = dc;
-
-            //var lol = ItemsControlCriteres.ItemsSource;
-            //ItemsControlCriteres.ItemsSource = null;
-            //ItemsControlCriteres.ItemsSource = lol;
+            var itemsSource = ItemsControlCriteres.ItemsSource;
+            ItemsControlCriteres.ItemsSource = null;
+            ItemsControlCriteres.ItemsSource = itemsSource;
         }
     }
 }
