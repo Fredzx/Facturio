@@ -52,7 +52,7 @@
                         </ItemsControl.ItemTemplate>
                     </ComboBox>
 
-                    <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Ajouter" Width="Auto" HorizontalAlignment="Stretch" Click="ButtonBase_OnClick">
+                    <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Ajouter" Width="Auto" HorizontalAlignment="Stretch">
                         <Button.Command>
                             <Binding Path="AjouterCritere" />
                         </Button.Command>
@@ -60,9 +60,9 @@
                 </Grid>
 
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <!-- Gabarit.GabaritCriteres -->
                     <ItemsControl
-                        x:Name="ItemsControlCriteres"
-                        ItemsSource="{Binding Gabarit.GabaritCriteres}"
+                        ItemsSource="{Binding GabaritCriteres}"
                         BorderThickness="0">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>

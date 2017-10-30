@@ -61,14 +61,14 @@ namespace Facturio
 
         private void SelectionneOngletCreation(object parameter)
         {
-            GabaritCreateurViewModel.Fix = "Nouveau";
+            GabaritCreateurViewModel._mode = "Nouveau";
             Onglets[(int)Enums.Onglets.Creation] = new GabaritCreateurViewModel();
             OngletSelectionne = Onglets[(int)Enums.Onglets.Creation];
         }
 
         private void SelectionneOngletCreationModifier(object parameter)
         {
-            GabaritCreateurViewModel.Fix = "Modifier";
+            GabaritCreateurViewModel._mode = "Modification";
             Onglets[(int)Enums.Onglets.Creation] = new GabaritCreateurViewModel((Gabarit)parameter);
             OngletSelectionne = Onglets[(int)Enums.Onglets.Creation];
         }

@@ -13,7 +13,7 @@ namespace Facturio.Creation
     {
         #region Propriétés
 
-        public static string Fix;
+        public static string _mode = "Nouveau";
 
         private static Gabarit _gabarit;
         public Gabarit Gabarit
@@ -28,6 +28,8 @@ namespace Facturio.Creation
                 RaisePropertyChanged(nameof(Gabarit));
             }
         }
+
+        public ObservableCollection<GabaritCritere> GabaritCriteres { get; set; }
 
         private string _titreCritereLibre;
         public string TitreCritereLibre
@@ -73,11 +75,20 @@ namespace Facturio.Creation
 
         public GabaritCreateurViewModel()
         {
-            if (Fix == "Nouveau" && Gabarit != null)
-                Gabarit = null;
+            /*
+            if (Gabarit == null)
+            {
+                Gabarit = new Gabarit {GabaritCriteres = CreerNouveauGabarit()};
+            }
+            */
 
-            if (Fix == "Nouveau")
-                Gabarit = CreerNouveauGabarit();
+            if (_mode == "Nouveau")
+            {
+                Gabarit = new Gabarit {GabaritCriteres = CreerNouveauGabarit()};
+                GabaritCriteres = new ObservableCollection<GabaritCritere>(Gabarit.GabaritCriteres);
+            }
+
+            GabaritCriteres = new ObservableCollection<GabaritCritere>(Gabarit.GabaritCriteres);
 
             TypesCriteres = new ObservableCollection<TypeCritere>(HibernateTypeCritereService.RetrieveAll());
             TypeCritereSelectionne = TypesCriteres[0];
@@ -89,7 +100,9 @@ namespace Facturio.Creation
 
         public GabaritCreateurViewModel(Gabarit gabarit) : this()
         {
-            Gabarit = gabarit ?? CreerNouveauGabarit();
+            //Gabarit = gabarit ?? CreerNouveauGabarit();
+            Console.WriteLine(gabarit.TitreGabarit);
+            Gabarit = gabarit;
         }
 
         #endregion
@@ -107,22 +120,23 @@ namespace Facturio.Creation
                 EstUtilise = false
             };
 
-            Gabarit.GabaritCriteres.Add(gabaritCritere);
+            // Gabarit.GabaritCriteres.Add(gabaritCritere);
+            GabaritCriteres.Add(gabaritCritere);
         }
 
-        private Gabarit CreerNouveauGabarit()
+        private ObservableCollection<GabaritCritere> CreerNouveauGabarit()
         {
             const int POSITION = 0;
             const int LARGEUR = 50;
 
-            Gabarit gabarit = new Gabarit();
+            //Gabarit gabarit = new Gabarit();
 
             ObservableCollection<GabaritCritere> gabaritCriteres = new ObservableCollection<GabaritCritere>();
             for (int i = 0; i < 12; ++i)
             {
                 GabaritCritere gabaritCritere = new GabaritCritere
                 {
-                    Gabarit = gabarit,
+                    Gabarit = null,
                     Critere = HibernateCritereService.Retrieve(i + 1).First(),
                     Position = POSITION,
                     Largeur = LARGEUR,
@@ -132,9 +146,11 @@ namespace Facturio.Creation
                 gabaritCriteres.Add(gabaritCritere);
             }
 
-            gabarit.GabaritCriteres = gabaritCriteres;
+            //gabarit.GabaritCriteres = gabaritCriteres;
+            //GabaritCriteres = new ObservableCollection<GabaritCritere>(gabaritCriteres);
 
-            return gabarit;
+            //return gabarit;
+            return gabaritCriteres;
         }
 
         #endregion
