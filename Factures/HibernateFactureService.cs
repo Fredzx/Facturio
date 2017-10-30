@@ -28,7 +28,7 @@ namespace Facturio.Factures
             return result.ToList();
         }
 
-        public static List<Facture> RetrieveFacturationCliente(DateTime dateDebut, DateTime dateFin, int idClient)
+        public static List<Facture> RetrieveFacturationCliente(DateTime dateDebut, DateTime dateFin, int? idClient)
         {
             var facture = session.Query<Facture>().AsQueryable();
 
