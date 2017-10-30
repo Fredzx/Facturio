@@ -32,8 +32,18 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
-                
-        
+        <Label Grid.Column="1" Grid.ColumnSpan="3" ></Label>
+        <Label Grid.Column="4" Grid.ColumnSpan="5" Content="Liste des Facutres"></Label>
+        <DataGrid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="8" Grid.RowSpan="7" Name="dtgProduits" ItemsSource="{Binding Produit}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Produit" Width="10*" Binding="{Binding Nom}"/>
+                <DataGridTextColumn Header="Quantité" Width="10*" Binding="{Binding Quantite}"/>
+                <DataGridTextColumn Header="Prix" Width="10*" Binding="{Binding Prix}"/>
+                <DataGridTextColumn Header="Total" Width="10*" Binding="{Binding Total}"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <Button Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" Content="Précédent" Click="Button_Click_Precedent"></Button>
+        <Button Grid.Row="8" Grid.Column="6" Grid.ColumnSpan="2" Content="Suivant" Click="Button_Click_Suivant"></Button>
     </Grid>
 </Window>
