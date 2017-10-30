@@ -285,6 +285,7 @@ namespace Facturio.Produits
 
         public static void reinitialiserOnglet()
         {
+            ProduitUserControl.TbiAjouterModifierProduit.Header = "Ajouter";
             AjoutModifUserControl.LblFormTitle.Content = "Ajouter un produit";
             AjoutModifUserControl.viderChamps();
             AjoutModifUserControl.EstModif = false;

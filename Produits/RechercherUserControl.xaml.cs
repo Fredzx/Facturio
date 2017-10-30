@@ -60,6 +60,7 @@ namespace Facturio.Produits
                 ProduitUserControl.TbcProduitPublic.SelectedIndex = 1;
 
                 // Ajuster le titre
+                ProduitUserControl.TbiAjouterModifierProduit.Header = "Modifier";
                 AjoutModifUserControl.LblFormTitle.Content = "Modifier un produit";
                 ProduitsController.Produit = (Produit)dtgAfficheProduits.SelectedItem;
                 ProduitsController.AjoutModifUC.RemplirChampsModif(ProduitsController.Produit);

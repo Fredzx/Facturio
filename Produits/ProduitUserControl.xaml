@@ -11,7 +11,7 @@
             <TabItem x:Name="tbiRechercherProduit" Header="Rechercher">
                 <local:RechercherUserControl/>
             </TabItem>
-            <TabItem x:Name="tbiAjouterModifierProduit" Header="Ajouter/Modifier">
+            <TabItem x:Name="tbiAjouterModifierProduit" Header="Ajouter">
                 <local:AjoutModifUserControl/>
             </TabItem>
         </TabControl>
