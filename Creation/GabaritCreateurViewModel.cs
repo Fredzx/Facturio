@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Facturio.Base;
 using Facturio.Criteres;
@@ -12,6 +12,8 @@ namespace Facturio.Creation
     public class GabaritCreateurViewModel : BaseViewModel, IOngletViewModel
     {
         #region Propriétés
+
+        public static string Fix;
 
         private static Gabarit _gabarit;
         public Gabarit Gabarit
@@ -27,8 +29,6 @@ namespace Facturio.Creation
             }
         }
 
-        public ObservableCollection<TypeCritere> TypesCriteres { get; set; }
-
         private string _titreCritereLibre;
         public string TitreCritereLibre
         {
@@ -42,6 +42,8 @@ namespace Facturio.Creation
                 RaisePropertyChanged(nameof(TitreCritereLibre));
             }
         }
+
+        public ObservableCollection<TypeCritere> TypesCriteres { get; set; }
 
         private TypeCritere _typeCritereSelectionne;
         public TypeCritere TypeCritereSelectionne
@@ -71,8 +73,15 @@ namespace Facturio.Creation
 
         public GabaritCreateurViewModel()
         {
+            if (Fix == "Nouveau" && Gabarit != null)
+                Gabarit = null;
+
+            if (Fix == "Nouveau")
+                Gabarit = CreerNouveauGabarit();
+
             TypesCriteres = new ObservableCollection<TypeCritere>(HibernateTypeCritereService.RetrieveAll());
             TypeCritereSelectionne = TypesCriteres[0];
+
             Titre = "Création";
 
             AjouterCritere = new RelayCommand(AjouteCritere, parameter => !string.IsNullOrWhiteSpace(TitreCritereLibre));
@@ -108,7 +117,7 @@ namespace Facturio.Creation
 
             Gabarit gabarit = new Gabarit();
 
-            List<GabaritCritere> gabaritCriteres = new List<GabaritCritere>();
+            ObservableCollection<GabaritCritere> gabaritCriteres = new ObservableCollection<GabaritCritere>();
             for (int i = 0; i < 12; ++i)
             {
                 GabaritCritere gabaritCritere = new GabaritCritere

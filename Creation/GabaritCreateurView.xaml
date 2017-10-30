@@ -52,7 +52,7 @@
                         </ItemsControl.ItemTemplate>
                     </ComboBox>
 
-                    <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Ajouter" Width="Auto" HorizontalAlignment="Stretch">
+                    <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Ajouter" Width="Auto" HorizontalAlignment="Stretch" Click="ButtonBase_OnClick">
                         <Button.Command>
                             <Binding Path="AjouterCritere" />
                         </Button.Command>
@@ -61,7 +61,8 @@
 
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <ItemsControl
-                        ItemsSource="{Binding Gabarit.GabaritCriteres, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        x:Name="ItemsControlCriteres"
+                        ItemsSource="{Binding Gabarit.GabaritCriteres}"
                         BorderThickness="0">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -70,7 +71,10 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <CheckBox Content="{Binding Critere.Titre}" IsChecked="{Binding EstUtilise}" Margin="0, 0, 0, 6" />
+                                <DockPanel LastChildFill="True" Margin="0, 0, 0, 6">
+                                    <Button Content="X" DockPanel.Dock="Right" VerticalAlignment="Center" Width="20" Height="20" />
+                                    <CheckBox Content="{Binding Critere.Titre}" IsChecked="{Binding EstUtilise}" />
+                                </DockPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
