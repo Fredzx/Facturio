@@ -37,8 +37,9 @@ namespace Facturio.Rapports.Vues
             DateDebut = dateDebut;
             DateFin = dateFin;
             IdClient = leClient.IdClient;
-            LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveFacturationCliente(dateDebut, DateFin, 1));
+            LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveFacturationCliente(dateDebut, DateFin, IdClient));
             dtgProduits.ItemsSource = LstFacture[compteur].LstProduit;
+            lblNoFacture.Content = (compteur+1).ToString() + "/" + LstFacture.Count;
         }
         
        

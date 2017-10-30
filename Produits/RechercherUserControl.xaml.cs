@@ -57,15 +57,16 @@ namespace Facturio.Produits
                 AjoutModifUserControl.EstModif = true;
                 // Lorsqu'il clique sur mofifier on veut : 
                 // Que le usercontrol Produti change d'onglet > direction : onglet Modifier.
+                ProduitUserControl.TbcProduitPublic.SelectedIndex = 1;
 
-                btnModifier.IsEnabled = false;
-                btnSupprimer.IsEnabled = false;
                 // Ajuster le titre
+                ProduitUserControl.TbiAjouterModifierProduit.Header = "Modifier";
                 AjoutModifUserControl.LblFormTitle.Content = "Modifier un produit";
                 ProduitsController.Produit = (Produit)dtgAfficheProduits.SelectedItem;
                 ProduitsController.AjoutModifUC.RemplirChampsModif(ProduitsController.Produit);
                 dtgAfficheProduits.SelectedIndex = -1;
-                ProduitUserControl.TbcProduitPublic.SelectedIndex = 1;
+                btnModifier.IsEnabled = false;
+                btnSupprimer.IsEnabled = false;
             }
         }
 
