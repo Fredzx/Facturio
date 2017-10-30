@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Produits"
              mc:Ignorable="d" 
-			 Title="Rechercher un produit"
              d:DesignHeight="400" d:DesignWidth="500">
     
     <Grid VerticalAlignment="Stretch">

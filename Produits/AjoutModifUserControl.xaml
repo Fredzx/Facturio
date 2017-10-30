@@ -6,7 +6,6 @@
              xmlns:local="clr-namespace:Facturio.Produits"
              xmlns:xctk="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
              mc:Ignorable="d" 
-			 Title="Ajouter/Modifier un produit"
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
         <Style x:Key="styleLabel" TargetType="{x:Type Label}">
@@ -70,7 +69,6 @@
                     >
 
             <Label Name="lblNom" Content="Nom"  Style="{StaticResource styleLabel}"  />
-            <Label Name="lblCode" Content="Code(pt Généré par le programme)"  Style="{StaticResource styleLabel}" />
             <Label Name="lblDescription" Content="Description"  Style="{StaticResource styleLabel}" />
             <Label Name="lblPrix" Content="Prix" Margin="0, 125, 0, 0" Style="{StaticResource styleLabel}" />
             <Label Name="lblQuantite" Content="Quantité"  Style="{StaticResource styleLabel}" />
@@ -85,7 +83,6 @@
             <!--https://social.msdn.microsoft.com/Forums/vstudio/en-US/fc112396-e8e9-41b7-97d1-e413850a59c9/how-to-create-a-masked-textbox-usnig-wpf?forum=wpf
             <xctk:MaskedTextBox x:Name="txtNom" Mask:="0000-0000" CaretIndex="0" ValueDataType="{x:Type s:String}" FontSize="14"</xctk:MaskedTextBox>-->
             <TextBox  Name="txtNom"  Style="{StaticResource styleTxtBox}"  />
-            <TextBox  Name="txtCode" Style="{StaticResource styleTxtBox}" />
             <TextBox  Name="txtDescription" Height="150" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" MaxHeight="150" Style="{StaticResource styleTxtBox}" />
             <TextBox  Name="txtPrix" Style="{StaticResource styleTxtBox}" />
             <TextBox  Name="txtQuantite" Style="{StaticResource styleTxtBox}" />
