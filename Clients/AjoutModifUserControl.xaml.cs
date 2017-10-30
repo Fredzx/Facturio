@@ -22,6 +22,10 @@ namespace Facturio.Clients
     /// </summary>
     public partial class AjoutModifUserControl : UserControl
     {
+
+        const int NOM_PRENOM_MAX = 20;
+        const int ADRESSE_MAX = 50;
+
         public bool Ajout { get; set; } = true;
         public static Label LblTxtNoClient { get; set; } = new Label();
         public static Label LblFormTitle { get; set; } = new Label();
@@ -97,13 +101,13 @@ namespace Facturio.Clients
         private void AfficherSuccesModif()
         {                    
             LblInfo.Foreground = Brushes.Green;
-            LblInfo.Content = "Le client a été modifié avec succès!";
+            LblInfo.Content = "Le client a été modifié avec succès !";
         }
 
         private void AfficherSuccesAjout()
         {
             LblInfo.Foreground = Brushes.Green;
-            LblInfo.Content = "Le client a été ajouté avec succès!";
+            LblInfo.Content = "Le client a été ajouté avec succès !";
         }
 
         public static void SetChampsModifier()
@@ -185,11 +189,11 @@ namespace Facturio.Clients
 
         private bool ValiderInformationsClient()
         {
-            if (txtNom.Text.ToString() != "")
+            if (txtNom.Text.ToString() != "" && txtNom.Text.Length <= NOM_PRENOM_MAX)
             {
-                if (txtPrenom.Text.ToString() != "")
+                if (txtPrenom.Text.ToString() != "" && txtPrenom.Text.Length <= NOM_PRENOM_MAX)
                 {
-                    if(txtAdresse.Text.ToString() != "")
+                    if(txtAdresse.Text.ToString() != "" && txtAdresse.Text.Length <= ADRESSE_MAX)
                     {
                         if(cboProvince.SelectedIndex != -1)
                         {
@@ -231,9 +235,9 @@ namespace Facturio.Clients
 
             switch (noErr)
             {
-                case 1: LblInfo.Content = "Veuillez entrer un nom pour le client."      ; break;
-                case 2: LblInfo.Content = "Veuillez entrer prénom pour le client."      ; break;
-                case 3: LblInfo.Content = "Veuillez entrer une adresse pour le client." ; break;
+                case 1: LblInfo.Content = "Veuillez entrer un nom pour le client.\n Maximum " + NOM_PRENOM_MAX + " caractères."      ; break;
+                case 2: LblInfo.Content = "Veuillez entrer prénom pour le client.\n Maximum " + NOM_PRENOM_MAX + " caractères." ; break;
+                case 3: LblInfo.Content = "Veuillez entrer une adresse pour le client.\n Maximum " + ADRESSE_MAX + " caractères."; break;
                 case 4: LblInfo.Content = "Veuillez choisir une province pour le client."; break;
                 case 5: LblInfo.Content = "Veuillez entrer un code postal valide pour le client.\n Voici un exemple de format valide : J5K8E6 "; break;
                 case 6: LblInfo.Content = "Veuillez entrer un numéro de téléphone valide pour le client.\n Voici un exemple de format valide: 4504567891 "; break;
@@ -285,6 +289,10 @@ namespace Facturio.Clients
             return false;
         }
 
+        private void btnRetour_Click(object sender, RoutedEventArgs e)
+        {
+            ClientsController.AfficherOngletRechercher();
+        }
     }
 
 
