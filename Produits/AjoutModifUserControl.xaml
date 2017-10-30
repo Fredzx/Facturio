@@ -71,7 +71,7 @@
             <Label Name="lblNom" Content="Nom"  Style="{StaticResource styleLabel}"  />
             <Label Name="lblCode" Content="Code(pt Généré par le programme)"  Style="{StaticResource styleLabel}" />
             <Label Name="lblDescription" Content="Description"  Style="{StaticResource styleLabel}" />
-            <Label Name="lblPrix" Content="Prix"  Style="{StaticResource styleLabel}" />
+            <Label Name="lblPrix" Content="Prix" Margin="0, 125, 0, 0" Style="{StaticResource styleLabel}" />
             <Label Name="lblQuantite" Content="Quantité"  Style="{StaticResource styleLabel}" />
         </StackPanel>
 
@@ -85,7 +85,7 @@
             <xctk:MaskedTextBox x:Name="txtNom" Mask:="0000-0000" CaretIndex="0" ValueDataType="{x:Type s:String}" FontSize="14"</xctk:MaskedTextBox>-->
             <TextBox  Name="txtNom"  Style="{StaticResource styleTxtBox}"  />
             <TextBox  Name="txtCode" Style="{StaticResource styleTxtBox}" />
-            <TextBox  Name="txtDescription" Style="{StaticResource styleTxtBox}" />
+            <TextBox  Name="txtDescription" Height="150" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" MaxHeight="150" Style="{StaticResource styleTxtBox}" />
             <TextBox  Name="txtPrix" Style="{StaticResource styleTxtBox}" />
             <TextBox  Name="txtQuantite" Style="{StaticResource styleTxtBox}" />
 

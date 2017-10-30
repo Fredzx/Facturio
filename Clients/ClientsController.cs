@@ -5,11 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Facturio.Base;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Facturio.Clients
 {
     public class ClientsController : BaseViewModel, IOngletViewModel
     {
+        
         public static ObservableCollection<Client> LstObClients { get; set; } = new ObservableCollection<Client>();
         public static Client LeClient { get; set; }
         public string Titre { get; set; }
@@ -18,15 +21,28 @@ namespace Facturio.Clients
         public ClientsController()
         {
             Titre = "Clients";
-           
 
-            LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveAll());
+
+             LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveAll());
+            //ChargerListeClients();
 
         }
 
         public static void ChargerListeClients()
         {
             LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveAll());
+
+            //ObservableCollection<Client> lstTemp = new ObservableCollection<Client>();
+
+            //foreach (Client c in LstObClients)
+            //{
+            //    if (c.EstActif)
+            //    {
+            //        lstTemp.Add(c);
+            //    }
+            //}
+
+            //LstObClients = lstTemp;
 
         }
 
@@ -39,6 +55,7 @@ namespace Facturio.Clients
 
             client.Province.IdProvince = HibernateProvinceClient.RetrieveByName(client.Province.Nom)[0].IdProvince;
 
+            client.NoClient = SetNoClient(client);
 
             // Ajouter le client en BD.
             HibernateClientService.Create(client);
@@ -49,9 +66,15 @@ namespace Facturio.Clients
 
         public static void SupprimerClient(Client client)
         {
+            
             if(client != null)
             {
-                HibernateClientService.Delete(client);
+                // HibernateClientService.Delete(client);
+
+                client.EstActif = false;
+                HibernateClientService.Update(client);
+
+
                 LstObClients.Remove(client);
 
             }
@@ -80,29 +103,62 @@ namespace Facturio.Clients
 
 
             // Sexe
-            LeClient.Sexe.Nom = sexe.Nom;
-            LeClient.Sexe.IdSexe = HibernateSexeService.RetrieveByName(LeClient.Sexe.Nom)[0].IdSexe;
+            Sexe s;
+            s = HibernateSexeService.RetrieveByName(sexe.Nom)[0];
+            LeClient.Sexe = s;
 
             // Rang
-            LeClient.Rang.Nom = rang.Nom;
-            LeClient.Rang.IdRang = HibernateRangService.RetrieveByName(LeClient.Rang.Nom)[0].IdRang;
+            Rang r;
+            r = HibernateRangService.RetrieveByName(rang.Nom)[0];
+            LeClient.Rang = r;
 
             // Province
             //LeClient.Province.Nom = province.Nom;
             Province p;
-            p=HibernateProvinceClient.RetrieveByName(province.Nom)[0];
-            LeClient.Province = p;
-
-            //LeClient.Province.IdProvince = HibernateProvinceClient.RetrieveByName(LeClient.Province.Nom)[0].IdProvince;
+            p = HibernateProvinceClient.RetrieveByName(province.Nom)[0];
+            LeClient.Province = p;           
 
             
             // Update en BD.
-
             HibernateClientService.Update(LeClient);
 
             // Update en liste
             LstObClients.Remove(LeClient);
             LstObClients.Add(LeClient);
+
+           
+        }
+
+        public static string SetNoClient(Client client)
+        {
+            int no = LstObClients.Count + 1000;
+            string noClient = no.ToString();
+            noClient += "-";
+            noClient += client.Prenom[0].ToString().ToLower(); 
+            noClient += client.Prenom[1].ToString().ToLower();
+            noClient += client.Prenom[0];
+            noClient += client.Nom[0];
+
+            return noClient;
+        }
+
+
+        public static void AfficherOngletRechercher()
+        {
+            ClientsUserControl.TbcClientPublic.SelectedIndex = 0;           
+        }
+
+        public static void LiveFiltering(string filter)
+        {
+            LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveFilter(filter));
+        }
+
+        public static void RafraichirGrille(bool estFiltre)
+        {
+            if (!estFiltre)            
+            LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveAll());
+            RechercherUserControl.DtgClients.ItemsSource = null;
+            RechercherUserControl.DtgClients.ItemsSource = LstObClients;
         }
     }
 }

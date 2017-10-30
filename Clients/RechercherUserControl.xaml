@@ -6,6 +6,17 @@
              xmlns:local="clr-namespace:Facturio.Clients"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="500">
+    <UserControl.Resources>
+        <Style x:Key="styleLabel" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontFamily" Value="tahoma" />
+        </Style>        
+        <Style  x:Key="styleButton" TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+    </UserControl.Resources>
     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition  />
@@ -22,14 +33,21 @@
                             <RowDefinition />
                             <RowDefinition />
                             <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition Height="Auto" />
+                 
+                            
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0"
-                          Grid.Column="0"
-                          Grid.ColumnSpan="6">
-                            <TextBox Name="txtRecherche" Height="20" Width="400" />
+                                  Grid.Column="0"
+                                  Grid.ColumnSpan="3" >
+
+                        <Label Name="lblRechercher"  Content="Rechercher par Nom ou No. Client" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{StaticResource styleLabel}" />
+                        </Grid>
+
+                        <Grid Grid.Row="0"
+                          Grid.Column="3"
+                          Grid.ColumnSpan="3">            
+                            <TextBox Name="txtRecherche" Height="20" TextChanged="txtRecherche_TextChanged" />
                         </Grid>
                         <Grid Grid.Row="1"
                           Grid.Column="0"
@@ -39,16 +57,18 @@
                                       BorderBrush="Black" Height="200" HorizontalAlignment="Center" VerticalAlignment="Top"
                                       AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectionChanged="dtgAfficheClients_SelectionChanged">
                                 <DataGrid.Columns>
+
+                                    <DataGridTextColumn Header="No. Client" Width="3*" Binding="{Binding NoClient}" />
                                     <DataGridTextColumn Header="Prénom" Width="4*" Binding="{Binding Prenom}" />
                                     <DataGridTextColumn Header="Nom" Width="4*" Binding="{Binding Nom}"  />
-                                
+
                                     <DataGridTextColumn Header="Téléphone" Width="3*" Binding="{Binding Telephone}" />
-                                    
+
                                     <DataGridTextColumn Header="Province" Width="3*" Binding="{Binding Province.Nom}"/>
                                     <DataGridTextColumn Header="Adresse" Width="7*" Binding="{Binding Adresse}"/>
                                     <DataGridTextColumn Header="Code postal" Width="4*" Binding="{Binding CodePostal}" />
                                     <DataGridTextColumn Header="Rang" Width="3*" Binding="{Binding Rang.Nom}" />
-                </DataGrid.Columns>
+                                </DataGrid.Columns>
                             </DataGrid>
                         </Grid>
                         <StackPanel Grid.Row="4"
@@ -57,9 +77,9 @@
                         Grid.ColumnSpan="4" Grid.Column="2">
 
 
-                            <Button Name="btnAjouter" Content="Ajouter" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnAjouter_Click"  />
-                            <Button Name="btnModifier" IsEnabled="False" Content="Modifier" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnModifier_Click" />
-                            <Button Name="btnSupprimer" IsEnabled="False" Content="Supprimer" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnSupprimer_Click"/>
+                        <Button Name="btnAjouter" Content="Ajouter" HorizontalAlignment="Right"  Click="btnAjouter_Click" Style="{StaticResource styleButton}"  />
+                        <Button Name="btnModifier" IsEnabled="False" Content="Modifier"  Click="btnModifier_Click"  Style="{StaticResource styleButton}"/>
+                        <Button Name="btnSupprimer" IsEnabled="False" Content="Supprimer"  Click="btnSupprimer_Click" Style="{StaticResource styleButton}"/>
                         </StackPanel>
                     </Grid>
 </UserControl>

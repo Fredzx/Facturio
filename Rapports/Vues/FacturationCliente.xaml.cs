@@ -35,7 +35,7 @@ namespace Facturio.Rapports.Vues
 
         private void ObtenirDate(object sender, DateEventArgs e)
         {
-            Window detailFacturationCliente = new DetailFacturationCliente(e.DateDebut, e.DateFin, 1);
+            Window detailFacturationCliente = new DetailFacturationCliente(e.DateDebut, e.DateFin, (Client)dtgAfficherClient.SelectedItem);
             detailFacturationCliente.Show();
         }
 

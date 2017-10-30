@@ -15,13 +15,14 @@ namespace Facturio.Clients
         public virtual string Telephone { get; set; } = string.Empty;
         public virtual Rang Rang { get; set; }
         public virtual Province Province { get; set; }
+        public virtual bool EstActif { get; set; } = true;
 
         public Client() {}
 
         public Client(string prenom, string nom, string description,
                       Sexe sexe, string adresse, string codePostal,
-                      string telephone, Rang rang, Province province)
-        {
+                      string telephone, Rang rang, Province province, bool estActif)
+        {            
             Prenom = prenom;
             Nom = nom;
             Description = description;
@@ -31,6 +32,7 @@ namespace Facturio.Clients
             Telephone = telephone;
             Rang = rang;
             Province = province;
+            EstActif = estActif;
 
             // Ici, affecter un UUID au NoClient (pas trop long le UUID, résonable)
         }
