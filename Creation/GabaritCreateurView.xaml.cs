@@ -19,5 +19,10 @@ namespace Facturio.Creation
             ItemsControlCriteres.ItemsSource = null;
             ItemsControlCriteres.ItemsSource = itemsSource;
         }
+
+        private void btnOuvrirOpererFacture_Click(object sender, RoutedEventArgs e)
+        {
+            Factures.FactureController.OuvrirFactureEnOperation();
+        }
     }
 }

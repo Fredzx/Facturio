@@ -126,6 +126,9 @@
     <Compile Include="Factures\FactureController.cs" />
     <Compile Include="Factures\FactureMap.cs" />
     <Compile Include="Factures\HibernateFactureService.cs" />
+    <Compile Include="Factures\OpererFacture.xaml.cs">
+      <DependentUpon>OpererFacture.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GabaritsCriteres\GabaritCritere.cs" />
     <Compile Include="GabaritsCriteres\GabaritCritereMap.cs" />
     <Compile Include="Gabarits\Gabarit.cs" />
@@ -188,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Creation\GabaritCreateurView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Factures\OpererFacture.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
