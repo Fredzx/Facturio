@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Clients"
-             mc:Ignorable="d" Height="500" Width="800">
+             mc:Ignorable="d" Height="650" Width="850"
+             Background="#F5F3EE">
     <UserControl.Resources>
         <Style x:Key="styleLabel" TargetType="{x:Type Label}">
             <Setter Property="FontSize" Value="15" />
@@ -30,114 +31,100 @@
 
 
 
-    <Grid HorizontalAlignment="Center" Background="Gray">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="600" />
-            <ColumnDefinition />
+    <Grid>
+        
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="21"  />
-            <RowDefinition Height="29"/>
-            <RowDefinition />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="80" />
+        <Grid.RowDefinitions >
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+
         </Grid.RowDefinitions>
 
-        <Grid   Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                HorizontalAlignment="Center"              
-                Grid.RowSpan="2"
-                >
-
-            <Label Name="lblFormTitle" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" FontFamily="calibri" Content="Ajouter un client" />
+        <Grid   Grid.Row="0" Grid.Column="0"
+                Grid.ColumnSpan="5"
+                Background="#7D1935">            
+            <Label Name="lblFormTitle" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="24" Foreground="Azure" FontFamily="tahoma" Content="Ajouter un client" />
         </Grid>
 
 
-        <StackPanel Orientation="Vertical"                   
-                    Grid.Column="0"
-                    Grid.Row="2"
-                    Background="LightGray"
-                    >
-            <Label Name="lblNoClient" Content="No. Client"  Style="{StaticResource styleLabel}"  />
-            <Label Name="lblNom" Content="Nom"  Style="{StaticResource styleLabel}"  />
-            <Label Name="lblPrenom" Content="Prénom"  Style="{StaticResource styleLabel}" />
-            <Label Name="lblAdresse" Content="Adresse"  Style="{StaticResource styleLabel}" />
-            <Label Name="lblProvince" Content="Province"  Style="{StaticResource styleLabel}" />
-            <Label Name="lblCodePostal" Content="Code postal"  Style="{StaticResource styleLabel}" />
-            <Label Name="lblDescription" Content="Description"  Style="{StaticResource styleLabel}" />
-            <Label Name="lblTelephone" Content="Téléphone" Style="{StaticResource styleLabel}" />
-            <Label Name="lblRang" Content="Rang"  Style="{StaticResource styleLabel}" />
-            <Label Name="lblHomme" Content="Homme" Style="{StaticResource styleLabel}" />
-            <Label Name="lblFemme" Content="Femme" Style="{StaticResource styleLabel}" />
+        <Label Name="lblNoClient" Grid.Row="1" Grid.Column="1"  Content="No. Client" Style="{StaticResource styleLabel}" />
+        <Label Name="txtNoClient" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"  Style="{StaticResource styleLabel}"  />
 
-        </StackPanel>
-        
-        
+        <Label Name="lblNom" Grid.Row="2" Grid.Column="1"  Content="Nom" Style="{StaticResource styleLabel}" />
+        <TextBox Name="txtNom" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"  />
 
-        <StackPanel 
-                    Orientation="Vertical"
-                    Grid.Column="1"
-                    Grid.Row="2"
-            Background="LightGray">
-            
-            <Label Name="txtNoClient" Style="{StaticResource styleLabel}"  />
-            <TextBox  Name="txtNom" Style="{StaticResource styleTxtBox}"  />
-            <TextBox  Name="txtPrenom" Style="{StaticResource styleTxtBox}" />
-            <TextBox  Name="txtAdresse" Style="{StaticResource styleTxtBox}" />
-            <ComboBox Name="cboProvince" Style="{StaticResource styleComboBox}">
+        <Label Name="lblPrenom" Grid.Row="3" Grid.Column="1"  Content="Prénom" Style="{StaticResource styleLabel}" />
+        <TextBox Name="txtPrenom" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"  />
 
-                <ComboBoxItem>Alberta</ComboBoxItem>
-                <ComboBoxItem>Colombie-Britannique</ComboBoxItem>
-                <ComboBoxItem>Île-du-Prince-Édouard</ComboBoxItem>
-                <ComboBoxItem>Manitoba</ComboBoxItem>
-                <ComboBoxItem>Nouveau-Brunswick</ComboBoxItem>
-                <ComboBoxItem>Nouvelle-Écosse</ComboBoxItem>
-                <ComboBoxItem>Nunavut</ComboBoxItem>
-                <ComboBoxItem>Ontario</ComboBoxItem>
-                <ComboBoxItem>Québec</ComboBoxItem>
-                <ComboBoxItem>Saskatchewan</ComboBoxItem>
-                <ComboBoxItem>Terre-Neuve-et-Labrador</ComboBoxItem>                
-                <ComboBoxItem>Territoires du Nord-Ouest</ComboBoxItem>
-                <ComboBoxItem>Yukon</ComboBoxItem>
-            </ComboBox>
-            <TextBox  Name="txtCodePostal" Style="{StaticResource styleTxtBox}" />
-            
-            <TextBox   Name="txtDescription"   Style="{StaticResource styleTxtBox}" />
-            <TextBox  Name="txtTelephone" Style="{StaticResource styleTxtBox}" />
+        <Label Name="lblAdresse" Grid.Row="4" Grid.Column="1"  Content="Adresse" Style="{StaticResource styleLabel}" />
+        <TextBox Name="txtAdresse" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"  />
 
+        <Label Name="lblProvince" Grid.Row="5" Grid.Column="1"  Content="Province" Style="{StaticResource styleLabel}" />
+        <ComboBox Name="cboProvince" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2">
+            <ComboBoxItem>Alberta</ComboBoxItem>
+            <ComboBoxItem>Colombie-Britannique</ComboBoxItem>
+            <ComboBoxItem>Île-du-Prince-Édouard</ComboBoxItem>
+            <ComboBoxItem>Manitoba</ComboBoxItem>
+            <ComboBoxItem>Nouveau-Brunswick</ComboBoxItem>
+            <ComboBoxItem>Nouvelle-Écosse</ComboBoxItem>
+            <ComboBoxItem>Nunavut</ComboBoxItem>
+            <ComboBoxItem>Ontario</ComboBoxItem>
+            <ComboBoxItem>Québec</ComboBoxItem>
+            <ComboBoxItem>Saskatchewan</ComboBoxItem>
+            <ComboBoxItem>Terre-Neuve-et-Labrador</ComboBoxItem>
+            <ComboBoxItem>Territoires du Nord-Ouest</ComboBoxItem>
+            <ComboBoxItem>Yukon</ComboBoxItem>
+        </ComboBox>
 
-            <ComboBox Name="cboRang" Style="{StaticResource styleComboBox}">
-                <ComboBoxItem  IsSelected="True">Sans rang</ComboBoxItem>
-                <ComboBoxItem>Bronze</ComboBoxItem>
-                <ComboBoxItem>Argent</ComboBoxItem>
-                <ComboBoxItem>Or</ComboBoxItem>
-            </ComboBox>
+        <Label Name="lblCodePostal" Grid.Row="6" Grid.Column="1"  Content="Code Postal" Style="{StaticResource styleLabel}" />
+        <TextBox Name="txtCodePostal" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2"  />
 
-            <RadioButton Name="rdbHomme" VerticalAlignment="Center" />
-            <RadioButton Name="rdbFemme" VerticalAlignment="Bottom"/>
+        <Label Name="lblTelephone" Grid.Row="7" Grid.Column="1"  Content="Téléphone" Style="{StaticResource styleLabel}" />
+        <TextBox Name="txtTelephone" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2"  />
+
+        <Label Name="lblRang" Grid.Row="8" Grid.Column="1"  Content="Rang" Style="{StaticResource styleLabel}" />
+        <ComboBox Name="cboRang" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2">
+            <ComboBoxItem  IsSelected="True">Sans rang</ComboBoxItem>
+            <ComboBoxItem>Bronze</ComboBoxItem>
+            <ComboBoxItem>Argent</ComboBoxItem>
+            <ComboBoxItem>Or</ComboBoxItem>
+        </ComboBox>
+
+        <Label Name="lblGenre" Grid.Row="9" Grid.Column="1"  Content="Genre" Style="{StaticResource styleLabel}" />
+        <RadioButton Name="rdbHomme" Grid.Row="9" Grid.Column="2" Content="Homme" VerticalAlignment="Center" HorizontalAlignment="Center"  />
+        <RadioButton Name="rdbFemme" Grid.Row="9" Grid.Column="3" Content="Femme"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+        <Label Name="lblDescription" Grid.Row="10" Grid.Column="1"  Content="Description" Style="{StaticResource styleLabel}" />
+        <TextBox Name="txtDescription" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2"  />
+
+        <Label Name="lblInfo" Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="3" FontSize="14"/>
+
+        <Grid Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="5" Background="#7D1935"/>
 
 
-        </StackPanel>
+        <Button Name="btnRetour"  Grid.Row="13" Grid.Column="1"  Content="Retour" Style="{StaticResource styleButton}" Click="btnRetour_Click"/>
+        <Button Name="btnViderChamps" Grid.Row="13" Grid.Column="2"  Content="Vider les champs" Style="{StaticResource styleButton}"    Click="btnViderChamps_Click"/>
+        <Button Name="btnEnregistrer" Grid.Row="13" Grid.Column="3"  Content="Enregistrer"      Style="{StaticResource styleButton}"    Click="btnEnregistrer_Click"/>
 
-        <Grid   Grid.Row="3"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Background="LightGray"
-                >
-
-            <Label Name="lblInfo" FontSize="14" />
-        </Grid>
-
-        <StackPanel Grid.Column="0"
-                    Grid.Row="4"
-                    Grid.ColumnSpan="2"                   
-                    >
-
-            <Button Name="btnEnregistrer" Content="Enregistrer" Click="btnEnregistrer_Click" Style="{StaticResource styleButton}" />
-            <Button  Name="btnViderChamps" Content="Vider les champs" Style="{StaticResource styleButton}" Click="btnViderChamps_Click"  />
-        </StackPanel>
 
 
 

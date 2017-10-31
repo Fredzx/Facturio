@@ -23,6 +23,9 @@ namespace Facturio.Clients
     {
         public object ClientController { get; private set; }
         public static DataGrid DtgClients { get; set; } = new DataGrid();
+        public static Button BtnModifier { get; set; } = new Button();
+        public static Button BtnSupprimer { get; set; } = new Button();
+
 
         public RechercherUserControl()
         {
