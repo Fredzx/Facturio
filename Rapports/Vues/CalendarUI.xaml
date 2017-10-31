@@ -40,7 +40,7 @@
                   Grid.RowSpan="10">
                 <StackPanel>
                     <Label Content="Date de Début"  HorizontalAlignment="Center" Background="#E8E8E8" MaxWidth="180px"></Label>
-                    <Calendar Margin="10" Name="cldDateDebut">
+                    <Calendar Margin="10" Name="cldDateDebut" >
 
                     </Calendar>
                     <Label Content="Date de Fin"  HorizontalAlignment="Center" Background="#E8E8E8" MaxWidth="180px"></Label>

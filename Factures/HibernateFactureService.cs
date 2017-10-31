@@ -41,6 +41,18 @@ namespace Facturio.Factures
             return result.ToList();
         }
 
+        public static List<Facture> RetrieveSommaire(DateTime dateDebut, DateTime dateFin)
+        {
+            var facture = session.Query<Facture>().AsQueryable();
+
+            var result = from f in facture
+                         where (f.Date >= dateDebut
+                               && f.Date <= dateFin)
+                         select f;
+
+            return result.ToList();
+        }
+
         public static void Create(Facture facture)
         {
             using (var transaction = session.BeginTransaction())

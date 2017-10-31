@@ -50,7 +50,6 @@ namespace Facturio.Rapports.Vues
             txtTPS.Text = Math.Round(CalculerTaxes(TPS),2).ToString() + "$";
             txtTVQ.Text = Math.Round(CalculerTaxes(TVQ),2).ToString() + "$";
             txtTotal.Text = Math.Round(CalculerTotal(),2).ToString() + "$";
-
         }
 
         private void Button_Click_Precedent(object sender, RoutedEventArgs e)

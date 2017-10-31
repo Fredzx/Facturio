@@ -16,6 +16,8 @@ namespace Facturio.Rapports
         //public static ISet<Rapport> LstRapport { get; set; }
         public static ListeRapportUserControl RapportUserControl { get; set; } = new ListeRapportUserControl(); 
 
+        
+
         public string Titre { get; set; }
 
         public RapportController()

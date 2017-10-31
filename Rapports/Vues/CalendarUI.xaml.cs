@@ -21,7 +21,7 @@ namespace Facturio.Rapports.Vues
     public partial class CalendarUI : UserControl
     {
         public static event EventHandler<DateEventArgs> ButtonClick;
-    
+        public static event EventHandler<CalendarDateChangedEventArgs> SelectionChanged;
         public void OnObtenirRapportClicked(DateEventArgs e)
         {
             ButtonClick?.Invoke(this, e);
@@ -31,15 +31,9 @@ namespace Facturio.Rapports.Vues
         {
             InitializeComponent();
 
-            //if(cldDateDebut.SelectedDate.Value == DateTime.MinValue)
-            //{
-            //    btnObtenirRapport.IsEnabled = false;
-            //}
-
-            //if (cldDateFin.SelectedDate.Value == DateTime.MinValue)
-            //{
-            //    btnObtenirRapport.IsEnabled = false;
-            //}
+            //btnObtenirRapport.IsEnabled = false;
+            cldDateFin.SelectedDate = DateTime.Today;
+            
         }
 
         private void btnRapportPDF_Click(object sender, RoutedEventArgs e)
@@ -50,6 +44,8 @@ namespace Facturio.Rapports.Vues
         private void btnObtenirRapport_Click(object sender, RoutedEventArgs e)
         {
             OnObtenirRapportClicked(new DateEventArgs(cldDateDebut.SelectedDate.Value, cldDateFin.SelectedDate.Value));
+
+
         }
     }
 
@@ -63,4 +59,11 @@ namespace Facturio.Rapports.Vues
             DateFin = dateFin;
         }
     }
+
+
+    public class CalendarDateChangedEventArgs : EventArgs
+    {
+
+    }
+
 }

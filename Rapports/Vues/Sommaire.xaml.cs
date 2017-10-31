@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Facturio.Factures;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,14 +22,29 @@ namespace Facturio.Rapports.Vues
     /// </summary>
     public partial class Sommaire : UserControl
     {
+        public DataGrid DtgSommaire { get; set; }
+
+        public ObservableCollection<Facture> LstFacture { get; set; }
+
         public Sommaire()
         {
             InitializeComponent();
+
+            DtgSommaire = dtgSommaire;
+            CalendarUI.ButtonClick += ListerSommaire;
         }
 
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
             e.Row.Header = ((e.Row.GetIndex()) + 1).ToString();
         }
+
+        private void ListerSommaire(object sender, DateEventArgs e)
+        {
+            LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveSommaire(e.DateDebut, e.DateFin));
+            DtgSommaire.ItemsSource = LstFacture;
+        }
+
+
     }
 }
