@@ -30,6 +30,16 @@ namespace Facturio.Rapports.Vues
         public CalendarUI()
         {
             InitializeComponent();
+
+            //if(cldDateDebut.SelectedDate.Value == DateTime.MinValue)
+            //{
+            //    btnObtenirRapport.IsEnabled = false;
+            //}
+
+            //if (cldDateFin.SelectedDate.Value == DateTime.MinValue)
+            //{
+            //    btnObtenirRapport.IsEnabled = false;
+            //}
         }
 
         private void btnRapportPDF_Click(object sender, RoutedEventArgs e)

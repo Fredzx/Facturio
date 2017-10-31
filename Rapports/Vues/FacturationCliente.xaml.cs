@@ -28,7 +28,7 @@ namespace Facturio.Rapports.Vues
             InitializeComponent();
 
             LstClient = ClientsController.LstObClients;
-            dtgAfficherClient.ItemsSource = LstClient;
+            dtgAfficherClient.ItemsSource = ClientsController.LstObClients;
 
             CalendarUI.ButtonClick += ObtenirDate;
         }
