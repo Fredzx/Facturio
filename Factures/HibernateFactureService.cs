@@ -35,7 +35,7 @@ namespace Facturio.Factures
             var result = from f in facture
                          where f.LeClient.IdClient == idClient
                                 && (f.Date >= dateDebut
-                                || f.Date <= dateFin)
+                                && f.Date <= dateFin)
                          select f;
 
             return result.ToList();
