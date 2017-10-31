@@ -24,7 +24,9 @@ namespace Facturio.Clients
     {
 
         const int NOM_PRENOM_MAX = 20;
+        const int NOM_PRENOM_MIN = 3;
         const int ADRESSE_MAX = 50;
+        const int ADRESSE_MIN = 5;
 
         public bool Ajout { get; set; } = true;
         public static Label LblTxtNoClient { get; set; } = new Label();
@@ -189,11 +191,11 @@ namespace Facturio.Clients
 
         private bool ValiderInformationsClient()
         {
-            if (txtNom.Text.ToString() != "" && txtNom.Text.Length <= NOM_PRENOM_MAX)
+            if (txtNom.Text.ToString() != "" && txtNom.Text.Length <= NOM_PRENOM_MAX && txtNom.Text.Length >= NOM_PRENOM_MIN)
             {
-                if (txtPrenom.Text.ToString() != "" && txtPrenom.Text.Length <= NOM_PRENOM_MAX)
+                if (txtPrenom.Text.ToString() != "" && txtPrenom.Text.Length <= NOM_PRENOM_MAX && txtPrenom.Text.Length >= NOM_PRENOM_MIN)
                 {
-                    if(txtAdresse.Text.ToString() != "" && txtAdresse.Text.Length <= ADRESSE_MAX)
+                    if(txtAdresse.Text.ToString() != "" && txtAdresse.Text.Length <= ADRESSE_MAX && txtAdresse.Text.Length >= ADRESSE_MIN)
                     {
                         if(cboProvince.SelectedIndex != -1)
                         {
@@ -235,9 +237,9 @@ namespace Facturio.Clients
 
             switch (noErr)
             {
-                case 1: LblInfo.Content = "Veuillez entrer un nom pour le client.\n Maximum " + NOM_PRENOM_MAX + " caractères."      ; break;
-                case 2: LblInfo.Content = "Veuillez entrer prénom pour le client.\n Maximum " + NOM_PRENOM_MAX + " caractères." ; break;
-                case 3: LblInfo.Content = "Veuillez entrer une adresse pour le client.\n Maximum " + ADRESSE_MAX + " caractères."; break;
+                case 1: LblInfo.Content = "Veuillez entrer un nom pour le client.\nMinimum " + NOM_PRENOM_MIN + " caractères.\nMaximum " + NOM_PRENOM_MAX + " caractères."      ; break;
+                case 2: LblInfo.Content = "Veuillez entrer prénom pour le client.\nMinimum " + NOM_PRENOM_MIN + " caractères.\nMaximum " + NOM_PRENOM_MAX + " caractères."; break;
+                case 3: LblInfo.Content = "Veuillez entrer une adresse pour le client.\nMinimum " + ADRESSE_MIN + " caractères.\nMaximum " + ADRESSE_MAX + " caractères."; break;
                 case 4: LblInfo.Content = "Veuillez choisir une province pour le client."; break;
                 case 5: LblInfo.Content = "Veuillez entrer un code postal valide pour le client.\n Voici un exemple de format valide : J5K8E6 "; break;
                 case 6: LblInfo.Content = "Veuillez entrer un numéro de téléphone valide pour le client.\n Voici un exemple de format valide: 4504567891 "; break;
