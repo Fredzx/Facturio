@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Clients"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="500">
+             mc:Ignorable="d" Height="650" Width="850"
+             Background="#F5F3EE">
     <UserControl.Resources>
         <Style x:Key="styleLabel" TargetType="{x:Type Label}">
             <Setter Property="FontSize" Value="15" />
@@ -18,68 +18,61 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition  />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition  />
-                            <ColumnDefinition  />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition  />
+            <ColumnDefinition  />
 
-                            <ColumnDefinition  />
-                        </Grid.ColumnDefinitions>
+            <ColumnDefinition  />
+        </Grid.ColumnDefinitions>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="30"/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />                
                             
-                        </Grid.RowDefinitions>
+        </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0"
-                                  Grid.Column="0"
-                                  Grid.ColumnSpan="3" >
+                        
 
-                        <Label Name="lblRechercher"  Content="Rechercher par Nom ou No. Client" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{StaticResource styleLabel}" />
-                        </Grid>
+        <Label Name="lblRechercher" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"  Content="Rechercher par Nom ou No. Client" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Style="{StaticResource styleLabel}" />
+         
+        <TextBox Name="txtRecherche" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" TextChanged="txtRecherche_TextChanged" />
+        
 
-                        <Grid Grid.Row="0"
-                          Grid.Column="3"
-                          Grid.ColumnSpan="3">            
-                            <TextBox Name="txtRecherche" Height="20" TextChanged="txtRecherche_TextChanged" />
-                        </Grid>
-                        <Grid Grid.Row="1"
-                          Grid.Column="0"
-                          Grid.ColumnSpan="6"
-                          Grid.RowSpan="4">
-                            <DataGrid ItemsSource="{Binding LstObClients}" Name="dtgAfficheClients" LoadingRow="DataGrid_LoadingRow" 
-                                      BorderBrush="Black" Height="200" HorizontalAlignment="Center" VerticalAlignment="Top"
-                                      AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectionChanged="dtgAfficheClients_SelectionChanged">
-                                <DataGrid.Columns>
+        <DataGrid Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="6"
+                        ItemsSource="{Binding LstObClients}" Name="dtgAfficheClients" LoadingRow="DataGrid_LoadingRow" 
+                        BorderBrush="Black"  HorizontalAlignment="Center" VerticalAlignment="Top" IsReadOnly="True"
+                        AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectionChanged="dtgAfficheClients_SelectionChanged">
+                <DataGrid.Columns>
 
-                                    <DataGridTextColumn Header="No. Client" Width="3*" Binding="{Binding NoClient}" />
-                                    <DataGridTextColumn Header="Prénom" Width="4*" Binding="{Binding Prenom}" />
-                                    <DataGridTextColumn Header="Nom" Width="4*" Binding="{Binding Nom}"  />
+                    <DataGridTextColumn Header="No. Client" Width="3*" Binding="{Binding NoClient}" />
+                    <DataGridTextColumn Header="Prénom" Width="4*" Binding="{Binding Prenom}" />
+                    <DataGridTextColumn Header="Nom" Width="4*" Binding="{Binding Nom}"  />
 
-                                    <DataGridTextColumn Header="Téléphone" Width="3*" Binding="{Binding Telephone}" />
+                    <DataGridTextColumn Header="Téléphone" Width="3*" Binding="{Binding Telephone}" />
 
-                                    <DataGridTextColumn Header="Province" Width="3*" Binding="{Binding Province.Nom}"/>
-                                    <DataGridTextColumn Header="Adresse" Width="7*" Binding="{Binding Adresse}"/>
-                                    <DataGridTextColumn Header="Code postal" Width="4*" Binding="{Binding CodePostal}" />
-                                    <DataGridTextColumn Header="Rang" Width="3*" Binding="{Binding Rang.Nom}" />
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </Grid>
-                        <StackPanel Grid.Row="4"
-                        HorizontalAlignment="Right"
-                        Orientation="Horizontal"
-                        Grid.ColumnSpan="4" Grid.Column="2">
+                    <DataGridTextColumn Header="Province" Width="3*" Binding="{Binding Province.Nom}"/>
+                    <DataGridTextColumn Header="Adresse" Width="7*" Binding="{Binding Adresse}"/>
+                    <DataGridTextColumn Header="Code postal" Width="4*" Binding="{Binding CodePostal}" />
+                    <DataGridTextColumn Header="Rang" Width="3*" Binding="{Binding Rang.Nom}" />
+                </DataGrid.Columns>
+            </DataGrid>
+                        
+        <StackPanel Grid.Row="5" Grid.Column="0"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal"
+                    Grid.ColumnSpan="6" >
 
 
-                        <Button Name="btnAjouter" Content="Ajouter" HorizontalAlignment="Right"  Click="btnAjouter_Click" Style="{StaticResource styleButton}"  />
-                        <Button Name="btnModifier" IsEnabled="False" Content="Modifier"  Click="btnModifier_Click"  Style="{StaticResource styleButton}"/>
-                        <Button Name="btnSupprimer" IsEnabled="False" Content="Supprimer"  Click="btnSupprimer_Click" Style="{StaticResource styleButton}"/>
-                        </StackPanel>
-                    </Grid>
+        <Button Name="btnAjouter" Content="Ajouter" HorizontalAlignment="Right"  Click="btnAjouter_Click" Style="{StaticResource styleButton}"  />
+        <Button Name="btnModifier" IsEnabled="False" Content="Modifier"  Click="btnModifier_Click"  Style="{StaticResource styleButton}"/>
+        <Button Name="btnSupprimer" IsEnabled="False" Content="Supprimer"  Click="btnSupprimer_Click" Style="{StaticResource styleButton}"/>
+        </StackPanel>
+    </Grid>
 </UserControl>

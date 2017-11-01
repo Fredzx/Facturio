@@ -14,7 +14,7 @@ namespace Facturio.Rapports.Entities
     {
         // virtual pcq Nhibernate l'oblige
         public virtual int? IdRapport { get; set; } = null;
-        public virtual DateTime? Date { get; set; } = null;
+        public virtual DateTime Date { get; set; } = DateTime.MinValue;
         public virtual ISet<Facture> LstFacture { get; set; }
 
         //temporaire

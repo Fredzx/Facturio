@@ -28,15 +28,19 @@ namespace Facturio.Rapports.Vues
             InitializeComponent();
 
             LstClient = ClientsController.LstObClients;
-            dtgAfficherClient.ItemsSource = LstClient;
+            dtgAfficherClient.ItemsSource = ClientsController.LstObClients;
 
+            
             CalendarUI.ButtonClick += ObtenirDate;
         }
 
         private void ObtenirDate(object sender, DateEventArgs e)
         {
-            Window detailFacturationCliente = new DetailFacturationCliente(e.DateDebut, e.DateFin, (Client)dtgAfficherClient.SelectedItem);
-            detailFacturationCliente.Show();
+            if(dtgAfficherClient.SelectedIndex != -1)
+            {
+                Window detailFacturationCliente = new DetailFacturationCliente(e.DateDebut, e.DateFin, (Client)dtgAfficherClient.SelectedItem);
+                detailFacturationCliente.Show();
+            }
         }
 
         private void dtgAfficherClient_LoadingRow(object sender, DataGridRowEventArgs e)
