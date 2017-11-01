@@ -41,9 +41,16 @@ namespace Facturio.Gabarits
 
         public GabaritSelecteurViewModel()
         {
-            Gabarits = new ObservableCollection<Gabarit>(
-                HibernateGabaritService.RetrieveAllOrderedByCreationDateDesc()
-            );
+            try
+            {
+                Gabarits = new ObservableCollection<Gabarit>(
+                    HibernateGabaritService.RetrieveAllOrderedByCreationDateDesc()
+                );
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Une erreur s'est produit lors de l'accès à la base de données.\n{e.Message}");
+            }
 
             Titre = "Gabarits";
 
