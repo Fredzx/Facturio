@@ -19,9 +19,12 @@ namespace Facturio.Factures
     /// </summary>
     public partial class OpererFacture : Window
     {
+        public static TabControl TbcProduitPublic { get; set; }
         public OpererFacture()
         {
             InitializeComponent();
+            //TbcProduitPublic = tbcProduit;
+            //<!--LoadingRow="DataGrid_LoadingRow"--> 
         }
     }
 }

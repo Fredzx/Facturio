@@ -122,6 +122,9 @@
     <Compile Include="Clients\SexeMap.cs" />
     <Compile Include="Enums\Provinces.cs" />
     <Compile Include="Enums\Sexes.cs" />
+    <Compile Include="Factures\AjoutProduitFacture.xaml.cs">
+      <DependentUpon>AjoutProduitFacture.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Factures\Facture.cs" />
     <Compile Include="Factures\FactureController.cs" />
     <Compile Include="Factures\FactureMap.cs" />
@@ -141,6 +144,7 @@
     <Compile Include="ProduitsFactures\HibernateProduitFacturesService.cs" />
     <Compile Include="ProduitsFactures\ProduitFacture.cs" />
     <Compile Include="ProduitsFactures\ProduitsFacturesMap.cs" />
+    <Compile Include="Factures\AjoutProduitFactureController.cs" />
     <Compile Include="Produits\HibernateProduitService.cs" />
     <Compile Include="Produits\ProduitsController.cs" />
     <Compile Include="Produits\ProduitMap.cs" />
@@ -194,6 +198,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Creation\GabaritCreateurView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Factures\AjoutProduitFacture.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
