@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Rapports.Vues"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="500">
+             d:DesignHeight="600" d:DesignWidth="750">
     <Grid>
         <Grid VerticalAlignment="Stretch">
             <Grid.ColumnDefinitions>
@@ -36,27 +36,22 @@
 
             <Grid Grid.Row="1"
                   Grid.Column="0"
-                  Grid.ColumnSpan="4"
-                  Grid.RowSpan="9">
-                <local:CalendarUI/>
+                  Grid.ColumnSpan="3"
+                  Grid.RowSpan="7">
+                <!--<local:CalendarUI/>-->
+                <Grid>
+                    <StackPanel>
+                        <Label Content="Date de Début"  HorizontalAlignment="Center" Background="#E8E8E8" MaxWidth="180px"></Label>
+                        <Calendar Name="cldDateDebut" Margin="0 0 0 20" SelectedDatesChanged="cldDateDebut_SelectedDatesChanged">
 
+                        </Calendar>
+                        <Label Content="Date de Fin"  HorizontalAlignment="Center" Background="#E8E8E8" MaxWidth="180px"></Label>
+                        <Calendar Name="cldDateFin"></Calendar>
+                    </StackPanel>
+                </Grid>
             </Grid>
-
-            <!--
-            <StackPanel>
-                    <Label Content="Date de Début" HorizontalAlignment="Center" Background="#E8E8E8" MaxWidth="180px"></Label>
-                    <Calendar Margin="10">
-
-                    </Calendar>
-                    <Label Content="Date de Fin" HorizontalAlignment="Center" Background="#E8E8E8" MaxWidth="180px"></Label>
-                    <Calendar Margin="10"></Calendar>
-
-                    <Button Name="btnObtenirRapport" Content="Obtenir Rapport" Margin="10" MaxWidth="180px"></Button>
-            </StackPanel>
-            -->
-            <Grid Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3">
-                <Label Content="Vos Clients" Margin="40,30,0,0"  FontSize="14" FontWeight="Bold"/>
-            </Grid>
+            
+            <Label Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Content="Vos Clients" Margin="12,30,0,0"  FontSize="14" FontWeight="Bold"/>
                 
             
             <Grid Grid.Row="1"
@@ -64,15 +59,19 @@
             Grid.ColumnSpan="7"
             Grid.RowSpan="8">
                
-                <DataGrid ItemsSource="{Binding Client}" Name="dtgAfficherClient" LoadingRow="dtgAfficherClient_LoadingRow"
+                <DataGrid ItemsSource="{Binding Client}" Name="dtgAfficherClient"
                                     BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
-                                    AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="10 10 20 20">
+                                    AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="10 0 20 0">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Nom" Width="6*" Binding="{Binding Nom}"/>
                         <DataGridTextColumn Header="Prénom" Width="6*" Binding="{Binding Prenom}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
+            <StackPanel Grid.Row="8" Grid.ColumnSpan="3" Grid.RowSpan="2">
+                <Button Name="btnObtenirRapport" Content="Obtenir Rapport" Margin="10 0 0 10" MaxWidth="180px" Height="25" Click="btnObtenirRapport_Click"></Button>
+                <Button Name="btnRapportPDF" Content="Convertir en PDF" Margin="10 0 0 6" MaxWidth="180px" Height="25" Click="btnRapportPDF_Click"></Button>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

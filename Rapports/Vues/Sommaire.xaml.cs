@@ -31,7 +31,7 @@ namespace Facturio.Rapports.Vues
             InitializeComponent();
 
             DtgSommaire = dtgSommaire;
-            CalendarUI.ButtonClick += ListerSommaire;
+            //ButtonClick += ListerSommaire;
         }
 
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
@@ -45,6 +45,14 @@ namespace Facturio.Rapports.Vues
             DtgSommaire.ItemsSource = LstFacture;
         }
 
+        private void btnObtenirRapport_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        private void btnRapportPDF_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

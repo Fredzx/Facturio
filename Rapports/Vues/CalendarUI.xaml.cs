@@ -19,14 +19,7 @@ namespace Facturio.Rapports.Vues
     /// Interaction logic for CalendarUI.xaml
     /// </summary>
     public partial class CalendarUI : UserControl
-    {
-        public static event EventHandler<DateEventArgs> ButtonClick;
-        public static event EventHandler<CalendarDateChangedEventArgs> SelectionChanged;
-        public void OnObtenirRapportClicked(DateEventArgs e)
-        {
-            ButtonClick?.Invoke(this, e);
-        }
-
+    {        
         public CalendarUI()
         {
             InitializeComponent();
@@ -34,18 +27,6 @@ namespace Facturio.Rapports.Vues
             //btnObtenirRapport.IsEnabled = false;
             cldDateFin.SelectedDate = DateTime.Today;
             
-        }
-
-        private void btnRapportPDF_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnObtenirRapport_Click(object sender, RoutedEventArgs e)
-        {
-            OnObtenirRapportClicked(new DateEventArgs(cldDateDebut.SelectedDate.Value, cldDateFin.SelectedDate.Value));
-
-
         }
     }
 
@@ -59,11 +40,4 @@ namespace Facturio.Rapports.Vues
             DateFin = dateFin;
         }
     }
-
-
-    public class CalendarDateChangedEventArgs : EventArgs
-    {
-
-    }
-
 }

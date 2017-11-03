@@ -34,12 +34,20 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="1"
-                  Grid.Column="0"                
-                  Grid.ColumnSpan="4"
-                  Grid.RowSpan="8">
+                  Grid.Column="0"
+                  Grid.ColumnSpan="3"
+                  Grid.RowSpan="7">
+                <!--<local:CalendarUI/>-->
+                <Grid>
+                    <StackPanel>
+                        <Label Content="Date de Début"  HorizontalAlignment="Center" Background="#E8E8E8" MaxWidth="180px"></Label>
+                        <Calendar Name="cldDateDebut" Margin="0 0 0 20">
 
-                <!-- Les controles de calendriers -->
-                <local:CalendarUI/>
+                        </Calendar>
+                        <Label Content="Date de Fin"  HorizontalAlignment="Center" Background="#E8E8E8" MaxWidth="180px"></Label>
+                        <Calendar Name="cldDateFin"></Calendar>
+                    </StackPanel>
+                </Grid>
             </Grid>
 
             <Grid Grid.Row="1"
@@ -47,9 +55,6 @@
                   Grid.ColumnSpan="7"
                   Grid.RowSpan="8"
                   Margin="0,20,20,0">
-                
-                <Rectangle Margin="10,10,20,20" Fill="White" RadiusX="8" RadiusY="8"/>
-                <Border Margin="4" BorderBrush="Black"  BorderThickness="1,1,1,1"/>
                 <DataGrid Name="dtgSommaire" LoadingRow="DataGrid_LoadingRow" AutoGenerateColumns="False" ItemsSource="{Binding LstFacture}">
                     
                     <DataGrid.Columns>
@@ -61,6 +66,10 @@
                    
                 </DataGrid>
             </Grid>
+            <StackPanel Grid.Row="8" Grid.ColumnSpan="3" Grid.RowSpan="2">
+                <Button Name="btnObtenirRapport" Content="Obtenir Rapport" Margin="10 0 0 10" MaxWidth="180px" Height="25" Click="btnObtenirRapport_Click"></Button>
+                <Button Name="btnRapportPDF" Content="Convertir en PDF" Margin="10 0 0 6" MaxWidth="180px" Height="25" Click="btnRapportPDF_Click"></Button>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>
