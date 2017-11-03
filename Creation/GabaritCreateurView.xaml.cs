@@ -13,9 +13,12 @@ namespace Facturio.Creation
             InitializeComponent();
         }
 
-        private void btnOuvrirOpererFacture_Click(object sender, RoutedEventArgs e)
+        private void btnSuivant_Click(object sender, RoutedEventArgs e)
         {
-            Factures.FactureController.OuvrirFactureEnOperation();
+            // Dire au controleur de changer de fenêtre
+            GabaritCreateurController.AfficherInterfaceCreationSuivante();
+
+            // GabaritCreationConteneurView.AfficherGabaritCreateurLogo();
         }
     }
 }

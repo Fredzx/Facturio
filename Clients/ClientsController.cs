@@ -32,18 +32,6 @@ namespace Facturio.Clients
         {
             LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveAll());
 
-            //ObservableCollection<Client> lstTemp = new ObservableCollection<Client>();
-
-            //foreach (Client c in LstObClients)
-            //{
-            //    if (c.EstActif)
-            //    {
-            //        lstTemp.Add(c);
-            //    }
-            //}
-
-            //LstObClients = lstTemp;
-
         }
 
         public static void AjouterClient(Client client)

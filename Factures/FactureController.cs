@@ -14,7 +14,7 @@ namespace Facturio.Factures
         public static Facture Facture { get; set; }
         public string Titre { get; set; }
 
-        public static OpererFacture OpererFacture { get; set; } = new OpererFacture();
+  
 
 
         public FactureController()
@@ -23,9 +23,6 @@ namespace Facturio.Factures
             Titre = "Factures";
         }
 
-        public static void OuvrirFactureEnOperation()
-        {
-            OpererFacture.Show();
-        }
+       
     }
 }

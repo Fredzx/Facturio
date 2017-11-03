@@ -96,7 +96,7 @@
                     </StackPanel.Resources>
                     
                     <Button Content="Enregistrer" />
-                    <Button Name="btnOuvrirOpererFacture" Content="Ouvrir" Margin="8, 0, 0, 0" Click="btnOuvrirOpererFacture_Click"/>
+                    <Button Name="btnSuivant" Content="Suivant" Margin="8, 0, 0, 0" Click="btnSuivant_Click" />
                 </StackPanel>
                 
                 <DataGrid AutoGenerateColumns="False" Margin="0, 5, 0, 10" />
