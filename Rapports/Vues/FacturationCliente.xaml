@@ -51,7 +51,7 @@
                 </Grid>
             </Grid>
             
-            <Label Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Content="Vos Clients" Margin="12,30,0,0"  FontSize="14" FontWeight="Bold"/>
+            <Label Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Content="Vos Clients" VerticalAlignment="Center"  FontSize="14" FontWeight="Bold"/>
                 
             
             <Grid Grid.Row="1"
@@ -68,10 +68,11 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
-            <StackPanel Grid.Row="8" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <StackPanel Grid.Row="8" Grid.ColumnSpan="3" Grid.RowSpan="1">
                 <Button Name="btnObtenirRapport" Content="Obtenir Rapport" Margin="10 0 0 10" MaxWidth="180px" Height="25" Click="btnObtenirRapport_Click"></Button>
-                <Button Name="btnRapportPDF" Content="Convertir en PDF" Margin="10 0 0 6" MaxWidth="180px" Height="25" Click="btnRapportPDF_Click"></Button>
+                <Button Name="btnRapportPDF" Content="Convertir en PDF" Margin="10 0 0 10" MaxWidth="180px" Height="25" Click="btnRapportPDF_Click"></Button>
             </StackPanel>
+            <Label Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="8" Name="lblInfoErreur" FontWeight="Bold" Margin=" 0 20 0 0"/>
         </Grid>
     </Grid>
 </UserControl>

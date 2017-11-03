@@ -80,7 +80,18 @@ namespace Facturio.Factures
                 transaction.Commit();
             }
         }
+        public static List<Facture> RetrieveVenteProduit(DateTime dateDebut, DateTime dateFin, int? idProduit)
+        {
+            var facture = session.Query<Facture>().AsQueryable();
 
+            var result = from f in facture
 
+                         where f.LstProduit.ToList()[0].Produit.Id == idProduit
+                                && (f.Date >= dateDebut
+                                && f.Date <= dateFin)
+                         select f;
+
+            return result.ToList();
+        }
     }
 }

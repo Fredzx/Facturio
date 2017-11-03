@@ -30,16 +30,8 @@ namespace Facturio.Rapports.Vues
             LstClient = ClientsController.LstObClients;
             dtgAfficherClient.ItemsSource = ClientsController.LstObClients;
             btnObtenirRapport.IsEnabled = false;
+            cldDateFin.SelectedDate = DateTime.Now;
 
-        }
-
-        private void ObtenirDate(object sender, DateEventArgs e)
-        {
-            if (dtgAfficherClient.SelectedIndex != -1)
-            {
-                Window detailFacturationCliente = new DetailFacturationCliente(e.DateDebut, e.DateFin, (Client)dtgAfficherClient.SelectedItem);
-                detailFacturationCliente.Show();
-            }
         }
 
         private void btnRapportPDF_Click(object sender, RoutedEventArgs e)
@@ -49,7 +41,7 @@ namespace Facturio.Rapports.Vues
 
         private void btnObtenirRapport_Click(object sender, RoutedEventArgs e)
         {
-            if (!Valider())
+            if (Valider())
             {
                 Window detailFacturationCliente = new DetailFacturationCliente(cldDateDebut.SelectedDate.Value, cldDateFin.SelectedDate.Value, (Client)dtgAfficherClient.SelectedItem);
                 detailFacturationCliente.Show();
@@ -57,43 +49,64 @@ namespace Facturio.Rapports.Vues
 
         }
 
-        private void btnObtenirRapport_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private bool Valider()
         {
             if(cldDateDebut.SelectedDate.Value == DateTime.MinValue)
             {
-                MessageBox.Show("Vous devez sélectionner une date de début");
-                return false;        
-            }
-
-            if (cldDateDebut.SelectedDate.Value > DateTime.Now)
-            {
-                MessageBox.Show("Vous devez choisir une date plus petite qu'aujourd'hui");
-                return false;
+                AfficherErreur(1); return false;        
             }
 
             if (cldDateFin.SelectedDate.Value == DateTime.MinValue)
             {
-                MessageBox.Show("Vous devez sélectionner une date de fin");
-                return false;
+                AfficherErreur(2); return false;
             }
 
-            if(dtgAfficherClient.SelectedIndex == -1)
+            if (cldDateDebut.SelectedDate.Value > DateTime.Now )
             {
-                MessageBox.Show("Vous devez sélectionner un client");
-                return false;
+                AfficherErreur(3); return false;
+            }
+
+            if (cldDateFin.SelectedDate.Value > DateTime.Now)
+            {
+                AfficherErreur(4); return false;
+            }
+
+            if (cldDateDebut.SelectedDate.Value > cldDateFin.SelectedDate.Value)
+            {
+                AfficherErreur(5); return false;
+            }
+
+            if (dtgAfficherClient.SelectedIndex == -1)
+            {
+                AfficherErreur(6); return false;
             }
 
             return true;
         }
 
+        public void AfficherErreur(int noErreur)
+        {
+            lblInfoErreur.Foreground = Brushes.Red;
+
+            switch (noErreur)
+            {
+                case 1: lblInfoErreur.Content = "Vous devez sélectionner une date de début"; break;
+                case 2: lblInfoErreur.Content = "Vous devez sélectionner une date de fin"; break;
+                case 3: lblInfoErreur.Content = "La date de début doit être plus petite qu'aujourd'hui"; break;
+                case 4: lblInfoErreur.Content = "La date de fin doit être plus petite qu'aujourd'hui"; break;
+                case 5: lblInfoErreur.Content = "La date de début doit être plus petite que la date de fin"; break;
+                case 6: lblInfoErreur.Content = "Vous devez sélectionner un client"; break;
+                default:
+                    break;
+            }
+        }
+
+
+
         private void cldDateDebut_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             btnObtenirRapport.IsEnabled = true;
+            
         }
     }
 }

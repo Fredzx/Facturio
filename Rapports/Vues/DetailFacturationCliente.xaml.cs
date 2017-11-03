@@ -30,7 +30,8 @@ namespace Facturio.Rapports.Vues
         public DateTime DateDebut { get; set; }
         public DateTime DateFin { get; set; }
         public int? IdClient { get; set; }
-        public Produit DetailProduit { get; set; }
+        public int? IdProduit { get; set; }
+        public Produit Produit { get; set; }
         public ObservableCollection<Facture> LstFacture { get; set; }
         public int compteur = 0;
         public DataGrid DtgProduit { get; set; }
@@ -44,12 +45,28 @@ namespace Facturio.Rapports.Vues
             DateFin = dateFin;
             IdClient = leClient.IdClient;
             LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveFacturationCliente(dateDebut, DateFin, IdClient));
-            DtgProduit.ItemsSource = LstFacture[compteur].LstProduit;
-            lblNoFacture.Content = (compteur + 1).ToString() + "/" + LstFacture.Count;
-            txtSousTotal.Text = Math.Round(CalculerSousTotal(),2).ToString() + "$";
-            txtTPS.Text = Math.Round(CalculerTaxes(TPS),2).ToString() + "$";
-            txtTVQ.Text = Math.Round(CalculerTaxes(TVQ),2).ToString() + "$";
-            txtTotal.Text = Math.Round(CalculerTotal(),2).ToString() + "$";
+
+            RafraichirData(true);
+
+            //DtgProduit.ItemsSource = LstFacture[compteur].LstProduit;
+            //lblNoFacture.Content = (compteur + 1).ToString() + "/" + LstFacture.Count;
+            //txtSousTotal.Text = Math.Round(CalculerSousTotal(),2).ToString() + "$";
+            //txtTPS.Text = Math.Round(CalculerTaxes(TPS),2).ToString() + "$";
+            //txtTVQ.Text = Math.Round(CalculerTaxes(TVQ),2).ToString() + "$";
+            //txtTotal.Text = Math.Round(CalculerTotal(),2).ToString() + "$";
+        }
+
+        public DetailFacturationCliente(DateTime dateDebut, DateTime dateFin, Produit leProduit)
+        {
+            InitializeComponent();
+
+            DtgProduit = dtgProduits;
+            DateDebut = dateDebut;
+            DateFin = dateFin;
+            IdProduit = leProduit.Id;
+            LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveFacturationCliente(dateDebut, DateFin, IdClient));
+
+            RafraichirData(true);
         }
 
         private void Button_Click_Precedent(object sender, RoutedEventArgs e)
@@ -59,7 +76,7 @@ namespace Facturio.Rapports.Vues
             else
                 compteur--;
 
-            RafraichirData();
+            RafraichirData(false);
         }
 
         private void Button_Click_Suivant(object sender, RoutedEventArgs e)
@@ -69,7 +86,7 @@ namespace Facturio.Rapports.Vues
             else
                 compteur++;
 
-            RafraichirData();
+            RafraichirData(false);
         }
         private void CalculerSousTotalLigne(int index)
         {
@@ -98,18 +115,26 @@ namespace Facturio.Rapports.Vues
             return (CalculerSousTotal() + CalculerTaxes(TPS) + CalculerTaxes(TVQ));
         }
 
-        public void RafraichirData()
+        public void RafraichirData(bool estPremiereOuverture)
         {
-            DtgProduit.ItemsSource = LstFacture[compteur].LstProduit;
-            lblNoFacture.Content = (compteur + 1).ToString() + "/" + LstFacture.Count;
-            DtgProduit.Items.Refresh();
+            if (LstFacture.Count != 0)
+            {
+                DtgProduit.ItemsSource = LstFacture[compteur].LstProduit;
+                lblNoFacture.Content = (compteur + 1).ToString() + "/" + LstFacture.Count;
 
-            txtSousTotal.Text = Math.Round(CalculerSousTotal(), 2).ToString() + "$";
-            txtTPS.Text = Math.Round(CalculerTaxes(TPS), 2).ToString() + "$";
-            txtTVQ.Text = Math.Round(CalculerTaxes(TVQ), 2).ToString() + "$";
-            txtTotal.Text = Math.Round(CalculerTotal(), 2).ToString() + "$";
+                if(!estPremiereOuverture)
+                    DtgProduit.Items.Refresh();
+
+                txtSousTotal.Text = Math.Round(CalculerSousTotal(), 2).ToString() + "$";
+                txtTPS.Text = Math.Round(CalculerTaxes(TPS), 2).ToString() + "$";
+                txtTVQ.Text = Math.Round(CalculerTaxes(TVQ), 2).ToString() + "$";
+                txtTotal.Text = Math.Round(CalculerTotal(), 2).ToString() + "$";
+            }
+            else
+            {
+                lblInfo.Foreground = Brushes.Red;
+                lblInfo.Content = "Aucune facture pour la date du " + DateDebut + " au " + DateFin;
+            }
         }
     }
-
-    
 }
