@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="Opérer la facture" Height="600" Width="800">
     <Grid>
-        
+        <TabControl>
+            <TabItem Header="Opérer">
+                
+            </TabItem>
+            <TabItem Header="Ajouter un produit">
+                <!--<local:AjoutProduitFacture />-->
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
