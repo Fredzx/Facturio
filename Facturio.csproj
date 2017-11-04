@@ -204,6 +204,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Creation\GabaritCreateurView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Factures\AjoutProduitFacture.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
