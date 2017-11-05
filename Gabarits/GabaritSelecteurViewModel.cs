@@ -11,20 +11,7 @@ namespace Facturio.Gabarits
         #region Propriétés
 
         public ObservableCollection<Gabarit> Gabarits { get; set; }
-
-        private Gabarit _gabaritSelectionne;
-        public Gabarit GabaritSelectionne
-        {
-            get => _gabaritSelectionne;
-            set
-            {
-                if (Equals(value, _gabaritSelectionne))
-                    return;
-
-                _gabaritSelectionne = value;
-                RaisePropertyChanged(nameof(GabaritSelectionne));
-            }
-        }
+        public Gabarit GabaritSelectionne { get; set; }
 
         public string Titre { get; set; }
 
@@ -47,9 +34,10 @@ namespace Facturio.Gabarits
                     HibernateGabaritService.RetrieveAllOrderedByCreationDateDesc()
                 );
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                MessageBox.Show($"Une erreur s'est produit lors de l'accès à la base de données.\n{e.Message}");
+                MessageBox.Show($"Une erreur s'est produite lors de l'accès à la base de données.");
+                Environment.Exit(1);
             }
 
             Titre = "Gabarits";

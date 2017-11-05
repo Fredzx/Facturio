@@ -43,9 +43,9 @@
                         <Setter Property="Margin" Value="10" />
                         <Setter Property="Padding" Value="0" />
                         <Setter Property="HorizontalContentAlignment" Value="Center" />
-                        <Setter Property="Background" Value="AliceBlue" />
-                        <Setter Property="BorderBrush" Value="LightSteelBlue" />
-                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="Background" Value="#eff9ff" />
+                        <Setter Property="BorderBrush" Value="#aed1e8" />
+                        <Setter Property="BorderThickness" Value="1" />
                         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
                         <Setter Property="Template">
                             <Setter.Value>
@@ -84,7 +84,7 @@
                                                     <Storyboard>
                                                         <ThicknessAnimation
                                                             Duration="0:0:0:0.100"
-                                                            To="0"
+                                                            To="1"
                                                             Storyboard.TargetProperty="BorderThickness" />
                                                     </Storyboard>
                                                 </BeginStoryboard>

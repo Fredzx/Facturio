@@ -40,7 +40,7 @@
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Critère libre:" Padding="0, 4, 4, 4" />
                     <TextBox Grid.Row="0" Grid.Column="1" Padding="4" Margin="0, 0, 0, 10" MaxLength="30"
-                             Text="{Binding TitreCritereLibre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                             Text="{Binding TitreCritereLibre, UpdateSourceTrigger=PropertyChanged}" />
                     
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Type du critère:" Padding="0, 4, 4, 4" />
                     <ComboBox Grid.Row="1" Grid.Column="1" Padding="4" Margin="0, 0, 0, 10"
@@ -52,15 +52,12 @@
                         </ItemsControl.ItemTemplate>
                     </ComboBox>
 
-                    <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Ajouter" Width="Auto" HorizontalAlignment="Stretch">
-                        <Button.Command>
-                            <Binding Path="AjouterCritere" />
-                        </Button.Command>
-                    </Button>
+                    <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                            Content="Ajouter" Width="Auto" HorizontalAlignment="Stretch"
+                            Command="{Binding AjouteCritere}" />
                 </Grid>
 
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <!-- Gabarit.GabaritCriteres -->
+                <ScrollViewer VerticalScrollBarVisibility="Visible">
                     <ItemsControl
                         ItemsSource="{Binding GabaritCriteres}"
                         BorderThickness="0">
@@ -71,8 +68,11 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <DockPanel LastChildFill="True" Margin="0, 0, 0, 6">
-                                    <Button Content="X" DockPanel.Dock="Right" VerticalAlignment="Center" Width="20" Height="20" />
+                                <DockPanel LastChildFill="True" Margin="0, 0, 6, 6">
+                                    <Button Content="X"
+                                            DockPanel.Dock="Right" VerticalAlignment="Center" Width="20" Height="20"
+                                            Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.SupprimeCritere}"
+                                            CommandParameter="{Binding}" />
                                     <CheckBox Content="{Binding Critere.Titre}" IsChecked="{Binding EstUtilise}" />
                                 </DockPanel>
                             </DataTemplate>

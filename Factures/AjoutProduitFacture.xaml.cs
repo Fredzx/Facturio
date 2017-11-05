@@ -43,13 +43,13 @@ namespace Facturio.Factures
         {
             // Lorsqu'il clique sur ajouter on veut : 
             // Que le usercontrol AjoutProduitFacture change d'onglet > direction : onglet Opérer.            
-            OpererFacture.TbcProduitPublic.SelectedIndex = 1;
+            //OpererFacture.TbcProduitPublic.SelectedIndex = 1;
             MessageBox.Show("Fonctionnalité pas implémentée");
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)
         {
-            OpererFacture.TbcProduitPublic.SelectedIndex = 0;
+            //OpererFacture.TbcProduitPublic.SelectedIndex = 0;
         }
     }
 }

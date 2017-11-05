@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Windows.Input;
 using System.Linq;
-using System.Windows.Input;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using Facturio.Base;
 using Facturio.Criteres;
 using Facturio.Gabarits;
@@ -13,53 +13,15 @@ namespace Facturio.Creation
     {
         #region Propriétés
 
-        public static string _mode = "Nouveau";
+        public static string Mode = "Nouveau";
 
-        private static Gabarit _gabarit;
-        public Gabarit Gabarit
-        {
-            get => _gabarit;
-            set
-            {
-                if (Equals(value, _gabarit))
-                    return;
-
-                _gabarit = value;
-                RaisePropertyChanged(nameof(Gabarit));
-            }
-        }
+        public static Gabarit Gabarit { get; set; }
 
         public ObservableCollection<GabaritCritere> GabaritCriteres { get; set; }
-
-        private string _titreCritereLibre;
-        public string TitreCritereLibre
-        {
-            get => _titreCritereLibre;
-            set
-            {
-                if (value == _titreCritereLibre)
-                    return;
-
-                _titreCritereLibre = value;
-                RaisePropertyChanged(nameof(TitreCritereLibre));
-            }
-        }
-
         public ObservableCollection<TypeCritere> TypesCriteres { get; set; }
 
-        private TypeCritere _typeCritereSelectionne;
-        public TypeCritere TypeCritereSelectionne
-        {
-            get => _typeCritereSelectionne;
-            set
-            {
-                if (Equals(value, _typeCritereSelectionne))
-                    return;
-
-                _typeCritereSelectionne = value;
-                RaisePropertyChanged(nameof(TypeCritereSelectionne));
-            }
-        }
+        public string TitreCritereLibre { get; set; }
+        public TypeCritere TypeCritereSelectionne { get; set; }
 
         public string Titre { get; set; }
 
@@ -67,7 +29,8 @@ namespace Facturio.Creation
 
         #region Commandes
 
-        public ICommand AjouterCritere { get; set; }
+        public ICommand AjouteCritere { get; set; }
+        public ICommand SupprimeCritere { get; set; }
 
         #endregion
 
@@ -75,18 +38,8 @@ namespace Facturio.Creation
 
         public GabaritCreateurViewModel()
         {
-            /*
-            if (Gabarit == null)
-            {
-                Gabarit = new Gabarit {GabaritCriteres = CreerNouveauGabarit()};
-            }
-            */
-
-            if (_mode == "Nouveau")
-            {
-                Gabarit = new Gabarit {GabaritCriteres = CreerNouveauGabarit()};
-                GabaritCriteres = new ObservableCollection<GabaritCritere>(Gabarit.GabaritCriteres);
-            }
+            if (Mode == "Nouveau")
+                Gabarit = new Gabarit { GabaritCriteres = CreerNouveauGabarit() };
 
             GabaritCriteres = new ObservableCollection<GabaritCritere>(Gabarit.GabaritCriteres);
 
@@ -95,13 +48,12 @@ namespace Facturio.Creation
 
             Titre = "Création";
 
-            AjouterCritere = new RelayCommand(AjouteCritere, parameter => !string.IsNullOrWhiteSpace(TitreCritereLibre));
+            AjouteCritere = new RelayCommand(AjouterCritere, parameter => !string.IsNullOrWhiteSpace(TitreCritereLibre));
+            SupprimeCritere = new RelayCommand(SupprimerCritere, parameter => true);
         }
 
         public GabaritCreateurViewModel(Gabarit gabarit) : this()
         {
-            //Gabarit = gabarit ?? CreerNouveauGabarit();
-            Console.WriteLine(gabarit.TitreGabarit);
             Gabarit = gabarit;
         }
 
@@ -109,7 +61,7 @@ namespace Facturio.Creation
 
         #region Méthodes
 
-        private void AjouteCritere(object parameter)
+        private void AjouterCritere(object parameter)
         {
             GabaritCritere gabaritCritere = new GabaritCritere
             {
@@ -120,18 +72,24 @@ namespace Facturio.Creation
                 EstUtilise = false
             };
 
-            // Gabarit.GabaritCriteres.Add(gabaritCritere);
-            GabaritCriteres.Add(gabaritCritere);
+            Gabarit.GabaritCriteres.Add(gabaritCritere);
+            GabaritCriteres = new ObservableCollection<GabaritCritere>(Gabarit.GabaritCriteres);
+
+            TitreCritereLibre = string.Empty;
         }
 
-        private ObservableCollection<GabaritCritere> CreerNouveauGabarit()
+        private void SupprimerCritere(object parameter)
+        {
+            Gabarit.GabaritCriteres.Remove((GabaritCritere)parameter);
+            GabaritCriteres = new ObservableCollection<GabaritCritere>(Gabarit.GabaritCriteres);
+        }
+
+        private ISet<GabaritCritere> CreerNouveauGabarit()
         {
             const int POSITION = 0;
             const int LARGEUR = 50;
 
-            //Gabarit gabarit = new Gabarit();
-
-            ObservableCollection<GabaritCritere> gabaritCriteres = new ObservableCollection<GabaritCritere>();
+            ISet<GabaritCritere> gabaritCriteres = new HashSet<GabaritCritere>();
             for (int i = 0; i < 12; ++i)
             {
                 GabaritCritere gabaritCritere = new GabaritCritere
@@ -146,10 +104,6 @@ namespace Facturio.Creation
                 gabaritCriteres.Add(gabaritCritere);
             }
 
-            //gabarit.GabaritCriteres = gabaritCriteres;
-            //GabaritCriteres = new ObservableCollection<GabaritCritere>(gabaritCriteres);
-
-            //return gabarit;
             return gabaritCriteres;
         }
 
