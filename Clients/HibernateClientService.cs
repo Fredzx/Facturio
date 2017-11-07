@@ -83,6 +83,5 @@ namespace Facturio.Clients
 
             return result.ToList();
         }
-
     }
 }

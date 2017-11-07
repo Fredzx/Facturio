@@ -1,13 +1,8 @@
 ﻿using Facturio.Base;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -189,16 +184,40 @@ namespace Facturio.Produits
 
         public static string GenererCodeProduit(string nom, string description)
         {
-            StringBuilder code = new StringBuilder();
-            code.Append(nom[0]).Append(nom[1]).Append(nom[2]).Append(description[0]).Append(description[1]).Append(description[2]).Append('-').Append(nom.Length.ToString());
-            return code.ToString();
+            int no = nom.Length + description.Length + 1000;
+            string noProduit = no.ToString();
+            noProduit += "-";
+            noProduit += nom[0].ToString().ToLower();
+            noProduit += nom[1].ToString().ToLower();
+            noProduit += nom[2].ToString();
+            noProduit += nom[0].ToString();
+            noProduit += description[2].ToString().ToLower();
+            noProduit += description[1].ToString().ToLower();
+            noProduit += description[0].ToString().ToLower();
+            noProduit += description[description.Length-1].ToString();
+            noProduit += "-";
+            noProduit += Produit.Description.Length.ToString();
+
+            return noProduit;
         }
 
         public static string GenererCodeProduit()
         {
-            StringBuilder code = new StringBuilder();
-            code.Append(Produit.Nom[0]).Append(Produit.Nom[1]).Append(Produit.Nom[2]).Append(Produit.Description[0]).Append(Produit.Description[1]).Append(Produit.Description[2]).Append('-').Append(Produit.Nom.Length.ToString());
-            return code.ToString();
+            int no = Produit.Nom.Length + 1000;
+            string noProduit = no.ToString();
+            noProduit += "-";
+            noProduit += Produit.Nom[0].ToString().ToLower();
+            noProduit += Produit.Nom[1].ToString().ToLower();
+            noProduit += Produit.Nom[2].ToString();
+            noProduit += Produit.Nom[0].ToString();
+            noProduit += Produit.Nom[2].ToString().ToLower();
+            noProduit += Produit.Nom[1].ToString().ToLower();
+            noProduit += Produit.Nom[0].ToString().ToLower();
+            noProduit += Produit.Description[Produit.Description.Length - 1].ToString();
+            noProduit += "-";
+            noProduit += Produit.Description.Length.ToString();
+
+            return noProduit;
         }
 
         public static bool ValiderModif()
