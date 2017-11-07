@@ -137,6 +137,10 @@
     <Compile Include="Factures\AjoutProduitFacture.xaml.cs">
       <DependentUpon>AjoutProduitFacture.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Factures\AssignerClient.xaml.cs">
+      <DependentUpon>AssignerClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Factures\AssignerClientController.cs" />
     <Compile Include="Factures\Facture.cs" />
     <Compile Include="Factures\FactureController.cs" />
     <Compile Include="Factures\FactureMap.cs" />
@@ -215,6 +219,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Factures\AjoutProduitFacture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Factures\AssignerClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Facturio.Factures;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -146,6 +147,12 @@ namespace Facturio.Produits
                 btnModifier.IsEnabled = false;
                 btnSupprimer.IsEnabled = false;
             }
+        }
+
+        private void btnTest_Click(object sender, RoutedEventArgs e)
+        {
+            OpererFacture of = new OpererFacture();
+            of.Show();
         }
     }
 }
