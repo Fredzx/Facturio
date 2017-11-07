@@ -25,10 +25,10 @@ namespace Facturio.Rapports.Vues
         public static DataGrid DtgRapports { get; set; }
 
         public List<Rapport> LstRapport { get; set; } = new List<Rapport>();
-        public virtual Rapport Rapport1 { get; set; } = new Rapport("Charles Bélisle", new DateTime(2017, 02, 01, 08, 00, 00),new List<Factures.Facture>(), "Facturation Cliente");
-        public virtual Rapport Rapport2 { get; set; } = new Rapport("Yannick Charron", new DateTime(2017, 03, 01, 08, 00, 00), new List<Factures.Facture>(), "Facturation Cliente");
-        public virtual Rapport Rapport3 { get; set; } = new Rapport("",new DateTime(2017, 04, 01, 08, 00, 00), new List<Factures.Facture>(), "Sommaire");
-        public virtual Rapport Rapport4 { get; set; } = new Rapport("",new DateTime(2017, 05, 01, 08, 00, 00), new List<Factures.Facture>(), "Sommaire");
+        //public virtual Rapport Rapport1 { get; set; } = new Rapport("Charles Bélisle", new DateTime(2017, 02, 01, 08, 00, 00),new List<Factures.Facture>(), "Facturation Cliente");
+        //public virtual Rapport Rapport2 { get; set; } = new Rapport("Yannick Charron", new DateTime(2017, 03, 01, 08, 00, 00), new List<Factures.Facture>(), "Facturation Cliente");
+        //public virtual Rapport Rapport3 { get; set; } = new Rapport("",new DateTime(2017, 04, 01, 08, 00, 00), new List<Factures.Facture>(), "Sommaire");
+        //public virtual Rapport Rapport4 { get; set; } = new Rapport("",new DateTime(2017, 05, 01, 08, 00, 00), new List<Factures.Facture>(), "Sommaire");
 
         public ListeRapportUserControl()
         {
@@ -37,10 +37,10 @@ namespace Facturio.Rapports.Vues
             //DtgRapports.ItemsSource = HibernateRapportService.RetrieveAll();
             
 
-            LstRapport.Add(Rapport1);
-            LstRapport.Add(Rapport2);
-            LstRapport.Add(Rapport3);
-            LstRapport.Add(Rapport4);
+            //LstRapport.Add(Rapport1);
+            //LstRapport.Add(Rapport2);
+            //LstRapport.Add(Rapport3);
+            //LstRapport.Add(Rapport4);
             DtgRapports.ItemsSource = LstRapport;
             //Rapport1.LstFacture.Add(new Factures.Facture(new Clients.Client()))
         }

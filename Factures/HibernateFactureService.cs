@@ -1,4 +1,5 @@
-﻿using NHibernate;
+﻿using Facturio.Clients;
+using NHibernate;
 using NHibernate.Linq;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,19 @@ namespace Facturio.Factures
 
             var result = from f in facture
                          where f.LeClient.IdClient == idClient
+                                && (f.Date >= dateDebut
+                                && f.Date <= dateFin)
+                         select f;
+
+            return result.ToList();
+        }
+
+        public static List<Facture> RetrieveFacturationCliente(DateTime dateDebut, DateTime dateFin, Client client)
+        {
+            var facture = session.Query<Facture>().AsQueryable();
+
+            var result = from f in facture
+                         where f.LeClient.IdClient == client.IdClient
                                 && (f.Date >= dateDebut
                                 && f.Date <= dateFin)
                          select f;
@@ -80,18 +94,18 @@ namespace Facturio.Factures
                 transaction.Commit();
             }
         }
-        public static List<Facture> RetrieveVenteProduit(DateTime dateDebut, DateTime dateFin, int? idProduit)
-        {
-            var facture = session.Query<Facture>().AsQueryable();
+        //public static List<Facture> RetrieveVenteProduit(DateTime dateDebut, DateTime dateFin, int? idProduit)
+        //{
+        //    var facture = session.Query<Facture>().AsQueryable();
 
-            var result = from f in facture
+        //    var result = from f in facture
 
-                         where f.LstProduit.ToList()[0].Produit.Id == idProduit
-                                && (f.Date >= dateDebut
-                                && f.Date <= dateFin)
-                         select f;
+        //                 where f.LstProduit. == idProduit
+        //                        && (f.Date >= dateDebut
+        //                        && f.Date <= dateFin)
+        //                 select f;
 
-            return result.ToList();
-        }
+        //    return result.ToList();
+        //}
     }
 }

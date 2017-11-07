@@ -1,4 +1,5 @@
-﻿using Facturio.Factures;
+﻿using Facturio.Clients;
+using Facturio.Factures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,15 @@ namespace Facturio.Rapports.Entities
     {
         public virtual int? IdRapportFacturationCliente { get { return base.IdRapport; } set { base.IdRapport = value; }}
 
+        public virtual Client LeClient { get; set; }
         
-        RapportFacturationCliente() { }
+        public RapportFacturationCliente() { }
+        public RapportFacturationCliente(DateTime date, List<Facture> lstFacture, Client client)
+        {
+            Date = date;
+            LstFacture = lstFacture;
+            LeClient = client;
+        }
 
 
         public override bool Equals(object obj)
@@ -39,7 +47,7 @@ namespace Facturio.Rapports.Entities
 
         public void RetriveFactureClient()
         {
-            LstFacture = new HashSet<Facture>(HibernateFactureService.RetrieveFacturationCliente(new DateTime(2017, 10, 03, 0, 0, 0), new DateTime(2017, 11, 04, 0, 0, 0), 1));
+            LstFacture = new List<Facture>(HibernateFactureService.RetrieveFacturationCliente(new DateTime(2017, 10, 03, 0, 0, 0), new DateTime(2017, 11, 04, 0, 0, 0), 1));
         }
 
     }

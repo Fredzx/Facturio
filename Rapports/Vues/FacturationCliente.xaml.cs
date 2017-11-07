@@ -1,4 +1,6 @@
 ﻿using Facturio.Clients;
+using Facturio.Factures;
+using Facturio.Rapports.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +38,18 @@ namespace Facturio.Rapports.Vues
 
         private void btnRapportPDF_Click(object sender, RoutedEventArgs e)
         {
+            RapportFacturationCliente RFC = new RapportFacturationCliente();
+            RFC.LstFacture = HibernateFactureService.RetrieveFacturationCliente(
+                                                        cldDateDebut.SelectedDate.Value,
+                                                        cldDateFin.SelectedDate.Value,
+                                                        (Client)dtgAfficherClient.SelectedItem);
+            RFC.LeClient = (Client)dtgAfficherClient.SelectedItem;
+            RFC.Date = DateTime.Now;
 
+            if(Valider())
+            {
+                RapportController.CreerPDF(RFC);
+            }
         }
 
         private void btnObtenirRapport_Click(object sender, RoutedEventArgs e)

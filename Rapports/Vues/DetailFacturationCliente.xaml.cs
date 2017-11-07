@@ -2,6 +2,8 @@
 using Facturio.Factures;
 using Facturio.Produits;
 using Facturio.ProduitsFactures;
+using Facturio.Rapports.Entities;
+using Facturio.Rapports.Hibernate;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -48,12 +50,8 @@ namespace Facturio.Rapports.Vues
 
             RafraichirData(true);
 
-            //DtgProduit.ItemsSource = LstFacture[compteur].LstProduit;
-            //lblNoFacture.Content = (compteur + 1).ToString() + "/" + LstFacture.Count;
-            //txtSousTotal.Text = Math.Round(CalculerSousTotal(),2).ToString() + "$";
-            //txtTPS.Text = Math.Round(CalculerTaxes(TPS),2).ToString() + "$";
-            //txtTVQ.Text = Math.Round(CalculerTaxes(TVQ),2).ToString() + "$";
-            //txtTotal.Text = Math.Round(CalculerTotal(),2).ToString() + "$";
+            //HibernateRapportFacturationCliente.Create(new RapportFacturationCliente(DateTime.Now, new List<Facture>(LstFacture),leClient));
+
         }
 
         public DetailFacturationCliente(DateTime dateDebut, DateTime dateFin, Produit leProduit)
@@ -64,7 +62,7 @@ namespace Facturio.Rapports.Vues
             DateDebut = dateDebut;
             DateFin = dateFin;
             IdProduit = leProduit.Id;
-            LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveFacturationCliente(dateDebut, DateFin, IdClient));
+            //LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveVenteProduit(dateDebut, DateFin, IdProduit));
 
             RafraichirData(true);
         }
