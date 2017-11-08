@@ -93,7 +93,6 @@ namespace Facturio.Produits
                     {
                         ProduitsController.DemanderSiModifAncienDelete();
                     }
-                        MessageBox.Show("Existe");
                 }
             }
             if (EstSucces)
