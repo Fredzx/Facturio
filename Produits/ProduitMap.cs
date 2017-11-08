@@ -54,34 +54,6 @@ namespace Facturio.Produits
                 .Access.Property()
                 .CustomSqlType("DECIMAL")
                 .Generated.Never();
-
-            HasManyToMany<ProduitFacture>(x => x.LstFacture)
-                .Access.Property()
-                .AsSet()
-                .Cascade.AllDeleteOrphan()
-                .LazyLoad()
-                .Inverse()
-                .Generic()
-                .Component(p =>
-                {
-                    p.Map(x => x.Quantite)
-                        .Column("quantite")
-                        .CustomType<float>()
-                        .Access.Property()
-                        .Generated.Never()
-                        .CustomSqlType("DECIMAL");
-                    p.References<Facture>(r => r.Facture, "idFacture");
-                })
-                .Table("ProduitsFactures")
-                .FetchType.Join()
-                .ChildKeyColumns.Add("idFacture", mapping => mapping.Name("idFacture")
-                                                                    .SqlType("INTEGER")
-                                                                    .Not.Nullable())
-                .ParentKeyColumns.Add("idProduit", mapping => mapping.Name("idProduit")
-                                                                     .SqlType("INTEGER")
-                                                                     .Not.Nullable());
-
-
         }
     }
 }

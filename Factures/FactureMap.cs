@@ -45,7 +45,14 @@ namespace Facturio.Factures
                 .Generated.Never()
                 .CustomSqlType("DATETIME");
 
-            HasMany<ProduitFacture>(x => x.)
+            HasMany<ProduitFacture>(x => x.LstProduitFacture)
+                .Not.LazyLoad()
+                .Access.Property()
+                .Cascade.All()
+                .KeyColumns.Add("idFacture", map => map.Name("idFacture")
+                                                       .SqlType("INTEGER")
+                                                       .Nullable());
+
         }
     }
 }

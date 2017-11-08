@@ -94,18 +94,18 @@ namespace Facturio.Factures
                 transaction.Commit();
             }
         }
-        //public static List<Facture> RetrieveVenteProduit(DateTime dateDebut, DateTime dateFin, int? idProduit)
-        //{
-        //    var facture = session.Query<Facture>().AsQueryable();
+        public static List<Facture> RetrieveVenteProduit(DateTime dateDebut, DateTime dateFin, int? idProduit)
+        {
+            var facture = session.Query<Facture>().AsQueryable();
 
-        //    var result = from f in facture
+            var result = from f in facture
 
-        //                 where f.LstProduit. == idProduit
-        //                        && (f.Date >= dateDebut
-        //                        && f.Date <= dateFin)
-        //                 select f;
+                         where f.LstProduitFacture[0].Produit.Id == idProduit
+                                && (f.Date >= dateDebut
+                                && f.Date <= dateFin)
+                         select f;
 
-        //    return result.ToList();
-        //}
+            return result.ToList();
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace Facturio.Factures
 
         public virtual DateTime? Date { get; set; } = null;
         public virtual IList<RapportFacture> LstRapportFacture { get; set; }
-        public virtual ISet<ProduitFacture> LstProduitFacture { get; set; }
+        public virtual IList<ProduitFacture> LstProduitFacture { get; set; }
 
 
         public Facture() { }
@@ -31,7 +31,7 @@ namespace Facturio.Factures
         {
             LeClient = client;
             Date = date;
-            LstProduit = new HashSet<ProduitFacture>();
+            LstProduitFacture = new List<ProduitFacture>();
             LstRapportFacture = new List<RapportFacture>();
         }
 

@@ -62,7 +62,7 @@ namespace Facturio.Rapports.Vues
             DateDebut = dateDebut;
             DateFin = dateFin;
             IdProduit = leProduit.Id;
-            //LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveVenteProduit(dateDebut, DateFin, IdProduit));
+            LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveVenteProduit(dateDebut, DateFin, IdProduit));
 
             RafraichirData(true);
         }
@@ -95,7 +95,7 @@ namespace Facturio.Rapports.Vues
         {
             decimal total = 0;
 
-            foreach (ProduitFacture p in LstFacture[compteur].LstProduit)
+            foreach (ProduitFacture p in LstFacture[compteur].LstProduitFacture)
                 {
                     total += ((decimal)p.Quantite* (decimal)p.Produit.Prix);
                 }
@@ -117,7 +117,7 @@ namespace Facturio.Rapports.Vues
         {
             if (LstFacture.Count != 0)
             {
-                DtgProduit.ItemsSource = LstFacture[compteur].LstProduit;
+                DtgProduit.ItemsSource = LstFacture[compteur].LstProduitFacture;
                 lblNoFacture.Content = (compteur + 1).ToString() + "/" + LstFacture.Count;
 
                 if(!estPremiereOuverture)

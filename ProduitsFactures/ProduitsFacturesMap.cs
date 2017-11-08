@@ -32,22 +32,19 @@ namespace Facturio.ProduitsFactures
                 .Not.Nullable()
                 .Generated.Never();
 
+            References(x => x.Facture)
+                .Class<Facture>()
+                .Access.Property()
+                .LazyLoad(Laziness.False)
+                .Cascade.None()
+                .Columns("idFacture");
 
-
-
-            //References(x => x.Facture)
-            //    .Class<Facture>()
-            //    .Access.Property()
-            //    .LazyLoad(Laziness.False)
-            //    .Cascade.None()
-            //    .Columns("idFacture");
-
-            //References(x => x.Produit)
-            //    .Class<Produit>()
-            //    .Access.Property()
-            //    .LazyLoad(Laziness.False)
-            //    .Cascade.None()
-            //    .Columns("idProduit");
+            References(x => x.Produit)
+                .Class<Produit>()
+                .Access.Property()
+                .LazyLoad(Laziness.False)
+                .Cascade.None()
+                .Columns("idProduit");
         }
     }
 }
