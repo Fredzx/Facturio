@@ -80,12 +80,20 @@ namespace Facturio.Produits
             {
                 if (ProduitsController.ValiderAjout())
                 {
-                    ProduitsController.Produit = new Produit(txtNom.Text, "", txtDescription.Text, Convert.ToDouble(txtPrix.Text), Convert.ToDouble(txtQuantite.Text));
+                    ProduitsController.Produit = new Produit(txtNom.Text, "", txtDescription.Text, Convert.ToDouble(txtPrix.Text), Convert.ToDouble(txtQuantite.Text), true);
                     ProduitsController.Produit.Code = ProduitsController.GenererCodeProduit();
-                    ProduitsController.AjoutProduit();
-                    ProduitsController.SuccesAjout();
-                    viderChamps();
-                    EstSucces = true;
+                    if (!ProduitsController.VerifierInactif())
+                    {
+                        ProduitsController.AjoutProduit();
+                        ProduitsController.SuccesAjout();
+                        viderChamps();
+                        EstSucces = true;
+                    }
+                    else
+                    {
+                        ProduitsController.DemanderSiModifAncienDelete();
+                    }
+                        MessageBox.Show("Existe");
                 }
             }
             if (EstSucces)

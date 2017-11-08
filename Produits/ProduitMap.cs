@@ -55,6 +55,13 @@ namespace Facturio.Produits
                 .CustomSqlType("DECIMAL")
                 .Generated.Never();
 
+            Map(x => x.EstActif)
+                .Column("estActif")
+                .CustomType<bool>()
+                .Access.Property()
+                .Generated.Never()
+                .CustomSqlType("BOOLEAN");
+
             HasManyToMany<ProduitFacture>(x => x.LstFacture)
                 .Access.Property()
                 .AsSet()

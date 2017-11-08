@@ -15,7 +15,7 @@ namespace Facturio.Produits
         {
 
         }
-        public Produit(string nom, string code, string description, double prix, double quantite)
+        public Produit(string nom, string code, string description, double prix, double quantite, bool estActif)
         {
             Nom = nom;
             Code = code;
@@ -23,6 +23,7 @@ namespace Facturio.Produits
             Prix = prix;
             Quantite = quantite;
             LstFacture = new HashSet<ProduitFacture>();
+            EstActif = estActif;
         }
 
         public virtual int? Id { get; set; } = null;
@@ -32,7 +33,8 @@ namespace Facturio.Produits
         public virtual double? Prix { get; set; } = null;
         public virtual double? Quantite { get; set; } = null;
         public virtual ISet<ProduitFacture> LstFacture { get; set; }
-        
+        public virtual bool EstActif { get; set; } = true;
+
 
         public override bool Equals(object obj)
         {

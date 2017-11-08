@@ -11,7 +11,15 @@ namespace Facturio.Produits
 
         public static List<Produit> RetrieveAll()
         {
-            return session.Query<Produit>().OrderBy(p=>p.Nom).ToList();
+            var produits = session.Query<Produit>().OrderBy(p => p.Nom).AsQueryable();
+
+            var result = from p in produits
+                         where p.EstActif == true
+                         select p;
+
+            return result.ToList();
+
+//            return session.Query<Produit>().OrderBy(p=>p.Nom).ToList();
         }
 
         public static List<Produit> Retrieve(int idProduit)
@@ -25,6 +33,17 @@ namespace Facturio.Produits
             return result.ToList();
         }
 
+        public static List<Produit> Retrieve(string code)
+        {
+            var produit = session.Query<Produit>().AsQueryable();
+
+            var result = from p in produit
+                         where p.Code.Like(code)
+                         select p;
+
+            return result.ToList();
+        }
+
         public static List<Produit> RetrieveFilter(string filter)
         {
             var produit = session.Query<Produit>().AsQueryable();
@@ -32,7 +51,7 @@ namespace Facturio.Produits
             // J'utilise contains au lieu de startswith pour s'assurer que l'utilisateur ait toutes les options possibles
             // Ex.: Si le user cherche 'porc' pour trouver 'filet de porc' et que j'utilise startswith, la requête n'affichera pas sa recherche.
             var result = from p in produit
-                         where p.Nom.Contains(filter) || p.Code.Contains(filter)
+                         where (p.Nom.Contains(filter) || p.Code.Contains(filter)) && p.EstActif == true
                          orderby p.Code ascending
                          select p;
 

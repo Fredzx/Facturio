@@ -32,8 +32,15 @@ namespace Facturio.Produits
 
         public static void DeleteProduit(Produit produitADeleter)
         {
-            Produits.Remove(produitADeleter);
-            HibernateProduitService.Delete(produitADeleter);
+            if(produitADeleter != null)
+            {
+                produitADeleter.EstActif = false;
+                HibernateProduitService.Update(produitADeleter);
+
+                Produits.Remove(produitADeleter);
+                //Produits.Remove(produitADeleter);
+                //HibernateProduitService.Delete(produitADeleter);
+            }
         }
 
         public static void AjoutProduit()
@@ -104,6 +111,38 @@ namespace Facturio.Produits
                     AjoutModifUserControl.LblInfo.Content = "ERREUR: le produit existe déjà";
                     break;
             }
+        }
+
+        internal static void DemanderSiModifAncienDelete()
+        {
+            MessageBoxResult resultat;
+            resultat = MessageBox.Show("Le porduit a été supprimé auparavant.\nVoulez-vous le recréer avec vos nouvelles données ?"
+                , "Info"
+                , MessageBoxButton.YesNo
+                , MessageBoxImage.Warning
+                , MessageBoxResult.No
+                );
+
+                if (resultat == MessageBoxResult.Yes)
+                {
+                    //Produit p = new Produit
+                }
+        }
+
+        public static bool VerifierInactif()
+        {
+            ObservableCollection<Produit> produits = new ObservableCollection<Produit>(HibernateProduitService.Retrieve(GenererCodeProduit(AjoutModifUserControl.TxtNom.Text, AjoutModifUserControl.TxtDescription.Text)));
+            foreach(Produit p in produits)
+            {
+                if(p.Nom != null)
+                {
+                    p.EstActif = true;
+                    HibernateProduitService.Update(p);
+                    Produits.Add(p);
+                    return true;
+                }
+            }
+            return false;
         }
 
         public static bool ValiderAjout()
@@ -196,14 +235,14 @@ namespace Facturio.Produits
             noProduit += description[0].ToString().ToLower();
             noProduit += description[description.Length-1].ToString();
             noProduit += "-";
-            noProduit += Produit.Description.Length.ToString();
+            noProduit += description.Length.ToString();
 
             return noProduit;
         }
 
         public static string GenererCodeProduit()
         {
-            int no = Produit.Nom.Length + 1000;
+            int no = Produit.Nom.Length + Produit.Description.Length + 1000;
             string noProduit = no.ToString();
             noProduit += "-";
             noProduit += Produit.Nom[0].ToString().ToLower();
