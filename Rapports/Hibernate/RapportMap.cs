@@ -5,6 +5,7 @@ using Facturio.Factures;
 using System.Collections;
 using System.ComponentModel;
 using Facturio.Rapports.Entities;
+using Facturio.RapportsFactures;
 
 namespace Facturio.Rapports.Hibernate
 {
@@ -31,20 +32,13 @@ namespace Facturio.Rapports.Hibernate
                 .CustomSqlType("DATETIME")
                 .Generated.Never();
 
-            HasManyToMany<Facture>(x => x.LstFacture)
-                .Access.Property()
-                .AsSet()
-                .Cascade.None()
-                .LazyLoad()
-                .Generic()
-                .Table("FacturesRapports")
-                .FetchType.Join()
-                .ChildKeyColumns.Add("idFacture", mapping => mapping.Name("idFacture")
-                                                                    .SqlType("INTEGER")
-                                                                    .Not.Nullable())
-                .ParentKeyColumns.Add("idRapport", mapping => mapping.Name("idRapport")
-                                                                     .SqlType("INTEGER")
-                                                                     .Not.Nullable());
+            HasMany<RapportFacture>(x => x.LstFacture)
+               .Not.LazyLoad()
+               .Access.Property()
+               .Cascade.All()
+               .KeyColumns.Add("idRapport", map => map.Name("idRapport")
+                                                           .SqlType("INTEGER")
+                                                           .Nullable());
 
         }
     }

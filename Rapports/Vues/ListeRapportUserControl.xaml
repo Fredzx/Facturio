@@ -50,7 +50,7 @@
                                     AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="20,0,20,20">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Type de rapport" Width="6*" Binding="{Binding TypeRapport}"/>
-                    <DataGridTextColumn Header="Client" Width="6*" Binding="{Binding Client}"/>
+                    <DataGridTextColumn Header="Client" Width="6*" Binding="{Binding Nom}"/>
                     <DataGridTextColumn Header="Date" Width="6*" Binding="{Binding Date}"/>
 
                 </DataGrid.Columns>

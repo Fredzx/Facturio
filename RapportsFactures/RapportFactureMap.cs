@@ -10,12 +10,12 @@ namespace Facturio.RapportsFactures
     {
         public RapportFactureMap()
         {
-            Table("RapportFacture");
+            Table("FacturesRapports");
 
             LazyLoad();
 
             Id(x => x.IdRapportFacture)
-                .Column("idRapportFacture")
+                .Column("idFacturesRapports")
                 .CustomType<int?>()
                 .Access.Property()
                 .CustomSqlType("INTEGER")

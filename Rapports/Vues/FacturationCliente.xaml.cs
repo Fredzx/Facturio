@@ -1,6 +1,7 @@
 ﻿using Facturio.Clients;
 using Facturio.Factures;
 using Facturio.Rapports.Entities;
+using Facturio.RapportsFactures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,21 +33,22 @@ namespace Facturio.Rapports.Vues
             LstClient = ClientsController.LstObClients;
             dtgAfficherClient.ItemsSource = ClientsController.LstObClients;
             btnObtenirRapport.IsEnabled = false;
+            btnRapportPDF.IsEnabled = false;
+            dtgAfficherClient.SelectedIndex = 0;
             cldDateFin.SelectedDate = DateTime.Now;
-
         }
 
         private void btnRapportPDF_Click(object sender, RoutedEventArgs e)
         {
             RapportFacturationCliente RFC = new RapportFacturationCliente();
-            RFC.LstFacture = HibernateFactureService.RetrieveFacturationCliente(
-                                                        cldDateDebut.SelectedDate.Value,
+            RFC.LstFacture = HibernateRapportFactureService.RetrieveFacturationCliente(cldDateDebut.SelectedDate.Value,
                                                         cldDateFin.SelectedDate.Value,
                                                         (Client)dtgAfficherClient.SelectedItem);
+
             RFC.LeClient = (Client)dtgAfficherClient.SelectedItem;
             RFC.Date = DateTime.Now;
 
-            if(Valider())
+            if (Valider())
             {
                 RapportController.CreerPDF(RFC);
             }
@@ -119,7 +121,7 @@ namespace Facturio.Rapports.Vues
         private void cldDateDebut_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             btnObtenirRapport.IsEnabled = true;
-            
+            btnRapportPDF.IsEnabled = true;
         }
     }
 }

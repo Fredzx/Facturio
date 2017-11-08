@@ -15,7 +15,7 @@ namespace Facturio.Rapports.Entities
         // virtual pcq Nhibernate l'oblige
         public virtual int? IdRapport { get; set; } = null;
         public virtual DateTime Date { get; set; } = DateTime.MinValue;
-        public virtual IList<Facture> LstFacture { get; set; }
+        public virtual IList<RapportFacture> LstFacture { get; set; }
 
         //temporaire
         //public virtual string Client { get; set; }
@@ -29,7 +29,7 @@ namespace Facturio.Rapports.Entities
         public Rapport(DateTime dateRapport)
         {
             Date = dateRapport;
-            LstFacture = new List<Facture>();
+            LstFacture = new List<RapportFacture>();
         }
         // Ce constructeur est temporaire, seulement pour la version 0.5
         //public Rapport(string client, DateTime date, List<Facture> lstFacture, string typeRapport)
