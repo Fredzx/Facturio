@@ -20,7 +20,7 @@ namespace Facturio.Rapports
 {
     public class RapportController : BaseViewModel, IOngletViewModel
     {
-        //public static ISet<Rapport> LstRapport { get; set; }
+       // public static IList<Rapport> LstRapport { get; set; }
         public static ListeRapportUserControl RapportUserControl { get; set; } = new ListeRapportUserControl(); 
 
         
@@ -30,9 +30,7 @@ namespace Facturio.Rapports
         public RapportController()
         {
             Titre = "Rapports";
-            //LstRapport = new HashSet<Rapport>(HibernateRapportService.RetrieveAll());
-
-            
+            //LstRapport = new List<Rapport>(HibernateRapportService.RetrieveAll());     
         }
 
         public static void CreerPDF(Rapport rapport)

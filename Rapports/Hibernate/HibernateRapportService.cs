@@ -6,6 +6,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using Facturio.Rapports.Entities;
+using NHibernate.Transform;
 
 namespace Facturio.Rapports.Hibernate
 {
@@ -18,6 +19,20 @@ namespace Facturio.Rapports.Hibernate
         {
             return session.Query<Rapport>().ToList();
         }
+
+        //public static List<Rapport> RetrieveSommaire()
+        //{
+        //    var rapport = session.CreateSQLQuery("SELECT c.nom as Nom, c.prenom as Prenom, Date " +
+        //                                         "FROM Rapports r" +
+        //                                         "INNER JOIN FacturesRapports fr ON r.idRapport = fr.idRapport" +
+        //                                         "INNER JOIN Factures f ON f.idFacture = fr.idFactures" +
+        //                                         "INNER JOIN Clients c On c.idClient = f.idClient");
+
+        //    rapport.SetResultTransformer(Transformers.AliasToBean<Rapport>());
+
+        //    return rapport.List();
+            
+        //}
 
         public static List<Rapport> Retrieve(int idRapport)
         {

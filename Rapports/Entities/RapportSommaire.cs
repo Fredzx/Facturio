@@ -33,5 +33,11 @@ namespace Facturio.Rapports.Entities
         {
             return base.GetHashCode();
         }
+
+        public override string GetTypeRapport()
+        {
+            return "Sommaire";
+        }
+
     }
 }

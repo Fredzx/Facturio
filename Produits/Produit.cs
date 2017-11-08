@@ -22,7 +22,6 @@ namespace Facturio.Produits
             Description = description;
             Prix = prix;
             Quantite = quantite;
-            LstFacture = new List<ProduitFacture>();
             EstActif = estActif;
         }
 
@@ -32,8 +31,6 @@ namespace Facturio.Produits
         public virtual string Description { get; set; } = string.Empty;
         public virtual double? Prix { get; set; } = null;
         public virtual double? Quantite { get; set; } = null;
-
-        public virtual IList<ProduitFacture> LstFacture { get; set; }
         public virtual bool EstActif { get; set; } = true;
 
         public override bool Equals(object obj)

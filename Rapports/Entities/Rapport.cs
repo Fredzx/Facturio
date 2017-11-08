@@ -17,10 +17,6 @@ namespace Facturio.Rapports.Entities
         public virtual DateTime Date { get; set; } = DateTime.MinValue;
         public virtual IList<RapportFacture> LstFacture { get; set; }
 
-        //temporaire
-        //public virtual string Client { get; set; }
-        //public virtual string TypeRapport { get; set; }
-
         public Rapport() { }
         /// <summary>
         /// 
@@ -31,14 +27,6 @@ namespace Facturio.Rapports.Entities
             Date = dateRapport;
             LstFacture = new List<RapportFacture>();
         }
-        // Ce constructeur est temporaire, seulement pour la version 0.5
-        //public Rapport(string client, DateTime date, List<Facture> lstFacture, string typeRapport)
-        //{
-        //    Client = client;
-        //    Date = date;
-        //    LstFacture = new List<Facture>(lstFacture);
-        //    TypeRapport = typeRapport;
-        //}
 
         public override bool Equals(object obj)
         {
@@ -62,5 +50,9 @@ namespace Facturio.Rapports.Entities
             return base.GetHashCode();
         }
 
+        public virtual string GetTypeRapport()
+        {
+            return "Rapport";
+        }
     }
 }
