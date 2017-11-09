@@ -31,7 +31,7 @@ namespace Facturio.Produits
         public virtual string Description { get; set; } = string.Empty;
         public virtual double? Prix { get; set; } = null;
         public virtual double? Quantite { get; set; } = null;
-        public virtual bool EstActif { get; set; } = true;
+        public virtual bool EstActif { get; set; } = false;
 
         public override bool Equals(object obj)
         {

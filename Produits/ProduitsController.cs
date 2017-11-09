@@ -125,8 +125,8 @@ namespace Facturio.Produits
 
                 if (resultat == MessageBoxResult.Yes)
                 {
-                ObservableCollection<Produit> p = new ObservableCollection<Produit>(HibernateProduitService.Retrieve(Produit.Code));
-                Produit.Id = p[0].Id;
+                    ObservableCollection<Produit> p = new ObservableCollection<Produit>(HibernateProduitService.Retrieve(Produit.Code));
+                    Produit.Id = p[0].Id;
                     HibernateProduitService.Update(Produit);
                 }
         }
@@ -138,9 +138,6 @@ namespace Facturio.Produits
             {
                 if(p.Nom != null)
                 {
-                    p.EstActif = true;
-                    HibernateProduitService.Update(p);
-                    Produits.Add(p);
                     return true;
                 }
             }
