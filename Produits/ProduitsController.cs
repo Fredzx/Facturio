@@ -126,8 +126,11 @@ namespace Facturio.Produits
                 if (resultat == MessageBoxResult.Yes)
                 {
                     ObservableCollection<Produit> p = new ObservableCollection<Produit>(HibernateProduitService.Retrieve(Produit.Code));
-                    Produit.Id = p[0].Id;
-                    HibernateProduitService.Update(Produit);
+                //Produit.Id = p[0].Id;
+                    Produit produit = Produit;
+                    HibernateProduitService.Delete(p[0]);
+                    HibernateProduitService.Create(Produit);
+                    //HibernateProduitService.Update(Produit);
                 }
         }
 
@@ -326,7 +329,7 @@ namespace Facturio.Produits
         public static void RafraichirGrille(bool estFiltre)
         {
             if(!estFiltre)
-            Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
+                Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
             RechercherUserControl.DtgProduits.ItemsSource = null;
             RechercherUserControl.DtgProduits.ItemsSource = Produits;
         }
