@@ -32,9 +32,9 @@ namespace Facturio.Rapports.Vues
         public DateTime DateDebut { get; set; }
         public DateTime DateFin { get; set; }
         public int? IdClient { get; set; }
-        public int? IdProduit { get; set; }
-        public Produit Produit { get; set; }
+       public Produit Produit { get; set; }
         public ObservableCollection<Facture> LstFacture { get; set; }
+        public ObservableCollection<ProduitFacture> LstProduitFacture { get; set; }
         public int compteur = 0;
         public DataGrid DtgProduit { get; set; }
 
@@ -45,13 +45,9 @@ namespace Facturio.Rapports.Vues
             DtgProduit = dtgProduits;
             DateDebut = dateDebut;
             DateFin = dateFin;
-            IdClient = leClient.IdClient;
-            LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveFacturationCliente(dateDebut, DateFin, IdClient));
+            LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveFacturationCliente(dateDebut, DateFin, leClient.IdClient));
 
             RafraichirData(true);
-
-            //HibernateRapportFacturationCliente.Create(new RapportFacturationCliente(DateTime.Now, new List<Facture>(LstFacture),leClient));
-
         }
 
         public DetailFacturationCliente(DateTime dateDebut, DateTime dateFin, Produit leProduit)
@@ -61,9 +57,8 @@ namespace Facturio.Rapports.Vues
             DtgProduit = dtgProduits;
             DateDebut = dateDebut;
             DateFin = dateFin;
-            IdProduit = leProduit.Id;
-            LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveVenteProduit(dateDebut, DateFin, IdProduit));
-
+            LstProduitFacture = new ObservableCollection<ProduitFacture>(HibernateProduitFacturesService.RetrieveProduit(leProduit.Id));
+            LstFacture = new ObservableCollection<Facture>(ConstruireFactures());
             RafraichirData(true);
         }
 
@@ -115,7 +110,7 @@ namespace Facturio.Rapports.Vues
 
         public void RafraichirData(bool estPremiereOuverture)
         {
-            if (LstFacture.Count != 0)
+            if (LstFacture != null || LstFacture.Count != 0)
             {
                 DtgProduit.ItemsSource = LstFacture[compteur].LstProduitFacture;
                 lblNoFacture.Content = (compteur + 1).ToString() + "/" + LstFacture.Count;
@@ -133,6 +128,17 @@ namespace Facturio.Rapports.Vues
                 lblInfo.Foreground = Brushes.Red;
                 lblInfo.Content = "Aucune facture pour la date du " + DateDebut + " au " + DateFin;
             }
+        }
+
+        public List<Facture> ConstruireFactures()
+        {
+            List<Facture> lstFacture = new List<Facture>();
+
+            foreach (ProduitFacture pf in LstProduitFacture)
+            {
+                lstFacture.Add(pf.Facture);
+            }
+            return lstFacture;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Facturio.Clients;
 using Facturio.Factures;
 using Facturio.Rapports.Entities;
+using Facturio.Rapports.Hibernate;
 using Facturio.RapportsFactures;
 using System;
 using System.Collections.Generic;
@@ -41,25 +42,36 @@ namespace Facturio.Rapports.Vues
         private void btnRapportPDF_Click(object sender, RoutedEventArgs e)
         {
             RapportFacturationCliente RFC = new RapportFacturationCliente();
-            RFC.LstFacture = HibernateRapportFactureService.RetrieveFacturationCliente(cldDateDebut.SelectedDate.Value,
-                                                        cldDateFin.SelectedDate.Value,
-                                                        (Client)dtgAfficherClient.SelectedItem);
-
-            RFC.LeClient = (Client)dtgAfficherClient.SelectedItem;
-            RFC.Date = DateTime.Now;
+           
 
             if (Valider())
             {
+                RFC.LstFacture = HibernateRapportFactureService.RetrieveFacturationCliente(cldDateDebut.SelectedDate.Value,
+                                                       cldDateFin.SelectedDate.Value,
+                                                       (Client)dtgAfficherClient.SelectedItem);
+
+                RFC.LeClient = (Client)dtgAfficherClient.SelectedItem;
+                RFC.Date = DateTime.Now;
                 RapportController.CreerPDF(RFC);
             }
         }
 
         private void btnObtenirRapport_Click(object sender, RoutedEventArgs e)
         {
+            RapportFacturationCliente RFC = new RapportFacturationCliente();
+            
             if (Valider())
             {
+                RFC.LstFacture = HibernateRapportFactureService.RetrieveFacturationCliente(cldDateDebut.SelectedDate.Value,
+                                                                                           cldDateFin.SelectedDate.Value,
+                                                                                           (Client)dtgAfficherClient.SelectedItem);
+
+                RFC.LeClient = (Client)dtgAfficherClient.SelectedItem;
+                RFC.Date = DateTime.Now;
+
                 Window detailFacturationCliente = new DetailFacturationCliente(cldDateDebut.SelectedDate.Value, cldDateFin.SelectedDate.Value, (Client)dtgAfficherClient.SelectedItem);
                 detailFacturationCliente.Show();
+                HibernateRapportFacturationCliente.Create(RFC);
             }
 
         }

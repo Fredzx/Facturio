@@ -20,7 +20,7 @@ namespace Facturio.Factures
         public virtual Client LeClient { get; set; } = new Client();
 
         public virtual DateTime? Date { get; set; } = null;
-        public virtual IList<RapportFacture> LstRapportFacture { get; set; }
+        
         public virtual IList<ProduitFacture> LstProduitFacture { get; set; }
 
 
@@ -32,7 +32,6 @@ namespace Facturio.Factures
             LeClient = client;
             Date = date;
             LstProduitFacture = new List<ProduitFacture>();
-            LstRapportFacture = new List<RapportFacture>();
         }
 
         public override bool Equals(object obj)

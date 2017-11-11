@@ -15,6 +15,7 @@ using Facturio.Factures;
 using Facturio.Produits;
 using Facturio.ProduitsFactures;
 using System.IO;
+using Facturio.RapportsFactures;
 
 namespace Facturio.Rapports
 {
@@ -35,36 +36,36 @@ namespace Facturio.Rapports
 
         public static void CreerPDF(Rapport rapport)
         {
-            //    string nomClient = rapport.LstFacture[0].LeClient.Nom;
-            //    string prenomClient = rapport.LstFacture[0].LeClient.Prenom;
-            //    string header = "Factures de " + prenomClient + " " + nomClient;
-            //    int compteur = 0;
-            //    FileStream fs = new FileStream("RapportFacturationCliente.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
-            //    Document document = new Document();
-            //    PdfWriter writer = PdfWriter.GetInstance(document, fs);
-            //    document.Open();
-            //    document.Add(new Paragraph(0,header));
+            string nomClient = rapport.LstFacture[0].Facture.LeClient.Nom;
+            string prenomClient = rapport.LstFacture[0].Facture.LeClient.Prenom;
+            string header = "Factures de " + prenomClient + " " + nomClient;
+            int compteur = 0;
+            FileStream fs = new FileStream("RapportFacturationCliente.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
+            Document document = new Document();
+            PdfWriter writer = PdfWriter.GetInstance(document, fs);
 
 
 
-            //    foreach (Facture f in rapport.LstFacture)
-            //    {
+            document.Open();
+            document.Add(new Paragraph(0, header));
+            foreach (RapportFacture rf in rapport.LstFacture)
+            {
 
-            //        PdfPTable tableau = new PdfPTable(3);
-            //        PdfPCell cellule = new PdfPCell();
+                PdfPTable tableau = new PdfPTable(3);
+                PdfPCell cellule = new PdfPCell();
 
-            //        foreach (ProduitFacture p in f.LstProduit)
-            //        {
-            //            tableau.AddCell(p.Produit.Nom.ToString());
-            //            tableau.AddCell(p.Quantite.ToString());
-            //            tableau.AddCell(p.Produit.Prix.ToString());
-            //        }
+                foreach (ProduitFacture p in rf.Facture.LstProduitFacture)
+                {
+                    tableau.AddCell(p.Produit.Nom.ToString());
+                    tableau.AddCell(p.Quantite.ToString());
+                    tableau.AddCell(p.Produit.Prix.ToString());
+                }
 
-            //        document.Add(tableau);
-            //        document.NewPage();
-            //    }
+                document.Add(tableau);
+                document.NewPage();
+            }
 
-            //    document.Close();
+            document.Close();
 
         }
     }

@@ -57,7 +57,7 @@
         
         <Button Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Content="Précédent" Margin="0 5 0 0" Padding="2" Click="Button_Click_Precedent"></Button>
         <Button Grid.Row="8" Grid.Column="5" Grid.ColumnSpan="2" Content="Suivant" Margin="0 5 0 0" Padding="2" Click="Button_Click_Suivant"></Button>
-        <Label Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="9" Name="lblInfo"/>
+        <Label Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="9" Name="lblInfo" FontWeight="Bold"/>
 
     </Grid>
 </Window>

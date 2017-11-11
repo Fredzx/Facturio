@@ -40,10 +40,12 @@ namespace Facturio.Rapports.Hibernate
                                                            .SqlType("INTEGER")
                                                            .Nullable());
 
+            
+
         }
     }
 
-    public class RapportFacturationClienteMap : SubclassMap<Rapport>
+    public class RapportFacturationClienteMap : SubclassMap<RapportFacturationCliente>
     {
         public RapportFacturationClienteMap()
         {
@@ -53,7 +55,7 @@ namespace Facturio.Rapports.Hibernate
         }
     }
 
-    public class RapportSommaireMap : SubclassMap<Rapport>
+    public class RapportSommaireMap : SubclassMap<RapportSommaire>
     {
         public RapportSommaireMap()
         {
@@ -63,7 +65,7 @@ namespace Facturio.Rapports.Hibernate
         }
     }
 
-    public class RapportVenteProduitMap : SubclassMap<Rapport>
+    public class RapportVenteProduitMap : SubclassMap<RapportVenteProduit>
     {
         public RapportVenteProduitMap()
         {

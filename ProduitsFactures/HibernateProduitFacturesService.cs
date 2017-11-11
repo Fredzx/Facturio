@@ -1,4 +1,5 @@
-﻿using NHibernate;
+﻿using Facturio.Produits;
+using NHibernate;
 using NHibernate.Linq;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,17 @@ namespace Facturio.ProduitsFactures
 
             var result = from pf in produitFacture
                          where pf.IdProduitFactures == idProduitFacture
+                         select pf;
+
+            return result.ToList();
+        }
+
+        public static List<ProduitFacture> RetrieveProduit(int? idProduit)
+        {
+            var produitFacture = session.Query<ProduitFacture>().AsQueryable();
+
+            var result = from pf in produitFacture
+                         where pf.Produit.Id == idProduit
                          select pf;
 
             return result.ToList();

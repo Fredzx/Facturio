@@ -1,4 +1,8 @@
-﻿using Facturio.Produits;
+﻿using Facturio.Factures;
+using Facturio.Produits;
+using Facturio.ProduitsFactures;
+using Facturio.Rapports.Entities;
+using Facturio.RapportsFactures;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -35,12 +39,41 @@ namespace Facturio.Rapports.Vues
 
         private void btnObtenirRapport_Click(object sender, RoutedEventArgs e)
         {
+            List<Facture> lstFacture = RetrouverListeFacture(cldDateDebut.SelectedDate.Value, cldDateFin.SelectedDate.Value, (Produit)dtgAfficheProduit.SelectedItem);
+ 
+            RapportVenteProduit RVP = new RapportVenteProduit();
+            RVP.Date = DateTime.Now;
+            RetrouverListeRapportFacture(RVP,lstFacture);
+
+
+
             if (Valider())
             {
                 Window detailFacturationCliente = new DetailFacturationCliente(cldDateDebut.SelectedDate.Value, cldDateFin.SelectedDate.Value, (Produit)dtgAfficheProduit.SelectedItem);
                 detailFacturationCliente.Show();
+                Hibernate.HibernateRapportVenteProduit.Create(RVP);
             }
 
+        }
+
+        public List<Facture> RetrouverListeFacture(DateTime dateDebut, DateTime dateFin, Produit produit)
+        {
+            List<Facture> lstFacture = new List<Facture>();
+            List<ProduitFacture> lstProduitFacture = HibernateProduitFacturesService.RetrieveProduit(produit.Id);
+
+            foreach (ProduitFacture pf in lstProduitFacture)
+            {
+                lstFacture.Add(pf.Facture);
+            }
+            return lstFacture;
+        }
+
+        public void RetrouverListeRapportFacture(RapportVenteProduit RVP ,List<Facture> list)
+        {
+            //foreach (Facture f in list)
+            //{
+            //    RVP.LstFacture.Add(f);
+            //}
         }
 
         private bool Valider()

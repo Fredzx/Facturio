@@ -4,6 +4,7 @@ using NHibernate;
 using NHibernate.Linq;
 using System;
 using Facturio.Clients;
+using Facturio.Produits;
 
 namespace Facturio.RapportsFactures
 {
@@ -39,6 +40,20 @@ namespace Facturio.RapportsFactures
 
             return result.ToList();
         }
+
+
+        //public static List<RapportFacture> RetrieveVenteProduit(DateTime dateDebut, DateTime dateFin, Produit produit)
+        //{
+        //    var rapportFacture = session.Query<RapportFacture>().AsQueryable();
+
+        //    var result = from rf in rapportFacture
+        //                 where rf.Facture.IdClient == produit.Id
+        //                        && (rf.Facture.Date >= dateDebut
+        //                        && rf.Facture.Date <= dateFin)
+        //                 select rf;
+
+        //    return result.ToList();
+        //}
 
         public static void Create(RapportFactureMap rapportFacture)
         {

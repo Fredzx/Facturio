@@ -46,11 +46,6 @@ namespace Facturio.Rapports.Entities
             return base.GetHashCode();
         }
 
-        public void RetriveFactureClient()
-        {
-            //LstFacture = new List<RapportFacture>(HibernateFactureService.RetrieveFacturationCliente(new DateTime(2017, 10, 03, 0, 0, 0), new DateTime(2017, 11, 04, 0, 0, 0), 1));
-        }
-
         public override string GetTypeRapport()
         {
             return "Facturation cliente";
