@@ -61,6 +61,8 @@ namespace Facturio.Produits
                 ProduitsController.Produit.Nom = txtNom.Text;
                 ProduitsController.Produit.Prix = Convert.ToDouble(txtPrix.Text);
                 ProduitsController.Produit.Quantite = Convert.ToDouble(txtQuantite.Text);
+                ProduitsController.Produit.Code = ProduitsController.GenererCodeProduit();
+            //ProduitsController.Produit.EstActif = true;
         }
 
         private void btnEnregister_Click(object sender, RoutedEventArgs e)
@@ -71,8 +73,15 @@ namespace Facturio.Produits
                 if (ProduitsController.ValiderModif())
                 {
                     updateChampsProduit();
-                    ProduitsController.UpdateProduit();
-                    ProduitsController.SuccesModif();
+                    if (!ProduitsController.VerifierInactif())
+                    {
+                        ProduitsController.UpdateProduit();
+                        ProduitsController.SuccesModif();
+                    }
+                    else
+                    {
+                        ProduitsController.DemanderSiModifAncienDelete();
+                    }
                     EstSucces = true;
                 }
             }

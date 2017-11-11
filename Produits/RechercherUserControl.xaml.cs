@@ -26,7 +26,7 @@ namespace Facturio.Produits
         public RechercherUserControl()
         {
             InitializeComponent();
-            ProduitsController.RafraichirGrille(false);
+            //ProduitsController.RafraichirGrille(false);
 //            ProduitsController.Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
             DtgProduits = dtgAfficheProduits;
         }
