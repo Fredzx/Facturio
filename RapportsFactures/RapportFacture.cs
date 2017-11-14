@@ -12,7 +12,7 @@ namespace Facturio.RapportsFactures
     public class RapportFacture
     {
         public virtual int? IdRapportFacture { get; set; } = null;
-        public virtual Rapport Rapport { get; set; }
+        public virtual Rapport Rapport { get; set; } = new Rapport();
         public virtual Facture Facture { get; set; } = new Facture();
 
         public RapportFacture() { }

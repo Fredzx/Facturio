@@ -39,22 +39,27 @@ namespace Facturio.Rapports.Vues
 
         private void btnObtenirRapport_Click(object sender, RoutedEventArgs e)
         {
-            List<Facture> lstFacture = RetrouverListeFacture(cldDateDebut.SelectedDate.Value, cldDateFin.SelectedDate.Value, (Produit)dtgAfficheProduit.SelectedItem);
- 
+            Produit produit = (Produit)dtgAfficheProduit.SelectedItem;
+
+            List<ProduitFacture> lstProduitFacture = HibernateProduitFacturesService.RetrieveProduit(produit.Id);
+            List<RapportFacture> lstRapportFacture = HibernateRapportFactureService.RetrieveVenteProduit(
+                                                                                                cldDateDebut.SelectedDate.Value,
+                                                                                                cldDateFin.SelectedDate.Value,
+                                                                                                lstProduitFacture,
+                                                                                                produit.Id);
+
             RapportVenteProduit RVP = new RapportVenteProduit();
             RVP.Date = DateTime.Now;
-            RetrouverListeRapportFacture(RVP,lstFacture);
-
-
-
+            RVP.LstFacture = lstRapportFacture;
+            
             if (Valider())
             {
                 Window detailFacturationCliente = new DetailFacturationCliente(cldDateDebut.SelectedDate.Value, cldDateFin.SelectedDate.Value, (Produit)dtgAfficheProduit.SelectedItem);
                 detailFacturationCliente.Show();
                 Hibernate.HibernateRapportVenteProduit.Create(RVP);
             }
-
         }
+
 
         public List<Facture> RetrouverListeFacture(DateTime dateDebut, DateTime dateFin, Produit produit)
         {
