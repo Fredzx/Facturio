@@ -17,6 +17,8 @@ namespace Facturio.Creation
 
         public static Gabarit Gabarit { get; set; }
 
+        public ObservableCollection<Critere> Criteres { get; set; }
+
         public ObservableCollection<GabaritCritere> GabaritCriteres { get; set; }
         public ObservableCollection<TypeCritere> TypesCriteres { get; set; }
 
@@ -40,6 +42,7 @@ namespace Facturio.Creation
         {
             if (Mode == "Nouveau")
                 Gabarit = new Gabarit { GabaritCriteres = CreerNouveauGabarit() };
+
 
             GabaritCriteres = new ObservableCollection<GabaritCritere>(Gabarit.GabaritCriteres);
 

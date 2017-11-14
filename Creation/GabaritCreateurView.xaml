@@ -9,13 +9,15 @@
     <UserControl.DataContext>
         <creation:GabaritCreateurViewModel />
     </UserControl.DataContext>
-
+    
     <!-- Styles spécifiques aux éléments de ce UserControl -->
     <UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="Width" Value="100" />
             <Setter Property="Height" Value="30" />
         </Style>
+
+        <creation:BooleanToVisibilityConverter x:Key="converter" />
     </UserControl.Resources>
     
     <Grid>
@@ -73,7 +75,7 @@
                                             DockPanel.Dock="Right" VerticalAlignment="Center" Width="20" Height="20"
                                             Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.SupprimeCritere}"
                                             CommandParameter="{Binding}" />
-                                    <CheckBox Content="{Binding Critere.Titre}" IsChecked="{Binding EstUtilise}" />
+                                    <CheckBox Content="{Binding Critere.Titre}" IsChecked="{Binding EstUtilise, Mode=TwoWay}" />
                                 </DockPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
@@ -98,8 +100,13 @@
                     <Button Content="Enregistrer" />
                     <Button Name="btnSuivant" Content="Suivant" Margin="8, 0, 0, 0" Click="btnSuivant_Click" />
                 </StackPanel>
-                
-                <DataGrid AutoGenerateColumns="False" Margin="0, 5, 0, 10" />
+
+                <DataGrid
+                    ItemsSource="{Binding GabaritCriteres}"
+                    Margin="0, 5, 0, 10">
+
+                    
+                </DataGrid>
             </DockPanel>
         </GroupBox>
     </Grid>
