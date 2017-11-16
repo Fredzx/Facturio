@@ -113,6 +113,17 @@ namespace Facturio.Produits
             }
         }
 
+        public static void updateChampsProduit(Produit p)
+        {
+            //  ProduitsController.Produit.Code = txtCode.Text;
+            p.Description = AjoutModifUserControl.TxtDescription.Text;
+            p.Nom = AjoutModifUserControl.TxtNom.Text;
+            p.Prix = Convert.ToDouble(AjoutModifUserControl.TxtPrix.Text);
+            p.Quantite = Convert.ToDouble(AjoutModifUserControl.TxtQuantite.Text);
+            p.Code = ProduitsController.GenererCodeProduit();
+            //ProduitsController.Produit.EstActif = true;
+        }
+
         internal static void DemanderSiModifAncienDelete()
         {
             MessageBoxResult resultat;
@@ -125,11 +136,15 @@ namespace Facturio.Produits
 
                 if (resultat == MessageBoxResult.Yes)
                 {
-                    ObservableCollection<Produit> p = new ObservableCollection<Produit>(HibernateProduitService.Retrieve(Produit.Code));
+                    Produit produit = new Produit();
+                    updateChampsProduit(produit);
+                    ObservableCollection<Produit> p = new ObservableCollection<Produit>(HibernateProduitService.Retrieve(produit.Code));
                 //Produit.Id = p[0].Id;
-                    Produit produit = Produit;
-                    HibernateProduitService.Delete(p[0]);
-                    HibernateProduitService.Create(Produit);
+                produit.EstActif = true;
+                // HibernateProduitService.Delete(Produit);
+                    DeleteProduit(Produit);
+                    HibernateProduitService.Update(produit);
+                    //HibernateProduitService.Create(Produit);
                     //HibernateProduitService.Update(Produit);
                 }
         }
@@ -156,7 +171,7 @@ namespace Facturio.Produits
             }
             else
             {
-                if (AjoutModifUserControl.TxtNom.ToString().Length < 3)
+                if (AjoutModifUserControl.TxtNom.Text.Length < 3)
                 {
                     GestionErreurs(1);
                     return false;

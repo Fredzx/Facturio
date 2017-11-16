@@ -56,14 +56,37 @@ namespace Facturio.Produits
 
         private void updateChampsProduit()
         {
+<<<<<<< HEAD
               //  ProduitsController.Produit.Code = txtCode.Text;
                 ProduitsController.Produit.Description = txtDescription.Text;
                 ProduitsController.Produit.Nom = txtNom.Text;
                 ProduitsController.Produit.Prix = Convert.ToDecimal(txtPrix.Text);
                 ProduitsController.Produit.Quantite = Convert.ToDouble(txtQuantite.Text);
                 ProduitsController.Produit.Code = ProduitsController.GenererCodeProduit();
+=======
+            //  ProduitsController.Produit.Code = txtCode.Text;
+            ProduitsController.Produit.Description = txtDescription.Text;
+            ProduitsController.Produit.Nom = txtNom.Text;
+            ProduitsController.Produit.Prix = Convert.ToDouble(txtPrix.Text);
+            ProduitsController.Produit.Quantite = Convert.ToDouble(txtQuantite.Text);
+           // ProduitsController.Produit.Code = ProduitsController.GenererCodeProduit();
+>>>>>>> 942d4d8aaa1fa103db56c0f4b07f2b2262fd9621
             //ProduitsController.Produit.EstActif = true;
         }
+
+        //private Produit updateChampsProduit()
+        //{
+        //    Produit p = new Produit();
+        //    //  ProduitsController.Produit.Code = txtCode.Text;
+        //    p.Description = txtDescription.Text;
+        //    p.Nom = txtNom.Text;
+        //    p.Prix = Convert.ToDouble(txtPrix.Text);
+        //    p.Quantite = Convert.ToDouble(txtQuantite.Text);
+        //    p.Code = ProduitsController.GenererCodeProduit();
+
+        //    return p;
+        //    //ProduitsController.Produit.EstActif = true;
+        //}
 
         private void btnEnregister_Click(object sender, RoutedEventArgs e)
         {
@@ -72,16 +95,16 @@ namespace Facturio.Produits
             {
                 if (ProduitsController.ValiderModif())
                 {
-                    updateChampsProduit();
-                    if (!ProduitsController.VerifierInactif())
-                    {
+                        updateChampsProduit();
                         ProduitsController.UpdateProduit();
                         ProduitsController.SuccesModif();
-                    }
-                    else
-                    {
-                        ProduitsController.DemanderSiModifAncienDelete();
-                    }
+                    //if (!ProduitsController.VerifierInactif())
+                    //{
+                    //}
+                    //else
+                    //{
+                    //    ProduitsController.DemanderSiModifAncienDelete();
+                    //}
                     EstSucces = true;
                 }
             }
