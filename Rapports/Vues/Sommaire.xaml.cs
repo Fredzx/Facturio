@@ -1,4 +1,6 @@
 ﻿using Facturio.Factures;
+using Facturio.Produits;
+using Facturio.ProduitsFactures;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,6 +26,12 @@ namespace Facturio.Rapports.Vues
     {
         public DataGrid DtgSommaire { get; set; }
 
+        public Produit MonProduit { get; set; }
+        public int NbFoisVendu { get; set; }
+        public decimal PrixVente { get; set; }
+        public decimal Total { get; set; }
+
+
         public ObservableCollection<Facture> LstFacture { get; set; }
 
         public Sommaire()
@@ -39,15 +47,15 @@ namespace Facturio.Rapports.Vues
             e.Row.Header = ((e.Row.GetIndex()) + 1).ToString();
         }
 
-        private void ListerSommaire(object sender, DateEventArgs e)
+        private void ListerSommaire()
         {
-            LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveSommaire(e.DateDebut, e.DateFin));
+            LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveSommaire(cldDateDebut.SelectedDate.Value, cldDateFin.SelectedDate.Value));
             DtgSommaire.ItemsSource = LstFacture;
         }
 
         private void btnObtenirRapport_Click(object sender, RoutedEventArgs e)
         {
-
+            ListerSommaire();
         }
 
         private void btnRapportPDF_Click(object sender, RoutedEventArgs e)

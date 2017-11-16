@@ -59,7 +59,7 @@ namespace Facturio.Produits
               //  ProduitsController.Produit.Code = txtCode.Text;
                 ProduitsController.Produit.Description = txtDescription.Text;
                 ProduitsController.Produit.Nom = txtNom.Text;
-                ProduitsController.Produit.Prix = Convert.ToDouble(txtPrix.Text);
+                ProduitsController.Produit.Prix = Convert.ToDecimal(txtPrix.Text);
                 ProduitsController.Produit.Quantite = Convert.ToDouble(txtQuantite.Text);
                 ProduitsController.Produit.Code = ProduitsController.GenererCodeProduit();
             //ProduitsController.Produit.EstActif = true;
@@ -89,7 +89,7 @@ namespace Facturio.Produits
             {
                 if (ProduitsController.ValiderAjout())
                 {
-                    ProduitsController.Produit = new Produit(txtNom.Text, "", txtDescription.Text, Convert.ToDouble(txtPrix.Text), Convert.ToDouble(txtQuantite.Text), true);
+                    ProduitsController.Produit = new Produit(txtNom.Text, "", txtDescription.Text, Convert.ToDecimal(txtPrix.Text), Convert.ToDouble(txtQuantite.Text), true);
                     ProduitsController.Produit.Code = ProduitsController.GenererCodeProduit();
                     if (!ProduitsController.VerifierInactif())
                     {

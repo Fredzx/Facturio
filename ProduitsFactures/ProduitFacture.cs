@@ -47,5 +47,10 @@ namespace Facturio.ProduitsFactures
             return base.GetHashCode();
         }
 
+        public virtual decimal CalculerTotalLigne()
+        {
+            return (decimal)((float)Produit.Prix * Quantite);
+        }
+
     }
 }

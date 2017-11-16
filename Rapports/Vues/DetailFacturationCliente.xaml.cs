@@ -37,6 +37,7 @@ namespace Facturio.Rapports.Vues
         public ObservableCollection<ProduitFacture> LstProduitFacture { get; set; }
         public int compteur = 0;
         public DataGrid DtgProduit { get; set; }
+        public decimal Total { get; set; }
 
         public DetailFacturationCliente(DateTime dateDebut, DateTime dateFin, Client leClient)
         {
@@ -46,6 +47,7 @@ namespace Facturio.Rapports.Vues
             DateDebut = dateDebut;
             DateFin = dateFin;
             LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveFacturationCliente(dateDebut, DateFin, leClient.IdClient));
+            AjouterColonneTotal();
 
             RafraichirData(true);
         }
@@ -59,7 +61,17 @@ namespace Facturio.Rapports.Vues
             DateFin = dateFin;
             LstProduitFacture = new ObservableCollection<ProduitFacture>(HibernateProduitFacturesService.RetrieveProduit(leProduit.Id));
             LstFacture = new ObservableCollection<Facture>(ConstruireFactures());
+            AjouterColonneTotal();
             RafraichirData(true);
+        }
+
+        private void AjouterColonneTotal()
+        {
+            var col = new DataGridTextColumn();
+            col.Header = "Total";
+            col.Binding = new Binding("Total");
+            col.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            DtgProduit.Columns.Add(col);
         }
 
         private void Button_Click_Precedent(object sender, RoutedEventArgs e)
@@ -81,9 +93,12 @@ namespace Facturio.Rapports.Vues
 
             RafraichirData(false);
         }
-        private void CalculerSousTotalLigne(int index)
+        private decimal CalculerSousTotalLigne(IList<ProduitFacture> lstPF)
         {
-
+            if (lstPF.Count > 0)
+                return lstPF[0].CalculerTotalLigne();
+            else
+                return 0;
         }
 
         public decimal CalculerSousTotal()
@@ -114,6 +129,7 @@ namespace Facturio.Rapports.Vues
             {
                 DtgProduit.ItemsSource = LstFacture[compteur].LstProduitFacture;
                 lblNoFacture.Content = (compteur + 1).ToString() + "/" + LstFacture.Count;
+                Total = 0;
 
                 if(!estPremiereOuverture)
                     DtgProduit.Items.Refresh();

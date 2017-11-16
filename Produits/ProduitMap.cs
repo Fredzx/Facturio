@@ -43,7 +43,7 @@ namespace Facturio.Produits
 
             Map(x => x.Prix)
                 .Column("prix")
-                .CustomType<double?>()
+                .CustomType<decimal?>()
                 .Access.Property()
                 .CustomSqlType("DECIMAL")
                 .Generated.Never();

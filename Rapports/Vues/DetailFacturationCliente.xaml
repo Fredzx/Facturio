@@ -35,12 +35,11 @@
         <Label Grid.Column="1" Grid.ColumnSpan="3" Name="lblNoFacture"></Label>
         <Label Grid.Column="2" Grid.ColumnSpan="5" Content="Liste des Facutres"></Label>
         <DataGrid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6" Grid.RowSpan="7" Name="dtgProduits" 
-                  AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Produit}">
+                  AutoGenerateColumns="False" IsReadOnly="True" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Produit" Width="10*" Binding="{Binding Produit.Nom}"/>
-                <DataGridTextColumn Header="Quantité" Width="10*" Binding="{Binding Quantite}"/>
-                <DataGridTextColumn Header="Prix" Width="10*" Binding="{Binding Produit.Prix}"/>
-                <DataGridTextColumn Header="Total" Width="10*" Binding="{Binding Total}"/>
+                <DataGridTextColumn Header="Produit" Width="1*" Binding="{Binding Produit.Nom}"/>
+                <DataGridTextColumn Header="Quantité" Width="1*" Binding="{Binding Quantite}"/>
+                <DataGridTextColumn Header="Prix" Width="1*" Binding="{Binding Produit.Prix}"/>
             </DataGrid.Columns>
         </DataGrid>
 

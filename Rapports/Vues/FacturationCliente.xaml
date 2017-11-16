@@ -59,7 +59,7 @@
             Grid.ColumnSpan="7"
             Grid.RowSpan="8">
                
-                <DataGrid ItemsSource="{Binding Client}" Name="dtgAfficherClient"
+                <DataGrid ItemsSource="{Binding Client}" Name="dtgAfficherClient" IsReadOnly="True"
                                     BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
                                     AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="10 0 20 0">
                     <DataGrid.Columns>
