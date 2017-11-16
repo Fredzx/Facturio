@@ -27,13 +27,6 @@ namespace Facturio.Produits
                 .CustomSqlType("VARCHAR")
                 .Generated.Never();
 
-            Map(x => x.Code)
-                .Column("codeProduit")
-                .CustomType<string>()
-                .Access.Property()
-                .CustomSqlType("VARCHAR")
-                .Generated.Never();
-
             Map(x => x.Description)
                 .Column("description")
                 .CustomType<string>()
@@ -43,7 +36,7 @@ namespace Facturio.Produits
 
             Map(x => x.Prix)
                 .Column("prix")
-                .CustomType<decimal?>()
+                .CustomType<double?>()
                 .Access.Property()
                 .CustomSqlType("DECIMAL")
                 .Generated.Never();

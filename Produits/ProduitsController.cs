@@ -50,13 +50,13 @@ namespace Facturio.Produits
 
         public static bool Existe(String code)
         {
-            foreach (Produit produit in Produits)
-            {
-                if (code == produit.Code)
-                {
-                    return true;
-                }
-            }
+            //foreach (Produit produit in Produits)
+            //{
+            //    if (code == produit.Code)
+            //    {
+            //        return true;
+            //    }
+            //}
             return false;
         }
 
@@ -120,7 +120,7 @@ namespace Facturio.Produits
             p.Nom = AjoutModifUserControl.TxtNom.Text;
             p.Prix = Convert.ToDouble(AjoutModifUserControl.TxtPrix.Text);
             p.Quantite = Convert.ToDouble(AjoutModifUserControl.TxtQuantite.Text);
-            p.Code = ProduitsController.GenererCodeProduit();
+            //p.Code = ProduitsController.GenererCodeProduit();
             //ProduitsController.Produit.EstActif = true;
         }
 
@@ -138,7 +138,7 @@ namespace Facturio.Produits
                 {
                     Produit produit = new Produit();
                     updateChampsProduit(produit);
-                    ObservableCollection<Produit> p = new ObservableCollection<Produit>(HibernateProduitService.Retrieve(produit.Code));
+                    //ObservableCollection<Produit> p = new ObservableCollection<Produit>(HibernateProduitService.Retrieve(produit.Code));
                 //Produit.Id = p[0].Id;
                 produit.EstActif = true;
                 // HibernateProduitService.Delete(Produit);
@@ -151,14 +151,15 @@ namespace Facturio.Produits
 
         public static bool VerifierInactif()
         {
-            ObservableCollection<Produit> produits = new ObservableCollection<Produit>(HibernateProduitService.Retrieve(GenererCodeProduit(AjoutModifUserControl.TxtNom.Text, AjoutModifUserControl.TxtDescription.Text)));
-            foreach(Produit p in produits)
-            {
-                if(p.Nom != null)
-                {
-                    return true;
-                }
-            }
+            // TODO: Modif
+            //ObservableCollection<Produit> produits = new ObservableCollection<Produit>(HibernateProduitService.Retrieve(GenererCodeProduit(AjoutModifUserControl.TxtNom.Text, AjoutModifUserControl.TxtDescription.Text)));
+            //foreach(Produit p in produits)
+            //{
+            //    if(p.Nom != null)
+            //    {
+            //        return true;
+            //    }
+            //}
             return false;
         }
 
@@ -338,7 +339,8 @@ namespace Facturio.Produits
 
         public static void LiveFiltering(string filter)
         {
-            Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveFilter(filter));
+            // TODO: Modif
+           // Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveFilter(filter));
         }
 
         public static void RafraichirGrille(bool estFiltre)

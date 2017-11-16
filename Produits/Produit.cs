@@ -15,10 +15,9 @@ namespace Facturio.Produits
         {
 
         }
-        public Produit(string nom, string code, string description, decimal? prix, double quantite, bool estActif)
+        public Produit(string nom, string description, double prix, double quantite, bool estActif)
         {
             Nom = nom;
-            Code = code;
             Description = description;
             Prix = prix;
             Quantite = quantite;
@@ -27,9 +26,8 @@ namespace Facturio.Produits
 
         public virtual int? Id { get; set; } = null;
         public virtual string Nom { get; set; } = string.Empty;
-        public virtual string Code { get; set; } = string.Empty;
         public virtual string Description { get; set; } = string.Empty;
-        public virtual decimal? Prix { get; set; } = null;
+        public virtual double? Prix { get; set; } = null;
         public virtual double? Quantite { get; set; } = null;
         public virtual bool EstActif { get; set; } = true;
 

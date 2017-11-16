@@ -63,9 +63,12 @@ CREATE TABLE IF NOT EXISTS Clients
     description VARCHAR(150) NOT NULL,
     codeClient VARCHAR(10) NOT NULL,
     telephone VARCHAR(10) NOT NULL,
-    estActif BOOLEAN NOT NULL DEFAULT '1'
+    estActif BOOLEAN NOT NULL DEFAULT '0'
 );
 
+ALTER TABLE Clients
+ADD CONSTRAINT Clients_codeClient_UK
+UNIQUE (codeClient);
 
 ALTER TABLE Clients
 ADD CONSTRAINT Clients_sexe_FK
@@ -87,13 +90,16 @@ FOREIGN KEY (idProvince) REFERENCES Provinces (idProvince);
 CREATE TABLE IF NOT EXISTS Produits
 (	idProduit INT AUTO_INCREMENT PRIMARY KEY,
 	nom VARCHAR(50) NOT NULL,
+    codeProduit VARCHAR(20) NOT NULL,
     description VARCHAR(200) NOT NULL,
     prix DECIMAL(10,2) NOT NULL,
     quantite DECIMAL (10,2),
-    nbHeure DECIMAL (10,2),
-    estActif BOOL NOT NULL DEFAULT '1'
+    nbHeure DECIMAL (10,2)
 );
 
+ALTER TABLE Produits
+ADD CONSTRAINT Produits_codeProduit_UK
+UNIQUE(codeProduit);
 
 #########################################
 #             Table Gabarits            #
