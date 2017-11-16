@@ -43,7 +43,6 @@ namespace Facturio.Creation
             if (Mode == "Nouveau")
                 Gabarit = new Gabarit { GabaritCriteres = CreerNouveauGabarit() };
 
-
             GabaritCriteres = new ObservableCollection<GabaritCritere>(Gabarit.GabaritCriteres);
 
             TypesCriteres = new ObservableCollection<TypeCritere>(HibernateTypeCritereService.RetrieveAll());
