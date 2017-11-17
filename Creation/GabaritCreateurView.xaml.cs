@@ -65,14 +65,14 @@ namespace Facturio.Creation
             colonne.Header = gabaritCritere.Critere.Titre;
             colonne.Width = gabaritCritere.Largeur;
             colonne.DisplayIndex = gabaritCritere.Position;
-            //DtgGabarit.Columns.Add(colonne);
+            DtgGabarit.Columns.Add(colonne);
         }
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             GabaritCritere gabaritCritere = (GabaritCritere)sender;
 
-            //DtgGabarit.Columns.RemoveAt(gabaritCritere.Position);
+            DtgGabarit.Columns.RemoveAt(gabaritCritere.Position);
         }
     }
 }
