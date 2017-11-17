@@ -40,6 +40,7 @@
                 <DataGridTextColumn Header="Produit" Width="1*" Binding="{Binding Produit.Nom}"/>
                 <DataGridTextColumn Header="Quantité" Width="1*" Binding="{Binding Quantite}"/>
                 <DataGridTextColumn Header="Prix" Width="1*" Binding="{Binding Produit.Prix}"/>
+                <DataGridTextColumn Header="Total" Width="1*" Binding="{Binding SousTotal}"/>
             </DataGrid.Columns>
         </DataGrid>
 
