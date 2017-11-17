@@ -76,7 +76,8 @@
                                             DockPanel.Dock="Right" VerticalAlignment="Center" Width="20" Height="20"
                                             Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.SupprimeCritere}"
                                             CommandParameter="{Binding}" />
-                                    <CheckBox Content="{Binding Critere.Titre}" IsChecked="{Binding EstUtilise, Mode=TwoWay}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" />
+                                    <CheckBox Content="{Binding Critere.Titre}" IsChecked="{Binding EstUtilise, Mode=TwoWay}" />
+                                    <!-- Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" -->
                                 </DockPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
@@ -98,7 +99,6 @@
                         </Style>
                     </StackPanel.Resources>
                     
-                    <Button Content="Enregistrer" />
                     <Button Name="btnSuivant" Content="Suivant" Margin="8, 0, 0, 0" Click="btnSuivant_Click" />
                 </StackPanel>
 
