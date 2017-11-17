@@ -9,16 +9,20 @@ namespace Facturio.Creation
 {
     public class GabaritCreateurController
     {
+        public static Gabarits.Gabarit Gabarits { get; set; } = GabaritCreateurViewModel.Gabarit;
+        public static GabaritCreationWindow FntGabCreation { get; set; } = new GabaritCreationWindow();
 
         public GabaritCreateurController()
         {
+            
+
+
 
         }
 
         public static void AfficherInterfaceCreationSuivante()
         {
-            // On a GabaritCreateur et on veut le suivant (truc de style à Miguel)
-
+            FntGabCreation.Show();
         }
     }
 }

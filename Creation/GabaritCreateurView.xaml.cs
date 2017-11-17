@@ -54,8 +54,7 @@ namespace Facturio.Creation
         {
             // Dire au controleur de changer de fenêtre
             GabaritCreateurController.AfficherInterfaceCreationSuivante();
-
-            // GabaritCreationConteneurView.AfficherGabaritCreateurLogo();
+            
         }
 
         /*

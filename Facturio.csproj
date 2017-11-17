@@ -108,6 +108,9 @@
     <Compile Include="Creation\GabaritCreateurLogo.xaml.cs">
       <DependentUpon>GabaritCreateurLogo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Creation\GabaritCreationWindow.xaml.cs">
+      <DependentUpon>GabaritCreationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Criteres\Critere.cs" />
     <Compile Include="Criteres\CritereMap.cs" />
     <Compile Include="Criteres\HibernateCritereService.cs" />
@@ -218,6 +221,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Creation\GabaritCreateurView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Creation\GabaritCreationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

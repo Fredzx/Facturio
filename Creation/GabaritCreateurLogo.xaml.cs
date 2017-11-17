@@ -11,6 +11,8 @@ namespace Facturio.Creation
         public GabaritCreateurLogo()
         {
             InitializeComponent();
+            GabaritCreateurController.Gabarits.TitreGabarit = "TestingName";
+            lblTitreFacture.Content = GabaritCreateurController.Gabarits.TitreGabarit;
         }
     }
 }

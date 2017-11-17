@@ -33,7 +33,7 @@
         <Button Name="btnImporterLogo" Grid.Column="1" Grid.Row="2" Content="Importer un logo ..." />
         <Label Name="lblLogo" Grid.Column="2" Grid.Row="2" Content="Logo.png"/>
 
-        <Grid Background="OrangeRed" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3"/>
+        <Grid Background="LightBlue" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3"/>
 
         <Button Name="btnEnregistrer" Grid.Column="2" Grid.Row="6" Content="Enregistrer" Width="150" />
         <Button Name="btnOuvrir" Grid.Column="3" Grid.Row="6" Content="Ouvrir" Width="150" />
