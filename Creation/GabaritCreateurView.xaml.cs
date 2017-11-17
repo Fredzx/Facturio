@@ -14,7 +14,7 @@ namespace Facturio.Creation
         //public List<GabaritCritere> GabaritCriteres { get; set; }
         //public List<ListBoxItem> ListeBoxItems { get; set; }
 
-        public GabaritCreateurView(Gabarit gabarit)
+        public GabaritCreateurView(/* Gabarit gabarit */)
         {
             InitializeComponent();
 
@@ -57,6 +57,7 @@ namespace Facturio.Creation
             
         }
 
+        /*
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             GabaritCritere gabaritCritere = (GabaritCritere)sender;
@@ -74,5 +75,6 @@ namespace Facturio.Creation
 
             DtgGabarit.Columns.RemoveAt(gabaritCritere.Position);
         }
+        */
     }
 }

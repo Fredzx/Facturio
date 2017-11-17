@@ -28,17 +28,17 @@ namespace Facturio.Gabarits
 
         public GabaritSelecteurViewModel()
         {
-            //try
-            //{
-            Gabarits = new ObservableCollection<Gabarit>(
+            try
+            {
+                Gabarits = new ObservableCollection<Gabarit>(
                 HibernateGabaritService.RetrieveAllOrderedByCreationDateDesc()
                 );
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show($"Une erreur s'est produite lors de l'accès à la base de données.");
-            //    Environment.Exit(1);
-            //}
+            }
+            catch (Exception)
+            {
+                MessageBox.Show($"Une erreur s'est produite lors de l'accès à la base de données.");
+                Environment.Exit(1);
+            }
 
             Titre = "Gabarits";
 
