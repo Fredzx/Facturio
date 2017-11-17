@@ -22,20 +22,29 @@ namespace Facturio.Factures
     /// </summary>
     public partial class AjoutProduitFacture : UserControl
     {
+        public static DataGrid DtgAfficheProduits { get; set; }
         public AjoutProduitFacture()
         {
             InitializeComponent();
+            OpererFactureController.Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
+            DtgAfficheProduits = dtgAfficheProduits;
+            DtgAfficheProduits.ItemsSource = OpererFactureController.Produits;
+        }
+
+        private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = ((e.Row.GetIndex()) + 1).ToString();
         }
 
         private void txtRechercherProduit_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (txtRechercherProduit.Text.ToString() == "")
             {
-                //AjoutProduitFactureController.Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
+                AjoutProduitFactureController.Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
             }
             else
             {
-                //AjoutProduitFactureController.LiveFiltering(txtRechercherProduit.Text.ToString());
+                AjoutProduitFactureController.LiveFiltering(txtRechercherProduit.Text.ToString());
             }
         }
 
@@ -44,12 +53,13 @@ namespace Facturio.Factures
             // Lorsqu'il clique sur ajouter on veut : 
             // Que le usercontrol AjoutProduitFacture change d'onglet > direction : onglet Opérer.            
             //OpererFacture.TbcProduitPublic.SelectedIndex = 1;
-            MessageBox.Show("Fonctionnalité pas implémentée");
+            //MessageBox.Show("Fonctionnalité pas implémentée");
+            AjoutProduitFactureController.AjouterProduitFacture();
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)
         {
-            //OpererFacture.TbcProduitPublic.SelectedIndex = 0;
+            OpererFacture.TbcProduitPublic.SelectedIndex = 0;
         }
     }
 }

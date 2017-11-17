@@ -34,12 +34,11 @@
                           Grid.Column="0"
                           Grid.ColumnSpan="6"
                           Grid.RowSpan="4">
-            <DataGrid ItemsSource="{Binding Produits}" Name="dtgAfficheProduits" 
+            <DataGrid Name="dtgAfficheProduits" ItemsSource="{Binding Produits}" LoadingRow="DataGrid_LoadingRow"
                                       BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
                                       AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" CanUserDeleteRows="False" Margin="40 0 40 10">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Nom" Width="4.5*" Binding="{Binding Nom}" />
-                    <DataGridTextColumn Header="Code" Width="4*" Binding="{Binding Code}"  />
                     <DataGridTextColumn Header="Description" Width="9*" Binding="{Binding Description}"/>
                     <DataGridTextColumn Header="Prix" Width="2*" Binding="{Binding Prix}" />
                     <DataGridTextColumn Header="Quantité" Width="2*" Binding="{Binding Quantite}"/>
@@ -52,7 +51,7 @@
                         Grid.ColumnSpan="4" Grid.Column="2">
 
 
-            <Button Content="Ajouter à la facture" Name="btnAjouter" IsEnabled="False" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnAjouter_Click" />
+            <Button Content="Ajouter à la facture" Name="btnAjouter" IsEnabled="True" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnAjouter_Click" />
             <Button Content="Retour" Name="btnRetour" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnRetour_Click" />
         </StackPanel>
     </Grid>

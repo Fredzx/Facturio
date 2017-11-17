@@ -125,45 +125,11 @@ namespace Facturio.Produits
 
         public static void updateChampsProduit(Produit p)
         {
-            //  ProduitsController.Produit.Code = txtCode.Text;
             p.Description = AjoutModifUserControl.TxtDescription.Text;
             p.Nom = AjoutModifUserControl.TxtNom.Text;
             p.Prix = Convert.ToDouble(AjoutModifUserControl.TxtPrix.Text);
             p.Quantite = Convert.ToDouble(AjoutModifUserControl.TxtQuantite.Text);
-            //p.Code = ProduitsController.GenererCodeProduit();
-            //ProduitsController.Produit.EstActif = true;
         }
-
-        //public static void DemanderSiModifAncienDelete()
-        //{
-        //    MessageBoxResult resultat;
-        //    resultat = MessageBox.Show("Un porduit identique a été supprimé auparavant.\nVoulez-vous le recréer ?"
-        //        , "Info"
-        //        , MessageBoxButton.YesNo
-        //        , MessageBoxImage.Warning
-        //        , MessageBoxResult.No
-        //        );
-
-        //        if (resultat == MessageBoxResult.Yes)
-        //        {
-        //            if (p.Nom == Produit.Nom && p.Prix == Produit.Prix && p.Quantite == Produit.Quantite && p.Description == Produit.Description)
-        //            {
-        //                Produit pro = HibernateProduitService.Retrieve(p.Nom, p.Description, p.Prix, p.Quantite)[0];
-        //                pro.EstActif = true;
-        //                HibernateProduitService.Update(pro);
-        //            }
-        //        //    Produit produit = new Produit();
-        //        //    updateChampsProduit(produit);
-        //        //    //ObservableCollection<Produit> p = new ObservableCollection<Produit>(HibernateProduitService.Retrieve(produit.Code));
-        //        ////Produit.Id = p[0].Id;
-        //        //produit.EstActif = true;
-        //        //// HibernateProduitService.Delete(Produit);
-        //        //    DeleteProduit(Produit);
-        //        //    HibernateProduitService.Update(produit);
-        //        //    //HibernateProduitService.Create(Produit);
-        //        //    //HibernateProduitService.Update(Produit);
-        //    }
-        //}
 
         public static void DemanderSiModifAncienDelete(Produit p, bool estModif)
         {

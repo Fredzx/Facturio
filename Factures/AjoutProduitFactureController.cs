@@ -24,7 +24,15 @@ namespace Facturio.Produits
         public static void LiveFiltering(string filter)
         {
             //TODO: Modif
-             //Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveFilter(filter));
+            Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveFilter(filter));
+            AjoutProduitFacture.DtgAfficheProduits.ItemsSource = Produits;
+        }
+
+        public static void AjouterProduitFacture()
+        {
+            Produit p = (Produit)AjoutProduitFacture.DtgAfficheProduits.SelectedItem;
+            ProduitFacture pf = new ProduitFacture(p, OpererFacture.LaFacture, 12);
+            OpererFacture.LaFacture.LstProduitFacture.Add(pf);
         }
     }
 }
