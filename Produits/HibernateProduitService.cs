@@ -32,32 +32,43 @@ namespace Facturio.Produits
 
             return result.ToList();
         }
-        // TODO: Modif
-        //public static List<Produit> Retrieve(string code)
-        //{
-        //    var produit = session.Query<Produit>().AsQueryable();
+        //TODO: Modif
+        public static List<Produit> Retrieve(string nom, string description)
+        {
+            var produit = session.Query<Produit>().AsQueryable();
 
-        //    var result = from p in produit
-        //                 where p.Code.Like(code)
-        //                 select p;
+            var result = from p in produit
+                         where p.Nom.Like(nom) && p.Description.Like(description)
+                         select p;
 
-        //    return result.ToList();
-        //}
+            return result.ToList();
+        }
 
-            //TODO: Modif
-        //public static List<Produit> RetrieveFilter(string filter)
-        //{
-        //    var produit = session.Query<Produit>().AsQueryable();
+        public static List<Produit> Retrieve(string nom, string description, double? prix, double? quantite)
+        {
+            var produit = session.Query<Produit>().AsQueryable();
 
-        //    // J'utilise contains au lieu de startswith pour s'assurer que l'utilisateur ait toutes les options possibles
-        //    // Ex.: Si le user cherche 'porc' pour trouver 'filet de porc' et que j'utilise startswith, la requête n'affichera pas sa recherche.
-        //    var result = from p in produit
-        //                 where (p.Nom.Contains(filter) || p.Code.Contains(filter)) && p.EstActif == true
-        //                 orderby p.Code ascending
-        //                 select p;
+            var result = from p in produit
+                         where p.Nom == nom && p.Description == description && p.Prix == prix && p.Quantite == quantite
+                         select p;
 
-        //    return result.ToList();
-        //}
+            return result.ToList();
+        }
+
+        //TODO: Modif
+        public static List<Produit> RetrieveFilter(string filter)
+        {
+            var produit = session.Query<Produit>().AsQueryable();
+
+            // J'utilise contains au lieu de startswith pour s'assurer que l'utilisateur ait toutes les options possibles
+            // Ex.: Si le user cherche 'porc' pour trouver 'filet de porc' et que j'utilise startswith, la requête n'affichera pas sa recherche.
+            var result = from p in produit
+                         where (p.Nom.Contains(filter) || p.Description.Contains(filter)) && p.EstActif == true
+                         orderby p.Nom ascending
+                         select p;
+
+            return result.ToList();
+        }
 
         public static void Create(Produit produit)
         {
