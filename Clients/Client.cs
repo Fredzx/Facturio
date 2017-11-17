@@ -35,6 +35,7 @@ namespace Facturio.Clients
             EstActif = estActif;
 
             // Ici, affecter un UUID au NoClient (pas trop long le UUID, résonable)
+			// Test
         }
 
 
