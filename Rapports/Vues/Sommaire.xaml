@@ -55,13 +55,13 @@
                   Grid.ColumnSpan="7"
                   Grid.RowSpan="8"
                   Margin="0,20,20,0">
-                <DataGrid Name="dtgSommaire" LoadingRow="DataGrid_LoadingRow" AutoGenerateColumns="False" ItemsSource="{Binding LstFacture}">
+                <DataGrid Name="dtgSommaire" LoadingRow="DataGrid_LoadingRow" AutoGenerateColumns="False">
                     
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Produit" Width="6*" Binding="{Binding LstProduit.Produit.Nom}"/>
-                        <DataGridTextColumn Header="Nb fois vendu" Width="6*" Binding="{Binding NbVente}" />
-                        <DataGridTextColumn Header="Prix de vente" Width="6*" Binding="{Binding Facture.Produit.Prix}"/>
-                        <DataGridTextColumn Header="Total" Width="6*" Binding="{Binding Total}"/>
+                        <DataGridTextColumn Header="Produit" Width="1*" Binding="{Binding LstProduitFacture.Produit.Nom}"/>
+                        <DataGridTextColumn Header="Nb fois vendu" Width="1*" Binding="{Binding NbVente}" />
+                        <DataGridTextColumn Header="Prix de vente" Width="1*" Binding="{Binding LstProduitFacture.Produit.Prix}"/>
+                        <DataGridTextColumn Header="Total" Width="1*" Binding="{Binding Total}"/>
                     </DataGrid.Columns>
                    
                 </DataGrid>

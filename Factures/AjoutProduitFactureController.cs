@@ -23,7 +23,8 @@ namespace Facturio.Produits
         }
         public static void LiveFiltering(string filter)
         {
-             Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveFilter(filter));
+            //TODO: Modif
+             //Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveFilter(filter));
         }
     }
 }

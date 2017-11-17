@@ -55,7 +55,7 @@
                   Grid.Column="3"                
                   Grid.ColumnSpan="7"
                   Grid.RowSpan="8">
-                <DataGrid ItemsSource="{Binding LstProduit}" Name="dtgAfficheProduit"
+                <DataGrid ItemsSource="{Binding LstProduit}" Name="dtgAfficheProduit" IsReadOnly="True"
                                     BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
                                     AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="10 0 20 0">
                     <DataGrid.Columns>

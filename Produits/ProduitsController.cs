@@ -50,13 +50,13 @@ namespace Facturio.Produits
 
         public static bool Existe(String code)
         {
-            foreach (Produit produit in Produits)
-            {
-                if (code == produit.Code)
-                {
-                    return true;
-                }
-            }
+            //foreach (Produit produit in Produits)
+            //{
+            //    if (code == produit.Code)
+            //    {
+            //        return true;
+            //    }
+            //}
             return false;
         }
 
@@ -113,6 +113,17 @@ namespace Facturio.Produits
             }
         }
 
+        public static void updateChampsProduit(Produit p)
+        {
+            //  ProduitsController.Produit.Code = txtCode.Text;
+            p.Description = AjoutModifUserControl.TxtDescription.Text;
+            p.Nom = AjoutModifUserControl.TxtNom.Text;
+            p.Prix = Convert.ToDouble(AjoutModifUserControl.TxtPrix.Text);
+            p.Quantite = Convert.ToDouble(AjoutModifUserControl.TxtQuantite.Text);
+            //p.Code = ProduitsController.GenererCodeProduit();
+            //ProduitsController.Produit.EstActif = true;
+        }
+
         internal static void DemanderSiModifAncienDelete()
         {
             MessageBoxResult resultat;
@@ -125,25 +136,30 @@ namespace Facturio.Produits
 
                 if (resultat == MessageBoxResult.Yes)
                 {
-                    ObservableCollection<Produit> p = new ObservableCollection<Produit>(HibernateProduitService.Retrieve(Produit.Code));
+                    Produit produit = new Produit();
+                    updateChampsProduit(produit);
+                    //ObservableCollection<Produit> p = new ObservableCollection<Produit>(HibernateProduitService.Retrieve(produit.Code));
                 //Produit.Id = p[0].Id;
-                    Produit produit = Produit;
-                    HibernateProduitService.Delete(p[0]);
-                    HibernateProduitService.Create(Produit);
+                produit.EstActif = true;
+                // HibernateProduitService.Delete(Produit);
+                    DeleteProduit(Produit);
+                    HibernateProduitService.Update(produit);
+                    //HibernateProduitService.Create(Produit);
                     //HibernateProduitService.Update(Produit);
                 }
         }
 
         public static bool VerifierInactif()
         {
-            ObservableCollection<Produit> produits = new ObservableCollection<Produit>(HibernateProduitService.Retrieve(GenererCodeProduit(AjoutModifUserControl.TxtNom.Text, AjoutModifUserControl.TxtDescription.Text)));
-            foreach(Produit p in produits)
-            {
-                if(p.Nom != null)
-                {
-                    return true;
-                }
-            }
+            // TODO: Modif
+            //ObservableCollection<Produit> produits = new ObservableCollection<Produit>(HibernateProduitService.Retrieve(GenererCodeProduit(AjoutModifUserControl.TxtNom.Text, AjoutModifUserControl.TxtDescription.Text)));
+            //foreach(Produit p in produits)
+            //{
+            //    if(p.Nom != null)
+            //    {
+            //        return true;
+            //    }
+            //}
             return false;
         }
 
@@ -156,7 +172,7 @@ namespace Facturio.Produits
             }
             else
             {
-                if (AjoutModifUserControl.TxtNom.ToString().Length < 3)
+                if (AjoutModifUserControl.TxtNom.Text.Length < 3)
                 {
                     GestionErreurs(1);
                     return false;
@@ -323,7 +339,8 @@ namespace Facturio.Produits
 
         public static void LiveFiltering(string filter)
         {
-            Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveFilter(filter));
+            // TODO: Modif
+           // Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveFilter(filter));
         }
 
         public static void RafraichirGrille(bool estFiltre)

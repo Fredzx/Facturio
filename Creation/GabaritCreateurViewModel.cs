@@ -17,6 +17,8 @@ namespace Facturio.Creation
 
         public static Gabarit Gabarit { get; set; }
 
+        public ObservableCollection<Critere> Criteres { get; set; }
+
         public ObservableCollection<GabaritCritere> GabaritCriteres { get; set; }
         public ObservableCollection<TypeCritere> TypesCriteres { get; set; }
 

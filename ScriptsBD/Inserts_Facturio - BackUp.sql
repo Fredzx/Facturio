@@ -3,163 +3,163 @@
 #################################################
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Pomme', 'Lobo', '1.99', 27, NULL, 1);
+('Pomme', '12345-PommeL', 'Lobo', '1.99', 27, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Pomme', 'McIntosh', '1.87', 24, NULL, 1);
+('Pomme', '12354-PommeM', 'McIntosh', '1.87', 24, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Changement huile', 'Synthétique', '65.52', NULL, '0.50',1);
+('Changement huile', '54321-ChHuiS', 'Synthétique', '65.52', NULL, '0.50');
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Changement pneus', 'Changement de pneus sur Rims', '50.47', NULL, '1.50',1);
+('Changement pneus', '12354-ChPneR', 'Changement de pneus sur Rims', '50.47', NULL, '1.50');
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Test_Nom_Très_Lonp', 'Description max charactère', '999.99', 99, NULL,1);
+('Test_Nom_Très_Lonp', '12345-TropLo', 'Description max charactère', '999.99', 99, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Ananas', 'Lobo', '1.99', 27, NULL,1);
+('Ananas', '12345-AnanasL', 'Lobo', '1.99', 27, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Concombre', 'McIntosh', '1.87', 24, NULL,1);
+('Concombre', '12354-Comc', 'McIntosh', '1.87', 24, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Patate', 'Synthétique', '65.52', 33, NULL,1);
+('Patate', '54321-patatas', 'Synthétique', '65.52', 33, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Jambon', 'Scheiders', '9.99', 50, NULL, 1);
+('Jambon', '12354-jambom', 'Scheiders', '9.99', 50, NULL);
 
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Filet de porc', 'Scheiders', '4.99', 50, NULL,1);
+('Filet de porc', '12345-FiPo', 'Scheiders', '4.99', 50, NULL);
 
 #################################################################
 #			Insert pour un centre informatique (exemple)		#
 #################################################################
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Carte graphique', 'GeFORCE GTX-1080', '999.99', 50, NULL, 1);
+('Carte graphique', '1080-GTX', 'GeFORCE GTX-1080', '999.99', 50, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Carte graphique', 'GeFORCE GTX-1070', '549.99', 50, NULL, 1);
+('Carte graphique', '1070-GTX', 'GeFORCE GTX-1070', '549.99', 50, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Carte graphique', 'GeFORCE GTX-1060', '279.99', 50, NULL, 1);
+('Carte graphique', '1060-GTX', 'GeFORCE GTX-1060', '279.99', 50, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Carte graphique', 'GeFORCE GTX-1050', '197.99', 50, NULL, 1);
+('Carte graphique', '1050-GTX', 'GeFORCE GTX-1050', '197.99', 50, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Carte graphique', 'GeFORCE GTX-980', '607.99', 50, NULL, 1);
+('Carte graphique', '980-GTX', 'GeFORCE GTX-980', '607.99', 50, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Carte graphique', 'GeFORCE GTX-970', '524.99', 50, NULL,1);
+('Carte graphique', '970-GTX', 'GeFORCE GTX-970', '524.99', 50, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Carte graphique', 'GeFORCE GTX-960', '190.99', 50, NULL,1);
+('Carte graphique', '960-GTX', 'GeFORCE GTX-960', '190.99', 50, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Carte graphique', 'GeFORCE GTX-950', '189.99', 50, NULL,1);
+('Carte graphique', '950-GTX', 'GeFORCE GTX-950', '189.99', 50, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Moniteur', 'BENQ 24 pouces 2ms HDMI', '179.99', 25, NULL,1);
+('Moniteur', 'BENQ-2ms', 'BENQ 24 pouces 2ms HDMI', '179.99', 25, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Moniteur', '23.6 pouces 2ms HDMI', '198.99', 25, NULL,1);
+('Moniteur', 'ASUS-2ms', '23.6 pouces 2ms HDMI', '198.99', 25, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Moniteur', '28 pouces 1ms HDMI 60Hz', '549.99', 25, NULL,1);
+('Moniteur', 'Asus-1ms', '28 pouces 1ms HDMI 60Hz', '549.99', 25, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Processeur', 'Intel core 4.0Ghz Quad-Core', '429.99', 30, NULL,1);
+('Processeur', 'I7-ProQuad', 'Intel core 4.0Ghz Quad-Core', '429.99', 30, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Processeur', 'Intel core 7500 Quad-Core', '239.99', 30, NULL,1);
+('Processeur', 'I5-ProQuad', 'Intel core 7500 Quad-Core', '239.99', 30, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Processeur', 'Intel core i3-6100 Duo-Core', '149.99', 30, NULL ,1);
+('Processeur', 'I3-ProDuo', 'Intel core i3-6100 Duo-Core', '149.99', 30, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Clavier', 'Mecha-membrane Clavier Razer pour joueur', '89.99', 50, NULL,1);
+('Clavier', 'Ornata Chroma', 'Mecha-membrane Clavier Razer pour joueur', '89.99', 50, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Clavier', 'Clavier Corsair rétroéclairé pour joueur', '76.99', 50, NULL,1);
+('Clavier', 'CH-9206015-NA', 'Clavier Corsair rétroéclairé pour joueur', '76.99', 50, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Clavier', 'Clavier Razer rétroéclairé ergonomique pour joueur', '89.99', 50, NULL,1);
+('Clavier', 'BlackWidow V2', 'Clavier Razer rétroéclairé ergonomique pour joueur', '89.99', 50, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Clavier', 'Clavier rétroéclairé pour joueur', '39.99', 50, NULL,1);
+('Clavier', 'Rii Mécanique', 'Clavier rétroéclairé pour joueur', '39.99', 50, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Souris', 'Souris Razer ergonomique pour joueur', '59.99', 50, NULL,1);
+('Souris', 'DeathRazer', 'Souris Razer ergonomique pour joueur', '59.99', 50, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Souris', 'Souris Corsair ergonomique pour joueur 12000 DPI', '59.99', 50, NULL,1);
+('Souris', 'M65 PRO RGB FPS', 'Souris Corsair ergonomique pour joueur 12000 DPI', '59.99', 50, NULL);
 
 INSERT INTO Produits 
-(nom, description, prix, quantite, nbHeure, estActif)
+(nom, codeProduit, description, prix, quantite, nbHeure)
  VALUES
-('Souris', 'Souris ergonomique pour joueur', '333.99', 50, NULL,1);
+('Souris', 'Mad Catz RAT', 'Souris ergonomique pour joueur', '333.99', 50, NULL);
 
 #################################################
 #				Inserts province				#
@@ -1510,7 +1510,7 @@ VALUES
 									AND	 prenom = 'Charles'
 									AND  adresse = '555, rue Lajeunesse'
 									AND codePostal = 'J2K3E5')),
- (SELECT idProduit FROM Produits WHERE idProduit = 2),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12354-PommeM'),
  14
 );
 
@@ -1522,7 +1522,7 @@ VALUES
 																					AND	 prenom = 'Charles'
 																					AND  adresse = '555, rue Lajeunesse'
 																					AND codePostal = 'J2K3E5')),
- (SELECT idProduit FROM Produits WHERE idProduit = 2),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12354-PommeM'),
  25
 );
 
@@ -1534,7 +1534,7 @@ VALUES
 																					AND	 prenom = 'Charles'
 																					AND  adresse = '555, rue Lajeunesse'
 																					AND codePostal = 'J2K3E5')),
- (SELECT idProduit FROM Produits WHERE idProduit = 2),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12354-PommeM'),
  10
 );
 
@@ -1546,7 +1546,7 @@ VALUES
 																					AND	 prenom = 'Charles'
 																					AND  adresse = '555, rue Lajeunesse'
 																					AND codePostal = 'J2K3E5')),
- (SELECT idProduit FROM Produits WHERE idProduit = 8),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '54321-patatas'),
  10
 );
 
@@ -1558,7 +1558,7 @@ VALUES
 																					AND	 prenom = 'Charles'
 																					AND  adresse = '555, rue Lajeunesse'
 																					AND codePostal = 'J2K3E5')),
- (SELECT idProduit FROM Produits WHERE idProduit = 9),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12354-jambom'),
  10
 );
 
@@ -1570,7 +1570,7 @@ VALUES
 																					AND	 prenom = 'Charles'
 																					AND  adresse = '555, rue Lajeunesse'
 																					AND codePostal = 'J2K3E5')),
- (SELECT idProduit FROM Produits WHERE idProduit = 10),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-FiPo'),
  10
 );
 
@@ -1582,7 +1582,7 @@ VALUES
 																					AND	 prenom = 'Charles'
 																					AND  adresse = '555, rue Lajeunesse'
 																					AND codePostal = 'J2K3E5')),
- (SELECT idProduit FROM Produits WHERE idProduit = 7),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12354-Comc'),
  10
 );
 
@@ -1594,7 +1594,7 @@ VALUES
 																					AND	prenom = 'Charles'
 																					AND adresse = '555, rue Lajeunesse'
 																					AND codePostal = 'J2K3E5')),
- (SELECT idProduit FROM Produits WHERE idProduit = 7),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12354-Comc'),
  80
 );
 
@@ -1606,7 +1606,7 @@ VALUES
 																					AND	prenom = 'Charles'
 																					AND adresse = '555, rue Lajeunesse'
 																					AND codePostal = 'J2K3E5')),
- (SELECT idProduit FROM Produits WHERE idProduit = 9),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-FiPo'),
  80
 );
 
@@ -1618,7 +1618,7 @@ VALUES
 																					AND	prenom = 'Charles'
 																					AND adresse = '555, rue Lajeunesse'
 																					AND codePostal = 'J2K3E5')),
- (SELECT idProduit FROM Produits WHERE idProduit = 6),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-ananasL'),
  80
 );
 
@@ -1630,7 +1630,7 @@ VALUES
 																					AND	prenom = 'Charles'
 																					AND adresse = '555, rue Lajeunesse'
 																					AND codePostal = 'J2K3E5')),
- (SELECT idProduit FROM Produits WHERE idProduit = 2),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12354-PommeM'),
  80
 );
 
@@ -1642,7 +1642,7 @@ VALUES
 																					AND	prenom = 'Charles'
 																					AND adresse = '555, rue Lajeunesse'
 																					AND codePostal = 'J2K3E5')),
- (SELECT idProduit FROM Produits WHERE idProduit = 1),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-PommeL'),
  80
 );
 
@@ -1654,7 +1654,7 @@ VALUES
 																					AND	prenom = 'Charles'
 																					AND adresse = '555, rue Lajeunesse'
 																					AND codePostal = 'J2K3E5')),
- (SELECT idProduit FROM Produits WHERE idProduit = 9),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12354-jambom'),
  2
 );
 
@@ -1666,7 +1666,7 @@ VALUES
 																					AND	prenom = 'Charles'
 																					AND adresse = '555, rue Lajeunesse'
 																					AND codePostal = 'J2K3E5')),
- (SELECT idProduit FROM Produits WHERE idProduit = 7),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12354-Comc'),
  2
 );
 
@@ -1678,7 +1678,7 @@ VALUES
 																					AND	prenom = 'Charles'
 																					AND adresse = '555, rue Lajeunesse'
 																					AND codePostal = 'J2K3E5')),
- (SELECT idProduit FROM Produits WHERE idProduit = 10),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-FiPo'),
  2
 );
 
@@ -1692,7 +1692,7 @@ VALUES
 																					AND	 prenom = 'Miguel'
 																					AND  adresse = '444, Lamontagne St-Jérôme'
 																					AND codePostal = 'J4KL9P')),
- (SELECT idProduit FROM Produits WHERE idProduit = 10),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-FiPo'),
  2
 );
 
@@ -1704,7 +1704,7 @@ VALUES
 																					AND	 prenom = 'Miguel'
 																					AND  adresse = '444, Lamontagne St-Jérôme'
 																					AND codePostal = 'J4KL9P')),
- (SELECT idProduit FROM Produits WHERE idProduit = 11),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12354-Jambom'),
  2
 );
 
@@ -1716,7 +1716,7 @@ VALUES
 																					AND	 prenom = 'Miguel'
 																					AND  adresse = '444, Lamontagne St-Jérôme'
 																					AND codePostal = 'J4KL9P')),
- (SELECT idProduit FROM Produits WHERE idProduit = 3),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12354-Comc'),
  2
 );
 
@@ -1728,7 +1728,7 @@ VALUES
 																					AND	 prenom = 'Miguel'
 																					AND  adresse = '444, Lamontagne St-Jérôme'
 																					AND codePostal = 'J4KL9P')),
- (SELECT idProduit FROM Produits WHERE idProduit = 10),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-FiPo'),
  2
 );
 
@@ -1740,7 +1740,7 @@ VALUES
 																					AND	 prenom = 'Miguel'
 																					AND  adresse = '444, Lamontagne St-Jérôme'
 																					AND codePostal = 'J4KL9P')),
- (SELECT idProduit FROM Produits WHERE idProduit = 4),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '54321-patatas'),
  2
 );
 
@@ -1752,7 +1752,7 @@ VALUES
 																					AND	 prenom = 'Miguel'
 																					AND  adresse = '444, Lamontagne St-Jérôme'
 																					AND codePostal = 'J4KL9P')),
- (SELECT idProduit FROM Produits WHERE idProduit = 5),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-FiPo'),
  2
 );
 
@@ -1764,7 +1764,7 @@ VALUES
 																					AND	 prenom = 'Miguel'
 																					AND  adresse = '444, Lamontagne St-Jérôme'
 																					AND codePostal = 'J4KL9P')),
- (SELECT idProduit FROM Produits WHERE idProduit = 7),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-FiPo'),
  2
 );
 
@@ -1776,7 +1776,7 @@ VALUES
 																					AND	 prenom = 'Miguel'
 																					AND  adresse = '444, Lamontagne St-Jérôme'
 																					AND codePostal = 'J4KL9P')),
- (SELECT idProduit FROM Produits WHERE idProduit = 9),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-FiPo'),
  2
 );
 
@@ -1788,7 +1788,7 @@ VALUES
 																					AND	 prenom = 'Miguel'
 																					AND  adresse = '444, Lamontagne St-Jérôme'
 																					AND codePostal = 'J4KL9P')),
- (SELECT idProduit FROM Produits WHERE idProduit = 9),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-FiPo'),
  2
 );
 
@@ -1800,7 +1800,7 @@ VALUES
 																					AND	 prenom = 'Miguel'
 																					AND  adresse = '444, Lamontagne St-Jérôme'
 																					AND codePostal = 'J4KL9P')),
- (SELECT idProduit FROM Produits WHERE idProduit = 8),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-FiPo'),
  2
 );
 
@@ -1812,7 +1812,7 @@ VALUES
 																					AND	 prenom = 'Miguel'
 																					AND  adresse = '444, Lamontagne St-Jérôme'
 																					AND codePostal = 'J4KL9P')),
- (SELECT idProduit FROM Produits WHERE idProduit = 9),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-FiPo'),
  2
 );
 
@@ -1824,7 +1824,7 @@ VALUES
 																					AND	 prenom = 'Miguel'
 																					AND  adresse = '444, Lamontagne St-Jérôme'
 																					AND codePostal = 'J4KL9P')),
- (SELECT idProduit FROM Produits WHERE idProduit = 10),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12354-Comc'),
  2
 );
 
@@ -1836,7 +1836,7 @@ VALUES
 																					AND	 prenom = 'Miguel'
 																					AND  adresse = '444, Lamontagne St-Jérôme'
 																					AND codePostal = 'J4KL9P')),
- (SELECT idProduit FROM Produits WHERE idProduit = 11),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12354-jambom'),
  2
 );
 
@@ -1851,7 +1851,7 @@ VALUES
 									AND	 prenom = 'Yannick'
 									AND  adresse = '232 Laviolette St-Jérôme'
 									AND codePostal = 'F3GG4G')),
- (SELECT idProduit FROM Produits WHERE idProduit = 2),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-PommeL'),
  14
 );
 
@@ -1864,7 +1864,7 @@ VALUES
 									AND	 prenom = 'Yannick'
 									AND  adresse = '232 Laviolette St-Jérôme'
 									AND codePostal = 'F3GG4G')),
- (SELECT idProduit FROM Produits WHERE idProduit = 2),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-PommeL'),
  14
 );
 
@@ -1876,7 +1876,7 @@ VALUES
 									AND	 prenom = 'Yannick'
 									AND  adresse = '232 Laviolette St-Jérôme'
 									AND codePostal = 'F3GG4G')),
- (SELECT idProduit FROM Produits WHERE idProduit = 2),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-PommeL'),
  14
 );
 
@@ -1888,7 +1888,7 @@ VALUES
 									AND	 prenom = 'Yannick'
 									AND  adresse = '232 Laviolette St-Jérôme'
 									AND codePostal = 'F3GG4G')),
- (SELECT idProduit FROM Produits WHERE idProduit = 2),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-PommeL'),
  14
 );
 
@@ -1900,7 +1900,7 @@ VALUES
 									AND	 prenom = 'Yannick'
 									AND  adresse = '232 Laviolette St-Jérôme'
 									AND codePostal = 'F3GG4G')),
- (SELECT idProduit FROM Produits WHERE idProduit = 2),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-PommeL'),
  14
 );
 
@@ -1912,7 +1912,7 @@ VALUES
 									AND	 prenom = 'Yannick'
 									AND  adresse = '232 Laviolette St-Jérôme'
 									AND codePostal = 'F3GG4G')),
- (SELECT idProduit FROM Produits WHERE idProduit = 1),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-PommeL'),
  14
 );
 
@@ -1924,7 +1924,7 @@ VALUES
 									AND	 prenom = 'Yannick'
 									AND  adresse = '232 Laviolette St-Jérôme'
 									AND codePostal = 'F3GG4G')),
- (SELECT idProduit FROM Produits WHERE idProduit = 2),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-PommeL'),
  14
 );
 
@@ -1936,7 +1936,7 @@ VALUES
 									AND	 prenom = 'Yannick'
 									AND  adresse = '232 Laviolette St-Jérôme'
 									AND codePostal = 'F3GG4G')),
- (SELECT idProduit FROM Produits WHERE idProduit = 1),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12354-PommeM'),
  14
 );
 
@@ -1948,7 +1948,7 @@ VALUES
 									AND	 prenom = 'Yannick'
 									AND  adresse = '232 Laviolette St-Jérôme'
 									AND codePostal = 'F3GG4G')),
- (SELECT idProduit FROM Produits WHERE idProduit = 2),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-PommeL'),
  14
 );
 
@@ -1960,7 +1960,7 @@ VALUES
 									AND	 prenom = 'Yannick'
 									AND  adresse = '232 Laviolette St-Jérôme'
 									AND codePostal = 'F3GG4G')),
- (SELECT idProduit FROM Produits WHERE idProduit = 2),
+ (SELECT idProduit FROM Produits WHERE codeProduit = '12345-PommeL'),
  14
 );
 
