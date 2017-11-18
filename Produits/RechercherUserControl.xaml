@@ -40,7 +40,6 @@
                                       AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" CanUserDeleteRows="False" SelectionChanged="dtgAfficheProduits_SelectionChanged" Margin="40 0 40 10">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Nom" Width="4.5*" Binding="{Binding Nom}" />
-                    <DataGridTextColumn Header="Code" Width="4*" Binding="{Binding Code}"  />
                     <DataGridTextColumn Header="Description" Width="9*" Binding="{Binding Description}"/>
                     <DataGridTextColumn Header="Prix" Width="2*" Binding="{Binding Prix}" />
                     <DataGridTextColumn Header="Quantité" Width="2*" Binding="{Binding Quantite}"/>

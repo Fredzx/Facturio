@@ -17,6 +17,8 @@ namespace Facturio.Rapports.Entities
         public virtual DateTime Date { get; set; } = DateTime.MinValue;
         public virtual IList<RapportFacture> LstFacture { get; set; }
 
+        public virtual String TypeRapport { get{ return GetTypeRapport();} set{ TypeRapport = value; }}
+
         public Rapport() { }
         /// <summary>
         /// 

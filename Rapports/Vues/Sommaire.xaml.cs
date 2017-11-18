@@ -27,19 +27,23 @@ namespace Facturio.Rapports.Vues
         public DataGrid DtgSommaire { get; set; }
 
         public Produit MonProduit { get; set; }
-        public int NbFoisVendu { get; set; }
+        public float NbFoisVendu { get; set; } = 0;
         public decimal PrixVente { get; set; }
-        public decimal Total { get; set; }
-
-
-        public ObservableCollection<Facture> LstFacture { get; set; }
+        
+        ProduitFacture LigneFacture { get; set; }
+        public ObservableCollection<ProduitFacture> LstProduitSommaire { get; set; }
+        public ObservableCollection<ProduitFacture> LstProduitFacture { get; set; }
 
         public Sommaire()
         {
             InitializeComponent();
 
             DtgSommaire = dtgSommaire;
-            //ButtonClick += ListerSommaire;
+        }
+
+        public decimal CalculerTotalLigne(ProduitFacture pf)
+        {
+            return (decimal)(pf.Quantite * pf.Produit.Prix);
         }
 
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
@@ -49,8 +53,38 @@ namespace Facturio.Rapports.Vues
 
         private void ListerSommaire()
         {
-            LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveSommaire(cldDateDebut.SelectedDate.Value, cldDateFin.SelectedDate.Value));
-            DtgSommaire.ItemsSource = LstFacture;
+            LstProduitFacture = new ObservableCollection<ProduitFacture>(HibernateProduitFacturesService.RetrieveAll());
+            LstProduitSommaire = new ObservableCollection<ProduitFacture>();
+
+            for (int i = 0; i < LstProduitFacture.Count - 1; i++)
+            {
+                // Si le produit est déjà la, j'ajuste le nombre de fois qu'il est vendu.
+                if (ExisteDeja(LstProduitFacture[i].Produit.Id, LstProduitSommaire))
+                {
+                    LstProduitSommaire[TrouverIndex(LstProduitSommaire, LstProduitFacture[i].Produit.Id)].Quantite += LstProduitFacture[i].Quantite;
+                }
+                // si le produit n'existe pas, j'ajoute le produit dans la liste sommaire
+                if (LstProduitSommaire.Count == 0 || !ExisteDeja(LstProduitFacture[i].Produit.Id, LstProduitSommaire))
+                {
+                    LstProduitSommaire.Add(LstProduitFacture[i]);
+                    LstProduitSommaire[LstProduitSommaire.Count - 1].Quantite = LstProduitFacture[i].Quantite;
+                }
+            }
+            DtgSommaire.ItemsSource = LstProduitSommaire;
+        }
+
+        public int TrouverIndex(ObservableCollection<ProduitFacture> obcProduitFacture, int? idProduit)
+        {
+            int index = 0;
+            foreach (var pf in obcProduitFacture)
+            {
+                if (pf.Produit.Id == idProduit)
+                    return index;
+
+                index++;
+            }
+
+            return -1;
         }
 
         private void btnObtenirRapport_Click(object sender, RoutedEventArgs e)
@@ -61,6 +95,16 @@ namespace Facturio.Rapports.Vues
         private void btnRapportPDF_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private bool ExisteDeja(int? id, ObservableCollection<ProduitFacture> lstPF)
+        {
+            foreach (var pf in lstPF)
+            {
+                if (pf.Produit.Id == id)
+                    return true;
+            }
+            return false;
         }
     }
 }

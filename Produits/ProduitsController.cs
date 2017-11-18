@@ -48,15 +48,15 @@ namespace Facturio.Produits
             HibernateProduitService.Create(Produit);
         }
 
-        public static bool Existe(String code)
+        public static bool Existe(string n, string d, string p, string q)
         {
-            //foreach (Produit produit in Produits)
-            //{
-            //    if (code == produit.Code)
-            //    {
-            //        return true;
-            //    }
-            //}
+            foreach (Produit produit in Produits)
+            {
+                if (n == produit.Nom && d == produit.Description && p == produit.Prix.ToString() && q == produit.Quantite.ToString())
+                {
+                    return true;
+                }
+            }
             return false;
         }
 
@@ -113,6 +113,16 @@ namespace Facturio.Produits
             }
         }
 
+        internal static bool EstIdentique()
+        {
+            Produit p = VerifierInactif();
+            if(p != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public static void updateChampsProduit(Produit p)
         {
             //  ProduitsController.Produit.Code = txtCode.Text;
@@ -124,43 +134,73 @@ namespace Facturio.Produits
             //ProduitsController.Produit.EstActif = true;
         }
 
-        internal static void DemanderSiModifAncienDelete()
+        //public static void DemanderSiModifAncienDelete()
+        //{
+        //    MessageBoxResult resultat;
+        //    resultat = MessageBox.Show("Un porduit identique a été supprimé auparavant.\nVoulez-vous le recréer ?"
+        //        , "Info"
+        //        , MessageBoxButton.YesNo
+        //        , MessageBoxImage.Warning
+        //        , MessageBoxResult.No
+        //        );
+
+        //        if (resultat == MessageBoxResult.Yes)
+        //        {
+        //            if (p.Nom == Produit.Nom && p.Prix == Produit.Prix && p.Quantite == Produit.Quantite && p.Description == Produit.Description)
+        //            {
+        //                Produit pro = HibernateProduitService.Retrieve(p.Nom, p.Description, p.Prix, p.Quantite)[0];
+        //                pro.EstActif = true;
+        //                HibernateProduitService.Update(pro);
+        //            }
+        //        //    Produit produit = new Produit();
+        //        //    updateChampsProduit(produit);
+        //        //    //ObservableCollection<Produit> p = new ObservableCollection<Produit>(HibernateProduitService.Retrieve(produit.Code));
+        //        ////Produit.Id = p[0].Id;
+        //        //produit.EstActif = true;
+        //        //// HibernateProduitService.Delete(Produit);
+        //        //    DeleteProduit(Produit);
+        //        //    HibernateProduitService.Update(produit);
+        //        //    //HibernateProduitService.Create(Produit);
+        //        //    //HibernateProduitService.Update(Produit);
+        //    }
+        //}
+
+        public static void DemanderSiModifAncienDelete(Produit p, bool estModif)
         {
             MessageBoxResult resultat;
-            resultat = MessageBox.Show("Le porduit a été supprimé auparavant.\nVoulez-vous le recréer avec vos nouvelles données ?"
+            resultat = MessageBox.Show("Un porduit identique a été supprimé auparavant.\nVoulez-vous le recréer ?"
                 , "Info"
                 , MessageBoxButton.YesNo
                 , MessageBoxImage.Warning
                 , MessageBoxResult.No
                 );
 
-                if (resultat == MessageBoxResult.Yes)
+            if (resultat == MessageBoxResult.Yes)
+            {
+                if (p.Nom == AjoutModifUserControl.TxtNom.Text && p.Prix.ToString() == AjoutModifUserControl.TxtPrix.Text && p.Quantite.ToString() == AjoutModifUserControl.TxtQuantite.Text && p.Description == AjoutModifUserControl.TxtDescription.Text)
                 {
-                    Produit produit = new Produit();
-                    updateChampsProduit(produit);
-                    //ObservableCollection<Produit> p = new ObservableCollection<Produit>(HibernateProduitService.Retrieve(produit.Code));
-                //Produit.Id = p[0].Id;
-                produit.EstActif = true;
-                // HibernateProduitService.Delete(Produit);
-                    DeleteProduit(Produit);
-                    HibernateProduitService.Update(produit);
-                    //HibernateProduitService.Create(Produit);
-                    //HibernateProduitService.Update(Produit);
+                    Produit pro = HibernateProduitService.Retrieve(p.Nom, p.Description, p.Prix, p.Quantite)[0];
+                    pro.EstActif = true;
+                    if (estModif)
+                        DeleteProduit(Produit);
+                    HibernateProduitService.Update(pro);
                 }
+            }
         }
 
-        public static bool VerifierInactif()
+        public static Produit VerifierInactif()
         {
             // TODO: Modif
-            //ObservableCollection<Produit> produits = new ObservableCollection<Produit>(HibernateProduitService.Retrieve(GenererCodeProduit(AjoutModifUserControl.TxtNom.Text, AjoutModifUserControl.TxtDescription.Text)));
-            //foreach(Produit p in produits)
-            //{
-            //    if(p.Nom != null)
-            //    {
-            //        return true;
-            //    }
-            //}
-            return false;
+            ObservableCollection<Produit> produits = new ObservableCollection<Produit>(HibernateProduitService.Retrieve(AjoutModifUserControl.TxtNom.Text, AjoutModifUserControl.TxtDescription.Text, Convert.ToDouble(AjoutModifUserControl.TxtPrix.Text), Convert.ToDouble(AjoutModifUserControl.TxtQuantite.Text)));
+            Produit produit = null;
+            foreach (Produit p in produits)
+            {
+                if (p.Nom != null)
+                {
+                    produit = p;
+                }
+            }
+            return produit;
         }
 
         public static bool ValiderAjout()
@@ -223,7 +263,7 @@ namespace Facturio.Produits
                                         }
                                         else
                                         {
-                                            if (Existe(GenererCodeProduit(AjoutModifUserControl.TxtNom.Text, AjoutModifUserControl.TxtDescription.Text)))
+                                            if (Existe(AjoutModifUserControl.TxtNom.Text, AjoutModifUserControl.TxtDescription.Text, AjoutModifUserControl.TxtPrix.Text, AjoutModifUserControl.TxtQuantite.Text))
                                             {
                                                 GestionErreurs(8);
                                                 return false;
@@ -340,7 +380,7 @@ namespace Facturio.Produits
         public static void LiveFiltering(string filter)
         {
             // TODO: Modif
-           // Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveFilter(filter));
+            Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveFilter(filter));
         }
 
         public static void RafraichirGrille(bool estFiltre)
