@@ -17,7 +17,7 @@
             <Setter Property="Height" Value="30" />
         </Style>
 
-        <creation:BooleanToVisibilityConverter x:Key="converter" />
+        <!--<creation:BooleanToVisibilityConverter x:Key="converter" />-->
     </UserControl.Resources>
     
     <Grid>
@@ -76,8 +76,7 @@
                                             DockPanel.Dock="Right" VerticalAlignment="Center" Width="20" Height="20"
                                             Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.SupprimeCritere}"
                                             CommandParameter="{Binding}" />
-                                    <CheckBox Content="{Binding Critere.Titre}" IsChecked="{Binding EstUtilise, Mode=TwoWay}" />
-                                    <!-- Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" -->
+                                    <CheckBox Content="{Binding Critere.Titre}" IsChecked="{Binding EstUtilise, Mode=TwoWay}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" />
                                 </DockPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
@@ -103,10 +102,11 @@
                 </StackPanel>
 
                 <DataGrid
-                    x:Name="DtgGabarit"
-                    ItemsSource="{Binding GabaritCriteres}"
+                    creation:DataGridTextColumnsBehavior.BindableColumns="{Binding Colonnes}"
+                    CanUserSortColumns="False"
                     Margin="0, 5, 0, 10">
 
+                    
                     
                 </DataGrid>
             </DockPanel>

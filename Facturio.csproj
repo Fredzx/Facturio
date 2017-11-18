@@ -103,6 +103,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Creation\BindableColumns.cs" />
     <Compile Include="Creation\BooleanToVisibilityConverter.cs" />
     <Compile Include="Creation\GabaritCreateurController.cs" />
     <Compile Include="Creation\GabaritCreateurLogo.xaml.cs">

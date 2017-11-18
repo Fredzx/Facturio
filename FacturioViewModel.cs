@@ -6,7 +6,6 @@ using Facturio.Gabarits;
 using Facturio.Clients;
 using Facturio.Produits;
 using Facturio.Rapports;
-using System.Collections.Generic;
 
 namespace Facturio
 {

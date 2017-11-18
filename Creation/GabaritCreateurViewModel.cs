@@ -6,6 +6,7 @@ using Facturio.Base;
 using Facturio.Criteres;
 using Facturio.Gabarits;
 using Facturio.GabaritsCriteres;
+using System.Windows.Controls;
 
 namespace Facturio.Creation
 {
@@ -17,7 +18,9 @@ namespace Facturio.Creation
 
         public static Gabarit Gabarit { get; set; }
 
-        public ObservableCollection<Critere> Criteres { get; set; }
+        // Méthode fonctionnelle ici, mais j'utilise static et je mets du UI dans le ViewModel. :/ Soso l'affaire la t'sé!
+        public static ObservableCollection<DataGridTextColumn> Colonnes { get; set; }
+        public ObservableCollection<string> TitresDesColonnes { get; set; }
 
         public ObservableCollection<GabaritCritere> GabaritCriteres { get; set; }
         public ObservableCollection<TypeCritere> TypesCriteres { get; set; }
@@ -45,13 +48,26 @@ namespace Facturio.Creation
 
             GabaritCriteres = new ObservableCollection<GabaritCritere>(Gabarit.GabaritCriteres);
 
+            TitresDesColonnes = new ObservableCollection<string>();
+            foreach (GabaritCritere gabaritCritere in Gabarit.GabaritCriteres)
+            {
+                if (gabaritCritere.EstUtilise)
+                {
+                    TitresDesColonnes.Add(gabaritCritere.Critere.Titre);
+                }
+            }
+
+            Colonnes = new ObservableCollection<DataGridTextColumn>();
+            foreach (string titreColonne in TitresDesColonnes)
+                Colonnes.Add(new DataGridTextColumn { Header = titreColonne });
+
             TypesCriteres = new ObservableCollection<TypeCritere>(HibernateTypeCritereService.RetrieveAll());
             TypeCritereSelectionne = TypesCriteres[0];
 
             Titre = "Création";
 
-            AjouteCritere = new RelayCommand(AjouterCritere, parameter => !string.IsNullOrWhiteSpace(TitreCritereLibre));
-            SupprimeCritere = new RelayCommand(SupprimerCritere, parameter => true);
+            AjouteCritere = new RelayCommand(AjouterCritere, param => !string.IsNullOrWhiteSpace(TitreCritereLibre));
+            SupprimeCritere = new RelayCommand(SupprimerCritere, param => true);
         }
 
         public GabaritCreateurViewModel(Gabarit gabarit) : this()
@@ -88,11 +104,12 @@ namespace Facturio.Creation
 
         private ISet<GabaritCritere> CreerNouveauGabarit()
         {
+            const int NB_GABARITCRITERE = 12;
             const int POSITION = 0;
             const int LARGEUR = 50;
 
             ISet<GabaritCritere> gabaritCriteres = new HashSet<GabaritCritere>();
-            for (int i = 0; i < 12; ++i)
+            for (int i = 0; i < NB_GABARITCRITERE; ++i)
             {
                 GabaritCritere gabaritCritere = new GabaritCritere
                 {

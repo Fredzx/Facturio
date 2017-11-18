@@ -1,5 +1,4 @@
-﻿using Facturio.Gabarits;
-using Facturio.GabaritsCriteres;
+﻿using Facturio.GabaritsCriteres;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,45 +9,10 @@ namespace Facturio.Creation
     /// </summary>
     public partial class GabaritCreateurView : UserControl
     {
-        //public Gabarit Gabarit { get; set; }
-        //public List<GabaritCritere> GabaritCriteres { get; set; }
-        //public List<ListBoxItem> ListeBoxItems { get; set; }
-
-        public GabaritCreateurView(/* Gabarit gabarit */)
+        public GabaritCreateurView()
         {
             InitializeComponent();
-
-            /*
-            Gabarit = gabarit;
-
-            GabaritCriteres = new List<GabaritCritere>(Gabarit.GabaritCriteres);
-            foreach (var gabaritCritere in GabaritCriteres)
-            {
-                ListBoxItem listBoxItem = new ListBoxItem() { Content = new CheckBox() };
-
-                ((CheckBox)listBoxItem.Content).IsChecked = gabaritCritere.EstUtilise;
-                ((CheckBox)listBoxItem.Content).Checked += GabaritCreateurView_Checked;
-                ((CheckBox)listBoxItem.Content).Unchecked += GabaritCreateurView_Unchecked;
-
-                ListeBoxItems.Add(listBoxItem);
-                ItcCriteres.Items.Add(gabaritCritere);
-            }
-            */
         }
-
-        /*
-        private void GabaritCreateurView_Checked(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show($"{e.ToString()} a été coché!");
-            ((GabaritCritere)sender).EstUtilise = true;
-        }
-
-        private void GabaritCreateurView_Unchecked(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show($"{e.ToString()} a été décoché!");
-            ((GabaritCritere)sender).EstUtilise = false;
-        }
-        */
 
         private void btnSuivant_Click(object sender, RoutedEventArgs e)
         {
@@ -58,24 +22,21 @@ namespace Facturio.Creation
             // GabaritCreationConteneurView.AfficherGabaritCreateurLogo();
         }
 
-        /*
+        // TODO: Vérifier s'il est possible de faire en sorte que les checkbox soient des commandes à place d'événements direct dans le code-behind.
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            GabaritCritere gabaritCritere = (GabaritCritere)sender;
-
-            DataGridTextColumn colonne = new DataGridTextColumn();
-            colonne.Header = gabaritCritere.Critere.Titre;
-            colonne.Width = gabaritCritere.Largeur;
-            colonne.DisplayIndex = gabaritCritere.Position;
-            //DtgGabarit.Columns.Add(colonne);
+            GabaritCreateurViewModel.Colonnes.Add(new DataGridTextColumn { Header = ((CheckBox)sender).Content.ToString() });
         }
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            GabaritCritere gabaritCritere = (GabaritCritere)sender;
-
-            //DtgGabarit.Columns.RemoveAt(gabaritCritere.Position);
+            for (int i = 0; i < GabaritCreateurViewModel.Colonnes.Count; ++i)
+            {
+                if (GabaritCreateurViewModel.Colonnes[i].Header == ((CheckBox)sender).Content)
+                {
+                    GabaritCreateurViewModel.Colonnes.RemoveAt(i);
+                }
+            }
         }
-        */
     }
 }
