@@ -18,6 +18,8 @@ namespace Facturio.Creation
 
         public static Gabarit Gabarit { get; set; }
 
+        // TODO: Si j'ai le temps, essayer de trouver une façon qui permet d'enlever le DataGridTextColumn du ViewModel,
+        //       car là je mets du code de la View dans le ViewModel.
         public ObservableCollection<DataGridTextColumn> Colonnes { get; set; }
         public ObservableCollection<string> TitresDesColonnes { get; set; }
 
