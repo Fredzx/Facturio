@@ -18,8 +18,7 @@ namespace Facturio.Creation
 
         public static Gabarit Gabarit { get; set; }
 
-        // Méthode fonctionnelle ici, mais j'utilise static et je mets du UI dans le ViewModel. :/ Soso l'affaire la t'sé!
-        public static ObservableCollection<DataGridTextColumn> Colonnes { get; set; }
+        public ObservableCollection<DataGridTextColumn> Colonnes { get; set; }
         public ObservableCollection<string> TitresDesColonnes { get; set; }
 
         public ObservableCollection<GabaritCritere> GabaritCriteres { get; set; }
@@ -36,6 +35,7 @@ namespace Facturio.Creation
 
         public ICommand AjouteCritere { get; set; }
         public ICommand SupprimeCritere { get; set; }
+        public ICommand AfficheColonne { get; set; }
 
         #endregion
 
@@ -50,12 +50,8 @@ namespace Facturio.Creation
 
             TitresDesColonnes = new ObservableCollection<string>();
             foreach (GabaritCritere gabaritCritere in Gabarit.GabaritCriteres)
-            {
                 if (gabaritCritere.EstUtilise)
-                {
                     TitresDesColonnes.Add(gabaritCritere.Critere.Titre);
-                }
-            }
 
             Colonnes = new ObservableCollection<DataGridTextColumn>();
             foreach (string titreColonne in TitresDesColonnes)
@@ -68,6 +64,7 @@ namespace Facturio.Creation
 
             AjouteCritere = new RelayCommand(AjouterCritere, param => !string.IsNullOrWhiteSpace(TitreCritereLibre));
             SupprimeCritere = new RelayCommand(SupprimerCritere, param => true);
+            AfficheColonne = new RelayCommand(AfficherColonne, param => true);
         }
 
         public GabaritCreateurViewModel(Gabarit gabarit) : this()
@@ -98,8 +95,29 @@ namespace Facturio.Creation
 
         private void SupprimerCritere(object parameter)
         {
+            var gabaritCritere = (GabaritCritere)parameter;
+
+            if (gabaritCritere.EstUtilise)
+                AfficherColonne(new CheckBox { Content = gabaritCritere.Critere.Titre });
+
             Gabarit.GabaritCriteres.Remove((GabaritCritere)parameter);
             GabaritCriteres = new ObservableCollection<GabaritCritere>(Gabarit.GabaritCriteres);
+        }
+
+        private void AfficherColonne(object parameter)
+        {
+            CheckBox chb = (CheckBox)parameter;
+            var dtgTxtCol = new DataGridTextColumn { Header = chb.Content.ToString() };
+
+            if (chb.IsChecked == true)
+            {
+                Colonnes.Add(dtgTxtCol);
+                return;
+            }
+
+            for (int i = 0; i < Colonnes.Count; ++i)
+                if (Colonnes[i].Header.ToString() == chb.Content.ToString())
+                    Colonnes.RemoveAt(i);
         }
 
         private ISet<GabaritCritere> CreerNouveauGabarit()
