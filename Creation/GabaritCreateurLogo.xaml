@@ -20,7 +20,8 @@
             <RowDefinition Height="50"  />
             <RowDefinition Height="30" />
             <RowDefinition Height="30" />
-            <RowDefinition Height="20" />
+            <RowDefinition Height="8" />
+            <RowDefinition Height="12"/>
             <RowDefinition Height="*" />
             <RowDefinition Height="20" />
             <RowDefinition Height="30" />
@@ -28,17 +29,17 @@
 
 
         <Label Name="lblTitreFacture" Grid.Column="1" Grid.Row="1" Content="Titre de la facture"/>
-        <TextBox Name="txtTitreFacture" Grid.Column="2" Grid.Row="1"  />
+        <TextBox Name="txtTitreFacture" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" />
 
-        <Button Name="btnImporterLogo" Grid.Column="1" Grid.Row="2" Content="Importer un logo ..." />
-        <Label Name="lblLogo" Grid.Column="2" Grid.Row="2" Content="Logo.png"/>
+        <Image Name="imgLogo" Grid.Column="3" Grid.Row="0" Grid.RowSpan="3"/>
 
-        <Grid Background="LightBlue" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3"/>
+        <Button Name="btnImporterLogo" Grid.Column="1" Grid.Row="2" Content="Importer un logo ..." Click="btnImporterLogo_Click" />
+        <Label Name="lblLogo" Grid.Column="2" Grid.Row="2" />
 
-        <Button Name="btnEnregistrer" Grid.Column="2" Grid.Row="6" Content="Enregistrer" Width="150" />
-        <Button Name="btnOuvrir" Grid.Column="3" Grid.Row="6" Content="Ouvrir" Width="150" />
+        <Grid Background="LightBlue" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3"/>
 
-
+        <Button Name="btnEnregistrer" Grid.Column="2" Grid.Row="7" Content="Enregistrer" Width="150" Height="30" Margin="35,0" VerticalAlignment="Top" Click="btnEnregistrer_Click" />
+        <Button Name="btnOuvrir" Grid.Column="3" Grid.Row="7" Content="Ouvrir" Width="150" Click="btnOuvrir_Click" Margin="35,0" />
 
 
     </Grid>

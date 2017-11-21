@@ -24,5 +24,19 @@ namespace Facturio.Creation
         {
             FntGabCreation.Show();
         }
+
+        public static void FermerFenetreCreationLook()
+        {
+            FntGabCreation.Close();
+        }
+
+        public static void OuvrirFenetreGestion()
+        {
+            // Sam, tu code ici mon ami :)
+            // ...
+            // ...
+            // ..
+
+        }
     }
 }
