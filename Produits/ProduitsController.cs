@@ -43,6 +43,22 @@ namespace Facturio.Produits
             }
         }
 
+        public static bool SiProduitSelectionne(string erreur, DataGrid dtg)
+        {
+            MessageBoxResult resultat;
+            if (dtg.SelectedItem == null)
+            {
+                resultat = MessageBox.Show("Vous devez sélectionner un produit pour pouvoir " + erreur
+                    , "Info"
+                    , MessageBoxButton.OK
+                    , MessageBoxImage.Exclamation
+                    , MessageBoxResult.OK);
+                return false;
+            }
+            return true;
+
+        }
+
         public static void AjoutProduit()
         {
             HibernateProduitService.Create(Produit);

@@ -11,12 +11,12 @@ namespace Facturio.Creation
     public class GabaritCreateurController
     {
         public static Gabarits.Gabarit Gabarits { get; set; } = GabaritCreateurViewModel.Gabarit;
-        public static GabaritCreationWindow FntGabCreation { get; set; } = new GabaritCreationWindow();
-        public static OpererFacture FntOperationFacture { get; set; } = new OpererFacture();
+        public static GabaritCreationWindow FntGabCreation { get; set; }
+        public static OpererFacture FntOperationFacture { get; set; }
 
         public GabaritCreateurController()
         {
-            
+
 
 
 
@@ -24,12 +24,14 @@ namespace Facturio.Creation
 
         public static void AfficherInterfaceCreationSuivante()
         {
+            FntGabCreation = new GabaritCreationWindow();
             FntGabCreation.Show();
         }
 
         public static void AfficherInterfaceOperationFacture()
         {
             FntGabCreation.Close();
+            FntOperationFacture = new OpererFacture();
             FntOperationFacture.ShowDialog();
         }
     }

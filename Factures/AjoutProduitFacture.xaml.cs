@@ -1,19 +1,8 @@
 ﻿using Facturio.Produits;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Xceed.Wpf.Toolkit;
 
 namespace Facturio.Factures
 {
@@ -23,12 +12,15 @@ namespace Facturio.Factures
     public partial class AjoutProduitFacture : UserControl
     {
         public static DataGrid DtgAfficheProduits { get; set; }
+        public static DoubleUpDown TxtQuantite { get; set; }
+        public ObservableCollection<Produit> Produits { get; set; }
+
         public AjoutProduitFacture()
         {
             InitializeComponent();
-            OpererFactureController.Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
+            Produits = new ObservableCollection<Produit>(HibernateProduitService.RetrieveAll());
             DtgAfficheProduits = dtgAfficheProduits;
-            DtgAfficheProduits.ItemsSource = OpererFactureController.Produits;
+            TxtQuantite = txtQuantite;
         }
 
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
@@ -60,6 +52,16 @@ namespace Facturio.Factures
         private void btnRetour_Click(object sender, RoutedEventArgs e)
         {
             OpererFacture.TbcProduitPublic.SelectedIndex = 0;
+        }
+
+        private void dtgAfficheProduits_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(dtgAfficheProduits.SelectedItem != null)
+            {
+                Produit p = (Produit)dtgAfficheProduits.SelectedItem;
+                if(p != null)
+                    txtQuantite.Maximum = p.Quantite;
+            }
         }
     }
 }
