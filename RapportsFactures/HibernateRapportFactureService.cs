@@ -43,18 +43,15 @@ namespace Facturio.RapportsFactures
             return result.ToList();
         }
 
-        public static List<RapportFacture> RetrieveVenteProduit(DateTime dateDebut, DateTime dateFin, List<ProduitFacture> lstPF, int? idProduit)
+        public static List<RapportFacture> RetrieveVenteProduit(DateTime dateDebut, DateTime dateFin)
         {
-            List<RapportFacture> lstFacture = new List<RapportFacture>();
             var rappportfacture = session.Query<RapportFacture>();
 
             var result = from rf in rappportfacture
-                             join facture in session.Query<Facture>() on rf.Facture.IdFacture equals facture.IdFacture
-                             join produitFacture in session.Query<ProduitFacture>() on facture.LstProduitFacture[0].IdProduitFactures equals produitFacture.IdProduitFactures 
                              where (rf.Facture.Date >= dateDebut
                                    && rf.Facture.Date <= dateFin)
                              select rf;
-            return lstFacture;
+            return result.ToList();
         }
 
         public static void Create(RapportFactureMap rapportFacture)

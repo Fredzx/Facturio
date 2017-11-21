@@ -46,9 +46,9 @@ namespace Facturio.Rapports.Vues
 
             if (Valider())
             {
-                RFC.LstFacture = HibernateRapportFactureService.RetrieveFacturationCliente(cldDateDebut.SelectedDate.Value,
+                RFC.LstFacture = new HashSet<Facture>(HibernateFactureService.RetrieveFacturationCliente(cldDateDebut.SelectedDate.Value,
                                                        cldDateFin.SelectedDate.Value,
-                                                       (Client)dtgAfficherClient.SelectedItem);
+                                                       (Client)dtgAfficherClient.SelectedItem));
 
                 RFC.LeClient = (Client)dtgAfficherClient.SelectedItem;
                 RFC.Date = DateTime.Now;
@@ -62,14 +62,15 @@ namespace Facturio.Rapports.Vues
             
             if (Valider())
             {
-                RFC.LstFacture = HibernateRapportFactureService.RetrieveFacturationCliente(cldDateDebut.SelectedDate.Value,
+                RFC.LstFacture = new HashSet<Facture>(HibernateFactureService.RetrieveFacturationCliente(cldDateDebut.SelectedDate.Value,
                                                                                            cldDateFin.SelectedDate.Value,
-                                                                                           (Client)dtgAfficherClient.SelectedItem);
+                                                                                           (Client)dtgAfficherClient.SelectedItem));
 
                 RFC.LeClient = (Client)dtgAfficherClient.SelectedItem;
                 RFC.Date = DateTime.Now;
 
-                Window detailFacturationCliente = new DetailFacturationCliente(cldDateDebut.SelectedDate.Value, cldDateFin.SelectedDate.Value, (Client)dtgAfficherClient.SelectedItem);
+                List<Facture> lstFactureLocal = new List<Facture>(RFC.LstFacture);
+                Window detailFacturationCliente = new DetailFacturationCliente(lstFactureLocal);
                 detailFacturationCliente.Show();
                 HibernateRapportFacturationCliente.Create(RFC);
             }

@@ -30,12 +30,12 @@ namespace Facturio.Factures
             return result.ToList();
         }
 
-        public static List<Facture> RetrieveFacturationCliente(DateTime dateDebut, DateTime dateFin, int? idClient)
+        public static List<Facture> RetrieveFacturationCliente(DateTime dateDebut, DateTime dateFin, Client client)
         {
             var facture = session.Query<Facture>().AsQueryable();
 
             var result = from f in facture
-                         where f.LeClient.IdClient == idClient
+                         where f.LeClient.IdClient == client.IdClient
                                 && (f.Date >= dateDebut
                                 && f.Date <= dateFin)
                          select f;
@@ -44,7 +44,7 @@ namespace Facturio.Factures
         }
 
 
-        public static List<Facture> RetrieveSommaire(DateTime dateDebut, DateTime dateFin)
+        public static List<Facture> RetrieveBetweenDates(DateTime dateDebut, DateTime dateFin)
         {
             var facture = session.Query<Facture>().AsQueryable();
 

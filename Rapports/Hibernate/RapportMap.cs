@@ -32,15 +32,34 @@ namespace Facturio.Rapports.Hibernate
                 .CustomSqlType("DATETIME")
                 .Generated.Never();
 
-            HasMany<RapportFacture>(x => x.LstFacture)
+            /*HasMany<RapportFacture>(x => x.LstFacture)
                .Not.LazyLoad()
                .Access.Property()
                .Cascade.All()
                .KeyColumns.Add("idRapport", map => map.Name("idRapport")
                                                            .SqlType("INTEGER")
-                                                           .Nullable());
+                                                           .Nullable());*/
 
-            
+            //HasManyToMany<Facture>(x => x.LstFacture)
+            //   .Access.Property()
+            //   .AsSet()
+            //   .Cascade.None()
+            //   .LazyLoad()
+            //   .Inverse()
+            //   .Generic()
+            //   .Table("FacturesRapports")
+            //   .FetchType.Join()
+            //   .ChildKeyColumns.Add("idFacture", mapping => mapping.Name("idFacture")
+            //                                                        .SqlType("INTEGER")
+            //                                                        .Not.Nullable())
+            //   .ParentKeyColumns.Add("idRapport", mapping => mapping.Name("idRapport")
+            //                                                        .SqlType("INTEGER")
+            //                                                        .Not.Nullable());
+
+            HasManyToMany<Facture>(x => x.LstFacture)
+                .Cascade.All()
+                .Inverse()
+                .Table("FacturesRapports");
 
         }
     }

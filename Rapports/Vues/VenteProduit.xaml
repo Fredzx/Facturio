@@ -60,8 +60,7 @@
                                     AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="10 0 20 0">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Produit" Width="1*" Binding="{Binding Nom}"/>
-                        <DataGridTextColumn Header="Code" Width="1*" Binding="{Binding Code}"/>
-                        <DataGridTextColumn Header="Description" Width="1*" Binding="{Binding Description}"/>
+                        <DataGridTextColumn Header="Description" Width="2*" Binding="{Binding Description}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
