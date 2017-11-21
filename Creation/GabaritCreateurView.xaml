@@ -16,8 +16,6 @@
             <Setter Property="Width" Value="100" />
             <Setter Property="Height" Value="30" />
         </Style>
-
-        <!--<creation:BooleanToVisibilityConverter x:Key="converter" />-->
     </UserControl.Resources>
     
     <Grid>
@@ -61,7 +59,6 @@
 
                 <ScrollViewer VerticalScrollBarVisibility="Visible">
                     <ItemsControl
-                        x:Name="ItcCriteres"
                         ItemsSource="{Binding GabaritCriteres}"
                         BorderThickness="0">
                         <ItemsControl.ItemsPanel>
@@ -88,8 +85,7 @@
             </DockPanel>
         </GroupBox>
 
-        <!-- <GridSplitter Grid.Column="1" Background="DimGray" Width="1" Panel.ZIndex="1" /> -->
-
+        <!-- Le gabarit de facture -->
         <GroupBox Header="Aperçu du gabarit de facture" Grid.Column="2" Margin="5, 5, 10, 5" Padding="10">
             <DockPanel LastChildFill="True">
                 <StackPanel>
@@ -112,4 +108,3 @@
         </GroupBox>
     </Grid>
 </UserControl>
-

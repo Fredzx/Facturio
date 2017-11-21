@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Facturio.Creation
@@ -19,23 +20,16 @@ namespace Facturio.Creation
             GabaritCreateurController.AfficherInterfaceCreationSuivante();
         }
 
-        /*
-        // TODO: Vérifier s'il est possible de faire en sorte que les checkbox soient des commandes à place d'événements direct dans le code-behind.
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            var titreColonne = ((CheckBox)sender).Content.ToString();
-            var dtgTxtCol = new DataGridTextColumn { Header = titreColonne };
-            GabaritCreateurViewModel.Colonnes.Add(dtgTxtCol);
-        }
+        // Pour l'ordre des colonnes
+        // ----------------------------
+        // ColumnHeaderDragCompleted
+        // ColumnHeaderDragStarted
 
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            var colonnes = GabaritCreateurViewModel.Colonnes;
+        // ColumnReordering
+        // ColumnReordered
 
-            for (int i = 0; i < colonnes.Count; ++i)
-                if (colonnes[i].Header == ((CheckBox)sender).Content)
-                    colonnes.RemoveAt(i);
-        }
-        */
+        // ColumnDisplayIndexChanged
+
+        // ColumnHeaderDragDelta -> Occurs every time the mouse position changes while the user drags a column header.
     }
 }
