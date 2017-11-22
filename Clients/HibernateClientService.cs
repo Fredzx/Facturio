@@ -11,26 +11,11 @@ namespace Facturio.Clients
 {
     public static class HibernateClientService
     {
-        
         private static ISession session = NHibernateConnexion.OpenSession();
-
-
-        // Avant modification : 29 Oct. 12h37
-        //public static List<Client> RetrieveAll()
-        //{
-        //    return session.Query<Client>().ToList();
-        //}
-
 
         public static List<Client> RetrieveAll()
         {
-            var client = session.Query<Client>().AsQueryable();
-
-            var result = from c in client
-                         where c.EstActif == true
-                         select c;
-
-            return result.ToList();
+            return session.Query<Client>().ToList();
         }
 
         public static List<Client> Retrieve(int idClient)
@@ -52,6 +37,28 @@ namespace Facturio.Clients
                 transaction.Commit();
             }
 
+        }
+
+        public static List<Client> RetrieveInactif()
+        {
+            var client = session.Query<Client>().AsQueryable();
+
+            var result = from c in client
+                         where c.EstActif == false
+                         select c;
+
+            return result.ToList();
+        }
+
+        public static List<Client> RetrieveActif()
+        {
+            var client = session.Query<Client>().AsQueryable();
+
+            var result = from c in client
+                         where c.EstActif == true
+                         select c;
+
+            return result.ToList();
         }
 
         public static void Update(Client client)

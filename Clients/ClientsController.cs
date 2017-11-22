@@ -1,37 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using Facturio.Base;
-using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace Facturio.Clients
 {
     public class ClientsController : BaseViewModel, IOngletViewModel
     {
-        
+        #region Propriétés
         public static ObservableCollection<Client> LstObClients { get; set; } = new ObservableCollection<Client>();
         public static Client LeClient { get; set; }
         public string Titre { get; set; }
- 
+        #endregion
 
         public ClientsController()
         {
             Titre = "Clients";
-
-
-             LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveAll());
-            //ChargerListeClients();
-
+            LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveAll());
         }
 
-        public static void ChargerListeClients()
+        #region Méthodes
+        public static void ChargerListeClients(int status)
         {
-            LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveAll());
-
+            switch (status)
+            {
+                case 0: LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveActif());break;
+                case 1: LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveInactif()); break;
+                case 2: LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveAll()); break;
+                default:
+                    LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveAll()); break;
+            }
+            RafraichirGrille(true);
         }
 
         public static void AjouterClient(Client client)
@@ -130,7 +127,6 @@ namespace Facturio.Clients
             return noClient;
         }
 
-
         public static void AfficherOngletRechercher()
         {
             ClientsUserControl.TbcClientPublic.SelectedIndex = 0;           
@@ -148,5 +144,6 @@ namespace Facturio.Clients
             RechercherUserControl.DtgClients.ItemsSource = null;
             RechercherUserControl.DtgClients.ItemsSource = LstObClients;
         }
+        #endregion
     }
 }

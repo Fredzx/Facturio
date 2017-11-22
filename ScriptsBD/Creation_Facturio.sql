@@ -48,21 +48,23 @@ CREATE TABLE IF NOT EXISTS Provinces
 ALTER TABLE Provinces
 ADD CONSTRAINT Provinces_Province_UK
 UNIQUE (nom);
+
+
 #####################################
-#			Table Produits			#
+#			Table Clients			#
 #####################################
 CREATE TABLE IF NOT EXISTS Clients
 (	idClient INT AUTO_INCREMENT PRIMARY KEY,
-	idSexe INT NOT NULL,
+	idSexe INT NULL,
     idRang INT NOT NULL,
-    idProvince INT NOT NULL,
+    idProvince INT NULL,
     nom VARCHAR(50) NOT NULL,
-    prenom VARCHAR(50) NOT NULL,
-    adresse VARCHAR(100) NOT NULL,
-    codePostal VARCHAR(10) NOT NULL,
-    description VARCHAR(150) NOT NULL,
+    prenom VARCHAR(50) NULL,
+    adresse VARCHAR(100) NULL,
+    codePostal VARCHAR(10) NULL,
+    description VARCHAR(150) NULL,
     codeClient VARCHAR(10) NOT NULL,
-    telephone VARCHAR(10) NOT NULL,
+    telephone VARCHAR(10) NULL,
     estActif BOOLEAN NOT NULL DEFAULT '1'
 );
 

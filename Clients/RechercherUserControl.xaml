@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Facturio.Clients"
+             xmlns:l="clr-namespace:Facturio.Clients"
              mc:Ignorable="d" Height="650" Width="850"
              Background="#F5F3EE">
     <UserControl.Resources>
@@ -16,7 +16,15 @@
             <Setter Property="Width" Value="100" />
             <Setter Property="Height" Value="30" />
         </Style>
+
+        <l:StatusConverter x:Key="converter" />
+
+
+
     </UserControl.Resources>
+
+    
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition  />
@@ -34,18 +42,24 @@
             <RowDefinition Height="30"/>
             <RowDefinition />
             <RowDefinition />
-            <RowDefinition />                
-                            
+            <RowDefinition Height="40" />
+            <RowDefinition Height="50" />
+
         </Grid.RowDefinitions>
 
                         
 
         <Label Name="lblRechercher" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"  Content="Rechercher par Nom ou No. Client" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Style="{StaticResource styleLabel}" />
-         
         <TextBox Name="txtRecherche" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" TextChanged="txtRecherche_TextChanged" />
-        
 
-        <DataGrid Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="6"
+
+        
+            
+           
+            
+     
+
+            <DataGrid Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="6"
                         ItemsSource="{Binding LstObClients}" Name="dtgAfficheClients" LoadingRow="DataGrid_LoadingRow" 
                         BorderBrush="Black"  HorizontalAlignment="Center" VerticalAlignment="Top" IsReadOnly="True"
                         AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectionChanged="dtgAfficheClients_SelectionChanged">
@@ -61,10 +75,28 @@
                     <DataGridTextColumn Header="Adresse" Width="7*" Binding="{Binding Adresse}"/>
                     <DataGridTextColumn Header="Code postal" Width="4*" Binding="{Binding CodePostal}" />
                     <DataGridTextColumn Header="Rang" Width="3*" Binding="{Binding Rang.Nom}" />
-                </DataGrid.Columns>
+
+                    <DataGridTextColumn Header="Status" Width="2*" Binding="{Binding EstActif, 
+                                                                   Converter={StaticResource converter}}" />
+
+
+
+            </DataGrid.Columns>
             </DataGrid>
-                        
-        <StackPanel Grid.Row="5" Grid.Column="0"
+
+        <StackPanel Grid.Row="5" Grid.Column="2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal"
+                    Grid.ColumnSpan="2"
+                    >
+            
+            <CheckBox Name="cbxActif" Content="Actif" Margin="0,0,50,0" Checked="cbxActif_Checked" Unchecked="cbxActif_Unchecked"/>
+            <CheckBox Name="cbxInactif" Content="Inactif" Checked="cbxInactif_Checked"  Unchecked="cbxInactif_Unchecked" />
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="6" Grid.Column="0"
                     HorizontalAlignment="Center"
                     Orientation="Horizontal"
                     Grid.ColumnSpan="6" >
