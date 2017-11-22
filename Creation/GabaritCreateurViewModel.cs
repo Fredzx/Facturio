@@ -7,6 +7,7 @@ using Facturio.Criteres;
 using Facturio.Gabarits;
 using Facturio.GabaritsCriteres;
 using System.Windows.Controls;
+using System.Windows;
 
 namespace Facturio.Creation
 {
@@ -20,6 +21,7 @@ namespace Facturio.Creation
 
         // TODO: Si j'ai le temps, essayer de trouver une façon qui permet d'enlever le DataGridTextColumn du ViewModel,
         //       car là je mets du code de la View dans le ViewModel.
+        // À la place d'une liste de DataGridTextColumn j'aurais une liste de GabaritCritereViewModels
         public ObservableCollection<DataGridTextColumn> Colonnes { get; set; }
         public ObservableCollection<string> TitresDesColonnes { get; set; }
 
@@ -80,6 +82,11 @@ namespace Facturio.Creation
 
         private void AjouterCritere(object parameter)
         {
+            // TODO: Vérifier si le critère à ajouter existe déjà dans la liste
+            // Comparer le nom de tous les critères avec le nom du critère à ajouter
+            // Si pareil, afficher message d'erreur
+            // Sinon, ajouter le critère
+
             GabaritCritere gabaritCritere = new GabaritCritere
             {
                 Gabarit = Gabarit,
@@ -108,18 +115,46 @@ namespace Facturio.Creation
 
         private void AfficherColonne(object parameter)
         {
-            CheckBox chb = (CheckBox)parameter;
+            var chb = (CheckBox)parameter;
             var dtgTxtCol = new DataGridTextColumn { Header = chb.Content.ToString() };
 
             if (chb.IsChecked == true)
             {
+                // Vérifier si les deux checkboxes sont bien remplies (> 0)...
+                // Doit faire un GabaritCritereViewModel, pour pouvoir binder TwoWay Position, Largeur, EstUtilise
+                // Chaque fois que la liste de GabaritCritereViewModel sera modifié, je vais faire:
+                // GabaritCriteres.Clear();
+                // foreach (var gabaritCritereViewModel in GabaritCritereViewModels)
+                // {
+                //     var gabaritCritere = new GabaritCritere
+                //     {
+                //         Gabarit = gabaritCritereViewModel.Gabarit,
+                //         Critere = gabaritCritereViewModel.Critere,
+                //         Largeur = gabaritCritereViewModel.Largeur,
+                //         Position = gabaritCritereViewModel.Position,
+                //         EstUtilise = gabaritCritereViewModel.EstUtilise
+                //     };
+                //
+                //     GabaritCriteres.Add(gabaritCritere);
+                // }
+
                 Colonnes.Add(dtgTxtCol);
                 return;
             }
 
+            EnleverColonne(chb.Content.ToString());
+        }
+
+        private void EnleverColonne(string titre)
+        {
             for (int i = 0; i < Colonnes.Count; ++i)
-                if (Colonnes[i].Header.ToString() == chb.Content.ToString())
+            {
+                if (Colonnes[i].Header.ToString() == titre)
+                {
                     Colonnes.RemoveAt(i);
+                    return;
+                }
+            }
         }
 
         private ISet<GabaritCritere> CreerNouveauGabarit()
