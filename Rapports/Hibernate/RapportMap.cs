@@ -40,26 +40,26 @@ namespace Facturio.Rapports.Hibernate
                                                            .SqlType("INTEGER")
                                                            .Nullable());*/
 
-            //HasManyToMany<Facture>(x => x.LstFacture)
-            //   .Access.Property()
-            //   .AsSet()
-            //   .Cascade.None()
-            //   .LazyLoad()
-            //   .Inverse()
-            //   .Generic()
-            //   .Table("FacturesRapports")
-            //   .FetchType.Join()
-            //   .ChildKeyColumns.Add("idFacture", mapping => mapping.Name("idFacture")
-            //                                                        .SqlType("INTEGER")
-            //                                                        .Not.Nullable())
-            //   .ParentKeyColumns.Add("idRapport", mapping => mapping.Name("idRapport")
-            //                                                        .SqlType("INTEGER")
-            //                                                        .Not.Nullable());
-
             HasManyToMany<Facture>(x => x.LstFacture)
-                .Cascade.All()
-                .Inverse()
-                .Table("FacturesRapports");
+               .Access.Property()
+               .AsSet()
+               .Cascade.None()
+               .LazyLoad()
+               .Inverse()
+               .Generic()
+               .Table("facturesrapports")
+               .FetchType.Join()
+               .ChildKeyColumns.Add("idFacture", mapping => mapping.Name("idFacture")
+                                                                    .SqlType("INTEGER")
+                                                                    .Not.Nullable())
+               .ParentKeyColumns.Add("idRapport", mapping => mapping.Name("idRapport")
+                                                                    .SqlType("INTEGER")
+                                                                    .Not.Nullable());
+
+            //HasManyToMany<Facture>(x => x.LstFacture)
+            //    .Cascade.All()
+            //    .Inverse()
+            //    .Table("FacturesRapports");
 
         }
     }

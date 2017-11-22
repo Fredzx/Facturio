@@ -178,8 +178,8 @@
     <Compile Include="Rapports\Vues\CalendarUI.xaml.cs">
       <DependentUpon>CalendarUI.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Rapports\Vues\DetailFacturationCliente.xaml.cs">
-      <DependentUpon>DetailFacturationCliente.xaml</DependentUpon>
+    <Compile Include="Rapports\Vues\DetailRapport.xaml.cs">
+      <DependentUpon>DetailRapport.xaml</DependentUpon>
     </Compile>
     <Compile Include="Rapports\Vues\DetailsVenteProduit.xaml.cs">
       <DependentUpon>DetailsVenteProduit.xaml</DependentUpon>
@@ -277,7 +277,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Rapports\Vues\DetailFacturationCliente.xaml">
+    <Page Include="Rapports\Vues\DetailRapport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

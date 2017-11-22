@@ -53,7 +53,7 @@ namespace Facturio.Rapports.Vues
 
             if (Valider())
             {
-                Window detailFacturationCliente = new DetailFacturationCliente(LstFactureFiltrer);
+                Window detailFacturationCliente = new DetailRapport(LstFactureFiltrer);
                 detailFacturationCliente.Show();
                 Hibernate.HibernateRapportVenteProduit.Create(RVP);
             }

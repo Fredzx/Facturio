@@ -17,8 +17,9 @@ namespace Facturio.Rapports.Entities
         public virtual DateTime Date { get; set; } = DateTime.MinValue;
         public virtual ISet<Facture> LstFacture { get; set; }
 
-        public virtual String TypeRapport { get{ return GetTypeRapport();} set{ TypeRapport = value; }}
+        public virtual string Objet { get { return GetObject(); } set { Objet = value; } }
 
+        public virtual string TypeRapport { get{ return GetTypeRapport();} set{ TypeRapport = value; }}
         public Rapport() { }
         /// <summary>
         /// 
@@ -55,6 +56,11 @@ namespace Facturio.Rapports.Entities
         public virtual string GetTypeRapport()
         {
             return "Rapport";
+        }
+
+        public virtual string GetObject()
+        {
+            return "Aucun objet";
         }
     }
 }

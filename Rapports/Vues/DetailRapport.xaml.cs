@@ -24,7 +24,7 @@ namespace Facturio.Rapports.Vues
     /// <summary>
     /// Logique d'interaction pour DetailFacturationCliente.xaml
     /// </summary>
-    public partial class DetailFacturationCliente : Window
+    public partial class DetailRapport : Window
     {
         const double TPS = 0.09975;
         const double TVQ = 0.05000;
@@ -51,12 +51,26 @@ namespace Facturio.Rapports.Vues
         //    RafraichirData(true);
         //}
 
-        public DetailFacturationCliente(List<Facture> lstFacture)
+        public DetailRapport(List<Facture> lstFacture)
         {
             InitializeComponent();
 
             DtgProduit = dtgProduits;
             LstFacture = new ObservableCollection<Facture>(lstFacture);
+            RafraichirData(true);
+        }
+
+        public DetailRapport(Rapport rapport)
+        {
+            InitializeComponent();
+
+            if (rapport is RapportSommaire)
+            {
+                
+            }
+
+            DtgProduit = dtgProduits;
+            LstFacture = new ObservableCollection<Facture>(rapport.LstFacture);
             RafraichirData(true);
         }
 

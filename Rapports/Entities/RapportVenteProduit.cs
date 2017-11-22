@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Facturio.Produits;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Facturio.Rapports.Entities
     {
         public virtual int? IdRapportVenteProduit { get { return base.IdRapport; } set { base.IdRapport = value; } }
 
+        public virtual Produit Produit { get; set; }
         public RapportVenteProduit() { }
 
         public override bool Equals(object obj)
@@ -38,6 +40,5 @@ namespace Facturio.Rapports.Entities
         {
             return "Vente produit";
         }
-
     }
 }

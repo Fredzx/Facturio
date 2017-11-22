@@ -70,7 +70,7 @@ namespace Facturio.Rapports.Vues
                 RFC.Date = DateTime.Now;
 
                 List<Facture> lstFactureLocal = new List<Facture>(RFC.LstFacture);
-                Window detailFacturationCliente = new DetailFacturationCliente(lstFactureLocal);
+                Window detailFacturationCliente = new DetailRapport(lstFactureLocal);
                 detailFacturationCliente.Show();
                 HibernateRapportFacturationCliente.Create(RFC);
             }
