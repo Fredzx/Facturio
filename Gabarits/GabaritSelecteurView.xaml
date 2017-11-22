@@ -57,9 +57,11 @@
                                             BorderThickness="{TemplateBinding BorderThickness}"
                                             CornerRadius="10">
                                             <StackPanel
+                                                Orientation="Vertical"
                                                 TextBlock.TextAlignment="Center"
                                                 VerticalAlignment="Center">
                                                 <TextBlock Text="{Binding TitreGabarit}" />
+                                                <TextBlock Text="{Binding DateCreation}" />
                                             </StackPanel>
                                         </Border>
                                     </Grid>

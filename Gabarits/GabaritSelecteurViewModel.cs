@@ -24,21 +24,19 @@ namespace Facturio.Gabarits
 
         #endregion
 
-        #region Constructeur
+        #region Constructeurs
 
         public GabaritSelecteurViewModel()
         {
-            //try
-            //{
-                Gabarits = new ObservableCollection<Gabarit>(
-                HibernateGabaritService.RetrieveAllOrderedByCreationDateDesc()
-                );
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show($"Une erreur s'est produite lors de l'accès à la base de données.");
-            //    Environment.Exit(1);
-            //}
+            try
+            {
+                Gabarits = new ObservableCollection<Gabarit>(HibernateGabaritService.RetrieveAllOrderedByCreationDateDesc());
+            }
+            catch (Exception)
+            {
+                MessageBox.Show($"Une erreur s'est produite lors de l'accès à la base de données.");
+                Environment.Exit(1);
+            }
 
             Titre = "Gabarits";
 
@@ -63,8 +61,7 @@ namespace Facturio.Gabarits
 
         private void OuvrirFenetreFacture()
         {
-            // TODO: Ouvrir la fenêtre de la création de facture
-            // TODO: Faire un petit gestionnaire pour ouvrir/fermer des fenêtres
+            // TODO: Ouvrir la fenêtre d'opérations sur la facture en lui passant le gabarit sélectionné (GabaritSelectionne)
             throw new NotImplementedException();
         }
 
