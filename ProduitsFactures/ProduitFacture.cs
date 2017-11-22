@@ -14,6 +14,7 @@ namespace Facturio.ProduitsFactures
         public virtual Produit Produit { get; set; } = new Produit();
         public virtual Facture Facture { get; set; } = new Facture();
         public virtual float Quantite { get; set; } = 0;
+        public virtual decimal SousTotalColonne { get { return (decimal)Quantite * (decimal)Produit.Prix; } set { SousTotalColonne = value; } }
 
         public ProduitFacture() { }
 

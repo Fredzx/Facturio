@@ -28,11 +28,5 @@ namespace Facturio.Factures
             TbcProduitPublic = tbcOperer;
             
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            AssignerClientFacture ac = new AssignerClientFacture();
-            ac.ShowDialog();
-        }
     }
 }

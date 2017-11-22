@@ -33,15 +33,42 @@ namespace Facturio.Factures
         {
             if (ProduitsController.SiProduitSelectionne("l'ajouter à la facture", AjoutProduitFacture.DtgAfficheProduits))
             {
+                bool estNouveau = true;
                 Produit p = (Produit)AjoutProduitFacture.DtgAfficheProduits.SelectedItem;
-                //MaxQuantite.Maximum = p.Quantite;
                 if (valider(p))
                 {
                     ProduitFacture pf = new ProduitFacture(p, OpererFactureController.LaFacture, float.Parse(AjoutProduitFacture.TxtQuantite.Value.ToString()));
-                    OpererFactureController.LaFacture.LstProduitFacture.Add(pf);
+                    if (OpererFactureUC.DtgListeProduitsFacture.Items.Count > 0)
+                    {
+                        for (int i = 0; i < OpererFactureUC.DtgListeProduitsFacture.Items.Count; i++)
+                        {
+                            if (OpererFactureController.LaFacture.LstProduitFacture[i].Produit.Nom == pf.Produit.Nom && pf.Produit.Prix == OpererFactureController.LaFacture.LstProduitFacture[i].Produit.Prix && pf.Produit.Description == OpererFactureController.LaFacture.LstProduitFacture[i].Produit.Description)
+                            {
+                                OpererFactureController.LaFacture.LstProduitFacture[i].Quantite += pf.Quantite;
+                                pf.Produit.Quantite -= pf.Quantite;
+                                AjoutProduitFacture.DtgAfficheProduits.Items.Refresh();
+                                estNouveau = false;
+                            }
+                        }
+                        if (estNouveau)
+                        {
+                            pf.Produit.Quantite -= pf.Quantite;
+                            OpererFactureController.LaFacture.LstProduitFacture.Add(pf);
+                            AjoutProduitFacture.DtgAfficheProduits.Items.Refresh();
+                        }
+                    }
+                    else
+                    {
+                        pf.Produit.Quantite -= pf.Quantite;
+                        OpererFactureController.LaFacture.LstProduitFacture.Add(pf);
+                        AjoutProduitFacture.DtgAfficheProduits.Items.Refresh();
+                    }
                     AjoutProduitFacture.DtgAfficheProduits.SelectedIndex = -1;
+                    OpererFactureUC.DtgListeProduitsFacture.Items.Refresh();
                 }
             }
+            //TODO: Maintenant, je supprime la quantité dans la liste
+            //      Il faut que je supprime la quantité en BD quand on confirme la facture
         }
 
         private static bool valider(Produit p)

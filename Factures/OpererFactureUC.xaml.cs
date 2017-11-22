@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Facturio.Factures
 {
@@ -20,14 +8,23 @@ namespace Facturio.Factures
     /// </summary>
     public partial class OpererFactureUC : UserControl
     {
+        public static DataGrid DtgListeProduitsFacture { get; set; } = new DataGrid();
+        
         public OpererFactureUC()
         {
             InitializeComponent();
+            DtgListeProduitsFacture = dtgListeProduitsFacture;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            AssignerClientFacture ac = new AssignerClientFacture();
+            ac.ShowDialog();
+        }
 
+        private void dtgListeProduitsFacture_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = ((e.Row.GetIndex()) + 1).ToString();
         }
     }
 }

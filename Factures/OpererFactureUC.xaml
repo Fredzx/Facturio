@@ -10,7 +10,29 @@
         <local:OpererFactureController/>
     </UserControl.DataContext>
     <Grid>
-        <DataGrid ItemsSource="{Binding LstProduitFacture}" Height="300" Margin="0,192,0,77"></DataGrid>
+
+        <TextBlock Name="txtNomClient" Margin="5000,5000,5000,5000">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="{}{0}', '{1}}">
+                    <Binding Path="LeClient.Nom"/>
+                    <Binding Path="LeClient.Prenom"/>
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+
+
+
+        <DataGrid Name="dtgListeProduitsFacture" ItemsSource="{Binding LaFacture.LstProduitFacture}" SelectionMode="Single" LoadingRow="dtgListeProduitsFacture_LoadingRow" 
+                                      BorderBrush="Black" Height="auto" HorizontalAlignment="Center" Margin="0,192,0,77" VerticalAlignment="Stretch"
+                                      AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" CanUserDeleteRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom" Width="4.5*" Binding="{Binding Produit.Nom}" />
+                <DataGridTextColumn Header="Description" Width="9*" Binding="{Binding Produit.Description}"/>
+                <DataGridTextColumn Header="Prix unitaire" Width="2*" Binding="{Binding Produit.Prix}" />
+                <DataGridTextColumn Header="Quantité" Width="2*" Binding="{Binding Quantite}"/>
+                <DataGridTextColumn Header="Sous-Total Colonne" Width="2*" Binding="{Binding SousTotalColonne}" />
+            </DataGrid.Columns>
+        </DataGrid>
         <Button Height="50" Width="115" Click="Button_Click"  Margin="10,509,667,10">Assigner un client</Button>
     </Grid>
 </UserControl>
