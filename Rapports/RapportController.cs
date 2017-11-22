@@ -21,7 +21,7 @@ namespace Facturio.Rapports
 {
     public class RapportController : BaseViewModel, IOngletViewModel
     {
-       // public static IList<Rapport> LstRapport { get; set; }
+        //public static IList<Rapport> LstRapport { get; set; }
         public static ListeRapportUserControl RapportUserControl { get; set; } = new ListeRapportUserControl(); 
 
         
@@ -36,9 +36,9 @@ namespace Facturio.Rapports
 
         public static void CreerPDF(Rapport rapport)
         {
-            string nomClient = rapport.LstFacture[0].Facture.LeClient.Nom;
-            string prenomClient = rapport.LstFacture[0].Facture.LeClient.Prenom;
-            string header = "Factures de " + prenomClient + " " + nomClient;
+            //string nomClient = rapport.LstFacture[0].Facture.LeClient.Nom;
+            //string prenomClient = rapport.LstFacture[0].Facture.LeClient.Prenom;
+            //string header = "Factures de " + prenomClient + " " + nomClient;
             int compteur = 0;
             FileStream fs = new FileStream("RapportFacturationCliente.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
             Document document = new Document();
@@ -47,14 +47,14 @@ namespace Facturio.Rapports
 
 
             document.Open();
-            document.Add(new Paragraph(0, header));
-            foreach (RapportFacture rf in rapport.LstFacture)
+            //document.Add(new Paragraph(0, header));
+            foreach (Facture f in rapport.LstFacture)
             {
 
                 PdfPTable tableau = new PdfPTable(3);
                 PdfPCell cellule = new PdfPCell();
 
-                foreach (ProduitFacture p in rf.Facture.LstProduitFacture)
+                foreach (ProduitFacture p in f.LstProduitFacture)
                 {
                     tableau.AddCell(p.Produit.Nom.ToString());
                     tableau.AddCell(p.Quantite.ToString());

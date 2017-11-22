@@ -16,7 +16,7 @@ namespace Facturio.Rapports.Entities
         public virtual Client LeClient { get; set; }
         
         public RapportFacturationCliente() { }
-        public RapportFacturationCliente(DateTime date, List<RapportFacture> lstFacture, Client client)
+        public RapportFacturationCliente(DateTime date, HashSet<Facture> lstFacture, Client client)
         {
             Date = date;
             LstFacture = lstFacture;

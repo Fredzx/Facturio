@@ -39,27 +39,24 @@ namespace Facturio.Rapports.Vues
         public DataGrid DtgProduit { get; set; }
         public decimal Total { get; set; }
 
-        public DetailFacturationCliente(DateTime dateDebut, DateTime dateFin, Client leClient)
+        //public DetailFacturationCliente(DateTime dateDebut, DateTime dateFin, Client leClient)
+        //{
+        //    InitializeComponent();
+
+        //    DtgProduit = dtgProduits;
+        //    DateDebut = dateDebut;
+        //    DateFin = dateFin;
+        //    LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveFacturationCliente(dateDebut, DateFin, leClient));
+
+        //    RafraichirData(true);
+        //}
+
+        public DetailFacturationCliente(List<Facture> lstFacture)
         {
             InitializeComponent();
 
             DtgProduit = dtgProduits;
-            DateDebut = dateDebut;
-            DateFin = dateFin;
-            LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveFacturationCliente(dateDebut, DateFin, leClient.IdClient));
-
-            RafraichirData(true);
-        }
-
-        public DetailFacturationCliente(DateTime dateDebut, DateTime dateFin, Produit leProduit)
-        {
-            InitializeComponent();
-
-            DtgProduit = dtgProduits;
-            DateDebut = dateDebut;
-            DateFin = dateFin;
-            LstProduitFacture = new ObservableCollection<ProduitFacture>(HibernateProduitFacturesService.RetrieveProduit(leProduit.Id));
-            LstFacture = new ObservableCollection<Facture>(ConstruireFactures());
+            LstFacture = new ObservableCollection<Facture>(lstFacture);
             RafraichirData(true);
         }
 

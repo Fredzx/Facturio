@@ -10,6 +10,7 @@ using Facturio.Produits;
 using Facturio.ProduitsFactures;
 using System.Collections.ObjectModel;
 using Facturio.RapportsFactures;
+using Facturio.Rapports.Entities;
 
 namespace Facturio.Factures
 {
@@ -22,6 +23,7 @@ namespace Facturio.Factures
         public virtual DateTime? Date { get; set; } = null;
         
         public virtual IList<ProduitFacture> LstProduitFacture { get; set; }
+        public virtual ISet<Rapport> LstRapport { get; set; }
 
 
         public Facture() { }

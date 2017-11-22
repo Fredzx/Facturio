@@ -15,7 +15,7 @@ namespace Facturio.Rapports.Entities
         // virtual pcq Nhibernate l'oblige
         public virtual int? IdRapport { get; set; } = null;
         public virtual DateTime Date { get; set; } = DateTime.MinValue;
-        public virtual IList<RapportFacture> LstFacture { get; set; }
+        public virtual ISet<Facture> LstFacture { get; set; }
 
         public virtual String TypeRapport { get{ return GetTypeRapport();} set{ TypeRapport = value; }}
 
@@ -27,7 +27,7 @@ namespace Facturio.Rapports.Entities
         public Rapport(DateTime dateRapport)
         {
             Date = dateRapport;
-            LstFacture = new List<RapportFacture>();
+            LstFacture = new HashSet<Facture>();
         }
 
         public override bool Equals(object obj)
