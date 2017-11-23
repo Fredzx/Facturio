@@ -61,7 +61,7 @@
                                                 TextBlock.TextAlignment="Center"
                                                 VerticalAlignment="Center">
                                                 <TextBlock Text="{Binding TitreGabarit}" />
-                                                <TextBlock Text="{Binding DateCreation}" />
+                                                <TextBlock Text="{Binding DateCreation, StringFormat='dd\\/MM\\/yyyy à h:mm tt'}" />
                                             </StackPanel>
                                         </Border>
                                     </Grid>
