@@ -276,7 +276,7 @@ VALUES
 
 
 INSERT INTO Clients 
-(idSexe, idRang, idProvince, nom, prenom, adresse, codePostal, description, codeClient, telephone) 
+(idSexe, idRang, idProvince, nom, prenom, adresse, codePostal, description, codeClient, telephone, estActif) 
 VALUES
 ((SELECT idSexe FROM Sexes WHERE sexe = 'M'),
  (SELECT idRang FROM Rangs WHERE nom = 'Or'), 
@@ -287,7 +287,8 @@ VALUES
  'J2K3E5',
  'Gérant de la cie Barmen',
  '1000',
- '4505557894'
+ '4505557894',
+ '0'
  );
  
 INSERT INTO Clients 

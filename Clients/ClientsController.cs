@@ -132,9 +132,9 @@ namespace Facturio.Clients
             ClientsUserControl.TbcClientPublic.SelectedIndex = 0;           
         }
 
-        public static void LiveFiltering(string filter)
+        public static void LiveFiltering(string filter, int status)
         {
-            LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveFilter(filter));
+            LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveFilter(filter, status));
         }
 
         public static void RafraichirGrille(bool estFiltre)

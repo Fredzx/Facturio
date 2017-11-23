@@ -13,14 +13,16 @@ namespace Facturio.Clients
         public static DataGrid DtgClients { get; set; } = new DataGrid();
         public static Button BtnModifier { get; set; } = new Button();
         public static Button BtnSupprimer { get; set; } = new Button();
+        public int Status { get; set; }
 
-        enum Status {Actif, Inactif, Tous};
+        enum StatusClient {Actif, Inactif, Tous};
         #endregion
 
         public RechercherUserControl()
         {
             InitializeComponent();
             DtgClients = dtgAfficheClients;
+            Status = (int)StatusClient.Tous;
 
         }
 
@@ -96,15 +98,13 @@ namespace Facturio.Clients
         private void txtRecherche_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (txtRecherche.Text.ToString() == "")
-            {
-                ClientsController.LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveAll());
-                
-            }
-            else
-            {
-                ClientsController.LiveFiltering(txtRecherche.Text.ToString());
-            }
+                // Charger la bonne liste selon le contexte.
+                ClientsController.ChargerListeClients(Status);
+            else      
+                // Faire le trie selon le status des client.
+                ClientsController.LiveFiltering(txtRecherche.Text.ToString(), Status);       
 
+            // Dans tous les cas, rafraichir la grille.
             ClientsController.RafraichirGrille(true);
         }
         private void cbxActif_Checked(object sender, RoutedEventArgs e)
@@ -113,7 +113,8 @@ namespace Facturio.Clients
                 cbxInactif.IsChecked = false;
 
             // Updater la liste aller chercher seulement les membres actif.
-            ClientsController.ChargerListeClients((int)Status.Actif);
+            ClientsController.ChargerListeClients((int)StatusClient.Actif);
+            Status = (int)StatusClient.Actif;
         }
         private void cbxInactif_Checked(object sender, RoutedEventArgs e)
         {
@@ -121,16 +122,24 @@ namespace Facturio.Clients
                 cbxActif.IsChecked = false;
 
             // Updater la liste aller chercher seulement les membres inactif.
-            ClientsController.ChargerListeClients((int)Status.Inactif);
-
+            ClientsController.ChargerListeClients((int)StatusClient.Inactif);
+            Status = (int)StatusClient.Inactif;
         }
         private void cbxActif_Unchecked(object sender, RoutedEventArgs e)
         {
-            ClientsController.ChargerListeClients((int)Status.Tous);
+            ClientsController.ChargerListeClients((int)StatusClient.Tous);
+            Status = (int)StatusClient.Tous;
+            ViderBarreRecherche();
         }
         private void cbxInactif_Unchecked(object sender, RoutedEventArgs e)
         {
-            ClientsController.ChargerListeClients((int)Status.Tous);
+            ClientsController.ChargerListeClients((int)StatusClient.Tous);
+            Status = (int)StatusClient.Tous;
+            ViderBarreRecherche();
+        }
+        private void ViderBarreRecherche()
+        {
+            txtRecherche.Text = "";
         }
         #endregion
     }
