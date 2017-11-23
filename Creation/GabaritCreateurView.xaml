@@ -5,11 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:creation="clr-namespace:Facturio.Creation"
              mc:Ignorable="d">
-    <!-- DataContext -->
-    <UserControl.DataContext>
-        <creation:GabaritCreateurViewModel />
-    </UserControl.DataContext>
-    
     <!-- Styles spécifiques aux éléments de ce UserControl -->
     <UserControl.Resources>
         <Style TargetType="Button">

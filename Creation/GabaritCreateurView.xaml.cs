@@ -12,6 +12,7 @@ namespace Facturio.Creation
         public GabaritCreateurView()
         {
             InitializeComponent();
+            DataContext = new GabaritCreateurViewModel();
         }
 
         private void btnSuivant_Click(object sender, RoutedEventArgs e)
