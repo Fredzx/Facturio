@@ -29,7 +29,7 @@ namespace Facturio.Factures
             AjoutProduitFacture.DtgAfficheProduits.ItemsSource = Produits;
         }
 
-        public static void AjouterProduitFacture()
+        public static void AjouterProduitFacture(float qte)
         {
             if (ProduitsController.SiProduitSelectionne("l'ajouter à la facture", AjoutProduitFacture.DtgAfficheProduits))
             {
@@ -37,7 +37,7 @@ namespace Facturio.Factures
                 Produit p = (Produit)AjoutProduitFacture.DtgAfficheProduits.SelectedItem;
                 if (valider(p))
                 {
-                    ProduitFacture pf = new ProduitFacture(p, OpererFactureController.LaFacture, float.Parse(AjoutProduitFacture.TxtQuantite.Value.ToString()));
+                    ProduitFacture pf = new ProduitFacture(p, OpererFactureController.LaFacture, qte);
                     if (OpererFactureUC.DtgListeProduitsFacture.Items.Count > 0)
                     {
                         for (int i = 0; i < OpererFactureUC.DtgListeProduitsFacture.Items.Count; i++)

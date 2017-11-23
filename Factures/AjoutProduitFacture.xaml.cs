@@ -1,4 +1,5 @@
 ﻿using Facturio.Produits;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,7 +47,8 @@ namespace Facturio.Factures
             // Que le usercontrol AjoutProduitFacture change d'onglet > direction : onglet Opérer.            
             //OpererFacture.TbcProduitPublic.SelectedIndex = 1;
             //MessageBox.Show("Fonctionnalité pas implémentée");
-            AjoutProduitFactureController.AjouterProduitFacture();
+            AjoutProduitFactureController.AjouterProduitFacture(float.Parse(txtQuantite.Value.ToString()));
+            txtQuantite.Value = 1;
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)
@@ -61,6 +63,28 @@ namespace Facturio.Factures
                 Produit p = (Produit)dtgAfficheProduits.SelectedItem;
                 if(p != null)
                     txtQuantite.Maximum = p.Quantite;
+            }
+        }
+
+        private void txtQuantite_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            if (dtgAfficheProduits.SelectedIndex != -1)
+            {
+                int i = Int32.Parse(txtQuantite.Value.ToString());
+                if (Int32.Parse(txtQuantite.Value.ToString()) > txtQuantite.Maximum)
+                {
+                    MessageBoxResult resultat;
+                    resultat = System.Windows.MessageBox.Show("Il n'y a pas suffisamment d'éléments en inventaire\nVoulez-vous ajouter le maximum à la facture ?"
+                        , "Info"
+                        , MessageBoxButton.YesNo
+                        , MessageBoxImage.Warning
+                        , MessageBoxResult.OK);
+
+                    if (resultat == MessageBoxResult.Yes)
+                    {
+                        AjoutProduitFactureController.AjouterProduitFacture(float.Parse(txtQuantite.Maximum.ToString()));
+                    }
+                }
             }
         }
     }

@@ -42,8 +42,8 @@
             <DataGrid Name="dtgAfficheProduits" SelectionChanged="dtgAfficheProduits_SelectionChanged" SelectionMode="Single" ItemsSource="{Binding Produits}" LoadingRow="DataGrid_LoadingRow"
                                       BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
                                       AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" CanUserDeleteRows="False" Margin="40 0 40 10">
-            
-            
+
+
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Nom" Width="4.5*" Binding="{Binding Nom}" />
                     <DataGridTextColumn Header="Description" Width="9*" Binding="{Binding Description}"/>
@@ -56,11 +56,11 @@
                         HorizontalAlignment="Right"
                         Orientation="Horizontal"
                         Grid.ColumnSpan="4" Grid.Column="2">
-
-
-            <Button Content="Ajouter à la facture" Name="btnAjouter" IsEnabled="True" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnAjouter_Click" />
-            <Button Content="Retour" Name="btnRetour" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnRetour_Click" />
-            <xctk:DoubleUpDown Name="txtQuantite" Increment="1" Value="1" Minimum="1" />
+            <Button Content="Ajouter à la facture" x:Name="btnAjouter" IsEnabled="True" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="108" Click="btnAjouter_Click" />
+            <Button Content="Retour" x:Name="btnRetour" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="57" Click="btnRetour_Click" />
+            <xctk:DoubleUpDown x:Name="txtQuantite" Increment="1" DefaultValue="0"  Minimum="1" PreviewTextInput="txtQuantite_PreviewTextInput" Watermark="Entrez la quantité" MouseWheelActiveTrigger="Focused" Width="118" />
         </StackPanel>
     </Grid>
+
 </UserControl>
+
