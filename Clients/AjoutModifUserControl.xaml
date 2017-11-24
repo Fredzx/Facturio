@@ -54,7 +54,7 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>            
             <RowDefinition Height="50"/>
 
         </Grid.RowDefinitions>
@@ -65,6 +65,7 @@
             <Label Name="lblFormTitle" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="24" Foreground="Azure" FontFamily="tahoma" Content="Ajouter un client" />
         </Grid>
 
+        <CheckBox Name="cbxActif" Content="Actif" Grid.Column="0" Grid.Row="2" Checked="cbxActif_Checked"  Unchecked="cbxActif_Unchecked"/>
 
         <Label Name="lblNoClient" Grid.Row="1" Grid.Column="1"  Content="No. Client" Style="{StaticResource styleLabel}" />
         <Label Name="txtNoClient" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"  Style="{StaticResource styleLabel}"  />
@@ -115,16 +116,13 @@
 
         <Label Name="lblDescription" Grid.Row="10" Grid.Column="1"  Content="Description" Style="{StaticResource styleLabel}" />
         <TextBox Name="txtDescription" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2"  />
-
+        
         <Label Name="lblInfo" Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="3" FontSize="14"/>
 
         <Grid Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="5" Background="#7D1935"/>
-
-
         <Button Name="btnRetour"  Grid.Row="13" Grid.Column="1"  Content="Retour" Style="{StaticResource styleButton}" Click="btnRetour_Click"/>
         <Button Name="btnViderChamps" Grid.Row="13" Grid.Column="2"  Content="Vider les champs" Style="{StaticResource styleButton}"    Click="btnViderChamps_Click"/>
         <Button Name="btnEnregistrer" Grid.Row="13" Grid.Column="3"  Content="Enregistrer"      Style="{StaticResource styleButton}"    Click="btnEnregistrer_Click"/>
-
 
 
 

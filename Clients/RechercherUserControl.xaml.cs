@@ -39,6 +39,7 @@ namespace Facturio.Clients
 
             // Ajuster le titre
             AjoutModifUserControl.LblFormTitle.Content = "Ajouter un client";
+            AjoutModifUserControl.CbxActif.IsChecked = true;
         }
         private void btnModifier_Click(object sender, RoutedEventArgs e)
         {

@@ -18,7 +18,6 @@ namespace Facturio.Clients
         const int NOM_PRENOM_MIN = 3;
         const int ADRESSE_MAX = 50;
         const int ADRESSE_MIN = 5;
-        public bool Ajout { get; set; } = true;
         public static Label LblTxtNoClient { get; set; } = new Label();
         public static Label LblFormTitle { get; set; } = new Label();
         public static TextBox TxtNom { get; set; } = new TextBox();
@@ -32,6 +31,8 @@ namespace Facturio.Clients
         public static RadioButton RdbHomme { get; set; } = new RadioButton();
         public static RadioButton RdbFemme { get; set; } = new RadioButton();
         public static Label LblInfo { get; set; } = new Label();
+        public static CheckBox CbxActif { get; set; } = new CheckBox();
+        
         #endregion
 
         public AjoutModifUserControl()
@@ -50,6 +51,8 @@ namespace Facturio.Clients
             RdbHomme = rdbHomme;
             RdbFemme = rdbFemme;
             LblInfo = lblInfo;
+            CbxActif = cbxActif;
+           
             
         }
 
@@ -63,6 +66,8 @@ namespace Facturio.Clients
                 if (ValiderInformationsClient())
                 {                    
                     LblTxtNoClient.Content = "En cours de génération...";
+                  
+                    
                     // Ajouter le client à la liste et en BD.
                     ClientsController.AjouterClient(new Client(txtPrenom.Text.ToString(), txtNom.Text.ToString()
                                                              , txtDescription.Text.ToString(), new Sexe(SetSex())
@@ -122,13 +127,14 @@ namespace Facturio.Clients
             CboRang.SelectedIndex = (int)ClientsController.LeClient.Rang.IdRang - 1;            
             
             if (ClientsController.LeClient.Sexe.IdSexe == 1)
-            {
                 AjoutModifUserControl.RdbHomme.IsChecked = true;
-            }
             else
-            {
                 AjoutModifUserControl.RdbFemme.IsChecked = true;
-            }
+
+            if (ClientsController.LeClient.EstActif)
+                AjoutModifUserControl.CbxActif.IsChecked = true;
+            else
+                AjoutModifUserControl.CbxActif.IsChecked = false;
         }
         private Rang SetRang()
         {
@@ -199,6 +205,7 @@ namespace Facturio.Clients
                 case 5: LblInfo.Content = "Veuillez entrer un code postal valide pour le client.\n Voici un exemple de format valide : J5K8E6 "; break;
                 case 6: LblInfo.Content = "Veuillez entrer un numéro de téléphone valide pour le client.\n Voici un exemple de format valide: 4504567891 "; break;
                 case 7: LblInfo.Content = "Veuillez choisir le sexe pour le client."; break;
+                case 8: LblInfo.Content = "Au moins un genre doit être coché."; break;
                 default:
                     break;
             }
@@ -236,5 +243,17 @@ namespace Facturio.Clients
             return false;
         }
         #endregion
+
+        private void cbxActif_Checked(object sender, RoutedEventArgs e)
+        {
+            //ClientsController.LeClient.EstActif = true;
+        }
+   
+        private void cbxActif_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ClientsController.LeClient.EstActif = false;
+        }
+
+     
     }
 }
