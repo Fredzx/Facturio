@@ -1,5 +1,4 @@
-﻿using Facturio.ProduitsFactures;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Facturio.Factures
+namespace Facturio.Creation
 {
     /// <summary>
-    /// Logique d'interaction pour OpererFacture.xaml
+    /// Logique d'interaction pour GabaritCreationWindow.xaml
     /// </summary>
-    public partial class OpererFacture : Window
+    public partial class GabaritCreationWindow : Window
     {
-        public static TabControl TbcProduitPublic { get; set; }
-        
-        public OpererFacture()
+        public GabaritCreationWindow()
         {
             InitializeComponent();
-            TbcProduitPublic = tbcOperer;
+            Title = "Look du gabarit";
         }
     }
 }

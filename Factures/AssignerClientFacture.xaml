@@ -1,19 +1,12 @@
-﻿<Window x:Class="Facturio.Factures.OpererFacture"
+﻿<Window x:Class="Facturio.Factures.AssignerClientFacture"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Facturio.Factures"
         mc:Ignorable="d"
-        Title="OpererFacture" Height="600" Width="800">
+        Title="AssignerClientFacture" Height="300" Width="300">
     <Grid>
-        <TabControl Name="tbcOperer">
-            <TabItem Header="Opérer">
-                <local:OpererFactureUC />
-            </TabItem>
-            <TabItem Header="Ajouter un produit">
-                <local:AjoutProduitFacture />
-            </TabItem>
-        </TabControl>
+        <local:AssignerClient />
     </Grid>
 </Window>

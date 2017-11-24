@@ -33,7 +33,7 @@ namespace Facturio.Factures
         {
             if (txtRechercherClient.Text.ToString() == "")
             {
-                AssignerClientController.LstClient = new ObservableCollection<Client>(HibernateClientService.RetrieveAll());
+                AssignerClientController.Clients = new ObservableCollection<Client>(HibernateClientService.RetrieveAll());
             }
             else
             {
@@ -41,6 +41,17 @@ namespace Facturio.Factures
             }
 
             AssignerClientController.RafraichirGrille();
+        }
+
+        private void btnAssigner_Click(object sender, RoutedEventArgs e)
+        {
+            OpererFactureController.LaFacture.LeClient = (Client)dtgAfficheClient.SelectedItem;
+        }
+
+        private void btnRetour_Click(object sender, RoutedEventArgs e)
+        {
+            var myWindow = Window.GetWindow(this);
+            myWindow.Close();
         }
     }
 }

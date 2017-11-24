@@ -1,5 +1,4 @@
-﻿using Facturio.ProduitsFactures;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,16 +15,13 @@ using System.Windows.Shapes;
 namespace Facturio.Factures
 {
     /// <summary>
-    /// Logique d'interaction pour OpererFacture.xaml
+    /// Logique d'interaction pour AssignerClientFacture.xaml
     /// </summary>
-    public partial class OpererFacture : Window
+    public partial class AssignerClientFacture : Window
     {
-        public static TabControl TbcProduitPublic { get; set; }
-        
-        public OpererFacture()
+        public AssignerClientFacture()
         {
             InitializeComponent();
-            TbcProduitPublic = tbcOperer;
         }
     }
 }

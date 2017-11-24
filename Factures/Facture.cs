@@ -33,7 +33,7 @@ namespace Facturio.Factures
         {
             LeClient = client;
             Date = date;
-            LstProduitFacture = new List<ProduitFacture>();
+            LstProduitFacture = new ObservableCollection<ProduitFacture>();
         }
 
         public override bool Equals(object obj)

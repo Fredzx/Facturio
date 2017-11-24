@@ -53,7 +53,7 @@ namespace Facturio.Produits
 
         private void btnModifier_Click(object sender, RoutedEventArgs e)
         {
-            if (SiProduitSelectionne())
+            if (ProduitsController.SiProduitSelectionne("supprimer", RechercherUserControl.DtgProduits))
             {
                 AjoutModifUserControl.EstModif = true;
                 // Lorsqu'il clique sur mofifier on veut : 
@@ -84,7 +84,7 @@ namespace Facturio.Produits
         private bool Confirmation()
         {
             MessageBoxResult resultat;
-            if(SiProduitSelectionne())
+            if(ProduitsController.SiProduitSelectionne("supprimer", RechercherUserControl.DtgProduits))
             {
                 resultat = MessageBox.Show("Voulez-vous vraiment supprimer le produit sélectionné ?"
                     , "Supprimer?!"
@@ -106,21 +106,7 @@ namespace Facturio.Produits
 
         }
 
-        private bool SiProduitSelectionne()
-        {
-            MessageBoxResult resultat;
-            if (dtgAfficheProduits.SelectedItem == null)
-            {
-                resultat = MessageBox.Show("Vous devez sélectionner un produit pour pouvoir supprimer"
-                    , "Info"
-                    , MessageBoxButton.OK
-                    , MessageBoxImage.Exclamation
-                    , MessageBoxResult.OK);
-                return false;
-            }
-            return true;
-
-        }
+        
 
         private void txtRechercherProduit_TextChanged(object sender, TextChangedEventArgs e)
         {

@@ -87,6 +87,7 @@ namespace Facturio.Produits
 
         private void btnEnregister_Click(object sender, RoutedEventArgs e)
         {
+            // Commit
             Produit p = ProduitsController.VerifierInactif();
             bool EstSucces = false;
             if (EstModif)
