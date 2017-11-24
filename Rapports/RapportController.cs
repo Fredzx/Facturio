@@ -22,16 +22,15 @@ namespace Facturio.Rapports
     public class RapportController : BaseViewModel, IOngletViewModel
     {
         //public static IList<Rapport> LstRapport { get; set; }
-        public static ListeRapportUserControl RapportUserControl { get; set; } = new ListeRapportUserControl(); 
+        public static ListeRapportUserControl RapportUserControl { get; set; } = new ListeRapportUserControl();
 
-        
+        public static ObservableCollection<Rapport> LstRapport { get; set; } = new ObservableCollection<Rapport>();
 
         public string Titre { get; set; }
 
         public RapportController()
         {
             Titre = "Rapports";
-            //LstRapport = new List<Rapport>(HibernateRapportService.RetrieveAll());     
         }
 
         public static void CreerPDF(Rapport rapport)
@@ -39,7 +38,7 @@ namespace Facturio.Rapports
             //string nomClient = rapport.LstFacture[0].Facture.LeClient.Nom;
             //string prenomClient = rapport.LstFacture[0].Facture.LeClient.Prenom;
             //string header = "Factures de " + prenomClient + " " + nomClient;
-            int compteur = 0;
+            
             FileStream fs = new FileStream("RapportFacturationCliente.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
             Document document = new Document();
             PdfWriter writer = PdfWriter.GetInstance(document, fs);
@@ -48,13 +47,13 @@ namespace Facturio.Rapports
 
             document.Open();
             //document.Add(new Paragraph(0, header));
-            foreach (Facture f in rapport.LstFacture)
+            foreach (RapportFacture rf in rapport.LstRapportFacture)
             {
 
                 PdfPTable tableau = new PdfPTable(3);
                 PdfPCell cellule = new PdfPCell();
 
-                foreach (ProduitFacture p in f.LstProduitFacture)
+                foreach (ProduitFacture p in rf.Facture.LstProduitFacture)
                 {
                     tableau.AddCell(p.Produit.Nom.ToString());
                     tableau.AddCell(p.Quantite.ToString());
@@ -68,5 +67,31 @@ namespace Facturio.Rapports
             document.Close();
 
         }
+
+        /// <summary>
+        /// Avec les factures et le rapport courant, je créer ma liste de RapportFacture pcq NHibernate ne le fait pas 
+        /// </summary>
+        /// <param name="lstFacture">La liste de facture</param>
+        /// <param name="rapport">Le rapport</param>
+        /// <returns>Une liste de type RapportFacture</returns>
+        public static List<RapportFacture> ConstruireRapportFacture(List<Facture> lstFacture, Rapport rapport)
+        {
+            ObservableCollection<RapportFacture> listRapportFacture = new ObservableCollection<RapportFacture>();
+
+            for (int i = 0; i < lstFacture.Count - 1; i++)
+            {
+                listRapportFacture.Add(new RapportFacture(rapport, lstFacture[i]));
+            }
+            return listRapportFacture.ToList();
+        }
+
+        public static void InsertRapportFacture(List<RapportFacture> lstRF)
+        {
+            foreach (RapportFacture rf in lstRF)
+            {
+                HibernateRapportFactureService.Create(rf);
+            }
+        }
+
     }
 }

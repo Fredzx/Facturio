@@ -40,22 +40,25 @@ namespace Facturio.Rapports.Vues
 
         private void btnObtenirRapport_Click(object sender, RoutedEventArgs e)
         {
-            Produit produit = (Produit)dtgAfficheProduit.SelectedItem;
-
-            List<Facture> LstFacture = HibernateFactureService.RetrieveBetweenDates(cldDateDebut.SelectedDate.Value,
-                                                                                    cldDateFin.SelectedDate.Value);
-
-            List<Facture> LstFactureFiltrer = FiltrerListeSelonProduit(LstFacture, (Produit)dtgAfficheProduit.SelectedItem);
-
-            RapportVenteProduit RVP = new RapportVenteProduit();
-            RVP.Date = DateTime.Now;
-            RVP.LstFacture = new HashSet<Facture>(LstFactureFiltrer);
-
             if (Valider())
             {
-                Window detailFacturationCliente = new DetailRapport(LstFactureFiltrer);
-                detailFacturationCliente.Show();
+
+                Produit produit = (Produit)dtgAfficheProduit.SelectedItem;
+                List<Facture> LstFacture = HibernateFactureService.RetrieveBetweenDates(cldDateDebut.SelectedDate.Value,
+                                                                                        cldDateFin.SelectedDate.Value);
+
+                List<Facture> LstFactureFiltrer = FiltrerListeSelonProduit(LstFacture, (Produit)dtgAfficheProduit.SelectedItem);
+
+                RapportVenteProduit RVP = new RapportVenteProduit();
+                RVP.Date = DateTime.Now;
                 Hibernate.HibernateRapportVenteProduit.Create(RVP);
+
+                RVP.LstRapportFacture = RapportController.ConstruireRapportFacture(LstFactureFiltrer, RVP);
+
+                Window detailFacturationCliente = new DetailRapport(RVP.LstRapportFacture.ToList());
+                detailFacturationCliente.Show();
+                RapportController.InsertRapportFacture(RVP.LstRapportFacture.ToList());
+                RapportController.LstRapport.Add(RVP);
             }
         }
 

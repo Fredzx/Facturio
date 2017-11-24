@@ -1,6 +1,8 @@
 ﻿using Facturio.Factures;
 using Facturio.Produits;
 using Facturio.ProduitsFactures;
+using Facturio.Rapports.Entities;
+using Facturio.Rapports.Hibernate;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -52,6 +54,7 @@ namespace Facturio.Rapports.Vues
         {
             LstProduitFacture = new ObservableCollection<ProduitFacture>(HibernateProduitFacturesService.RetrieveAll());
             LstProduitSommaire = new ObservableCollection<ProduitFacture>();
+            
 
             for (int i = 0; i < LstProduitFacture.Count - 1; i++)
             {
@@ -68,6 +71,19 @@ namespace Facturio.Rapports.Vues
                 }
             }
             DtgSommaire.ItemsSource = LstProduitSommaire;
+        }
+
+        public void InsertRapportSommaire()
+        {
+            RapportSommaire RS = new RapportSommaire();
+            List<Facture> lstFacture = new List<Facture>(HibernateFactureService.RetrieveBetweenDates(cldDateDebut.SelectedDate.Value,
+                                                                                           cldDateFin.SelectedDate.Value));
+            RS.Date = DateTime.Now;
+
+            HibernateRapportSommaire.Create(RS);
+            RS.LstRapportFacture = RapportController.ConstruireRapportFacture(lstFacture, RS);
+            RapportController.InsertRapportFacture(RS.LstRapportFacture.ToList());
+            RapportController.LstRapport.Add(RS);
         }
 
         public int TrouverIndex(ObservableCollection<ProduitFacture> obcProduitFacture, int? idProduit)
@@ -87,6 +103,7 @@ namespace Facturio.Rapports.Vues
         private void btnObtenirRapport_Click(object sender, RoutedEventArgs e)
         {
             ListerSommaire();
+            InsertRapportSommaire();
         }
 
         private void ReInitialiserCalcul()
