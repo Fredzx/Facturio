@@ -6,6 +6,9 @@
              xmlns:local="clr-namespace:Facturio.Factures"
              mc:Ignorable="d"
              Padding="10">
+    <UserControl.DataContext>
+        <local:OpererFactureController/>
+    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -17,7 +20,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- Les produits de la facture -->
-        <DataGrid x:Name="dtgFacture" Grid.Row="0" Grid.Column="0" IsReadOnly="True" />
+        <DataGrid x:Name="dtgFacture" ItemsSource="{Binding LaFacture.LstProduitFacture}" Grid.Row="0" Grid.Column="0" IsReadOnly="True" AutoGenerateColumns="False" />
 
         <!-- Informations à droite des produits -->
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="10 0 0 0">

@@ -41,7 +41,7 @@
                           Grid.RowSpan="4">
             <DataGrid Name="dtgAfficheProduits" SelectionChanged="dtgAfficheProduits_SelectionChanged" SelectionMode="Single" ItemsSource="{Binding Produits}" LoadingRow="DataGrid_LoadingRow"
                                       BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
-                                      AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" CanUserDeleteRows="False" Margin="40 0 40 10">
+                                      AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" CanUserDeleteRows="False" Margin="40 0 40 10" Width="350">
 
 
                 <DataGrid.Columns>
