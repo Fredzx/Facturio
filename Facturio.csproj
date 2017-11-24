@@ -282,11 +282,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-<<<<<<< HEAD
     <Page Include="Factures\OpererFactureUserControl.xaml">
-=======
+	  <SubType>Designer</SubType>
+	  <Generator>MSBuild:Compile</Generator>
+	</Page>
     <Page Include="Factures\OpererFactureUC.xaml">
->>>>>>> TestAjoutFacture
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
