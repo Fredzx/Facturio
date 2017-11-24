@@ -1,17 +1,6 @@
-﻿using Facturio.ProduitsFactures;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Facturio.Gabarits;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Facturio.Factures
 {
@@ -21,9 +10,11 @@ namespace Facturio.Factures
     public partial class OpererFacture : Window
     {
         public static TabControl TbcProduitPublic { get; set; }
-        
-        public OpererFacture()
+        public static Gabarit Gabarit { get; set; }
+
+        public OpererFacture(Gabarit gabarit)
         {
+            Gabarit = gabarit;
             InitializeComponent();
             TbcProduitPublic = tbcOperer;
         }

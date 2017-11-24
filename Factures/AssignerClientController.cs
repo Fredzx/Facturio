@@ -1,7 +1,6 @@
 ﻿using Facturio.Base;
 using Facturio.Clients;
 using Facturio.Produits;
-using Facturio.ProduitsFactures;
 using System.Collections.ObjectModel;
 
 namespace Facturio.Factures

@@ -31,7 +31,7 @@ namespace Facturio.Creation
         public static void AfficherInterfaceOperationFacture()
         {
             FntGabCreation.Close();
-            FntOperationFacture = new OpererFacture();
+            FntOperationFacture = new OpererFacture(Gabarits);
             FntOperationFacture.ShowDialog();
         }
     }

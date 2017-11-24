@@ -51,8 +51,7 @@ namespace Facturio.Gabarits
 
         private void OuvrirFenetreFacture(object parameter)
         {
-            // TODO: Ouvrir la fenêtre d'opérations sur la facture en lui passant le gabarit sélectionné (GabaritSelectionne)
-            throw new NotImplementedException();
+            new OpererFacture((Gabarit)parameter).ShowDialog();
         }
 
         private void SupprimeGabarit(object parameter)

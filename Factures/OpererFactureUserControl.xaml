@@ -12,12 +12,12 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="400" />
             <ColumnDefinition MinWidth="150" MaxWidth="150" />
         </Grid.ColumnDefinitions>
 
         <!-- Les produits de la facture -->
-        <DataGrid Grid.Row="0" Grid.Column="0" IsReadOnly="True" />
+        <DataGrid x:Name="dtgFacture" Grid.Row="0" Grid.Column="0" IsReadOnly="True" />
 
         <!-- Informations à droite des produits -->
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="10 0 0 0">

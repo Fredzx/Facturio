@@ -137,8 +137,7 @@ namespace Facturio.Produits
 
         private void btnTest_Click(object sender, RoutedEventArgs e)
         {
-            OpererFacture of = new OpererFacture();
-            of.Show();
+            
         }
     }
 }
