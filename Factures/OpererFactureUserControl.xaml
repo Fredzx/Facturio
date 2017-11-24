@@ -5,39 +5,43 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Factures"
              mc:Ignorable="d"
-             Padding="10">
+             Padding="10"
+             Background="LightGreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="40" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400" />
-            <ColumnDefinition MinWidth="150" MaxWidth="150" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="210" />
         </Grid.ColumnDefinitions>
 
         <!-- Les produits de la facture -->
-        <DataGrid x:Name="dtgFacture" Grid.Row="0" Grid.Column="0" IsReadOnly="True" />
-
+        <DataGrid Grid.Row="0" Grid.Column="0" x:Name="dtgFacture" IsReadOnly="True" />
+        
         <!-- Informations à droite des produits -->
-        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="10 0 0 0">
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Width="200" Margin="10 0 0 0" HorizontalAlignment="Right">
             <StackPanel.Resources>
-                <Style TargetType="StackPanel">
-                    <Setter Property="Orientation" Value="Horizontal" />
-                    <Setter Property="Margin" Value="0 0 0 10" />
+                <Style TargetType="DockPanel">
+                    <Setter Property="LastChildFill" Value="True" />
+                    <Setter Property="Margin" Value="0 0 0 3" />
                 </Style>
                 <Style TargetType="TextBox">
                     <Setter Property="IsReadOnly" Value="True" />
                     <Setter Property="TextAlignment" Value="Right" />
-                    <Setter Property="Background" Value="LightGray" />
+                    <Setter Property="Background" Value="#DDD" />
                     <Setter Property="FontWeight" Value="SemiBold" />
-                    <Setter Property="Width" Value="70" />
                 </Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Width" Value="70" />
                 </Style>
             </StackPanel.Resources>
-            
+
+            <!-- Bouton qui permet d'associer un client à la facture -->
+            <Button Content="Associer un client" Margin="0 0 0 5" Padding="6" />
+
+            <!-- Informations du client associé -->
             <GroupBox Header="Client" Padding="6" Margin="0 0 0 10">
                 <StackPanel Orientation="Vertical" Margin="0">
                     <StackPanel.Resources>
@@ -45,53 +49,66 @@
                             <Setter Property="Width" Value="Auto" />
                         </Style>
                     </StackPanel.Resources>
-                    
+
+                    <!-- On peut utiliser StringFormat ici pour afficher les valeurs -->
+                    <!-- Ex: <TextBlock Text="{Binding Prenom, StringFormat='Prénom: {0}'}" /> -->
                     <TextBlock Text="Prénom:" />
                     <TextBlock Text="Nom:" />
                     <TextBlock Text="Escompte:" />
                 </StackPanel>
             </GroupBox>
 
-            <StackPanel>
+            <!-- Les totaux de la facture -->
+            <!-- On peut utiliser StringFormat ici pour afficher les valeurs -->
+            <!-- Ex: <TextBlock Text="{Binding SousTotal, StringFormat='{0} $'}" /> -->
+            <DockPanel>
                 <TextBlock Text="Sous-total" />
                 <TextBox Text="0 $" />
-            </StackPanel>
+            </DockPanel>
 
-            <StackPanel>
+            <DockPanel>
                 <TextBlock Text="Escompte" />
                 <TextBox Text="0 $" />
-            </StackPanel>
+            </DockPanel>
 
-            <StackPanel>
+            <DockPanel>
                 <TextBlock Text="TPS" />
                 <TextBox Text="0 $" />
-            </StackPanel>
+            </DockPanel>
 
-            <StackPanel>
+            <DockPanel>
                 <TextBlock Text="TVQ" />
                 <TextBox Text="0 $" />
-            </StackPanel>
+            </DockPanel>
 
-            <StackPanel Margin="0">
+            <DockPanel Margin="0">
                 <TextBlock Text="Total" />
                 <TextBox Text="0 $" />
-            </StackPanel>
+            </DockPanel>
         </StackPanel>
 
-        <!-- Boutons de contrôle en dessous des produits et des informations -->
-        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0 10 0 0">
-            <StackPanel.Resources>
+        <!-- Boutons de contrôle en dessous de la liste de produits -->
+        <DockPanel Grid.Row="1" Grid.Column="0" Margin="0 10 0 0">
+            <DockPanel.Resources>
+                <Style TargetType="StackPanel">
+                    <Setter Property="Orientation" Value="Horizontal" />
+                </Style>
                 <Style TargetType="Button">
                     <Setter Property="Margin" Value="0 0 6 0" />
-                    <Setter Property="Padding" Value="5" />
+                    <Setter Property="Padding" Value="6" />
                 </Style>
-            </StackPanel.Resources>
-            
-            <Button Content="Ajouter un produit" />
-            <Button Content="Associer un client" />
-            <Button Content="Vider" />
-            <Button Content="Sauvegarder" />
-            <Button Content="Convertir en PDF" Margin="0" />
-        </StackPanel>
+            </DockPanel.Resources>
+
+            <StackPanel>
+                <Button Content="Ajouter un produit" />
+                <Button Content="Supprimer" />
+                <Button Content="Vider" />
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Right">
+                <Button Content="Sauvegarder" />
+                <Button Content="Convertir en PDF" Margin="0" />
+            </StackPanel>
+        </DockPanel>
     </Grid>
 </UserControl>
