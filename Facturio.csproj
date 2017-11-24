@@ -184,9 +184,6 @@
     <Compile Include="Rapports\Vues\DetailRapport.xaml.cs">
       <DependentUpon>DetailRapport.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Rapports\Vues\DetailsVenteProduit.xaml.cs">
-      <DependentUpon>DetailsVenteProduit.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Rapports\Vues\FacturationCliente.xaml.cs">
       <DependentUpon>FacturationCliente.xaml</DependentUpon>
     </Compile>
@@ -285,10 +282,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Rapports\Vues\DetailRapport.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Rapports\Vues\DetailsVenteProduit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -3,6 +3,7 @@ using Facturio.Rapports.Hibernate;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -26,15 +27,15 @@ namespace Facturio.Rapports.Vues
     {
         public static DataGrid DtgRapports { get; set; }
 
-        public List<Rapport> LstRapport { get; set; } = new List<Rapport>();
+        //public ObservableCollection<Rapport> LstRapport { get; set; }
         public ListeRapportUserControl()
         {
             InitializeComponent();
             DtgRapports = dtgAfficherRapport;
 
-            LstRapport = HibernateRapportService.RetrieveAll();
+            RapportController.LstRapport = new ObservableCollection<Rapport>(HibernateRapportService.RetrieveAll());
 
-            DtgRapports.ItemsSource = LstRapport;
+            DtgRapports.ItemsSource = RapportController.LstRapport;
         }
 
         private void dtgAfficherRapport_MouseDoubleClick(object sender, MouseButtonEventArgs e)

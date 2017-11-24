@@ -23,6 +23,11 @@ namespace Facturio.RapportsFactures
             Facture = facture;
         }
 
+        public RapportFacture(Facture facture)
+        {
+            Facture = facture;
+        }
+
         public override bool Equals(object obj)
         {
             if (obj == null)

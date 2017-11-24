@@ -54,10 +54,11 @@ namespace Facturio.RapportsFactures
             return result.ToList();
         }
 
-        public static void Create(RapportFactureMap rapportFacture)
+        public static void Create(RapportFacture rapportFacture)
         {
             using (var transaction = session.BeginTransaction())
             {
+                //session.Save(rapportFacture.Rapport);
                 session.Save(rapportFacture);
                 transaction.Commit();
             }

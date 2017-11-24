@@ -4,6 +4,7 @@ using Facturio.Produits;
 using Facturio.ProduitsFactures;
 using Facturio.Rapports.Entities;
 using Facturio.Rapports.Hibernate;
+using Facturio.RapportsFactures;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,7 +34,7 @@ namespace Facturio.Rapports.Vues
         public DateTime DateFin { get; set; }
         public int? IdClient { get; set; }
        public Produit Produit { get; set; }
-        public ObservableCollection<Facture> LstFacture { get; set; }
+        public ObservableCollection<RapportFacture> LstFacture { get; set; }
         public ObservableCollection<ProduitFacture> LstProduitFacture { get; set; }
         public int compteur = 0;
         public DataGrid DtgProduit { get; set; }
@@ -51,12 +52,12 @@ namespace Facturio.Rapports.Vues
         //    RafraichirData(true);
         //}
 
-        public DetailRapport(List<Facture> lstFacture)
+        public DetailRapport(List<RapportFacture> lstFacture)
         {
             InitializeComponent();
 
             DtgProduit = dtgProduits;
-            LstFacture = new ObservableCollection<Facture>(lstFacture);
+            LstFacture = new ObservableCollection<RapportFacture>(lstFacture);
             RafraichirData(true);
         }
 
@@ -70,7 +71,7 @@ namespace Facturio.Rapports.Vues
             }
 
             DtgProduit = dtgProduits;
-            LstFacture = new ObservableCollection<Facture>(rapport.LstFacture);
+            LstFacture = new ObservableCollection<RapportFacture>(rapport.LstRapportFacture);
             RafraichirData(true);
         }
 
@@ -98,7 +99,7 @@ namespace Facturio.Rapports.Vues
         {
             decimal total = 0;
 
-            foreach (ProduitFacture p in LstFacture[compteur].LstProduitFacture)
+            foreach (ProduitFacture p in LstFacture[compteur].Facture.LstProduitFacture)
                 {
                     total += ((decimal)p.Quantite* (decimal)p.Produit.Prix);
                 }
@@ -120,7 +121,7 @@ namespace Facturio.Rapports.Vues
         {
             if (LstFacture != null || LstFacture.Count != 0)
             {
-                DtgProduit.ItemsSource = LstFacture[compteur].LstProduitFacture;
+                DtgProduit.ItemsSource = LstFacture[compteur].Facture.LstProduitFacture;
                 lblNoFacture.Content = (compteur + 1).ToString() + "/" + LstFacture.Count;
                 Total = 0;
 

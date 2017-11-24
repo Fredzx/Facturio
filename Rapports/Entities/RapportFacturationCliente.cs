@@ -17,12 +17,12 @@ namespace Facturio.Rapports.Entities
         public virtual Client LeClient { get{ return TrouverClient(); } set { LeClient = value; } } 
         
         public RapportFacturationCliente() { }
-        public RapportFacturationCliente(DateTime date, HashSet<Facture> lstFacture, Client client)
+        public RapportFacturationCliente(DateTime date, List<RapportFacture> lstFacture, Client client)
         {
             Date = date;
-            LstFacture = lstFacture;
-            LeClient = TrouverClient(); 
-        }
+            LstRapportFacture = lstFacture;
+            LeClient = client; 
+        } 
 
 
         public override bool Equals(object obj)
@@ -59,10 +59,10 @@ namespace Facturio.Rapports.Entities
 
         public virtual Client TrouverClient()
         {
-            ObservableCollection<Facture> obcFacture = new ObservableCollection<Facture>(LstFacture);
+            ObservableCollection<RapportFacture> obcFacture = new ObservableCollection<RapportFacture>(LstRapportFacture);
             Client client = new Client();
 
-            return obcFacture[0].LeClient;
+            return obcFacture[0].Facture.LeClient;
         }
 
     }
