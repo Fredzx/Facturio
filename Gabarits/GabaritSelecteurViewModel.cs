@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 using Facturio.Base;
+using Facturio.Factures;
 
 namespace Facturio.Gabarits
 {
@@ -40,18 +41,7 @@ namespace Facturio.Gabarits
 
             Titre = "Gabarits";
 
-            OuvrirFacture = new RelayCommand(parameter =>
-            {
-                try
-                {
-                    OuvrirFenetreFacture();
-                }
-                catch (NotImplementedException)
-                {
-                    MessageBox.Show("Cette fonctionalité n'est pas encore implémentée.", "Oups!", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-            }, parameter => GabaritSelectionne != null);
-
+            OuvrirFacture = new RelayCommand(OuvrirFenetreFacture, parameter => GabaritSelectionne != null);
             SupprimerGabarit = new RelayCommand(SupprimeGabarit, parameter => GabaritSelectionne != null);
         }
 
@@ -59,7 +49,7 @@ namespace Facturio.Gabarits
 
         #region Méthodes
 
-        private void OuvrirFenetreFacture()
+        private void OuvrirFenetreFacture(object parameter)
         {
             // TODO: Ouvrir la fenêtre d'opérations sur la facture en lui passant le gabarit sélectionné (GabaritSelectionne)
             throw new NotImplementedException();

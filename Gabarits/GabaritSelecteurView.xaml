@@ -5,11 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:gabarits="clr-namespace:Facturio.Gabarits"
              mc:Ignorable="d">
-    <!-- DataContext -->
-    <UserControl.DataContext>
-        <gabarits:GabaritSelecteurViewModel />
-    </UserControl.DataContext>
-
     <Grid>
         <!-- Rangées -->
         <Grid.RowDefinitions>

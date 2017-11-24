@@ -149,6 +149,9 @@
     <Compile Include="Factures\FactureController.cs" />
     <Compile Include="Factures\FactureMap.cs" />
     <Compile Include="Factures\HibernateFactureService.cs" />
+    <Compile Include="Factures\OpererFactureUserControl.xaml.cs">
+      <DependentUpon>OpererFactureUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GabaritsCriteres\GabaritCritere.cs" />
     <Compile Include="GabaritsCriteres\GabaritCritereMap.cs" />
     <Compile Include="Gabarits\Gabarit.cs" />
@@ -231,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Factures\OpererFacture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Factures\OpererFactureUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

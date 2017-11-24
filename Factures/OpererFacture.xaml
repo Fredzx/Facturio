@@ -9,7 +9,7 @@
     <Grid>
         <TabControl>
             <TabItem Header="Opérer">
-                
+                <local:OpererFactureUserControl />
             </TabItem>
             <TabItem Header="Ajouter un produit">
                 <!--<local:AjoutProduitFacture />-->

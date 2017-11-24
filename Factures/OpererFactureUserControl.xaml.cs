@@ -10,18 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Facturio.Factures
 {
     /// <summary>
-    /// Logique d'interaction pour OpererFacture.xaml
+    /// Interaction logic for OpererFactureUserControl.xaml
     /// </summary>
-    public partial class OpererFacture : Window
+    public partial class OpererFactureUserControl : UserControl
     {
-        public static TabControl TbcProduitPublic { get; set; }
-
-        public OpererFacture()
+        public OpererFactureUserControl()
         {
             InitializeComponent();
         }
