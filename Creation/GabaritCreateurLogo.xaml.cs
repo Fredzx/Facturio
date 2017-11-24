@@ -11,6 +11,14 @@ namespace Facturio.Creation
         public GabaritCreateurLogo()
         {
             InitializeComponent();
+            GabaritCreateurController.Gabarits.TitreGabarit = "TestingName";
+            lblTitreFacture.Content = GabaritCreateurController.Gabarits.TitreGabarit;
+        }
+
+        private void btnOuvrir_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            // Dire au controleur de changer de fenêtre
+            GabaritCreateurController.AfficherInterfaceOperationFacture();
         }
     }
 }
