@@ -24,5 +24,47 @@ namespace Facturio.Factures
             Titre = "Opérer la facture";
         }
 
+        private void ViderFacture()
+        {
+            LaFacture.LstProduitFacture.Clear();
+        }
+
+        private float CalculerSousTotal()
+        {
+            var sousTotal = 0.0F;
+
+            foreach (var pf in LaFacture.LstProduitFacture)
+                sousTotal += pf.Quantite * (float)pf.Produit.Prix;
+
+            return sousTotal;
+        }
+
+        private float CalculerEscompte(float? pourcentage)
+        {
+            var sousTotal = CalculerSousTotal();
+
+            return sousTotal * (float)pourcentage;
+        }
+
+        private float CalculerTps()
+        {
+            const float TPS = 0.05F;
+            float MONTANT_SANS_ESCOMPTE = CalculerSousTotal() - CalculerEscompte(LeClient.Rang.Escompte);
+
+            return MONTANT_SANS_ESCOMPTE * TPS;
+        }
+
+        private float CalculerTvq()
+        {
+            const float TVQ = 0.09975F;
+            float MONTANT_SANS_ESCOMPTE = CalculerSousTotal() - CalculerEscompte(LeClient.Rang.Escompte);
+
+            return MONTANT_SANS_ESCOMPTE * TVQ;
+        }
+
+        private float CalculerTotal()
+        {
+            return CalculerSousTotal() - CalculerEscompte(LeClient.Rang.Escompte) + CalculerTps() + CalculerTvq();
+        }
     }
 }
