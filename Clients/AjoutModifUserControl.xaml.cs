@@ -18,6 +18,9 @@ namespace Facturio.Clients
         const int NOM_PRENOM_MIN = 3;
         const int ADRESSE_MAX = 50;
         const int ADRESSE_MIN = 5;
+        const int CODEPOSTAL_MAX = 6;
+        const int TELEPHONE_MAX = 10;
+        const int DESCRIPTION_MAX = 150;
         public static Label LblTxtNoClient { get; set; } = new Label();
         public static Label LblFormTitle { get; set; } = new Label();
         public static TextBox TxtNom { get; set; } = new TextBox();
@@ -32,7 +35,7 @@ namespace Facturio.Clients
         public static RadioButton RdbFemme { get; set; } = new RadioButton();
         public static Label LblInfo { get; set; } = new Label();
         public static CheckBox CbxActif { get; set; } = new CheckBox();
-        
+        public static Button BtnEnregistrer { get; set; } = new Button();
         #endregion
 
         public AjoutModifUserControl()
@@ -52,8 +55,16 @@ namespace Facturio.Clients
             RdbFemme = rdbFemme;
             LblInfo = lblInfo;
             CbxActif = cbxActif;
-           
-            
+            BtnEnregistrer = btnEnregistrer;
+
+            // Fixer les limites.
+            TxtNom.MaxLength = NOM_PRENOM_MAX;
+            TxtPrenom.MaxLength = NOM_PRENOM_MAX;
+            TxtAdresse.MaxLength = ADRESSE_MAX;
+            TxtCodePostal.MaxLength = CODEPOSTAL_MAX;
+            TxtTelephone.MaxLength = TELEPHONE_MAX;
+            TxtDescription.MaxLength = DESCRIPTION_MAX;
+
         }
 
         #region Méthodes
@@ -91,6 +102,7 @@ namespace Facturio.Clients
         private void btnViderChamps_Click(object sender, RoutedEventArgs e)
         {
             ViderChamps();
+            BtnEnregistrer.IsEnabled = false;
 
         }
         private void btnRetour_Click(object sender, RoutedEventArgs e)
@@ -222,6 +234,7 @@ namespace Facturio.Clients
             CboRang.SelectedIndex = 0;
             RdbFemme.IsChecked = false;
             RdbHomme.IsChecked = false;
+            
         }
         private bool ValiderTelephone()
         {
@@ -242,18 +255,25 @@ namespace Facturio.Clients
             }
             return false;
         }
-        #endregion
-
         private void cbxActif_Checked(object sender, RoutedEventArgs e)
         {
             //ClientsController.LeClient.EstActif = true;
         }
-   
         private void cbxActif_Unchecked(object sender, RoutedEventArgs e)
         {
             ClientsController.LeClient.EstActif = false;
         }
 
-     
+
+
+        #endregion
+
+        private void txtNom_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (TxtNom.Text.ToString().Length > 0)
+                BtnEnregistrer.IsEnabled = true;
+            else
+                BtnEnregistrer.IsEnabled = false;
+        }
     }
 }

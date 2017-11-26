@@ -75,7 +75,7 @@ namespace Facturio.Clients
             if (status == 0) // Actif
             {
                 var result = from c in client
-                where c.EstActif == true && c.Nom.Contains(filter) || c.NoClient.Contains(filter)
+                where c.EstActif == true && (c.Nom.Contains(filter) || c.NoClient.Contains(filter))
                 orderby c.NoClient ascending
                 select c;
 
@@ -84,7 +84,7 @@ namespace Facturio.Clients
             else if(status == 1) // Inactif
             {
                 var result = from c in client
-                             where c.EstActif == false && c.Nom.Contains(filter) || c.NoClient.Contains(filter) 
+                             where c.EstActif == false && (c.Nom.Contains(filter) || c.NoClient.Contains(filter)) 
                              orderby c.NoClient ascending
                              select c;
 

@@ -71,7 +71,7 @@
         <Label Name="txtNoClient" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"  Style="{StaticResource styleLabel}"  />
 
         <Label Name="lblNom" Grid.Row="2" Grid.Column="1"  Content="Nom" Style="{StaticResource styleLabel}" />
-        <TextBox Name="txtNom" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"  />
+        <TextBox Name="txtNom" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" TextChanged="txtNom_TextChanged"  />
 
         <Label Name="lblPrenom" Grid.Row="3" Grid.Column="1"  Content="Prénom" Style="{StaticResource styleLabel}" />
         <TextBox Name="txtPrenom" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"  />
