@@ -6,6 +6,11 @@
              xmlns:local="clr-namespace:Facturio.Factures"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.DataContext>
+        <local:AssignerClientController/>
+    </UserControl.DataContext>
+
     <Grid VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -34,7 +39,7 @@
                           Grid.Column="0"
                           Grid.ColumnSpan="6"
                           Grid.RowSpan="4">
-            <DataGrid ItemsSource="{Binding Clients}" Name="dtgAfficheClient" 
+            <DataGrid ItemsSource="{Binding Clients}" SelectionMode="Single" Name="dtgAfficheClient" 
                                       BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
                                       AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" CanUserDeleteRows="False" Margin="40 0 40 10">
                 <DataGrid.Columns>
@@ -53,8 +58,8 @@
         </Grid>
         <DockPanel Grid.Row="5"
                    Grid.ColumnSpan="10">
-            <Button Margin="10,0,0,10" Content="Assigner" Name="btnAssigner" IsEnabled="False" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100"  />
-            <Button Margin="0,0,10,10" Content="Retour" Name="btnRetour" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100"  />
+            <Button Margin="10,0,0,10" Content="Assigner" Name="btnAssigner" IsEnabled="True" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100" Click="btnAssigner_Click" />
+            <Button Margin="0,0,10,10" Content="Retour" Name="btnRetour" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnRetour_Click" />
         </DockPanel>
     </Grid>
 </UserControl>

@@ -12,26 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Facturio.Rapports.Vues
+namespace Facturio.Factures
 {
     /// <summary>
-    /// Logique d'interaction pour DetailsVenteProduit.xaml
+    /// Logique d'interaction pour AssignerClientFacture.xaml
     /// </summary>
-    public partial class DetailsVenteProduit : Window
+    public partial class AssignerClientFacture : Window
     {
-        public DetailsVenteProduit()
+        public AssignerClientFacture()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

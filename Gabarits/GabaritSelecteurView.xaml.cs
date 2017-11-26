@@ -11,6 +11,7 @@ namespace Facturio.Gabarits
         public GabaritSelecteurView()
         {
             InitializeComponent();
+            DataContext = new GabaritSelecteurViewModel();
 
             LsbGabarits.SelectionChanged += VideListe;
         }

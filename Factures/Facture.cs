@@ -10,6 +10,7 @@ using Facturio.Produits;
 using Facturio.ProduitsFactures;
 using System.Collections.ObjectModel;
 using Facturio.RapportsFactures;
+using Facturio.Rapports.Entities;
 
 namespace Facturio.Factures
 {
@@ -31,7 +32,7 @@ namespace Facturio.Factures
         {
             LeClient = client;
             Date = date;
-            LstProduitFacture = new List<ProduitFacture>();
+            LstProduitFacture = new ObservableCollection<ProduitFacture>();
         }
 
         public override bool Equals(object obj)

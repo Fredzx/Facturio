@@ -5,19 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:creation="clr-namespace:Facturio.Creation"
              mc:Ignorable="d">
-    <!-- DataContext -->
-    <UserControl.DataContext>
-        <creation:GabaritCreateurViewModel />
-    </UserControl.DataContext>
-    
     <!-- Styles spécifiques aux éléments de ce UserControl -->
     <UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="Width" Value="100" />
             <Setter Property="Height" Value="30" />
         </Style>
-
-        <creation:BooleanToVisibilityConverter x:Key="converter" />
     </UserControl.Resources>
     
     <Grid>
@@ -61,7 +54,6 @@
 
                 <ScrollViewer VerticalScrollBarVisibility="Visible">
                     <ItemsControl
-                        x:Name="ItcCriteres"
                         ItemsSource="{Binding GabaritCriteres}"
                         BorderThickness="0">
                         <ItemsControl.ItemsPanel>
@@ -72,12 +64,27 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <DockPanel LastChildFill="True" Margin="0, 0, 6, 6">
+                                    <DockPanel.Resources>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="Width" Value="30" />
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                            <Setter Property="VerticalContentAlignment" Value="Center" />
+                                            <Setter Property="Margin" Value="0, 0, 6, 0" />
+                                            <Setter Property="MaxLength" Value="3" />
+                                        </Style>
+                                    </DockPanel.Resources>
+                                    
                                     <Button Content="X"
                                             DockPanel.Dock="Right" VerticalAlignment="Center" Width="20" Height="20"
                                             Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.SupprimeCritere}"
                                             CommandParameter="{Binding}" />
-                                    <CheckBox Content="{Binding Critere.Titre}" IsChecked="{Binding EstUtilise, Mode=TwoWay}" />
-                                    <!-- Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" -->
+                                    <TextBox DockPanel.Dock="Right" Text="{Binding Position, StringFormat={}{0:#}}" />
+                                    <TextBox DockPanel.Dock="Right" Text="{Binding Largeur, StringFormat={}{0:#}}" />
+                                    <CheckBox DockPanel.Dock="Left"
+                                              Content="{Binding Critere.Titre}"
+                                              IsChecked="{Binding EstUtilise, Mode=TwoWay}"
+                                              Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.AfficheColonne}"
+                                              CommandParameter="{Binding RelativeSource={RelativeSource Self}}" />
                                 </DockPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
@@ -86,8 +93,7 @@
             </DockPanel>
         </GroupBox>
 
-        <!-- <GridSplitter Grid.Column="1" Background="DimGray" Width="1" Panel.ZIndex="1" /> -->
-
+        <!-- Le gabarit de facture -->
         <GroupBox Header="Aperçu du gabarit de facture" Grid.Column="2" Margin="5, 5, 10, 5" Padding="10">
             <DockPanel LastChildFill="True">
                 <StackPanel>
@@ -103,14 +109,10 @@
                 </StackPanel>
 
                 <DataGrid
-                    x:Name="DtgGabarit"
-                    ItemsSource="{Binding GabaritCriteres}"
-                    Margin="0, 5, 0, 10">
-
-                    
-                </DataGrid>
+                    creation:DataGridTextColumnsBehavior.BindableColumns="{Binding Colonnes}"
+                    CanUserSortColumns="False"
+                    Margin="0, 5, 0, 10" />
             </DockPanel>
         </GroupBox>
     </Grid>
 </UserControl>
-

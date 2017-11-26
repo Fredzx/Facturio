@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 using Facturio.Base;
+using Facturio.Factures;
 
 namespace Facturio.Gabarits
 {
@@ -24,15 +25,13 @@ namespace Facturio.Gabarits
 
         #endregion
 
-        #region Constructeur
+        #region Constructeurs
 
         public GabaritSelecteurViewModel()
         {
             try
             {
-                Gabarits = new ObservableCollection<Gabarit>(
-                HibernateGabaritService.RetrieveAllOrderedByCreationDateDesc()
-                );
+                Gabarits = new ObservableCollection<Gabarit>(HibernateGabaritService.RetrieveAllOrderedByCreationDateDesc());
             }
             catch (Exception)
             {
@@ -42,18 +41,7 @@ namespace Facturio.Gabarits
 
             Titre = "Gabarits";
 
-            OuvrirFacture = new RelayCommand(parameter =>
-            {
-                try
-                {
-                    OuvrirFenetreFacture();
-                }
-                catch (NotImplementedException)
-                {
-                    MessageBox.Show("Cette fonctionalité n'est pas encore implémentée.", "Oups!", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-            }, parameter => GabaritSelectionne != null);
-
+            OuvrirFacture = new RelayCommand(OuvrirFenetreFacture, parameter => GabaritSelectionne != null);
             SupprimerGabarit = new RelayCommand(SupprimeGabarit, parameter => GabaritSelectionne != null);
         }
 
@@ -61,11 +49,9 @@ namespace Facturio.Gabarits
 
         #region Méthodes
 
-        private void OuvrirFenetreFacture()
+        private void OuvrirFenetreFacture(object parameter)
         {
-            // TODO: Ouvrir la fenêtre de la création de facture
-            // TODO: Faire un petit gestionnaire pour ouvrir/fermer des fenêtres
-            throw new NotImplementedException();
+            new OpererFacture((Gabarit)parameter).ShowDialog();
         }
 
         private void SupprimeGabarit(object parameter)

@@ -59,7 +59,7 @@
                     
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Produit" Width="1*" Binding="{Binding Produit.Nom}"/>
-                        <DataGridTextColumn Header="Nb fois vendu" Width="1*" Binding="{Binding Quantite}" />
+                        <DataGridTextColumn Header="Nb fois vendu" Width="1*" Binding="{Binding NbFoisVendu}" />
                         <DataGridTextColumn Header="Prix de vente" Width="1*" Binding="{Binding Produit.Prix}"/>
                         <DataGridTextColumn Header="Total" Width="1*" Binding="{Binding SousTotal}"/>
                     </DataGrid.Columns>

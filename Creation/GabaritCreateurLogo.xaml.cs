@@ -52,5 +52,11 @@ namespace Facturio.Creation
                 }
             }
         }
+
+        private void btnOuvrir_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            // Dire au controleur de changer de fenêtre
+            GabaritCreateurController.AfficherInterfaceOperationFacture();
+        }
     }
 }

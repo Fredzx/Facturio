@@ -9,6 +9,7 @@ using Facturio.Rapports.Entities;
 using NHibernate.Transform;
 using Facturio.Clients;
 using MySql.Data.MySqlClient;
+using System;
 
 namespace Facturio.Rapports.Hibernate
 {
@@ -22,12 +23,12 @@ namespace Facturio.Rapports.Hibernate
             return session.Query<Rapport>().ToList();
         }
 
-        public static List<Rapport> Retrieve(int idRapport)
+        public static List<Rapport> Retrieve(DateTime dateRapport)
         {
             var rapport = session.Query<Rapport>().AsQueryable();
 
             var result = from r in rapport
-                         where r.IdRapport == idRapport
+                         where r.Date == dateRapport
                          select r;
 
             return result.ToList();

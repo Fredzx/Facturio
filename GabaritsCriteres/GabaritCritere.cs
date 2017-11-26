@@ -30,7 +30,6 @@ namespace Facturio.GabaritsCriteres
             GabaritCritere gabaritCritere = obj as GabaritCritere;
 
             return Gabarit?.Id == gabaritCritere?.Gabarit?.Id && Critere?.Id == gabaritCritere?.Critere?.Id;
-            // return Id == gabaritCritere?.Id;
         }
 
         public override int GetHashCode()

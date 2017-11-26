@@ -5,6 +5,7 @@ using Facturio.Rapports.Hibernate;
 using Facturio.RapportsFactures;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,9 +47,9 @@ namespace Facturio.Rapports.Vues
 
             if (Valider())
             {
-                RFC.LstFacture = HibernateRapportFactureService.RetrieveFacturationCliente(cldDateDebut.SelectedDate.Value,
+                RFC.LstRapportFacture = new ObservableCollection<RapportFacture>(HibernateRapportFactureService.RetrieveFacturationCliente(cldDateDebut.SelectedDate.Value,
                                                        cldDateFin.SelectedDate.Value,
-                                                       (Client)dtgAfficherClient.SelectedItem);
+                                                       (Client)dtgAfficherClient.SelectedItem));
 
                 RFC.LeClient = (Client)dtgAfficherClient.SelectedItem;
                 RFC.Date = DateTime.Now;
@@ -59,22 +60,52 @@ namespace Facturio.Rapports.Vues
         private void btnObtenirRapport_Click(object sender, RoutedEventArgs e)
         {
             RapportFacturationCliente RFC = new RapportFacturationCliente();
-            
+
             if (Valider())
             {
-                RFC.LstFacture = HibernateRapportFactureService.RetrieveFacturationCliente(cldDateDebut.SelectedDate.Value,
+                List<Facture> lstFactureLocal = new List<Facture>(HibernateFactureService.RetrieveFacturationCliente(cldDateDebut.SelectedDate.Value,
                                                                                            cldDateFin.SelectedDate.Value,
-                                                                                           (Client)dtgAfficherClient.SelectedItem);
-
-                RFC.LeClient = (Client)dtgAfficherClient.SelectedItem;
+                                                                                           (Client)dtgAfficherClient.SelectedItem));
                 RFC.Date = DateTime.Now;
 
-                Window detailFacturationCliente = new DetailFacturationCliente(cldDateDebut.SelectedDate.Value, cldDateFin.SelectedDate.Value, (Client)dtgAfficherClient.SelectedItem);
-                detailFacturationCliente.Show();
+                Window detailFacturationCliente = new DetailRapport(RapportController.ConstruireRapportFacture(lstFactureLocal,RFC));
+                // ici, je créer un Rapport en BD, mais SANS sa liste de RapportFacture, Sans cela,
+                // la liste de RapportFacture essaie de faire référence au rapport mais le rapport n'a pas son ID, donc sa plante
+                // C'est bizzare mais ça fonctionne
                 HibernateRapportFacturationCliente.Create(RFC);
-            }
+                detailFacturationCliente.Show();
+                
+                // Après avoir créer le rapport en BD, on a son ID. Maintenant on peut créer les RapportFactures, 
+                RFC.LstRapportFacture = RapportController.ConstruireRapportFacture(lstFactureLocal, RFC);
+                RapportController.InsertRapportFacture(RFC.LstRapportFacture.ToList());
+                RapportController.LstRapport.Add(RFC);
 
+            }
         }
+
+        //public void InsertRapportFacture(List<RapportFacture> lstRF)
+        //{
+        //    foreach (RapportFacture rf in lstRF)
+        //    {
+        //        HibernateRapportFactureService.Create(rf);
+        //    }
+        //}
+        /// <summary>
+        /// Avec les factures et le rapport courant, je créer ma liste de RapportFacture pcq NHibernate ne le fait pas 
+        /// </summary>
+        /// <param name="lstFacture">La liste de facture</param>
+        /// <param name="rapport">Le rapport</param>
+        /// <returns>Une liste de type RapportFacture</returns>
+        //public List<RapportFacture>ConstruireRapportFacture(List<Facture> lstFacture, Rapport rapport)
+        //{
+        //    ObservableCollection<RapportFacture> listRapportFacture = new ObservableCollection<RapportFacture>();
+
+        //    for (int i = 0; i < lstFacture.Count-1; i++)
+        //    {
+        //        listRapportFacture.Add(new RapportFacture(rapport,lstFacture[i]));
+        //    }
+        //    return listRapportFacture.ToList();
+        //}
 
         private bool Valider()
         {

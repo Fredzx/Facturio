@@ -33,32 +33,25 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0"
-              Grid.Row="1"
-              Grid.ColumnSpan="3"
+        <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"
               >
-            <Label Content="Vos Rapports" Margin="20 10 0 0" FontSize="14" FontWeight="Bold"/>
+            <Label Content="Vos Rapports" Margin="20 0 0 0" FontSize="14" FontWeight="Bold"/>
         </Grid>
-        
-        <Grid Grid.Row="2"
+
+        <Grid Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="10"
-            Grid.RowSpan="10">
+            Grid.RowSpan="8">
 
-            <DataGrid ItemsSource="{Binding Rapports}" Name="dtgAfficherRapport" LoadingRow="dtgAfficherRapport_LoadingRow" MouseDoubleClick="dtgAfficherRapport_MouseDoubleClick"
+            <DataGrid ItemsSource="{Binding Rapports}" Name="dtgAfficherRapport" IsReadOnly="True" MouseDoubleClick="dtgAfficherRapport_MouseDoubleClick"
                                     BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
-                                    AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="20,0,20,20">
+                                    AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Margin="20,0,20,0">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Type de rapport" Width="6*" Binding="{Binding TypeRapport}"/>
-                    <DataGridTextColumn Header="Client/Produit" Width="6*" Binding="{Binding Item}"/>
-                    <DataGridTextColumn Header="Date" Width="6*" Binding="{Binding Date}"/>
-
+                    <DataGridTextColumn Header="Type de rapport" Width="1*" Binding="{Binding TypeRapport}"/>
+                    <DataGridTextColumn Header="Objet de rapport" Width="1*" Binding="{Binding Objet}"/>
+                    <DataGridTextColumn Header="Date" Width="1*" Binding="{Binding Date, StringFormat=dd/MM/yyyy/HH:mm:ss}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            
-                
-            
         </Grid>
-              
     </Grid>
 </UserControl>

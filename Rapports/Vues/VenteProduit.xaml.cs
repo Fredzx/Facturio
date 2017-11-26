@@ -27,6 +27,7 @@ namespace Facturio.Rapports.Vues
     public partial class VenteProduit : UserControl
     {
         ObservableCollection<Produit> LstProduit { get; set; } = ProduitsController.Produits;
+        ObservableCollection<Facture> lstFacture = new ObservableCollection<Facture>();
 
         public VenteProduit()
         {
@@ -39,27 +40,43 @@ namespace Facturio.Rapports.Vues
 
         private void btnObtenirRapport_Click(object sender, RoutedEventArgs e)
         {
-            Produit produit = (Produit)dtgAfficheProduit.SelectedItem;
-
-            List<ProduitFacture> lstProduitFacture = HibernateProduitFacturesService.RetrieveProduit(produit.Id);
-            List<RapportFacture> lstRapportFacture = HibernateRapportFactureService.RetrieveVenteProduit(
-                                                                                                cldDateDebut.SelectedDate.Value,
-                                                                                                cldDateFin.SelectedDate.Value,
-                                                                                                lstProduitFacture,
-                                                                                                produit.Id);
-
-            RapportVenteProduit RVP = new RapportVenteProduit();
-            RVP.Date = DateTime.Now;
-            RVP.LstFacture = lstRapportFacture;
-            
             if (Valider())
             {
-                Window detailFacturationCliente = new DetailFacturationCliente(cldDateDebut.SelectedDate.Value, cldDateFin.SelectedDate.Value, (Produit)dtgAfficheProduit.SelectedItem);
-                detailFacturationCliente.Show();
+
+                Produit produit = (Produit)dtgAfficheProduit.SelectedItem;
+                List<Facture> LstFacture = HibernateFactureService.RetrieveBetweenDates(cldDateDebut.SelectedDate.Value,
+                                                                                        cldDateFin.SelectedDate.Value);
+
+                List<Facture> LstFactureFiltrer = FiltrerListeSelonProduit(LstFacture, (Produit)dtgAfficheProduit.SelectedItem);
+
+                RapportVenteProduit RVP = new RapportVenteProduit();
+                RVP.Date = DateTime.Now;
                 Hibernate.HibernateRapportVenteProduit.Create(RVP);
+
+                RVP.LstRapportFacture = RapportController.ConstruireRapportFacture(LstFactureFiltrer, RVP);
+
+                Window detailFacturationCliente = new DetailRapport(RVP.LstRapportFacture.ToList());
+                detailFacturationCliente.Show();
+                RapportController.InsertRapportFacture(RVP.LstRapportFacture.ToList());
+                RapportController.LstRapport.Add(RVP);
             }
         }
 
+        public List<Facture> FiltrerListeSelonProduit(List<Facture> lstFacture, Produit produit)
+        {
+            List<Facture> lstFactureFiltre = new List<Facture>();
+
+            foreach (Facture f in lstFacture)
+            {
+                foreach (ProduitFacture pf in f.LstProduitFacture)
+                {
+                    if (pf.Produit.Id == produit.Id)
+                        lstFactureFiltre.Add(f);
+                }
+            }
+
+            return lstFactureFiltre;
+        }
 
         public List<Facture> RetrouverListeFacture(DateTime dateDebut, DateTime dateFin, Produit produit)
         {

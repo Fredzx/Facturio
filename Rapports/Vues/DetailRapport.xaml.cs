@@ -4,6 +4,7 @@ using Facturio.Produits;
 using Facturio.ProduitsFactures;
 using Facturio.Rapports.Entities;
 using Facturio.Rapports.Hibernate;
+using Facturio.RapportsFactures;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,7 +25,7 @@ namespace Facturio.Rapports.Vues
     /// <summary>
     /// Logique d'interaction pour DetailFacturationCliente.xaml
     /// </summary>
-    public partial class DetailFacturationCliente : Window
+    public partial class DetailRapport : Window
     {
         const double TPS = 0.09975;
         const double TVQ = 0.05000;
@@ -33,33 +34,44 @@ namespace Facturio.Rapports.Vues
         public DateTime DateFin { get; set; }
         public int? IdClient { get; set; }
        public Produit Produit { get; set; }
-        public ObservableCollection<Facture> LstFacture { get; set; }
+        public ObservableCollection<RapportFacture> LstFacture { get; set; }
         public ObservableCollection<ProduitFacture> LstProduitFacture { get; set; }
         public int compteur = 0;
         public DataGrid DtgProduit { get; set; }
         public decimal Total { get; set; }
 
-        public DetailFacturationCliente(DateTime dateDebut, DateTime dateFin, Client leClient)
+        //public DetailFacturationCliente(DateTime dateDebut, DateTime dateFin, Client leClient)
+        //{
+        //    InitializeComponent();
+
+        //    DtgProduit = dtgProduits;
+        //    DateDebut = dateDebut;
+        //    DateFin = dateFin;
+        //    LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveFacturationCliente(dateDebut, DateFin, leClient));
+
+        //    RafraichirData(true);
+        //}
+
+        public DetailRapport(List<RapportFacture> lstFacture)
         {
             InitializeComponent();
 
             DtgProduit = dtgProduits;
-            DateDebut = dateDebut;
-            DateFin = dateFin;
-            LstFacture = new ObservableCollection<Facture>(HibernateFactureService.RetrieveFacturationCliente(dateDebut, DateFin, leClient.IdClient));
-
+            LstFacture = new ObservableCollection<RapportFacture>(lstFacture);
             RafraichirData(true);
         }
 
-        public DetailFacturationCliente(DateTime dateDebut, DateTime dateFin, Produit leProduit)
+        public DetailRapport(Rapport rapport)
         {
             InitializeComponent();
 
+            if (rapport is RapportSommaire)
+            {
+                
+            }
+
             DtgProduit = dtgProduits;
-            DateDebut = dateDebut;
-            DateFin = dateFin;
-            LstProduitFacture = new ObservableCollection<ProduitFacture>(HibernateProduitFacturesService.RetrieveProduit(leProduit.Id));
-            LstFacture = new ObservableCollection<Facture>(ConstruireFactures());
+            LstFacture = new ObservableCollection<RapportFacture>(rapport.LstRapportFacture);
             RafraichirData(true);
         }
 
@@ -87,7 +99,7 @@ namespace Facturio.Rapports.Vues
         {
             decimal total = 0;
 
-            foreach (ProduitFacture p in LstFacture[compteur].LstProduitFacture)
+            foreach (ProduitFacture p in LstFacture[compteur].Facture.LstProduitFacture)
                 {
                     total += ((decimal)p.Quantite* (decimal)p.Produit.Prix);
                 }
@@ -109,7 +121,7 @@ namespace Facturio.Rapports.Vues
         {
             if (LstFacture != null || LstFacture.Count != 0)
             {
-                DtgProduit.ItemsSource = LstFacture[compteur].LstProduitFacture;
+                DtgProduit.ItemsSource = LstFacture[compteur].Facture.LstProduitFacture;
                 lblNoFacture.Content = (compteur + 1).ToString() + "/" + LstFacture.Count;
                 Total = 0;
 

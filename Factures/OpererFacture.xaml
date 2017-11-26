@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Facturio.Factures"
         mc:Ignorable="d"
-        Title="Opérer la facture" Height="600" Width="800">
+        Title="Opérations sur la facture" Width="700" MinWidth="700" Height="500" MinHeight="500">
     <Grid>
-        <TabControl>
-            <TabItem Header="Opérer">
-                
+        <TabControl Name="tbcOperer">
+            <TabItem Header="Opérations">
+                <local:OpererFactureUserControl />
             </TabItem>
             <TabItem Header="Ajouter un produit">
-                <!--<local:AjoutProduitFacture />-->
+                <local:AjoutProduitFacture />
             </TabItem>
         </TabControl>
     </Grid>

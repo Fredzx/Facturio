@@ -33,8 +33,10 @@
 
         <Image Name="imgLogo" Grid.Column="3" Grid.Row="0" Grid.RowSpan="3"/>
 
+
         <Button Name="btnImporterLogo" Grid.Column="1" Grid.Row="2" Content="Importer un logo ..." Click="btnImporterLogo_Click" />
         <Label Name="lblLogo" Grid.Column="2" Grid.Row="2" />
+
 
         <Grid Background="LightBlue" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3"/>
 
