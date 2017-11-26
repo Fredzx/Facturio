@@ -1,40 +1,35 @@
 ﻿using Facturio.Factures;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
+using Facturio.Gabarits;
 
 namespace Facturio.Creation
 {
     public class GabaritCreateurController
     {
+        #region Propriétés
         public static Gabarits.Gabarit Gabarits { get; set; } = GabaritCreateurViewModel.Gabarit;
         public static GabaritCreationWindow FntGabCreation { get; set; }
         public static OpererFacture FntOperationFacture { get; set; }
+        #endregion
 
         public GabaritCreateurController()
         {
 
-
-
-
         }
 
+        #region Méthodes
         public static void AfficherInterfaceCreationSuivante()
         {
             FntGabCreation = new GabaritCreationWindow();
             FntGabCreation.Show();
         }
-
-
+        public static void EnregistrerGabarit()
+        {
+            HibernateGabaritService.Create(Gabarits);
+        }
         public static void FermerFenetreCreationLook()
         {
             FntGabCreation.Close();
         }
-
-      
         public static void AfficherInterfaceOperationFacture()
         {
             FntGabCreation.Close();
@@ -42,5 +37,6 @@ namespace Facturio.Creation
             FntOperationFacture.ShowDialog();
 
         }
-	}
+        #endregion
+    }
 }

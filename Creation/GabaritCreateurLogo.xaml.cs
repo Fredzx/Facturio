@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Drawing;
-using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 
@@ -19,26 +17,21 @@ namespace Facturio.Creation
 
         private void btnEnregistrer_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            // Enregistrer le gabarit en BD.
+            // Setter le logo
+            // GabaritCreateurController.Gabarits.Logo
 
-            GabaritCreateurController.Gabarits.TitreGabarit = txtTitreFacture.Text;
+            // Setter le Titre
+            GabaritCreateurController.Gabarits.TitreGabarit = "Test1";
 
 
-           // GabaritCreateurController.Gabarits.
-
+            // Envoyer au controlleur.
+            GabaritCreateurController.EnregistrerGabarit();
         }
-
         private void btnOuvrir_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            // Fermer la fenêtre active (celle du look du gabarit)
-            GabaritCreateurController.FermerFenetreCreationLook();
-
-            // Ouvrir la fenêtre de gestion de la facture.
-            GabaritCreateurController.OuvrirFenetreGestion();
-
-
+            // Dire au controleur de changer de fenêtre
+            GabaritCreateurController.AfficherInterfaceOperationFacture();
         }
-
         private void btnImporterLogo_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
@@ -51,12 +44,6 @@ namespace Facturio.Creation
                     imgLogo.Source = new BitmapImage(new Uri(dlg.FileName));
                 }
             }
-        }
-
-        private void btnOuvrir_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            // Dire au controleur de changer de fenêtre
-            GabaritCreateurController.AfficherInterfaceOperationFacture();
         }
     }
 }

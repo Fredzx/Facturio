@@ -7,7 +7,7 @@
         xmlns:ucCreation="clr-namespace:Facturio.Creation"
         
         mc:Ignorable="d"
-        Title="GabaritCreationWindow" Height="550" Width="650">
+        Title="Apperçu de la facture" Height="750" Width="950">
     <Grid>
 
         <ucCreation:GabaritCreateurLogo />

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Creation"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="600">
+             d:DesignHeight="600" d:DesignWidth="900">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -19,30 +19,37 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"  />
             <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="8" />
-            <RowDefinition Height="12"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*" />
-            <RowDefinition Height="20" />
+            <RowDefinition Height="30" />
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
 
 
-        <Label Name="lblTitreFacture" Grid.Column="1" Grid.Row="1" Content="Titre de la facture"/>
-        <TextBox Name="txtTitreFacture" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" />
-
-        <Image Name="imgLogo" Grid.Column="3" Grid.Row="0" Grid.RowSpan="3"/>
+        <Label Name="lblNoFacture" Grid.Column="1" Grid.Row="0" Content="No Facture : #2444"/>
+        <GroupBox Header="Informations du client" Grid.Column="3" Grid.RowSpan="3"/>
 
 
-        <Button Name="btnImporterLogo" Grid.Column="1" Grid.Row="2" Content="Importer un logo ..." Click="btnImporterLogo_Click" />
-        <Label Name="lblLogo" Grid.Column="2" Grid.Row="2" />
 
 
-        <Grid Background="LightBlue" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3"/>
 
-        <Button Name="btnEnregistrer" Grid.Column="2" Grid.Row="7" Content="Enregistrer" Width="150" Height="30" Margin="35,0" VerticalAlignment="Top" Click="btnEnregistrer_Click" />
-        <Button Name="btnOuvrir" Grid.Column="3" Grid.Row="7" Content="Ouvrir" Width="150" Click="btnOuvrir_Click" Margin="35,0" />
+        <Image Name="imgLogo" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" />
 
+        <Rectangle Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Margin="30" Fill="LightBlue"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22px">Votre Facture</TextBlock>
+
+
+
+
+
+        <Button Name="btnImporterLogo" Grid.Column="1" Grid.Row="4" Content="Importer un logo ..." Click="btnImporterLogo_Click" />
+        <Label Name="lblLogo" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left"/>
+
+        <StackPanel Grid.Column="3" Grid.Row="4"
+                    Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="btnEnregistrer" Content="Enregistrer" Width="150" Click="btnEnregistrer_Click" />
+            <Button Name="btnOuvrir"  Content="Ouvrir" Width="150" Click="btnOuvrir_Click" Margin="10,0,0,0" />
+        </StackPanel>
 
     </Grid>
 </UserControl>

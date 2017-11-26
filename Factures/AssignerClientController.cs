@@ -17,7 +17,7 @@ namespace Facturio.Factures
 
         public static void LiveFiltering(string filter)
         {
-            LstClient = new ObservableCollection<Client>(HibernateClientService.RetrieveFilter(filter, 2));
+            ClientsController.LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveFilter(filter, 2));
 
         }
 
