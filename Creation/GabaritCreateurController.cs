@@ -1,5 +1,7 @@
 ﻿using Facturio.Factures;
 using Facturio.Gabarits;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Facturio.Creation
 {
@@ -9,11 +11,12 @@ namespace Facturio.Creation
         public static Gabarits.Gabarit Gabarits { get; set; } = GabaritCreateurViewModel.Gabarit;
         public static GabaritCreationWindow FntGabCreation { get; set; }
         public static OpererFacture FntOperationFacture { get; set; }
+        
         #endregion
 
         public GabaritCreateurController()
         {
-
+            
         }
 
         #region Méthodes

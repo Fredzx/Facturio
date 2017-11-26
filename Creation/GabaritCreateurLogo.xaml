@@ -10,7 +10,7 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />
-            <ColumnDefinition Width="120" />
+            <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition Width="20" />
@@ -18,7 +18,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="50"  />
-            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
             <RowDefinition Height="30"/>
             <RowDefinition Height="*" />
             <RowDefinition Height="30" />
@@ -26,7 +26,8 @@
         </Grid.RowDefinitions>
 
 
-        <Label Name="lblNoFacture" Grid.Column="1" Grid.Row="0" Content="No Facture : #2444"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" FontSize="18px">Facture #0000</TextBlock>
+
         <GroupBox Header="Informations du client" Grid.Column="3" Grid.RowSpan="3"/>
 
 
@@ -35,6 +36,18 @@
 
         <Image Name="imgLogo" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" />
 
+
+
+        <DataGrid Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" 
+            ItemsSource="{Binding LstObCritere}" Name="dtgCritere" 
+                        BorderBrush="Black"  IsReadOnly="True"
+                        AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Critères" Width="4*" Binding="{Binding Titre}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+
         <Rectangle Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Margin="30" Fill="LightBlue"/>
         <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22px">Votre Facture</TextBlock>
 
@@ -42,7 +55,7 @@
 
 
 
-        <Button Name="btnImporterLogo" Grid.Column="1" Grid.Row="4" Content="Importer un logo ..." Click="btnImporterLogo_Click" />
+        <Button Width="150" Name="btnImporterLogo" Grid.Column="1" Grid.Row="4" Content="Importer un logo ..." Click="btnImporterLogo_Click" />
         <Label Name="lblLogo" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left"/>
 
         <StackPanel Grid.Column="3" Grid.Row="4"

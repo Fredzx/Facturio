@@ -1,6 +1,6 @@
 ﻿using FluentNHibernate.Mapping;
 
-namespace Facturio.Criteres
+namespace Facturio.GabaritsCriteres
 {
     public class TypeCritereMap : ClassMap<TypeCritere>
     {

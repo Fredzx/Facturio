@@ -1,4 +1,4 @@
-﻿namespace Facturio.Criteres
+﻿namespace Facturio.GabaritsCriteres
 {
     public class TypeCritere
     {

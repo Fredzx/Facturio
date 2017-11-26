@@ -1,6 +1,6 @@
 ﻿using System;
 using FluentNHibernate.Mapping;
-using Facturio.Criteres;
+using Facturio.GabaritsCriteres;
 using Facturio.GabaritsCriteres;
 
 namespace Facturio.Gabarits

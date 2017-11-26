@@ -2,7 +2,7 @@
 using Facturio.Gabarits;
 using Facturio.GabaritsCriteres;
 
-namespace Facturio.Criteres
+namespace Facturio.GabaritsCriteres
 {
     public class CritereMap : ClassMap<Critere>
     {

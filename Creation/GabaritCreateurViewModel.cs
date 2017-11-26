@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using Facturio.Base;
-using Facturio.Criteres;
+using Facturio.GabaritsCriteres;
 using Facturio.Gabarits;
 using Facturio.GabaritsCriteres;
 using System.Windows.Controls;
