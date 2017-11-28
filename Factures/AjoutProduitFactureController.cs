@@ -67,6 +67,7 @@ namespace Facturio.Factures
                     OpererFactureUserControl.DtgFacture.Items.Refresh();
                 }
             }
+            OpererFactureController.SousTotal = OpererFactureController.CalculerSousTotal().ToString();
             //TODO: Maintenant, je supprime la quantité dans la liste
             //      Il faut que je supprime la quantité en BD quand on confirme la facture
         }

@@ -16,10 +16,15 @@ namespace Facturio.Factures
     public partial class OpererFactureUserControl : System.Windows.Controls.UserControl
     {
         public static System.Windows.Controls.DataGrid DtgFacture;
+        public static TextBlock TxtPrenom { get; set; }
         public OpererFactureUserControl()
         {
             InitializeComponent();
             DtgFacture = dtgFacture;
+            TxtPrenom = txtPrenom;
+            //txtPrenom.DataContext = OpererFactureController.LeClient;
+            //txtNom.DataContext = OpererFactureController.LeClient;
+            //txtEscompte.DataContext = OpererFactureController.LeClient.Rang;
             CreerFacture();
         }
 
@@ -163,6 +168,23 @@ namespace Facturio.Factures
                 default:
                     break;
             }
+        }
+
+        private void BtnConvertirPdf_Click(object sender, RoutedEventArgs e)
+        {
+            OpererFactureController.GenererPdf("Facture_Test", "");
+		}
+		
+        private void btn_AssocierClient_Click(object sender, RoutedEventArgs e)
+        {
+            AssignerClientFacture a = new AssignerClientFacture();
+            a.ShowDialog();
+        }
+
+        private void ViderFacture(object sender, RoutedEventArgs e)
+        {
+            OpererFactureController.LaFacture.LstProduitFacture.Clear();
+            dtgFacture.Items.Refresh();
         }
     }
 }
