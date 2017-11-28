@@ -42,14 +42,14 @@ namespace Facturio.Rapports.Vues
         {
             if (Valider())
             {
-
-                Produit produit = (Produit)dtgAfficheProduit.SelectedItem;
+                RapportVenteProduit RVP = new RapportVenteProduit();
+                RVP.Produit = (Produit)dtgAfficheProduit.SelectedItem;
                 List<Facture> LstFacture = HibernateFactureService.RetrieveBetweenDates(cldDateDebut.SelectedDate.Value,
                                                                                         cldDateFin.SelectedDate.Value);
 
-                List<Facture> LstFactureFiltrer = FiltrerListeSelonProduit(LstFacture, (Produit)dtgAfficheProduit.SelectedItem);
+                List<Facture> LstFactureFiltrer = FiltrerListeSelonProduit(LstFacture, RVP.Produit);
 
-                RapportVenteProduit RVP = new RapportVenteProduit();
+                
                 RVP.Date = DateTime.Now;
                 Hibernate.HibernateRapportVenteProduit.Create(RVP);
 

@@ -30,14 +30,16 @@ namespace Facturio.Rapports.Vues
         const double TPS = 0.09975;
         const double TVQ = 0.05000;
 
-        public DateTime DateDebut { get; set; }
-        public DateTime DateFin { get; set; }
+        public DateTime? DateDebut { get; set; }
+        public DateTime? DateFin { get; set; }
         public int? IdClient { get; set; }
         public Produit Produit { get; set; }
         public ObservableCollection<RapportFacture> LstFacture { get; set; }
         public ObservableCollection<ProduitFacture> LstProduitFacture { get; set; }
         public int compteur = 0;
         public DataGrid DtgProduit { get; set; }
+        public string ObjetRapport { get; set; }
+
         public decimal Total { get; set; }
 
         //public DetailFacturationCliente(DateTime dateDebut, DateTime dateFin, Client leClient)
@@ -58,6 +60,8 @@ namespace Facturio.Rapports.Vues
 
             DtgProduit = dtgProduits;
             LstFacture = new ObservableCollection<RapportFacture>(lstFacture);
+            DateDebut = TrouverIntervalleDate(LstFacture.ToList(), true);
+            DateFin = TrouverIntervalleDate(LstFacture.ToList(), false);
             RafraichirData(true);
         }
 
@@ -70,11 +74,36 @@ namespace Facturio.Rapports.Vues
                 
             }
 
-
-
             DtgProduit = dtgProduits;
             LstFacture = new ObservableCollection<RapportFacture>(rapport.LstRapportFacture);
+            DateDebut = TrouverIntervalleDate(LstFacture.ToList(), true);
+            DateFin = TrouverIntervalleDate(LstFacture.ToList(), false);
+            lblInfoRapport.Content = "Voici les factures entre le " + DateDebut + " et " + DateFin;
             RafraichirData(true);
+        }
+
+        private DateTime? TrouverIntervalleDate(List<RapportFacture> lstFacture, bool trouverBorneInferieur)
+        {
+            DateTime? date = lstFacture[0].Facture.Date;
+
+            // Si vrai, on veut trouver la borne INFÉRIEUR de l'intervalle des factures
+            if (trouverBorneInferieur)
+            {
+                foreach (RapportFacture rf in lstFacture)
+                {
+                    if (rf.Facture.Date < date)
+                        date = rf.Facture.Date;
+                }
+            }
+            else
+            {
+                foreach (RapportFacture rf in lstFacture)
+                {
+                    if (rf.Facture.Date > date)
+                        date = rf.Facture.Date;
+                }
+            }
+            return date;
         }
 
         private void Button_Click_Precedent(object sender, RoutedEventArgs e)
@@ -102,9 +131,9 @@ namespace Facturio.Rapports.Vues
             decimal total = 0;
 
             foreach (ProduitFacture p in LstFacture[compteur].Facture.LstProduitFacture)
-                {
-                    total += ((decimal)p.Quantite* (decimal)p.Produit.Prix);
-                }
+            {
+                total += ((decimal)p.Quantite* (decimal)p.Produit.Prix);
+            }
 
             return total;
         }
@@ -121,7 +150,7 @@ namespace Facturio.Rapports.Vues
 
         public void RafraichirData(bool estPremiereOuverture)
         {
-            if (LstFacture != null || LstFacture.Count != 0)
+            if (LstFacture != null && LstFacture.Count != 0)
             {
                 DtgProduit.ItemsSource = LstFacture[compteur].Facture.LstProduitFacture;
                 lblNoFacture.Content = (compteur + 1).ToString() + "/" + LstFacture.Count;
@@ -139,6 +168,8 @@ namespace Facturio.Rapports.Vues
             {
                 lblInfo.Foreground = Brushes.Red;
                 lblInfo.Content = "Aucune facture pour la date du " + DateDebut + " au " + DateFin;
+                btnPrecedent.IsEnabled = false;
+                btnSuivant.IsEnabled = false;
             }
         }
 
