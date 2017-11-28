@@ -1,5 +1,5 @@
 ﻿using Facturio.Gabarits;
-using Facturio.Criteres;
+using Facturio.GabaritsCriteres;
 
 namespace Facturio.GabaritsCriteres
 {

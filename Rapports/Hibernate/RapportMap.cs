@@ -6,6 +6,7 @@ using System.Collections;
 using System.ComponentModel;
 using Facturio.Rapports.Entities;
 using Facturio.RapportsFactures;
+using Facturio.Produits;
 
 namespace Facturio.Rapports.Hibernate
 {
@@ -91,6 +92,14 @@ namespace Facturio.Rapports.Hibernate
             Table("RapportsVentesProduit");
             LazyLoad();
             KeyColumn("idRapportVenteProduit");
+
+            /*References<Produit>(x => x.Produit)
+                .Class<Produit>()
+                .Access.Property()
+                .LazyLoad(Laziness.False)
+                .Cascade.None()
+                .Columns("idProduit");*/
+
         }
     }
 

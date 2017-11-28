@@ -36,6 +36,9 @@ namespace Facturio.Clients
                 AjoutModifUserControl.LblTxtNoClient.Content = "En cours de génération...";
                 AjoutModifUserControl.ViderChamps();
                 AjoutModifUserControl.LblInfo.Content = "";
+                AjoutModifUserControl.CbxActif.IsChecked = true;
+                AjoutModifUserControl.BtnEnregistrer.IsEnabled = false;
+                AjoutModifUserControl.CbxActif.IsEnabled = false;
             }
         }
     }

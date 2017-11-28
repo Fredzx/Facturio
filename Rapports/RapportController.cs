@@ -33,13 +33,13 @@ namespace Facturio.Rapports
             Titre = "Rapports";
         }
 
-        public static void CreerPDF(Rapport rapport)
+        public static void CreerPDF(Rapport rapport, string nomPDF)
         {
             //string nomClient = rapport.LstFacture[0].Facture.LeClient.Nom;
             //string prenomClient = rapport.LstFacture[0].Facture.LeClient.Prenom;
             //string header = "Factures de " + prenomClient + " " + nomClient;
             
-            FileStream fs = new FileStream("RapportFacturationCliente.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
+            FileStream fs = new FileStream(nomPDF + ".pdf", FileMode.Create, FileAccess.Write, FileShare.None);
             Document document = new Document();
             PdfWriter writer = PdfWriter.GetInstance(document, fs);
 
@@ -63,9 +63,7 @@ namespace Facturio.Rapports
                 document.Add(tableau);
                 document.NewPage();
             }
-
             document.Close();
-
         }
 
         /// <summary>

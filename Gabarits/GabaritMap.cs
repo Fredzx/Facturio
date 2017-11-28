@@ -1,6 +1,6 @@
 ﻿using System;
 using FluentNHibernate.Mapping;
-using Facturio.Criteres;
+using Facturio.GabaritsCriteres;
 using Facturio.GabaritsCriteres;
 
 namespace Facturio.Gabarits
@@ -27,6 +27,13 @@ namespace Facturio.Gabarits
                 .CustomSqlType("VARCHAR")
                 .Not.Nullable()
                 .Generated.Never();
+
+            Map(x => x.Logo)
+               .Column("logo")
+               .CustomType<string>()
+               .Access.Property()
+               .CustomSqlType("VARCHAR")
+               .Generated.Never();
 
             Map(x => x.DateCreation)
                 .Column("dateCreation")

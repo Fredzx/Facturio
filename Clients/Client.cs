@@ -4,6 +4,7 @@ namespace Facturio.Clients
 {
     public class Client
     {
+        #region Propriétés
         public virtual int? IdClient { get; set; } = null;
         public virtual string NoClient { get; set; } = string.Empty;
         public virtual string Prenom { get; set; } = string.Empty;
@@ -16,6 +17,7 @@ namespace Facturio.Clients
         public virtual Rang Rang { get; set; }
         public virtual Province Province { get; set; }
         public virtual bool EstActif { get; set; } = true;
+        #endregion
 
         public Client() {}
 
@@ -33,9 +35,8 @@ namespace Facturio.Clients
             Rang = rang;
             Province = province;
             EstActif = estActif;
-
-            // Ici, affecter un UUID au NoClient (pas trop long le UUID, résonable)
         }
+
 
 
         // Pour utiliser NHibernate, il faut surcharger Equals et GetHashCode.
@@ -55,12 +56,9 @@ namespace Facturio.Clients
 
             return this.IdClient == c.IdClient;
         }
-
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
-
-
     }
 }

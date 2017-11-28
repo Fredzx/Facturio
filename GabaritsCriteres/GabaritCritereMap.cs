@@ -1,4 +1,4 @@
-﻿using Facturio.Criteres;
+﻿using Facturio.GabaritsCriteres;
 using Facturio.Gabarits;
 using FluentNHibernate.Mapping;
 

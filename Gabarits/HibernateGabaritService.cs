@@ -5,7 +5,7 @@ using NHibernate.Linq;
 
 namespace Facturio.Gabarits
 {
-    class HibernateGabaritService
+    public static class HibernateGabaritService
     {
         private static ISession session = NHibernateConnexion.OpenSession();
 

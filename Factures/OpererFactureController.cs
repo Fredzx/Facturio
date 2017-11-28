@@ -10,23 +10,29 @@ namespace Facturio.Factures
 {
     class OpererFactureController : BaseViewModel, IOngletViewModel
     {
-        public static Client LeClient { get; set; }
         public static Facture LaFacture { get; set; }
         public string Titre { get; set; }
+        public static string Total { get { return CalculerTotal().ToString(); } set { Total = value; } }
+        public static string TPS { get { return CalculerTps().ToString(); } set { TPS = value; } }
+        public static string TVQ { get { return CalculerTvq().ToString(); } set { TVQ = value; } }
+        public static string SousTotal { get; set; }
+        public static string Escompte { get { return CalculerEscompte(LaFacture.LeClient.Rang.Escompte).ToString(); } set { Escompte = value; } }
+
         public OpererFactureController()
         {
-            LeClient = new Client();
-            LaFacture = new Facture();
+            LaFacture = new Facture()
+            {
+                LeClient = new Client()
+                {
+                    Rang = new Rang { Escompte = 0.0F }
+                }
+            };
+
             LaFacture.LstProduitFacture = new List<ProduitFacture>();
             Titre = "Opérer la facture";
         }
 
-        private void ViderFacture()
-        {
-            LaFacture.LstProduitFacture.Clear();
-        }
-
-        private float CalculerSousTotal()
+        public static float CalculerSousTotal()
         {
             var sousTotal = 0.0F;
 
@@ -36,7 +42,7 @@ namespace Facturio.Factures
             return sousTotal;
         }
 
-        private float CalculerEscompte(float? pourcentage)
+        public static float CalculerEscompte(float? pourcentage)
         {
             var sousTotal = CalculerSousTotal();
 
@@ -46,25 +52,25 @@ namespace Facturio.Factures
             return sousTotal * (float)pourcentage;
         }
 
-        private float CalculerTps()
+        public static float CalculerTps()
         {
             const float TPS = 0.05F;
-            float MONTANT_SANS_ESCOMPTE = CalculerSousTotal() - CalculerEscompte(LeClient.Rang.Escompte);
+            float MONTANT_SANS_ESCOMPTE = CalculerSousTotal() - CalculerEscompte(OpererFactureController.LaFacture.LeClient.Rang.Escompte);
 
             return MONTANT_SANS_ESCOMPTE * TPS;
         }
 
-        private float CalculerTvq()
+        public static float CalculerTvq()
         {
             const float TVQ = 0.09975F;
-            float MONTANT_SANS_ESCOMPTE = CalculerSousTotal() - CalculerEscompte(LeClient.Rang.Escompte);
+            float MONTANT_SANS_ESCOMPTE = CalculerSousTotal() - CalculerEscompte(OpererFactureController.LaFacture.LeClient.Rang.Escompte);
 
             return MONTANT_SANS_ESCOMPTE * TVQ;
         }
 
-        private float CalculerTotal()
+        public static float CalculerTotal()
         {
-            return CalculerSousTotal() - CalculerEscompte(LeClient.Rang.Escompte) + CalculerTps() + CalculerTvq();
+            return CalculerSousTotal() - CalculerEscompte(OpererFactureController.LaFacture.LeClient.Rang.Escompte) + CalculerTps() + CalculerTvq();
         }
 
         // TODO: Sur le clique du bouton on doit enregistrer la facture et réduire les quantités en BD.

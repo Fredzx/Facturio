@@ -1,0 +1,36 @@
+﻿Validation code pour la validation du client
+{
+	//if (txtPrenom.Text.ToString() != "" && txtPrenom.Text.Length <= NOM_PRENOM_MAX && txtPrenom.Text.Length >= NOM_PRENOM_MIN)
+	//{
+	//    if(txtAdresse.Text.ToString() != "" && txtAdresse.Text.Length <= ADRESSE_MAX && txtAdresse.Text.Length >= ADRESSE_MIN)
+	//    {
+	//        if(cboProvince.SelectedIndex != -1)
+	//        {
+	//            var regexPC = new Regex(@"^[A-Z]\d[A-Z]\d[A-Z]\d$");                           
+	//            if (regexPC.IsMatch(txtCodePostal.Text))
+	//            {
+	//                var regexNT = new Regex(@"^\d\d\d\d\d\d\d\d\d\d$");
+	//                if (regexNT.IsMatch(txtTelephone.Text))
+	//                {
+	//                    if((bool)rdbFemme.IsChecked || (bool)rdbHomme.IsChecked)
+	//                    {
+	//                        return true;
+	//                    }
+	//                    AfficherErreur(7);
+	//                    return false;
+	//                }
+	//                AfficherErreur(6);
+	//                return false;
+	//            }
+	//            AfficherErreur(5);
+	//            return false;
+	//        }
+	//        AfficherErreur(4);
+	//        return false;
+	//    }
+	//    AfficherErreur(3);
+	//    return false;
+	//}
+	//AfficherErreur(2);
+	//return false;
+}

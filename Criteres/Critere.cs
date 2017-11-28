@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using Facturio.GabaritsCriteres;
 
-namespace Facturio.Criteres
+namespace Facturio.GabaritsCriteres
 {
     public class Critere
     {

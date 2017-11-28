@@ -48,21 +48,23 @@ CREATE TABLE IF NOT EXISTS Provinces
 ALTER TABLE Provinces
 ADD CONSTRAINT Provinces_Province_UK
 UNIQUE (nom);
+
+
 #####################################
-#			Table Produits			#
+#			Table Clients			#
 #####################################
 CREATE TABLE IF NOT EXISTS Clients
 (	idClient INT AUTO_INCREMENT PRIMARY KEY,
-	idSexe INT NOT NULL,
+	idSexe INT NULL,
     idRang INT NOT NULL,
-    idProvince INT NOT NULL,
+    idProvince INT NULL,
     nom VARCHAR(50) NOT NULL,
-    prenom VARCHAR(50) NOT NULL,
-    adresse VARCHAR(100) NOT NULL,
-    codePostal VARCHAR(10) NOT NULL,
-    description VARCHAR(150) NOT NULL,
+    prenom VARCHAR(50) NULL,
+    adresse VARCHAR(100) NULL,
+    codePostal VARCHAR(10) NULL,
+    description VARCHAR(150) NULL,
     codeClient VARCHAR(10) NOT NULL,
-    telephone VARCHAR(10) NOT NULL,
+    telephone VARCHAR(10) NULL,
     estActif BOOLEAN NOT NULL DEFAULT '1'
 );
 
@@ -101,6 +103,7 @@ CREATE TABLE IF NOT EXISTS Produits
 CREATE TABLE IF NOT EXISTS Gabarits
 (	idGabarit INT AUTO_INCREMENT PRIMARY KEY,
 	titreGabarit VARCHAR(50),
+    logo VARCHAR(100),
     dateCreation DATETIME
 );
 
@@ -259,8 +262,13 @@ FOREIGN KEY(idRapportFacturationCliente) REFERENCES Rapports(idRapport);
 #			Table RapportsVenteProduit			#
 #################################################
 CREATE TABLE IF NOT EXISTS RapportsVentesProduit
-(	idRapportVenteProduit INT AUTO_INCREMENT PRIMARY KEY
+(	idRapportVenteProduit INT AUTO_INCREMENT PRIMARY KEY,
+	idProduit INT NOT NULL
 );
 ALTER TABLE RapportsVentesProduit
 ADD CONSTRAINT RapportsVentesProduit_idRapportFacturationCliente_FK
 FOREIGN KEY(idRapportVenteProduit) REFERENCES Rapports(idRapport);
+
+ALTER TABLE RapportsVentesProduit
+ADD CONSTRAINT RapportsVentesProduit_idProduit_FK
+FOREIGN KEY(idProduit) REFERENCES Produits(idProduit);
