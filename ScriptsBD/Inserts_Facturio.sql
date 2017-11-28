@@ -359,19 +359,19 @@ VALUES
 #################################################
 
 INSERT INTO Gabarits (titreGabarit, dateCreation, logo)
-VALUES ('Épicerie', '2017-10-26 10:27:11', 'D:\Facturio\img\iga.png');
+VALUES ('Épicerie', '2017-10-26 10:27:11', 'https://imgur.com/bub6l3E.png');
 
-INSERT INTO Gabarits (titreGabarit, dateCreation)
-VALUES ('Garagiste', '2017-09-15 16:34:55');
+INSERT INTO Gabarits (titreGabarit, dateCreation, logo)
+VALUES ('Garagiste', '2017-09-15 16:34:55', 'https://imgur.com/K2oCOo4.png');
 
 INSERT INTO Gabarits (titreGabarit, dateCreation)
 VALUES ('Téléphone', '2017-12-13 13:21:22');
 
-INSERT INTO Gabarits (titreGabarit, dateCreation)
-VALUES ('Dépanneur', '2017-10-16 09:09:41');
+INSERT INTO Gabarits (titreGabarit, dateCreation, logo)
+VALUES ('Dépanneur', '2017-10-16 09:09:41', 'https://imgur.com/BcWnu6r.png');
 
-INSERT INTO Gabarits (titreGabarit, dateCreation)
-VALUES ('Coiffure', '2017-10-16 15:12:37');
+INSERT INTO Gabarits (titreGabarit, dateCreation, logo)
+VALUES ('Coiffure', '2017-10-16 15:12:37', 'https://imgur.com/LLyAPNO.png');
 
 #########################################################
 #               Insertions TypesCriteres                #

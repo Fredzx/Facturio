@@ -35,7 +35,9 @@
 
 
         <Image Name="imgLogo" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" />
-
+                        
+        
+        
 
 
         <DataGrid Name="dtgCritere" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" 
@@ -53,13 +55,16 @@
 
 
 
+        
+       
+        
 
-        <Button Width="150" Name="btnImporterLogo" Grid.Column="1" Grid.Row="4" Content="Importer un logo ..." Click="btnImporterLogo_Click" />
-        <Label Name="lblLogo" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left"/>
-
-        <StackPanel Grid.Column="3" Grid.Row="4"
+        <StackPanel Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3"
                     Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Name="btnEnregistrer" Content="Enregistrer" Width="150" Click="btnEnregistrer_Click" />
+            <TextBox Name="txtLogo" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" Width="250"/>
+            <Button Width="100" Name="btnImporterLogo" Grid.Column="1" Grid.Row="4" Content="Importer image" Click="btnImporterLogo_Click" />
+            
+            <Button Name="btnEnregistrer" Content="Enregistrer" Width="150" Click="btnEnregistrer_Click" Margin="100,0,0,0" />
             <Button Name="btnOuvrir"  Content="Ouvrir" Width="150" Click="btnOuvrir_Click" Margin="10,0,0,0" />
         </StackPanel>
 

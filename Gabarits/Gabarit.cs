@@ -20,11 +20,12 @@ namespace Facturio.Gabarits
 
         public Gabarit() {}
 
-        public Gabarit(string titreGabarit, DateTime dateCreation)
+        public Gabarit(string titreGabarit, DateTime dateCreation, string logo)
         {
             TitreGabarit = titreGabarit;
             DateCreation = dateCreation;
             GabaritCriteres = new HashSet<GabaritCritere>();
+            Logo = logo;
         }
 
         #endregion

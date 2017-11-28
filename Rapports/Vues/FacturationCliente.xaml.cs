@@ -53,7 +53,7 @@ namespace Facturio.Rapports.Vues
 
                 RFC.LeClient = (Client)dtgAfficherClient.SelectedItem;
                 RFC.Date = DateTime.Now;
-                RapportController.CreerPDF(RFC);
+               // RapportController.CreerPDF(RFC);
             }
         }
 

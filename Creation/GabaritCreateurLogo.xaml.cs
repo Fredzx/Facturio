@@ -6,6 +6,9 @@ using System.Windows.Media.Imaging;
 using System.Collections.Generic;
 using Facturio.GabaritsCriteres;
 using System.Collections.ObjectModel;
+using System.Net;
+using System.IO;
+using Facturio.Gabarits;
 
 namespace Facturio.Creation
 
@@ -17,7 +20,7 @@ namespace Facturio.Creation
     {
         #region Propriétés
         public static System.Windows.Controls.DataGrid DtgCriteres { get; set; } = new System.Windows.Controls.DataGrid();
-        public static ObservableCollection<Critere> LstObCritere { get; set; } = new ObservableCollection<Critere>();
+        public static ObservableCollection<Critere> LstObCritere { get; set; }
         #endregion
 
         public GabaritCreateurLogo()
@@ -25,12 +28,27 @@ namespace Facturio.Creation
             InitializeComponent();
             DtgCriteres = dtgCritere;
 
-
+            LstObCritere = new ObservableCollection<Critere>();
             foreach (GabaritCritere gabaritCritere in GabaritCreateurController.Gabarits.GabaritCriteres)
                 if (gabaritCritere.EstUtilise)
                     LstObCritere.Add(gabaritCritere.Critere);
 
             DtgCriteres.ItemsSource = LstObCritere;
+            
+           
+            if (GabaritCreateurController.Gabarits.Logo != null)
+            {
+
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.UriSource = new Uri(GabaritCreateurController.Gabarits.Logo); ;
+                bitmapImage.EndInit();
+
+                imgLogo.Source = bitmapImage;
+            }
+
+
+
         }
 
         #region Méthodes
@@ -57,17 +75,18 @@ namespace Facturio.Creation
         }
         private void btnImporterLogo_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            using (OpenFileDialog dlg = new OpenFileDialog())
+            GabaritCreateurController.Gabarits.Logo = txtLogo.Text.ToString();
+
+            try
             {
-                dlg.Title = "Sélection d'un logo";
-                dlg.Filter = "Images files (*.png; *.jpg; *.jpeg; *.gif; *.bmp)|*.png; *.jpg; *.jpeg; *.gif; *.bmp";
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    lblLogo.Content = dlg.FileName;
-                    
-                    imgLogo.Source = new BitmapImage(new Uri(dlg.FileName));
-                }
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.UriSource = new Uri(GabaritCreateurController.Gabarits.Logo);
+                bitmapImage.EndInit();
+                imgLogo.Source = bitmapImage;
+
             }
+            catch (Exception) { MessageBox.Show("Impossible d'importer cette image."); }
         }
         #endregion
     }

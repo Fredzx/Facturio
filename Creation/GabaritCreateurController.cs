@@ -8,7 +8,7 @@ namespace Facturio.Creation
     public class GabaritCreateurController
     {
         #region Propriétés
-        public static Gabarits.Gabarit Gabarits { get; set; } = GabaritCreateurViewModel.Gabarit;
+        public static Gabarits.Gabarit Gabarits { get; set; }
         public static GabaritCreationWindow FntGabCreation { get; set; }
         public static OpererFacture FntOperationFacture { get; set; }
         //public static string LogoPath { get; set; }
@@ -17,7 +17,7 @@ namespace Facturio.Creation
 
         public GabaritCreateurController()
         {
-            
+            Gabarits = GabaritCreateurViewModel.Gabarit;
         }
 
         #region Méthodes
