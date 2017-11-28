@@ -33,7 +33,7 @@ namespace Facturio.Rapports.Vues
         public DateTime DateDebut { get; set; }
         public DateTime DateFin { get; set; }
         public int? IdClient { get; set; }
-       public Produit Produit { get; set; }
+        public Produit Produit { get; set; }
         public ObservableCollection<RapportFacture> LstFacture { get; set; }
         public ObservableCollection<ProduitFacture> LstProduitFacture { get; set; }
         public int compteur = 0;
@@ -69,6 +69,8 @@ namespace Facturio.Rapports.Vues
             {
                 
             }
+
+
 
             DtgProduit = dtgProduits;
             LstFacture = new ObservableCollection<RapportFacture>(rapport.LstRapportFacture);

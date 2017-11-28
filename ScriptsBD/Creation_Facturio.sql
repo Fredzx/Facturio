@@ -262,8 +262,13 @@ FOREIGN KEY(idRapportFacturationCliente) REFERENCES Rapports(idRapport);
 #			Table RapportsVenteProduit			#
 #################################################
 CREATE TABLE IF NOT EXISTS RapportsVentesProduit
-(	idRapportVenteProduit INT AUTO_INCREMENT PRIMARY KEY
+(	idRapportVenteProduit INT AUTO_INCREMENT PRIMARY KEY,
+	idProduit INT NOT NULL
 );
 ALTER TABLE RapportsVentesProduit
 ADD CONSTRAINT RapportsVentesProduit_idRapportFacturationCliente_FK
 FOREIGN KEY(idRapportVenteProduit) REFERENCES Rapports(idRapport);
+
+ALTER TABLE RapportsVentesProduit
+ADD CONSTRAINT RapportsVentesProduit_idProduit_FK
+FOREIGN KEY(idProduit) REFERENCES Produits(idProduit);

@@ -1392,8 +1392,11 @@ VALUES ((SELECT idRapport From Rapports Where DateRapport = '2017-01-02 04:12:15
 #####			Inserts RapportsVentesProduit			######
 ##############################################################
 
-INSERT INTO RapportsVentesProduit (idRapportVenteProduit)
-VALUES ((SELECT idRapport From Rapports Where DateRapport = '2017-01-03 04:12:15'));
+INSERT INTO RapportsVentesProduit (idRapportVenteProduit, idProduit)
+VALUES 
+((SELECT idRapport From Rapports Where DateRapport = '2017-01-03 04:12:15'),
+ (SELECT idProduit FROM Produits WHERE idProduit = 1)
+);
 
 ######################################################
 #####			Inserts FacturesRapports		######
