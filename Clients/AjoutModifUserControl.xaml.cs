@@ -1,8 +1,5 @@
 ﻿using Facturio.Enums;
-using System;
-using System.Collections.Generic;
 using System.Windows;
-using System.Text.RegularExpressions;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -40,6 +37,7 @@ namespace Facturio.Clients
 
         public AjoutModifUserControl()
         {
+
             InitializeComponent();
             LblTxtNoClient = txtNoClient;
             LblFormTitle = lblFormTitle;
@@ -263,11 +261,6 @@ namespace Facturio.Clients
         {
             ClientsController.LeClient.EstActif = false;
         }
-
-
-
-        #endregion
-
         private void txtNom_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (TxtNom.Text.ToString().Length > 0)
@@ -275,5 +268,6 @@ namespace Facturio.Clients
             else
                 BtnEnregistrer.IsEnabled = false;
         }
+        #endregion
     }
 }

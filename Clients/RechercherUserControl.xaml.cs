@@ -22,7 +22,6 @@ namespace Facturio.Clients
             InitializeComponent();
             DtgClients = dtgAfficheClients;
             Status = (int)StatusClient.Tous;
-
         }
 
         #region Méthodes        
