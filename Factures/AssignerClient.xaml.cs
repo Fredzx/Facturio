@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace Facturio.Factures
 {
@@ -46,6 +47,8 @@ namespace Facturio.Factures
         private void btnAssigner_Click(object sender, RoutedEventArgs e)
         {
             OpererFactureController.LaFacture.LeClient = (Client)dtgAfficheClient.SelectedItem;
+            BindingExpression binding = OpererFactureUserControl.TxtPrenom.GetBindingExpression(TextBlock.TextProperty);
+            binding.UpdateSource();
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)
