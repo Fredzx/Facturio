@@ -5,12 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Creation"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="600">
+             d:DesignHeight="600" d:DesignWidth="900">
     <Grid>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />
-            <ColumnDefinition Width="120" />
+            <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition Width="20" />
@@ -18,28 +18,51 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="50"  />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="20" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*" />
-            <RowDefinition Height="20" />
+            <RowDefinition Height="30" />
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
 
 
-        <Label Name="lblTitreFacture" Grid.Column="1" Grid.Row="1" Content="Titre de la facture"/>
-        <TextBox Name="txtTitreFacture" Grid.Column="2" Grid.Row="1"  />
+        <TextBlock Grid.Row="0" Grid.Column="1" FontSize="18px">Facture #0000</TextBlock>
 
-        <Button Name="btnImporterLogo" Grid.Column="1" Grid.Row="2" Content="Importer un logo ..." />
-        <Label Name="lblLogo" Grid.Column="2" Grid.Row="2" Content="Logo.png"/>
-
-        <Grid Background="LightBlue" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3"/>
-
-        <Button Name="btnEnregistrer" Grid.Column="2" Grid.Row="6" Content="Enregistrer" Width="150" />
-        <Button Name="btnOuvrir" Grid.Column="3" Grid.Row="6" Content="Ouvrir" Width="150" Click="btnOuvrir_Click"/>
+        <GroupBox Header="Informations du client" Grid.Column="3" Grid.RowSpan="3"/>
 
 
 
+
+
+        <Image Name="imgLogo" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" />
+
+
+
+        <DataGrid Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" 
+            ItemsSource="{Binding LstObCritere}" Name="dtgCritere" 
+                        BorderBrush="Black"  IsReadOnly="True"
+                        AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Critères" Width="4*" Binding="{Binding Titre}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <Rectangle Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Margin="30" Fill="LightBlue"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22px">Votre Facture</TextBlock>
+
+
+
+
+
+        <Button Width="150" Name="btnImporterLogo" Grid.Column="1" Grid.Row="4" Content="Importer un logo ..." Click="btnImporterLogo_Click" />
+        <Label Name="lblLogo" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left"/>
+
+        <StackPanel Grid.Column="3" Grid.Row="4"
+                    Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="btnEnregistrer" Content="Enregistrer" Width="150" Click="btnEnregistrer_Click" />
+            <Button Name="btnOuvrir"  Content="Ouvrir" Width="150" Click="btnOuvrir_Click" Margin="10,0,0,0" />
+        </StackPanel>
 
     </Grid>
 </UserControl>

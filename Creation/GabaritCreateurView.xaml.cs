@@ -21,7 +21,7 @@ namespace Facturio.Creation
             GabaritCreateurController.AfficherInterfaceCreationSuivante();
         }
 
-        // Pour l'ordre des colonnes
+         // Pour l'ordre des colonnes
         // ----------------------------
         // ColumnHeaderDragCompleted
         // ColumnHeaderDragStarted

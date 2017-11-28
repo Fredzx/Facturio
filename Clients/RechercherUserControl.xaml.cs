@@ -1,18 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Facturio.Clients
 {
@@ -21,26 +8,27 @@ namespace Facturio.Clients
     /// </summary>
     public partial class RechercherUserControl : UserControl
     {
-        public object ClientController { get; private set; }
+        #region Propriétés
         public static DataGrid DtgClients { get; set; } = new DataGrid();
         public static Button BtnModifier { get; set; } = new Button();
         public static Button BtnSupprimer { get; set; } = new Button();
+        public int Status { get; set; }
 
+        enum StatusClient {Actif, Inactif, Tous};
+        #endregion
 
         public RechercherUserControl()
         {
             InitializeComponent();
             DtgClients = dtgAfficheClients;
-
+            Status = (int)StatusClient.Tous;
         }
 
-
+        #region Méthodes        
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
             e.Row.Header = ((e.Row.GetIndex()) + 1).ToString();
         }
-
-       
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
             // Lorsqu'il clique sur ajouter on veut : 
@@ -49,8 +37,9 @@ namespace Facturio.Clients
 
             // Ajuster le titre
             AjoutModifUserControl.LblFormTitle.Content = "Ajouter un client";
+            AjoutModifUserControl.CbxActif.IsChecked = true;
+            AjoutModifUserControl.CbxActif.IsEnabled = false;
         }
-
         private void btnModifier_Click(object sender, RoutedEventArgs e)
         {
             // Lorsqu'il clique sur modifier on veut : 
@@ -58,7 +47,8 @@ namespace Facturio.Clients
             ClientsUserControl.TbcClientPublic.SelectedIndex = 1;
 
             // Ajuster le titre
-            AjoutModifUserControl.LblFormTitle.Content = "Modifier un client"; 
+            AjoutModifUserControl.LblFormTitle.Content = "Modifier un client";
+            AjoutModifUserControl.CbxActif.IsEnabled = true;
             
 
             // Setter le client a modifier
@@ -67,7 +57,6 @@ namespace Facturio.Clients
             // Passer le client au controleur
             ClientsController.AfficherClient();            
         }
-
         private void btnSupprimer_Click(object sender, RoutedEventArgs e)
         {
             if (Confirmation())
@@ -77,7 +66,6 @@ namespace Facturio.Clients
             }
       
         }
-
         private bool Confirmation()
         {
             MessageBoxResult resultat;
@@ -95,7 +83,6 @@ namespace Facturio.Clients
             }
             return true;
         }
-
         private void dtgAfficheClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(dtgAfficheClients.CurrentCell != null)
@@ -109,20 +96,52 @@ namespace Facturio.Clients
                 btnSupprimer.IsEnabled = false;
             }
         }
-
         private void txtRecherche_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (txtRecherche.Text.ToString() == "")
-            {
-                ClientsController.LstObClients = new ObservableCollection<Client>(HibernateClientService.RetrieveAll());
-                
-            }
-            else
-            {
-                ClientsController.LiveFiltering(txtRecherche.Text.ToString());
-            }
+                // Charger la bonne liste selon le contexte.
+                ClientsController.ChargerListeClients(Status);
+            else      
+                // Faire le trie selon le status des client.
+                ClientsController.LiveFiltering(txtRecherche.Text.ToString(), Status);       
 
+            // Dans tous les cas, rafraichir la grille.
             ClientsController.RafraichirGrille(true);
         }
+        private void cbxActif_Checked(object sender, RoutedEventArgs e)
+        {
+            if ((bool)cbxInactif.IsChecked)
+                cbxInactif.IsChecked = false;
+
+            // Updater la liste aller chercher seulement les membres actif.
+            ClientsController.ChargerListeClients((int)StatusClient.Actif);
+            Status = (int)StatusClient.Actif;
+        }
+        private void cbxInactif_Checked(object sender, RoutedEventArgs e)
+        {
+            if ((bool)cbxActif.IsChecked)
+                cbxActif.IsChecked = false;
+
+            // Updater la liste aller chercher seulement les membres inactif.
+            ClientsController.ChargerListeClients((int)StatusClient.Inactif);
+            Status = (int)StatusClient.Inactif;
+        }
+        private void cbxActif_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ClientsController.ChargerListeClients((int)StatusClient.Tous);
+            Status = (int)StatusClient.Tous;
+            ViderBarreRecherche();
+        }
+        private void cbxInactif_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ClientsController.ChargerListeClients((int)StatusClient.Tous);
+            Status = (int)StatusClient.Tous;
+            ViderBarreRecherche();
+        }
+        private void ViderBarreRecherche()
+        {
+            txtRecherche.Text = "";
+        }
+        #endregion
     }
 }
