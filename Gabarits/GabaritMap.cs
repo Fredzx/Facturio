@@ -28,6 +28,13 @@ namespace Facturio.Gabarits
                 .Not.Nullable()
                 .Generated.Never();
 
+            Map(x => x.Logo)
+               .Column("logo")
+               .CustomType<string>()
+               .Access.Property()
+               .CustomSqlType("VARCHAR")
+               .Generated.Never();
+
             Map(x => x.DateCreation)
                 .Column("dateCreation")
                 .CustomType<DateTime>()

@@ -38,10 +38,9 @@
 
 
 
-        <DataGrid Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" 
-            ItemsSource="{Binding LstObCritere}" Name="dtgCritere" 
-                        BorderBrush="Black"  IsReadOnly="True"
-                        AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" >
+        <DataGrid Name="dtgCritere" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" 
+                  BorderBrush="Black"  IsReadOnly="True"
+                  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Critères" Width="4*" Binding="{Binding Titre}" />
             </DataGrid.Columns>

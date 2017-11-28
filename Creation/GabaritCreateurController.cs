@@ -11,6 +11,7 @@ namespace Facturio.Creation
         public static Gabarits.Gabarit Gabarits { get; set; } = GabaritCreateurViewModel.Gabarit;
         public static GabaritCreationWindow FntGabCreation { get; set; }
         public static OpererFacture FntOperationFacture { get; set; }
+        //public static string LogoPath { get; set; }
         
         #endregion
 

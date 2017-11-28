@@ -182,7 +182,7 @@
     <Compile Include="Factures\HibernateFactureService.cs" />
     <Compile Include="Factures\OpererFactureUserControl.xaml.cs">
       <DependentUpon>OpererFactureUserControl.xaml</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Factures\OpererFacture.xaml.cs">
       <DependentUpon>OpererFacture.xaml</DependentUpon>
     </Compile>
@@ -281,9 +281,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Factures\OpererFactureUserControl.xaml">
-	  <SubType>Designer</SubType>
-	  <Generator>MSBuild:Compile</Generator>
-	</Page>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Factures\OpererFactureUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

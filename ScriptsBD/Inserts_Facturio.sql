@@ -358,8 +358,8 @@ VALUES
 #               Insertions Gabarits             #
 #################################################
 
-INSERT INTO Gabarits (titreGabarit, dateCreation)
-VALUES ('Épicerie', '2017-10-26 10:27:11');
+INSERT INTO Gabarits (titreGabarit, dateCreation, logo)
+VALUES ('Épicerie', '2017-10-26 10:27:11', 'D:\Facturio\img\iga.png');
 
 INSERT INTO Gabarits (titreGabarit, dateCreation)
 VALUES ('Garagiste', '2017-09-15 16:34:55');

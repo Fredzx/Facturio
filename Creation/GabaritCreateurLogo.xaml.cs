@@ -15,9 +15,10 @@ namespace Facturio.Creation
     /// </summary>
     public partial class GabaritCreateurLogo : System.Windows.Controls.UserControl
     {
-
+        #region Propriétés
         public static System.Windows.Controls.DataGrid DtgCriteres { get; set; } = new System.Windows.Controls.DataGrid();
         public static ObservableCollection<Critere> LstObCritere { get; set; } = new ObservableCollection<Critere>();
+        #endregion
 
         public GabaritCreateurLogo()
         {
@@ -28,13 +29,15 @@ namespace Facturio.Creation
             foreach (GabaritCritere gabaritCritere in GabaritCreateurController.Gabarits.GabaritCriteres)
                 if (gabaritCritere.EstUtilise)
                     LstObCritere.Add(gabaritCritere.Critere);
+
+            DtgCriteres.ItemsSource = LstObCritere;
         }
 
+        #region Méthodes
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
             e.Row.Header = ((e.Row.GetIndex()) + 1).ToString();
         }
-
         private void btnEnregistrer_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             // Setter le logo
@@ -61,9 +64,11 @@ namespace Facturio.Creation
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     lblLogo.Content = dlg.FileName;
+                    
                     imgLogo.Source = new BitmapImage(new Uri(dlg.FileName));
                 }
             }
         }
+        #endregion
     }
 }
