@@ -22,7 +22,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- Les produits de la facture -->
-        <DataGrid x:Name="dtgFacture" ItemsSource="{Binding LaFacture.LstProduitFacture}" Grid.Row="0" Grid.Column="0" IsReadOnly="True" AutoGenerateColumns="False" />
+        <DataGrid x:Name="dtgFacture" ItemsSource="{Binding LaFacture.LstProduitFacture}" CanUserAddRows="False" Grid.Row="0" Grid.Column="0" AutoGenerateColumns="False" />
 
         <!-- Informations à droite des produits -->
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Width="200" Margin="10 0 0 0" HorizontalAlignment="Right">
