@@ -197,7 +197,6 @@
     <Compile Include="FacturioViewModel.cs" />
     <Compile Include="Creation\GabaritCreateurViewModel.cs" />
     <Compile Include="Gabarits\GabaritSelecteurViewModel.cs" />
-    <Compile Include="GenerateurPdf\GenerateurPdf.cs" />
     <Compile Include="NHibernateConnexion.cs" />
     <Compile Include="ProduitsFactures\HibernateProduitFacturesService.cs" />
     <Compile Include="ProduitsFactures\ProduitFacture.cs" />

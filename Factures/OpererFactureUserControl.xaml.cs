@@ -142,5 +142,10 @@ namespace Facturio.Factures
                     break;
             }
         }
+
+        private void BtnConvertirPdf_Click(object sender, RoutedEventArgs e)
+        {
+            OpererFactureController.GenererPdf("Facture_Test", "");
+        }
     }
 }

@@ -111,7 +111,7 @@
 
             <StackPanel HorizontalAlignment="Right">
                 <Button Content="Sauvegarder" />
-                <Button Content="Convertir en PDF" Margin="0" />
+                <Button Content="Convertir en PDF" Margin="0" Click="BtnConvertirPdf_Click" />
             </StackPanel>
         </DockPanel>
     </Grid>
