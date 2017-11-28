@@ -38,7 +38,7 @@ namespace Facturio.Factures
                 if (valider(p))
                 {
                     ProduitFacture pf = new ProduitFacture(p, OpererFactureController.LaFacture, qte);
-                    if (OpererFactureUC.DtgListeProduitsFacture.Items.Count > 0)
+                    if (OpererFactureUserControl.DtgFacture.Items.Count > 0)
                     {
                         for (int i = 0; i < OpererFactureUC.DtgListeProduitsFacture.Items.Count; i++)
                         {
@@ -64,7 +64,7 @@ namespace Facturio.Factures
                         AjoutProduitFacture.DtgAfficheProduits.Items.Refresh();
                     }
                     AjoutProduitFacture.DtgAfficheProduits.SelectedIndex = -1;
-                    OpererFactureUC.DtgListeProduitsFacture.Items.Refresh();
+                    OpererFactureUserControl.DtgFacture.Items.Refresh();
                 }
             }
             //TODO: Maintenant, je supprime la quantité dans la liste

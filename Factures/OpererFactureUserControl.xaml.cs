@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Forms;
+using Xceed.Wpf.Toolkit;
 
 namespace Facturio.Factures
 {
@@ -14,9 +15,11 @@ namespace Facturio.Factures
     /// </summary>
     public partial class OpererFactureUserControl : System.Windows.Controls.UserControl
     {
+        public static System.Windows.Controls.DataGrid DtgFacture;
         public OpererFactureUserControl()
         {
             InitializeComponent();
+            DtgFacture = dtgFacture;
             CreerFacture();
         }
 
@@ -31,20 +34,25 @@ namespace Facturio.Factures
                     if (titre != "")
                     {
                         var dtgTxtCol = new DataGridTextColumn { Header = gc.Critere.Titre };
-                        dtgTxtCol.Binding = new System.Windows.Data.Binding(titre);
                         dtgTxtCol.IsReadOnly = true;
+                        dtgTxtCol.Binding = new System.Windows.Data.Binding(titre);
+                        if(titre == "Produit.Prix")
+                        {
+                            dtgTxtCol.Binding.StringFormat = "C";
+                        }
                         dtgFacture.Columns.Add(dtgTxtCol);
                     }
                     else
                     {
                         contientCritereLibre = true;
                         var col = new DataGridTemplateColumn();
+                        DataTemplate textTemplate = new DataTemplate();
+                        FrameworkElementFactory textFactory;
                         switch (gc.Critere.TypeCritere.TypeDuCritere)
                         {
                             case "string":
                                 //var col = new DataGridTextBoxColumn();
-                                FrameworkElementFactory textFactory = new FrameworkElementFactory(typeof(System.Windows.Controls.TextBox));
-                                DataTemplate textTemplate = new DataTemplate();
+                                textFactory = new FrameworkElementFactory(typeof(System.Windows.Controls.TextBox));
                                 textTemplate.VisualTree = textFactory;
                                 col.Header = gc.Critere.Titre;
                                 col.IsReadOnly = false;
@@ -53,22 +61,36 @@ namespace Facturio.Factures
                                 dtgFacture.Columns.Add(col);
                                 break;
                             case "bool":
-                                var col1 = new DataGridCheckBoxColumn();
-                                col1.Header = gc.Critere.Titre;
-                                col1.IsReadOnly = false;
-                                dtgFacture.Columns.Add(col1);
+                                textFactory = new FrameworkElementFactory(typeof(System.Windows.Controls.CheckBox));
+                                textTemplate.VisualTree = textFactory;
+                                col.Header = gc.Critere.Titre;
+                                col.IsReadOnly = false;
+                                col.CellTemplate = textTemplate;
+                                col.CellEditingTemplate = textTemplate;
+                                dtgFacture.Columns.Add(col);
+                                //var col1 = new DataGridCheckBoxColumn();
                                 break;
                             case "float":
                                 // TODO: Validation de float (REGEX)
                                 break;
                             case "int":
-                                // TODO: Validation de int (REGEX)
+                                //textFactory = new FrameworkElementFactory(typeof(IntegerUpDown));
+                                //textTemplate.VisualTree = textFactory;
+                                //col.CellTemplate = textTemplate;
+                                //col.CellEditingTemplate = textTemplate;
+                                //col.SetValue(IntegerUpDown.WatermarkProperty, 10);
+                                IntegerUpDown i = new IntegerUpDown();
+                                i.Increment = 10;
+                                i.Watermark = "Entrez " + titre;
+                                col.Header = gc.Critere.Titre;
+                                col.IsReadOnly = false;
+                                //dtgFacture.Columns.Add(col);
+                                //IntegerUpDown.
                                 break;
 
                             default:
                                 break;
                         }
-
                     }
                 }
             }
