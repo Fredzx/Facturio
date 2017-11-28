@@ -10,7 +10,6 @@ namespace Facturio.Rapports.Entities
     public class RapportVenteProduit : Rapport
     {
         public virtual int? IdRapportVenteProduit { get { return base.IdRapport; } set { base.IdRapport = value; } }
-
         public virtual Produit Produit { get; set; }
         public RapportVenteProduit() { }
 
@@ -40,5 +39,11 @@ namespace Facturio.Rapports.Entities
         {
             return "Vente produit";
         }
+
+        //public override string GetObject()
+        //{
+        //    return Produit.Nom;
+        //}
+
     }
 }

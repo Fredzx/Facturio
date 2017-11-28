@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NHibernate.Linq;
 
-namespace Facturio.Criteres
+namespace Facturio.GabaritsCriteres
 {
     class HibernateTypeCritereService
     {

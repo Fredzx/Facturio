@@ -1,34 +1,23 @@
 ﻿using Facturio.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Facturio.Clients
 {
     /// <summary>
-    /// Logique d'interaction pour FormClientUserControl.xaml
+    /// Logic pour le UC d'ajout et de modification d'un client.
     /// </summary>
     public partial class AjoutModifUserControl : UserControl
     {
-
+        #region Propriétés
         const int NOM_PRENOM_MAX = 20;
         const int NOM_PRENOM_MIN = 3;
         const int ADRESSE_MAX = 50;
         const int ADRESSE_MIN = 5;
-
-        public bool Ajout { get; set; } = true;
+        const int CODEPOSTAL_MAX = 6;
+        const int TELEPHONE_MAX = 10;
+        const int DESCRIPTION_MAX = 150;
         public static Label LblTxtNoClient { get; set; } = new Label();
         public static Label LblFormTitle { get; set; } = new Label();
         public static TextBox TxtNom { get; set; } = new TextBox();
@@ -42,11 +31,13 @@ namespace Facturio.Clients
         public static RadioButton RdbHomme { get; set; } = new RadioButton();
         public static RadioButton RdbFemme { get; set; } = new RadioButton();
         public static Label LblInfo { get; set; } = new Label();
-
-
+        public static CheckBox CbxActif { get; set; } = new CheckBox();
+        public static Button BtnEnregistrer { get; set; } = new Button();
+        #endregion
 
         public AjoutModifUserControl()
         {
+
             InitializeComponent();
             LblTxtNoClient = txtNoClient;
             LblFormTitle = lblFormTitle;
@@ -61,21 +52,31 @@ namespace Facturio.Clients
             RdbHomme = rdbHomme;
             RdbFemme = rdbFemme;
             LblInfo = lblInfo;
-            
+            CbxActif = cbxActif;
+            BtnEnregistrer = btnEnregistrer;
+
+            // Fixer les limites.
+            TxtNom.MaxLength = NOM_PRENOM_MAX;
+            TxtPrenom.MaxLength = NOM_PRENOM_MAX;
+            TxtAdresse.MaxLength = ADRESSE_MAX;
+            TxtCodePostal.MaxLength = CODEPOSTAL_MAX;
+            TxtTelephone.MaxLength = TELEPHONE_MAX;
+            TxtDescription.MaxLength = DESCRIPTION_MAX;
+
         }
 
-       
-
+        #region Méthodes
         private void btnEnregistrer_Click(object sender, RoutedEventArgs e)
         {
             // L'utilisateur veut enregistrer les informations du client.
             // Vérifier si on est en ajout ou en modification.
             if (LblFormTitle.Content.ToString() == "Ajouter un client")
             {
-                // TODO : Validation des informations entrées.  
                 if (ValiderInformationsClient())
                 {                    
                     LblTxtNoClient.Content = "En cours de génération...";
+                  
+                    
                     // Ajouter le client à la liste et en BD.
                     ClientsController.AjouterClient(new Client(txtPrenom.Text.ToString(), txtNom.Text.ToString()
                                                              , txtDescription.Text.ToString(), new Sexe(SetSex())
@@ -83,7 +84,7 @@ namespace Facturio.Clients
                                                              , txtTelephone.Text.ToString(), SetRang(), new Province(SetProvince()), true));
 
                     ViderChamps();
-                    AfficherSuccesAjout();
+                    AfficherSuccesAjoutModif(true);
                 }     
             }
             else
@@ -91,27 +92,35 @@ namespace Facturio.Clients
                 if (ValiderInformationsClient())
                 {
                     ClientsController.ModifierClient(new Sexe(SetSex()), new Province(SetProvince()), SetRang());
-
-                    
-
                     // Afficher le succès de la modification.
-                    AfficherSuccesModif();
+                    AfficherSuccesAjoutModif(false);
                 }
             }
         }
+        private void btnViderChamps_Click(object sender, RoutedEventArgs e)
+        {
+            ViderChamps();
+            BtnEnregistrer.IsEnabled = false;
 
-        private void AfficherSuccesModif()
+        }
+        private void btnRetour_Click(object sender, RoutedEventArgs e)
+        {
+            ClientsController.AfficherOngletRechercher();
+        }
+        private void AfficherSuccesAjoutModif(bool ajout)
         {                    
             LblInfo.Foreground = Brushes.Green;
-            LblInfo.Content = "Le client a été modifié avec succès !";
-        }
 
+            if(ajout)
+                LblInfo.Content = "Le client a été ajouté avec succès !";
+            else
+                LblInfo.Content = "Le client a été modifié avec succès !";
+        }
         private void AfficherSuccesAjout()
         {
             LblInfo.Foreground = Brushes.Green;
-            LblInfo.Content = "Le client a été ajouté avec succès !";
+            
         }
-
         public static void SetChampsModifier()
         {
 
@@ -128,15 +137,15 @@ namespace Facturio.Clients
             CboRang.SelectedIndex = (int)ClientsController.LeClient.Rang.IdRang - 1;            
             
             if (ClientsController.LeClient.Sexe.IdSexe == 1)
-            {
                 AjoutModifUserControl.RdbHomme.IsChecked = true;
-            }
             else
-            {
                 AjoutModifUserControl.RdbFemme.IsChecked = true;
-            }
-        }
 
+            if (ClientsController.LeClient.EstActif)
+                AjoutModifUserControl.CbxActif.IsChecked = true;
+            else
+                AjoutModifUserControl.CbxActif.IsChecked = false;
+        }
         private Rang SetRang()
         {
             Rang rang = new Rang();
@@ -152,7 +161,6 @@ namespace Facturio.Clients
             }
             return rang;
         }
-
         private Provinces SetProvince()
         {
             switch (cboProvince.SelectedIndex + 1)
@@ -174,9 +182,6 @@ namespace Facturio.Clients
             }
 
         }
-
-     
-
         private Sexes SetSex()
         {
             if ((bool)rdbHomme.IsChecked)
@@ -188,49 +193,15 @@ namespace Facturio.Clients
                 return Sexes.Feminin;
             }
         }
-
         private bool ValiderInformationsClient()
         {
             if (txtNom.Text.ToString() != "" && txtNom.Text.Length <= NOM_PRENOM_MAX && txtNom.Text.Length >= NOM_PRENOM_MIN)
             {
-                if (txtPrenom.Text.ToString() != "" && txtPrenom.Text.Length <= NOM_PRENOM_MAX && txtPrenom.Text.Length >= NOM_PRENOM_MIN)
-                {
-                    if(txtAdresse.Text.ToString() != "" && txtAdresse.Text.Length <= ADRESSE_MAX && txtAdresse.Text.Length >= ADRESSE_MIN)
-                    {
-                        if(cboProvince.SelectedIndex != -1)
-                        {
-                            var regexPC = new Regex(@"^[A-Z]\d[A-Z]\d[A-Z]\d$");                           
-                            if (regexPC.IsMatch(txtCodePostal.Text))
-                            {
-                                var regexNT = new Regex(@"^\d\d\d\d\d\d\d\d\d\d$");
-                                if (regexNT.IsMatch(txtTelephone.Text))
-                                {
-                                    if((bool)rdbFemme.IsChecked || (bool)rdbHomme.IsChecked)
-                                    {
-                                        return true;
-                                    }
-                                    AfficherErreur(7);
-                                    return false;
-                                }
-                                AfficherErreur(6);
-                                return false;
-                            }
-                            AfficherErreur(5);
-                            return false;
-                        }
-                        AfficherErreur(4);
-                        return false;
-                    }
-                    AfficherErreur(3);
-                    return false;
-                }
-                AfficherErreur(2);
-                return false;
+                return true;
             }
             AfficherErreur(1);
             return false;
         }
-
         private void AfficherErreur(int noErr)
         {
             LblInfo.Foreground = Brushes.Red;
@@ -244,19 +215,11 @@ namespace Facturio.Clients
                 case 5: LblInfo.Content = "Veuillez entrer un code postal valide pour le client.\n Voici un exemple de format valide : J5K8E6 "; break;
                 case 6: LblInfo.Content = "Veuillez entrer un numéro de téléphone valide pour le client.\n Voici un exemple de format valide: 4504567891 "; break;
                 case 7: LblInfo.Content = "Veuillez choisir le sexe pour le client."; break;
+                case 8: LblInfo.Content = "Au moins un genre doit être coché."; break;
                 default:
                     break;
             }
         }
-
-       
-
-        private void btnViderChamps_Click(object sender, RoutedEventArgs e)
-        {
-            ViderChamps();
-
-        }
-
         public static void ViderChamps()
         {
             TxtNom.Clear();
@@ -269,8 +232,8 @@ namespace Facturio.Clients
             CboRang.SelectedIndex = 0;
             RdbFemme.IsChecked = false;
             RdbHomme.IsChecked = false;
+            
         }
-
         private bool ValiderTelephone()
         {
             int valide = 0;
@@ -290,13 +253,21 @@ namespace Facturio.Clients
             }
             return false;
         }
-
-        private void btnRetour_Click(object sender, RoutedEventArgs e)
+        private void cbxActif_Checked(object sender, RoutedEventArgs e)
         {
-            ClientsController.AfficherOngletRechercher();
+            //ClientsController.LeClient.EstActif = true;
         }
+        private void cbxActif_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ClientsController.LeClient.EstActif = false;
+        }
+        private void txtNom_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (TxtNom.Text.ToString().Length > 0)
+                BtnEnregistrer.IsEnabled = true;
+            else
+                BtnEnregistrer.IsEnabled = false;
+        }
+        #endregion
     }
-
-
-   
 }

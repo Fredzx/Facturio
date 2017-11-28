@@ -9,7 +9,8 @@ namespace Facturio.Gabarits
         #region Propriétés
 
         public virtual int Id { get; set; }
-        public virtual string TitreGabarit { get; set; }
+        public virtual string TitreGabarit { get; set; }      
+        public virtual string Logo { get; set; }
         public virtual DateTime DateCreation { get; set; }
         public virtual ISet<GabaritCritere> GabaritCriteres { get; set; }
 

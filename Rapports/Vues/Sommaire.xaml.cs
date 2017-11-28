@@ -38,6 +38,9 @@ namespace Facturio.Rapports.Vues
             InitializeComponent();
 
             DtgSommaire = dtgSommaire;
+            btnObtenirRapport.IsEnabled = false;
+            btnRapportPDF.IsEnabled = false;
+            cldDateFin.SelectedDate = DateTime.Now;
         }
 
         public decimal CalculerTotalLigne(ProduitFacture pf)
@@ -52,9 +55,8 @@ namespace Facturio.Rapports.Vues
 
         private void ListerSommaire()
         {
-            LstProduitFacture = new ObservableCollection<ProduitFacture>(HibernateProduitFacturesService.RetrieveAll());
+            LstProduitFacture = TrierProduitFacture(cldDateDebut.SelectedDate.Value, cldDateFin.SelectedDate.Value);
             LstProduitSommaire = new ObservableCollection<ProduitFacture>();
-            
 
             for (int i = 0; i < LstProduitFacture.Count - 1; i++)
             {
@@ -71,6 +73,21 @@ namespace Facturio.Rapports.Vues
                 }
             }
             DtgSommaire.ItemsSource = LstProduitSommaire;
+        }
+
+        public ObservableCollection<ProduitFacture> TrierProduitFacture(DateTime dateDebut, DateTime dateFin)
+        {
+            LstProduitFacture = new ObservableCollection<ProduitFacture>(HibernateProduitFacturesService.RetrieveAll());
+            ObservableCollection<ProduitFacture> lstTemp = new ObservableCollection<ProduitFacture>();
+
+            foreach (ProduitFacture pf in LstProduitFacture)
+            {
+                if(pf.Facture.Date >= dateDebut && pf.Facture.Date <= dateFin)
+                {
+                    lstTemp.Add(pf);
+                }
+            }
+            return lstTemp;
         }
 
         public void InsertRapportSommaire()

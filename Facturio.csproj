@@ -127,6 +127,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Clients\StatusConverter.cs" />
     <Compile Include="Creation\BindableColumns.cs" />
     <Compile Include="Creation\BooleanToVisibilityConverter.cs" />
     <Compile Include="Creation\GabaritCreateurController.cs" />
@@ -181,7 +182,7 @@
     <Compile Include="Factures\HibernateFactureService.cs" />
     <Compile Include="Factures\OpererFactureUserControl.xaml.cs">
       <DependentUpon>OpererFactureUserControl.xaml</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Factures\OpererFacture.xaml.cs">
       <DependentUpon>OpererFacture.xaml</DependentUpon>
     </Compile>
@@ -280,9 +281,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Factures\OpererFactureUserControl.xaml">
-	  <SubType>Designer</SubType>
-	  <Generator>MSBuild:Compile</Generator>
-	</Page>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Factures\OpererFactureUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -409,6 +410,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Clients\BackupCode.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Fody.2.0.0\build\netstandard1.4\Fody.targets" Condition="Exists('packages\Fody.2.0.0\build\netstandard1.4\Fody.targets')" />

@@ -276,7 +276,7 @@ VALUES
 
 
 INSERT INTO Clients 
-(idSexe, idRang, idProvince, nom, prenom, adresse, codePostal, description, codeClient, telephone) 
+(idSexe, idRang, idProvince, nom, prenom, adresse, codePostal, description, codeClient, telephone, estActif) 
 VALUES
 ((SELECT idSexe FROM Sexes WHERE sexe = 'M'),
  (SELECT idRang FROM Rangs WHERE nom = 'Or'), 
@@ -287,7 +287,8 @@ VALUES
  'J2K3E5',
  'Gérant de la cie Barmen',
  '1000',
- '4505557894'
+ '4505557894',
+ '0'
  );
  
 INSERT INTO Clients 
@@ -357,8 +358,8 @@ VALUES
 #               Insertions Gabarits             #
 #################################################
 
-INSERT INTO Gabarits (titreGabarit, dateCreation)
-VALUES ('Épicerie', '2017-10-26 10:27:11');
+INSERT INTO Gabarits (titreGabarit, dateCreation, logo)
+VALUES ('Épicerie', '2017-10-26 10:27:11', 'D:\Facturio\img\iga.png');
 
 INSERT INTO Gabarits (titreGabarit, dateCreation)
 VALUES ('Garagiste', '2017-09-15 16:34:55');
@@ -1391,8 +1392,11 @@ VALUES ((SELECT idRapport From Rapports Where DateRapport = '2017-01-02 04:12:15
 #####			Inserts RapportsVentesProduit			######
 ##############################################################
 
-INSERT INTO RapportsVentesProduit (idRapportVenteProduit)
-VALUES ((SELECT idRapport From Rapports Where DateRapport = '2017-01-03 04:12:15'));
+INSERT INTO RapportsVentesProduit (idRapportVenteProduit, idProduit)
+VALUES 
+((SELECT idRapport From Rapports Where DateRapport = '2017-01-03 04:12:15'),
+ (SELECT idProduit FROM Produits WHERE idProduit = 1)
+);
 
 ######################################################
 #####			Inserts FacturesRapports		######
