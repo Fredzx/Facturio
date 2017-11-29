@@ -90,6 +90,9 @@ namespace Facturio.Creation
             // Setter le Titre
             GabaritCreateurController.Gabarit.TitreGabarit = txtTitre.Text.ToString();
 
+            // Setter la date de création
+            GabaritCreateurController.Gabarit.DateCreation = DateTime.Now;
+
             // Envoyer au controlleur.
             GabaritCreateurController.EnregistrerGabarit();
         }
