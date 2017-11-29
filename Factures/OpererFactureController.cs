@@ -1,10 +1,11 @@
-﻿using Facturio.Base;
+﻿using System;
+using System.IO;
+using System.Collections.Generic;
+using Facturio.Base;
 using Facturio.Clients;
 using Facturio.ProduitsFactures;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-using System.Collections.Generic;
-using System.IO;
 
 namespace Facturio.Factures
 {
@@ -77,81 +78,74 @@ namespace Facturio.Factures
         public static void GenererPdf(string nomFichier, string logoUrl)
         {
             // Création du fichier PDF
-            // TODO: Ajouter quelque chose d'unique à la fin du nom du fichier (Ex: Facture4.pdf)
             FileStream fileStream = new FileStream($"{nomFichier}.pdf", FileMode.Create, FileAccess.Write);
             Document document = new Document();
             PdfWriter pdfWriter = PdfWriter.GetInstance(document, fileStream);
-            // Nombre de colonnes qu'il y aura dans la facture
-            var nombreColonnes = 0;
+            var titreColonnes = new List<string>();
 
             // Ouvre le document
             document.Open();
 
             // Le logo en haut à gauche
-            // TODO: Mettre l'URL vers le logo ici
-            Image logo = Image.GetInstance(@"");
-            logo.ScaleToFit(200.0F, 200.0F);
-            logo.Alignment = Element.ALIGN_LEFT;
+            Image logo = Image.GetInstance(new Uri(logoUrl));
+            logo.ScaleToFit(100.0F, 100.0F);
             document.Add(logo);
 
             // Les informations du client en haut à droite
-            // Paragraph paragraph = new Paragraph(new Phrase($"{LeClient.Nom}, {LeClient.Prenom}"));
-            Paragraph paragraph = new Paragraph(new Phrase("Sarrazin, Frédéric"));
-            paragraph.Alignment = Element.ALIGN_RIGHT;
+            Paragraph paragraph = new Paragraph(new Phrase($"Client: {LaFacture.LeClient.Nom}, {LaFacture.LeClient.Prenom}"));
             document.Add(paragraph);
 
-            // Détermine combien de colonnes ont a besoin
+            // Extrait le titre des colonnes utilisées par le gabarit
             foreach (var gc in OpererFacture.Gabarit.GabaritCriteres)
                 if (gc.EstUtilise)
-                    ++nombreColonnes;
+                    titreColonnes.Add(gc.Critere.Titre);
 
             // Création de la table pour les produits
-            PdfPTable table = new PdfPTable(nombreColonnes);
+            PdfPTable table = new PdfPTable(titreColonnes.Count);
             table.DefaultCell.Padding = 5;
+            table.DefaultCell.VerticalAlignment = Element.ALIGN_CENTER;
 
             // La font pour les entêtes des colonnes
-            Font font = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
+            Font font = new Font(Font.FontFamily.SYMBOL, 10, Font.BOLD);
 
-            // Génère les rangées de la facture
-            foreach (var gc in OpererFacture.Gabarit.GabaritCriteres)
+            // Ajoute les entêtes
+            foreach (var titre in titreColonnes)
             {
-                if (gc.EstUtilise)
-                {
-                    // Création de la cellule de l'entête
-                    var phrase = new Phrase(gc.Critere.Titre, font);
-                    var cell = new PdfPCell(phrase) { Padding = 5 };
-                    table.AddCell(cell);
-                }
+                var phrase = new Phrase(titre, font);
+                var cell = new PdfPCell(phrase) { Padding = 5 };
+                table.AddCell(cell);
             }
 
+            // Ajoute les infos de chaque produit
             foreach (var pf in LaFacture.LstProduitFacture)
             {
-                foreach (var gc in OpererFacture.Gabarit.GabaritCriteres)
+                foreach (var titre in titreColonnes)
                 {
-                    if (gc.EstUtilise)
+                    switch (titre)
                     {
-                        // Garde en mémoire les cellules de la rangée du produit
-                        switch (gc.Critere.Titre)
-                        {
-                            case "Quantité":
-                                table.AddCell(pf.Quantite.ToString());
-                                break;
-                            case "Prix":
-                                table.AddCell(pf.Produit.Prix.ToString());
-                                break;
-                            case "Nom produit":
-                                table.AddCell(pf.Produit.Nom);
-                                break;
-                            case "Description":
-                                table.AddCell(pf.Produit.Description);
-                                break;
-                            case "Nombre d'heures":
-                                // TODO
-                                break;
-                            case "Taux Horaire":
-                                // TODO
-                                break;
-                        }
+                        case "Quantité":
+                            table.AddCell(pf.Quantite.ToString());
+                            break;
+                        case "Prix":
+                            table.AddCell(pf.Produit.Prix.ToString());
+                            break;
+                        case "Nom produit":
+                            table.AddCell(pf.Produit.Nom);
+                            break;
+                        case "Description":
+                            table.AddCell(pf.Produit.Description);
+                            break;
+                        /*
+                        case "Nombre d'heures":
+                            // table.AddCell(pf.Produit.NombreHeures);
+                            break;
+                        case "Taux Horaire":
+                            // table.AddCell(pf.Produit.TauxHoraire);
+                            break;
+                        */
+                        default:
+                            table.AddCell(string.Empty);
+                            break;
                     }
                 }
             }

@@ -111,7 +111,7 @@
 
             <StackPanel HorizontalAlignment="Right">
                 <Button Content="Sauvegarder" />
-                <Button Content="Convertir en PDF" Margin="0" Click="BtnConvertirPdf_Click" />
+                <Button Content="Convertir en PDF" Margin="0" Click="BtnConvertirPdf_Click" IsEnabled="{Binding LaFacture.LstProduitFacture.Count}" />
             </StackPanel>
         </DockPanel>
     </Grid>

@@ -5,9 +5,7 @@ using System.Collections.Generic;
 using Facturio.Base;
 using Facturio.GabaritsCriteres;
 using Facturio.Gabarits;
-using Facturio.GabaritsCriteres;
 using System.Windows.Controls;
-using System.Windows;
 
 namespace Facturio.Creation
 {

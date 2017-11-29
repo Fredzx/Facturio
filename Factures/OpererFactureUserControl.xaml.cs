@@ -172,7 +172,7 @@ namespace Facturio.Factures
 
         private void BtnConvertirPdf_Click(object sender, RoutedEventArgs e)
         {
-            OpererFactureController.GenererPdf("Facture_Test", "");
+            OpererFactureController.GenererPdf("Facture_Test", OpererFacture.Gabarit.Logo);
 		}
 		
         private void btn_AssocierClient_Click(object sender, RoutedEventArgs e)
