@@ -15,21 +15,20 @@ namespace Facturio.Creation
     public partial class GabaritCreateurLogo : System.Windows.Controls.UserControl
     {
         #region Propriétés
+        const string AUCUN_CRIT = "Aucun critère sélectionné";
         public static System.Windows.Controls.DataGrid DtgCriteres { get; set; } = new System.Windows.Controls.DataGrid();
         public static ObservableCollection<Critere> LstObCritere { get; set; }
+        public static ObservableCollection<Critere> LstObCritereTabulaire { get; set; }
         public static List<Critere> LstInfoClient { get; set; } = new List<Critere>();
         #endregion
 
         public GabaritCreateurLogo()
         {
             InitializeComponent();
-            DtgCriteres = dtgCritere;
 
-            LstObCritere = ChargerListeCriteres();
+            ChargerListeCriteres();
+            ChargerListeCriteresTabulaire();
             ChargerListeInfoClient();
-
-            DtgCriteres.ItemsSource = LstObCritere;
-
 
 
             if (GabaritCreateurController.Gabarit.Logo != null)
@@ -43,6 +42,19 @@ namespace Facturio.Creation
             }
         }
 
+        #region Méthodes
+        private void ChargerListeCriteresTabulaire()
+        {
+            LstObCritereTabulaire = new ObservableCollection<Critere>();
+            foreach (Critere c in LstObCritere)
+                if (!c.Titre.Contains("client"))
+                {
+                    lblCritereTabulaire.Content += c.Titre + "\n";
+                    LstObCritereTabulaire.Add(c);
+                }
+            if (LstObCritereTabulaire.Count < 1)
+                lblCritereTabulaire.Content = AUCUN_CRIT;
+        }
         private void ChargerListeInfoClient()
         {
             foreach (Critere c in LstObCritere)
@@ -53,18 +65,19 @@ namespace Facturio.Creation
                     LstInfoClient.Add(c);
                 }
             }
+            if (LstInfoClient.Count < 1)
+            {
+                lblInfosClient.Content = AUCUN_CRIT;
+                lblInfosClient.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+            }
         }
-
-        private ObservableCollection<Critere> ChargerListeCriteres()
+        private void ChargerListeCriteres()
         {
-            ObservableCollection<Critere> list = new ObservableCollection<Critere>();
+            LstObCritere = new ObservableCollection<Critere>();
             foreach (GabaritCritere gabaritCritere in GabaritCreateurController.Gabarit.GabaritCriteres)
                 if (gabaritCritere.EstUtilise)
-                    list.Add(gabaritCritere.Critere);
-
-            return list;
+                    LstObCritere.Add(gabaritCritere.Critere);
         }
-        #region Méthodes
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
             e.Row.Header = ((e.Row.GetIndex()) + 1).ToString();
@@ -72,11 +85,10 @@ namespace Facturio.Creation
         private void btnEnregistrer_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             // Setter le logo
-            // GabaritCreateurController.Gabarits.Logo
+            GabaritCreateurController.Gabarit.Logo = txtLogo.Text.ToString();
 
             // Setter le Titre
-            GabaritCreateurController.Gabarit.TitreGabarit = "Test1";
-
+            GabaritCreateurController.Gabarit.TitreGabarit = txtTitre.Text.ToString();
 
             // Envoyer au controlleur.
             GabaritCreateurController.EnregistrerGabarit();
