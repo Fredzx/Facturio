@@ -179,6 +179,7 @@
     <Compile Include="Factures\Facture.cs" />
     <Compile Include="Factures\FactureController.cs" />
     <Compile Include="Factures\FactureMap.cs" />
+    <Compile Include="Factures\GenerateurPdfFacture.cs" />
     <Compile Include="Factures\HibernateFactureService.cs" />
     <Compile Include="Factures\OpererFactureUserControl.xaml.cs">
       <DependentUpon>OpererFactureUserControl.xaml</DependentUpon>
