@@ -24,12 +24,6 @@ namespace Facturio.Factures
             e.Row.Header = ((e.Row.GetIndex()) + 1).ToString();
         }
 
-        //private void btnAssigner_Click(object sender, RoutedEventArgs e)
-        //{
-        //    //TODO: Transformer le client et l'envoyer à la facture
-        //    Client c = (Client)dtgAfficheClient.SelectedItem;
-        //}
-
         private void txtRechercherClient_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (txtRechercherClient.Text.ToString() == "")
@@ -46,9 +40,17 @@ namespace Facturio.Factures
 
         private void btnAssigner_Click(object sender, RoutedEventArgs e)
         {
-            OpererFactureController.LaFacture.LeClient = (Client)dtgAfficheClient.SelectedItem;
-            BindingExpression binding = OpererFactureUserControl.TxtPrenom.GetBindingExpression(TextBlock.TextProperty);
-            binding.UpdateSource();
+            if (dtgAfficheClient.SelectedIndex == -1)
+            {
+                MessageBox.Show("Vous devez sélectionner un client avant de l'associer à la facture.");
+            }
+            else
+            {
+                OpererFactureController.LaFacture.LeClient = (Client)dtgAfficheClient.SelectedItem;
+                dtgAfficheClient.SelectedIndex = -1;
+                BindingExpression binding = OpererFactureUserControl.TxtPrenom.GetBindingExpression(TextBlock.TextProperty);
+                binding.UpdateSource();
+            }
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)

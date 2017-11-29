@@ -67,7 +67,7 @@
             <!-- Ex: <TextBlock Text="{Binding SousTotal, StringFormat='{0} $'}" /> -->
             <DockPanel>
                 <TextBlock Text="Sous-total" />
-                <TextBox Text="{Binding SousTotal}" />
+                <TextBox Text="{Binding SousTotal, Mode=TwoWay, StringFormat=C, UpdateSourceTrigger=PropertyChanged, BindsDirectlyToSource=True}" />
             </DockPanel>
 
             <DockPanel>
