@@ -53,15 +53,15 @@
             <Grid Grid.Row="1"
                   Grid.Column="3"                
                   Grid.ColumnSpan="7"
-                  Grid.RowSpan="8"
+                  Grid.RowSpan="6"
                   Margin="0,20,20,0">
                 <DataGrid Name="dtgSommaire" LoadingRow="DataGrid_LoadingRow" AutoGenerateColumns="False" IsReadOnly="True">
                     
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Produit" Width="1*" Binding="{Binding Produit.Nom}"/>
+                        <DataGridTextColumn Header="Produit" Width="2*" Binding="{Binding Produit.Nom}"/>
                         <DataGridTextColumn Header="Nb fois vendu" Width="1*" Binding="{Binding NbFoisVendu}" />
                         <DataGridTextColumn Header="Prix de vente" Width="1*" Binding="{Binding Produit.Prix}"/>
-                        <DataGridTextColumn Header="Total" Width="1*" Binding="{Binding SousTotal}"/>
+                        <DataGridTextColumn Header="Total" Width="1*" Binding="{Binding SousTotalSommaire}"/>
                     </DataGrid.Columns>
                    
                 </DataGrid>

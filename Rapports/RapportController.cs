@@ -76,7 +76,7 @@ namespace Facturio.Rapports
         {
             ObservableCollection<RapportFacture> listRapportFacture = new ObservableCollection<RapportFacture>();
 
-            for (int i = 0; i < lstFacture.Count - 1; i++)
+            for (int i = 0; i <= lstFacture.Count - 1; i++)
             {
                 listRapportFacture.Add(new RapportFacture(rapport, lstFacture[i]));
             }

@@ -75,7 +75,7 @@ namespace Facturio.Rapports.Vues
                 {
                     RFC.Date = DateTime.Now;
 
-                    Window detailFacturationCliente = new DetailRapport(RapportController.ConstruireRapportFacture(lstFactureLocal,RFC));
+                    Window detailFacturationCliente = new DetailRapport(RapportController.ConstruireRapportFacture(lstFactureLocal,RFC),RFC.Date);
                     // ici, je créer un Rapport en BD, mais SANS sa liste de RapportFacture, Sans cela,
                     // la liste de RapportFacture essaie de faire référence au rapport mais le rapport n'a pas son ID, donc sa plante
                     // C'est bizzare mais ça fonctionne
