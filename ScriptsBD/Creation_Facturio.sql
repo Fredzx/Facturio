@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS Produits
 CREATE TABLE IF NOT EXISTS Gabarits
 (	idGabarit INT AUTO_INCREMENT PRIMARY KEY,
 	titreGabarit VARCHAR(50),
-    logo VARCHAR(100),
+    logo VARCHAR(250),
     dateCreation DATETIME
 );
 

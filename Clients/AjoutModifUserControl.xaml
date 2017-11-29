@@ -12,9 +12,9 @@
             <Setter Property="FontFamily" Value="tahoma" />
         </Style>
         <Style x:Key="styleTxtBox" TargetType="{x:Type TextBox}">
-            <Setter Property="Margin" Value="0" />
-            <Setter Property="Width" Value="150" />
+            
             <Setter Property="Padding" Value="5" />
+            <Setter Property="VerticalAlignment" Value="Center" />
 
         </Style>
         <Style x:Key="styleComboBox" TargetType="{x:Type ComboBox}">
@@ -71,13 +71,13 @@
         <Label Name="txtNoClient" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"  Style="{StaticResource styleLabel}"  />
 
         <Label Name="lblNom" Grid.Row="2" Grid.Column="1"  Content="Nom" Style="{StaticResource styleLabel}" />
-        <TextBox Name="txtNom" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" TextChanged="txtNom_TextChanged"  />
+        <TextBox Name="txtNom" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" TextChanged="txtNom_TextChanged" Style="{StaticResource styleTxtBox}" />
 
         <Label Name="lblPrenom" Grid.Row="3" Grid.Column="1"  Content="Prénom" Style="{StaticResource styleLabel}" />
-        <TextBox Name="txtPrenom" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"  />
+        <TextBox Name="txtPrenom" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource styleTxtBox}" />
 
         <Label Name="lblAdresse" Grid.Row="4" Grid.Column="1"  Content="Adresse" Style="{StaticResource styleLabel}" />
-        <TextBox Name="txtAdresse" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"  />
+        <TextBox Name="txtAdresse" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource styleTxtBox}" />
 
         <Label Name="lblProvince" Grid.Row="5" Grid.Column="1"  Content="Province" Style="{StaticResource styleLabel}" />
         <ComboBox Name="cboProvince" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2">
@@ -97,10 +97,10 @@
         </ComboBox>
 
         <Label Name="lblCodePostal" Grid.Row="6" Grid.Column="1"  Content="Code Postal" Style="{StaticResource styleLabel}" />
-        <TextBox Name="txtCodePostal" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2"  />
+        <TextBox Name="txtCodePostal" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource styleTxtBox}" />
 
         <Label Name="lblTelephone" Grid.Row="7" Grid.Column="1"  Content="Téléphone" Style="{StaticResource styleLabel}" />
-        <TextBox Name="txtTelephone" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2"  />
+        <TextBox Name="txtTelephone" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource styleTxtBox}"  />
 
         <Label Name="lblRang" Grid.Row="8" Grid.Column="1"  Content="Rang" Style="{StaticResource styleLabel}" />
         <ComboBox Name="cboRang" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2">
@@ -115,7 +115,7 @@
         <RadioButton Name="rdbFemme" Grid.Row="9" Grid.Column="3" Content="Femme"  VerticalAlignment="Center" HorizontalAlignment="Center" />
 
         <Label Name="lblDescription" Grid.Row="10" Grid.Column="1"  Content="Description" Style="{StaticResource styleLabel}" />
-        <TextBox Name="txtDescription" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2"  />
+        <TextBox Name="txtDescription" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Style="{StaticResource styleTxtBox}" Height="55"  />
         
         <Label Name="lblInfo" Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="3" FontSize="14"/>
 

@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 using Facturio.GabaritsCriteres;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace Facturio.Creation
 
@@ -16,6 +17,7 @@ namespace Facturio.Creation
         #region Propriétés
         public static System.Windows.Controls.DataGrid DtgCriteres { get; set; } = new System.Windows.Controls.DataGrid();
         public static ObservableCollection<Critere> LstObCritere { get; set; }
+        public static List<Critere> LstInfoClient { get; set; } = new List<Critere>();
         #endregion
 
         public GabaritCreateurLogo()
@@ -23,17 +25,15 @@ namespace Facturio.Creation
             InitializeComponent();
             DtgCriteres = dtgCritere;
 
-            LstObCritere = new ObservableCollection<Critere>();
-            foreach (GabaritCritere gabaritCritere in GabaritCreateurController.Gabarit.GabaritCriteres)
-                if (gabaritCritere.EstUtilise)
-                    LstObCritere.Add(gabaritCritere.Critere);
+            LstObCritere = ChargerListeCriteres();
+            ChargerListeInfoClient();
 
             DtgCriteres.ItemsSource = LstObCritere;
-            
-           
+
+
+
             if (GabaritCreateurController.Gabarit.Logo != null)
             {
-
                 var bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
                 bitmapImage.UriSource = new Uri(GabaritCreateurController.Gabarit.Logo); ;
@@ -41,11 +41,29 @@ namespace Facturio.Creation
 
                 imgLogo.Source = bitmapImage;
             }
-
-
-
         }
 
+        private void ChargerListeInfoClient()
+        {
+            foreach (Critere c in LstObCritere)
+            {
+               if (c.Titre.Contains("client"))
+                {
+                    lblInfosClient.Content += c.Titre + "\n";
+                    LstInfoClient.Add(c);
+                }
+            }
+        }
+
+        private ObservableCollection<Critere> ChargerListeCriteres()
+        {
+            ObservableCollection<Critere> list = new ObservableCollection<Critere>();
+            foreach (GabaritCritere gabaritCritere in GabaritCreateurController.Gabarit.GabaritCriteres)
+                if (gabaritCritere.EstUtilise)
+                    list.Add(gabaritCritere.Critere);
+
+            return list;
+        }
         #region Méthodes
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
