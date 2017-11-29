@@ -5,8 +5,6 @@ using System.Globalization;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Forms;
 using Xceed.Wpf.Toolkit;
 
 namespace Facturio.Factures
@@ -185,6 +183,12 @@ namespace Facturio.Factures
 
         private void BtnConvertirPdf_Click(object sender, RoutedEventArgs e)
         {
+            if (OpererFactureController.LaFacture.LstProduitFacture.Count == 0)
+            {
+                System.Windows.MessageBox.Show("Vous devez ajouter un produit avant de générer un PDF.");
+                return;
+            }
+
             OpererFactureController.GenererPdf("Facture_Test", OpererFacture.Gabarit.Logo);
 		}
 		

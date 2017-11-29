@@ -1,14 +1,8 @@
 ﻿using Facturio.Base;
-using Facturio.Factures;
 using Facturio.Produits;
 using Facturio.ProduitsFactures;
-using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using Xceed.Wpf.Toolkit;
 
 namespace Facturio.Factures
 {

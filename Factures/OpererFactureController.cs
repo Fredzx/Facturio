@@ -86,14 +86,20 @@ namespace Facturio.Factures
             // Ouvre le document
             document.Open();
 
+            PdfPTable tableLogoClient = new PdfPTable(2);
+
             // Le logo en haut à gauche
             Image logo = Image.GetInstance(new Uri(logoUrl));
             logo.ScaleToFit(100.0F, 100.0F);
-            document.Add(logo);
+            tableLogoClient.AddCell(logo);
+            //document.Add(logo);
 
             // Les informations du client en haut à droite
             Paragraph paragraph = new Paragraph(new Phrase($"Client: {LaFacture.LeClient.Nom}, {LaFacture.LeClient.Prenom}"));
-            document.Add(paragraph);
+            paragraph.Alignment = Element.ALIGN_RIGHT;
+            tableLogoClient.AddCell(paragraph);
+            document.Add(tableLogoClient);
+            //document.Add(paragraph);
 
             // Extrait le titre des colonnes utilisées par le gabarit
             foreach (var gc in OpererFacture.Gabarit.GabaritCriteres)
@@ -106,7 +112,7 @@ namespace Facturio.Factures
             table.DefaultCell.VerticalAlignment = Element.ALIGN_CENTER;
 
             // La font pour les entêtes des colonnes
-            Font font = new Font(Font.FontFamily.SYMBOL, 10, Font.BOLD);
+            Font font = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD);
 
             // Ajoute les entêtes
             foreach (var titre in titreColonnes)
