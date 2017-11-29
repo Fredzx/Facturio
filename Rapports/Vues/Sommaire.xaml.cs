@@ -119,8 +119,11 @@ namespace Facturio.Rapports.Vues
 
         private void btnObtenirRapport_Click(object sender, RoutedEventArgs e)
         {
-            ListerSommaire();
-            InsertRapportSommaire();
+            if (Valider())
+            {
+                ListerSommaire();
+                InsertRapportSommaire();
+            }
         }
 
         private void ReInitialiserCalcul()

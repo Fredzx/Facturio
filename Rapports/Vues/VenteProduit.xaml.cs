@@ -155,7 +155,7 @@ namespace Facturio.Rapports.Vues
         private void cldDateDebut_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             btnObtenirRapport.IsEnabled = true;
-
+            btnRapportPDF.IsEnabled = true;
         }
 
         private void btnRapportPDF_Click(object sender, RoutedEventArgs e)
