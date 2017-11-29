@@ -40,7 +40,6 @@ namespace Facturio.Creation
             try
             {
                 HibernateGabaritService.Create(Gabarit);
-
             }
             catch (Exception)
             {

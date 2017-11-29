@@ -85,7 +85,7 @@ namespace Facturio.Creation
         private void btnEnregistrer_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             // Setter le logo
-            GabaritCreateurController.Gabarit.Logo = txtLogo.Text.ToString();
+            //GabaritCreateurController.Gabarit.Logo = txtLogo.Text.ToString();
 
             // Setter le Titre
             GabaritCreateurController.Gabarit.TitreGabarit = txtTitre.Text.ToString();
@@ -103,18 +103,22 @@ namespace Facturio.Creation
         }
         private void btnImporterLogo_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            GabaritCreateurController.Gabarit.Logo = txtLogo.Text.ToString();
+            
 
             try
             {
+                GabaritCreateurController.Gabarit.Logo = txtLogo.Text.ToString();
                 var bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
                 bitmapImage.UriSource = new Uri(GabaritCreateurController.Gabarit.Logo);
                 bitmapImage.EndInit();
                 imgLogo.Source = bitmapImage;
+            }
+            catch (Exception) {
+                MessageBox.Show("Impossible d'importer cette image.");
+                GabaritCreateurController.Gabarit.Logo = null;
 
             }
-            catch (Exception) { MessageBox.Show("Impossible d'importer cette image."); }
         }
         #endregion
     }
