@@ -210,11 +210,6 @@ namespace Facturio.Rapports.Vues
             return lstFacture;
         }
 
-        public void AjouterInfoFacture()
-        {
-            
-        }
-
         private void CreerNbFoisVendu(List<RapportFacture> lstRF)
         {
             Label textBlock = new Label();
