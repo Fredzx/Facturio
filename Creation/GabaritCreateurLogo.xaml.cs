@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
-using System.Collections.Generic;
 using Facturio.GabaritsCriteres;
 using System.Collections.ObjectModel;
-using System.Net;
-using System.IO;
-using Facturio.Gabarits;
 
 namespace Facturio.Creation
 
@@ -29,19 +24,19 @@ namespace Facturio.Creation
             DtgCriteres = dtgCritere;
 
             LstObCritere = new ObservableCollection<Critere>();
-            foreach (GabaritCritere gabaritCritere in GabaritCreateurController.Gabarits.GabaritCriteres)
+            foreach (GabaritCritere gabaritCritere in GabaritCreateurController.Gabarit.GabaritCriteres)
                 if (gabaritCritere.EstUtilise)
                     LstObCritere.Add(gabaritCritere.Critere);
 
             DtgCriteres.ItemsSource = LstObCritere;
             
            
-            if (GabaritCreateurController.Gabarits.Logo != null)
+            if (GabaritCreateurController.Gabarit.Logo != null)
             {
 
                 var bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
-                bitmapImage.UriSource = new Uri(GabaritCreateurController.Gabarits.Logo); ;
+                bitmapImage.UriSource = new Uri(GabaritCreateurController.Gabarit.Logo); ;
                 bitmapImage.EndInit();
 
                 imgLogo.Source = bitmapImage;
@@ -62,7 +57,7 @@ namespace Facturio.Creation
             // GabaritCreateurController.Gabarits.Logo
 
             // Setter le Titre
-            GabaritCreateurController.Gabarits.TitreGabarit = "Test1";
+            GabaritCreateurController.Gabarit.TitreGabarit = "Test1";
 
 
             // Envoyer au controlleur.
@@ -75,13 +70,13 @@ namespace Facturio.Creation
         }
         private void btnImporterLogo_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            GabaritCreateurController.Gabarits.Logo = txtLogo.Text.ToString();
+            GabaritCreateurController.Gabarit.Logo = txtLogo.Text.ToString();
 
             try
             {
                 var bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
-                bitmapImage.UriSource = new Uri(GabaritCreateurController.Gabarits.Logo);
+                bitmapImage.UriSource = new Uri(GabaritCreateurController.Gabarit.Logo);
                 bitmapImage.EndInit();
                 imgLogo.Source = bitmapImage;
 

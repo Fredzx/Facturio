@@ -49,6 +49,12 @@ namespace Facturio.Factures
             //MessageBox.Show("Fonctionnalité pas implémentée");
             AjoutProduitFactureController.AjouterProduitFacture(float.Parse(txtQuantite.Value.ToString()));
             txtQuantite.Value = 1;
+            OpererFactureUserControl.TxtSousTotal.Text = OpererFactureController.CalculerSousTotal().ToString();
+            OpererFactureUserControl.TxtTotal.Text = OpererFactureController.CalculerTotal().ToString();
+            OpererFactureUserControl.TxtTPS.Text = OpererFactureController.CalculerTps().ToString();
+            OpererFactureUserControl.TxtTVQ.Text = OpererFactureController.CalculerTvq().ToString();
+            OpererFactureUserControl.TxtEscomptePrix.Text = OpererFactureController.CalculerEscompte(OpererFactureController.LaFacture.LeClient.Rang.Escompte).ToString();
+
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)

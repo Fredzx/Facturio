@@ -1,5 +1,6 @@
 ﻿using Facturio.Factures;
 using Facturio.Gabarits;
+using Facturio.GabaritsCriteres;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -8,16 +9,17 @@ namespace Facturio.Creation
     public class GabaritCreateurController
     {
         #region Propriétés
-        public static Gabarits.Gabarit Gabarits { get; set; }
+        public static Gabarits.Gabarit Gabarit { get; set; } = GabaritCreateurViewModel.Gabarit;
         public static GabaritCreationWindow FntGabCreation { get; set; }
         public static OpererFacture FntOperationFacture { get; set; }
-        //public static string LogoPath { get; set; }
-        
+        public static ObservableCollection<Critere> LstObCritere { get; set; }
+       
+
         #endregion
 
         public GabaritCreateurController()
         {
-            Gabarits = GabaritCreateurViewModel.Gabarit;
+            
         }
 
         #region Méthodes
@@ -28,7 +30,7 @@ namespace Facturio.Creation
         }
         public static void EnregistrerGabarit()
         {
-            HibernateGabaritService.Create(Gabarits);
+            HibernateGabaritService.Create(Gabarit);
         }
         public static void FermerFenetreCreationLook()
         {
@@ -37,7 +39,7 @@ namespace Facturio.Creation
         public static void AfficherInterfaceOperationFacture()
         {
             FntGabCreation.Close();
-            FntOperationFacture = new OpererFacture(Gabarits);
+            FntOperationFacture = new OpererFacture(Gabarit);
             FntOperationFacture.ShowDialog();
 
         }
