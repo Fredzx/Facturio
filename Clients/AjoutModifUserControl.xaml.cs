@@ -1,4 +1,5 @@
 ﻿using Facturio.Enums;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -152,7 +153,6 @@ namespace Facturio.Clients
 
             switch (cboRang.SelectedIndex + 1)
             {
-                
                 case 1: rang.Nom = "unranked"; break;
                 case 2: rang.Nom = "Bronze"; break;
                 case 3: rang.Nom = "Argent"; break;
@@ -195,8 +195,28 @@ namespace Facturio.Clients
         }
         private bool ValiderInformationsClient()
         {
-            if (txtNom.Text.ToString() != "" && txtNom.Text.Length <= NOM_PRENOM_MAX && txtNom.Text.Length >= NOM_PRENOM_MIN)
+            if (txtNom.Text.ToString() != "")
             {
+                var regexNT = new Regex(@"^\d\d\d\d\d\d\d\d\d\d$");
+                if (txtTelephone.Text.ToString() != string.Empty)
+                {
+                    if (regexNT.IsMatch(txtTelephone.Text))
+                    {
+                        var regexPC = new Regex(@"^[A-Z]\d[A-Z]\d[A-Z]\d$");
+                        if (txtCodePostal.Text.ToString() != string.Empty)
+                        {
+                            if (regexPC.IsMatch(txtCodePostal.Text))
+                            {
+                                return true;
+                            }
+                            AfficherErreur(5);
+                            return false;
+                        }
+                        return true;
+                    }
+                    AfficherErreur(6);
+                    return false;
+                }
                 return true;
             }
             AfficherErreur(1);
@@ -268,6 +288,8 @@ namespace Facturio.Clients
             else
                 BtnEnregistrer.IsEnabled = false;
         }
+     
         #endregion
+
     }
 }
