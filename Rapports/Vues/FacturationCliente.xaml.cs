@@ -53,7 +53,8 @@ namespace Facturio.Rapports.Vues
 
                 RFC.LeClient = (Client)dtgAfficherClient.SelectedItem;
                 RFC.Date = DateTime.Now;
-               // RapportController.CreerPDF(RFC);
+                RapportController.CreerPDF(RFC, "FacturationClient");
+
             }
         }
 
@@ -66,20 +67,27 @@ namespace Facturio.Rapports.Vues
                 List<Facture> lstFactureLocal = new List<Facture>(HibernateFactureService.RetrieveFacturationCliente(cldDateDebut.SelectedDate.Value,
                                                                                            cldDateFin.SelectedDate.Value,
                                                                                            (Client)dtgAfficherClient.SelectedItem));
-                RFC.Date = DateTime.Now;
+                if(lstFactureLocal.Count == 0)
+                {
+                    MessageBoxResult mb = MessageBox.Show( "Ce rapport ne contiendra aucune facture, il ne sera pas créé");
+                }
+                else
+                {
+                    RFC.Date = DateTime.Now;
 
-                Window detailFacturationCliente = new DetailRapport(RapportController.ConstruireRapportFacture(lstFactureLocal,RFC));
-                // ici, je créer un Rapport en BD, mais SANS sa liste de RapportFacture, Sans cela,
-                // la liste de RapportFacture essaie de faire référence au rapport mais le rapport n'a pas son ID, donc sa plante
-                // C'est bizzare mais ça fonctionne
-                HibernateRapportFacturationCliente.Create(RFC);
-                detailFacturationCliente.Show();
+                    Window detailFacturationCliente = new DetailRapport(RapportController.ConstruireRapportFacture(lstFactureLocal,RFC));
+                    // ici, je créer un Rapport en BD, mais SANS sa liste de RapportFacture, Sans cela,
+                    // la liste de RapportFacture essaie de faire référence au rapport mais le rapport n'a pas son ID, donc sa plante
+                    // C'est bizzare mais ça fonctionne
+                    HibernateRapportFacturationCliente.Create(RFC);
+                    detailFacturationCliente.Show();
                 
-                // Après avoir créer le rapport en BD, on a son ID. Maintenant on peut créer les RapportFactures, 
-                RFC.LstRapportFacture = RapportController.ConstruireRapportFacture(lstFactureLocal, RFC);
-                RapportController.InsertRapportFacture(RFC.LstRapportFacture.ToList());
-                RapportController.LstRapport.Add(RFC);
+                    // Après avoir créer le rapport en BD, on a son ID. Maintenant on peut créer les RapportFactures, 
+                    RFC.LstRapportFacture = RapportController.ConstruireRapportFacture(lstFactureLocal, RFC);
+                    RapportController.InsertRapportFacture(RFC.LstRapportFacture.ToList());
+                    RapportController.LstRapport.Add(RFC);
 
+                }
             }
         }
 

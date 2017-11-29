@@ -8,7 +8,7 @@
              Padding="10"
              Background="LightGreen">
     <UserControl.DataContext>
-        <local:OpererFactureController/>
+        <local:OpererFactureController />
     </UserControl.DataContext>
 
     <Grid>
@@ -43,7 +43,7 @@
             </StackPanel.Resources>
 
             <!-- Bouton qui permet d'associer un client à la facture -->
-            <Button Content="Associer un client" Margin="0 0 0 5" Padding="6" />
+            <Button Name="btn_AssocierClient" Content="Associer un client" Margin="0 0 0 5" Padding="6" Click="btn_AssocierClient_Click" />
 
             <!-- Informations du client associé -->
             <GroupBox Header="Client" Padding="6" Margin="0 0 0 10">
@@ -56,9 +56,9 @@
 
                     <!-- On peut utiliser StringFormat ici pour afficher les valeurs -->
                     <!-- Ex: <TextBlock Text="{Binding Prenom, StringFormat='Prénom: {0}'}" /> -->
-                    <TextBlock Text="Prénom:" />
-                    <TextBlock Text="Nom:" />
-                    <TextBlock Text="Escompte:" />
+                    <TextBlock Name="txtPrenom" Text="{Binding Prenom, Mode=TwoWay, StringFormat='Prénom: {0}'}" />
+                    <TextBlock Name="txtNom" Text="{Binding Nom, Mode=TwoWay, StringFormat='Nom: {0}'}" />
+                    <TextBlock Name="txtEscompte" Text="{Binding Escompte, Mode=TwoWay, StringFormat='Escompte: {0}'}" />
                 </StackPanel>
             </GroupBox>
 
@@ -67,7 +67,7 @@
             <!-- Ex: <TextBlock Text="{Binding SousTotal, StringFormat='{0} $'}" /> -->
             <DockPanel>
                 <TextBlock Text="Sous-total" />
-                <TextBox Text="0 $" />
+                <TextBox Text="{Binding SousTotal}" />
             </DockPanel>
 
             <DockPanel>
@@ -106,12 +106,12 @@
             <StackPanel>
                 <Button Content="Ajouter un produit" />
                 <Button Content="Supprimer" />
-                <Button Content="Vider" />
+                <Button Content="Vider" Click="ViderFacture" />
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Right">
                 <Button Content="Sauvegarder" />
-                <Button Content="Convertir en PDF" Margin="0" />
+                <Button Content="Convertir en PDF" Margin="0" Click="BtnConvertirPdf_Click" />
             </StackPanel>
         </DockPanel>
     </Grid>

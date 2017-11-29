@@ -40,10 +40,10 @@ namespace Facturio.Rapports.Entities
             return "Vente produit";
         }
 
-        //public override string GetObject()
-        //{
-        //    return Produit.Nom;
-        //}
+        public override string GetObject()
+        {
+            return Produit.Nom;
+        }
 
     }
 }

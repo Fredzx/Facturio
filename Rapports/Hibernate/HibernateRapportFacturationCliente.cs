@@ -34,7 +34,6 @@ namespace Facturio.Rapports.Hibernate
         {
             using (var transaction = session.BeginTransaction())
             {
-                //session.Save(rapportFacturationCliente.LstRapportFacture);
                 session.Save(rapportFacturationCliente);
                 transaction.Commit();
             }

@@ -93,12 +93,12 @@ namespace Facturio.Rapports.Hibernate
             LazyLoad();
             KeyColumn("idRapportVenteProduit");
 
-            /*References<Produit>(x => x.Produit)
+            References<Produit>(x => x.Produit)
                 .Class<Produit>()
                 .Access.Property()
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
-                .Columns("idProduit");*/
+                .Columns("idProduit");
 
         }
     }
