@@ -32,6 +32,7 @@ namespace Facturio.Rapports.Vues
 
         public DateTime? DateDebut { get; set; }
         public DateTime? DateFin { get; set; }
+        public DateTime DateRapport { get; set; }
         public int? IdClient { get; set; }
         public Produit Produit { get; set; }
         public ObservableCollection<RapportFacture> LstFacture { get; set; }
@@ -39,6 +40,9 @@ namespace Facturio.Rapports.Vues
         public int compteur = 0;
         public DataGrid DtgProduit { get; set; }
         public string ObjetRapport { get; set; }
+        Produit ProduitRapport { get; set; }
+
+        StackPanel StpInfoFacture { get; set; }
 
         public decimal Total { get; set; }
 
@@ -54,7 +58,7 @@ namespace Facturio.Rapports.Vues
         //    RafraichirData(true);
         //}
 
-        public DetailRapport(List<RapportFacture> lstFacture)
+        public DetailRapport(List<RapportFacture> lstFacture, DateTime dateRapport)
         {
             InitializeComponent();
 
@@ -62,7 +66,8 @@ namespace Facturio.Rapports.Vues
             LstFacture = new ObservableCollection<RapportFacture>(lstFacture);
             DateDebut = TrouverIntervalleDate(LstFacture.ToList(), true);
             DateFin = TrouverIntervalleDate(LstFacture.ToList(), false);
-            RafraichirData(true);
+            lblDateGeneration.Content = dateRapport.ToString();
+            RafraichirData();
         }
 
         public DetailRapport(Rapport rapport)
@@ -79,7 +84,29 @@ namespace Facturio.Rapports.Vues
             DateDebut = TrouverIntervalleDate(LstFacture.ToList(), true);
             DateFin = TrouverIntervalleDate(LstFacture.ToList(), false);
             lblInfoRapport.Content = "Voici les factures entre le " + DateDebut + " et " + DateFin;
-            RafraichirData(true);
+            lblDateGeneration.Content = rapport.Date.ToString();
+            RafraichirData();
+        }
+        /// <summary>
+        /// Constructeur de details si le rapport est un FacturationVenteProduit
+        /// </summary>
+        /// <param name="rapport">Le Rapport</param>
+        /// <param name="produit">Le produit concerné</param>
+        public DetailRapport(Rapport rapport, Produit produit)
+        {
+            InitializeComponent();
+            Produit = produit;
+
+            DtgProduit = dtgProduits;
+            LstFacture = new ObservableCollection<RapportFacture>(rapport.LstRapportFacture);
+            DateDebut = TrouverIntervalleDate(LstFacture.ToList(), true);
+            DateFin = TrouverIntervalleDate(LstFacture.ToList(), false);
+            lblInfoRapport.Content = "Voici les factures entre le \n" + DateDebut + " et " + DateFin + "\nContenant le produit " + Produit.Nom;
+            StpInfoFacture = stpInfoFacture;
+            CreerNbFoisVendu(LstFacture.ToList());
+            AfficherArgentFaitAvecProduit(LstFacture.ToList());
+            lblDateGeneration.Content = rapport.Date.ToString();
+            RafraichirData();
         }
 
         private DateTime? TrouverIntervalleDate(List<RapportFacture> lstFacture, bool trouverBorneInferieur)
@@ -113,7 +140,7 @@ namespace Facturio.Rapports.Vues
             else
                 compteur--;
 
-            RafraichirData(false);
+            RafraichirData();
         }
 
         private void Button_Click_Suivant(object sender, RoutedEventArgs e)
@@ -123,7 +150,7 @@ namespace Facturio.Rapports.Vues
             else
                 compteur++;
 
-            RafraichirData(false);
+            RafraichirData();
         }
 
         public decimal CalculerSousTotal()
@@ -148,7 +175,7 @@ namespace Facturio.Rapports.Vues
             return (CalculerSousTotal() + CalculerTaxes(TPS) + CalculerTaxes(TVQ));
         }
 
-        public void RafraichirData(bool estPremiereOuverture)
+        public void RafraichirData()
         {
             if (LstFacture != null && LstFacture.Count != 0)
             {
@@ -156,13 +183,12 @@ namespace Facturio.Rapports.Vues
                 lblNoFacture.Content = (compteur + 1).ToString() + "/" + LstFacture.Count;
                 Total = 0;
 
-                if(!estPremiereOuverture)
-                    DtgProduit.Items.Refresh();
+                DtgProduit.Items.Refresh();
 
-                txtSousTotal.Text = Math.Round(CalculerSousTotal(), 2).ToString() + "$";
-                txtTPS.Text = Math.Round(CalculerTaxes(TPS), 2).ToString() + "$";
-                txtTVQ.Text = Math.Round(CalculerTaxes(TVQ), 2).ToString() + "$";
-                txtTotal.Text = Math.Round(CalculerTotal(), 2).ToString() + "$";
+                txtSousTotal.Content = Math.Round(CalculerSousTotal(), 2).ToString() + "$";
+                txtTPS.Content = Math.Round(CalculerTaxes(TPS), 2).ToString() + "$";
+                txtTVQ.Content = Math.Round(CalculerTaxes(TVQ), 2).ToString() + "$";
+                txtTotal.Content = Math.Round(CalculerTotal(), 2).ToString() + "$";
             }
             else
             {
@@ -182,6 +208,68 @@ namespace Facturio.Rapports.Vues
                 lstFacture.Add(pf.Facture);
             }
             return lstFacture;
+        }
+
+        private void CreerNbFoisVendu(List<RapportFacture> lstRF)
+        {
+            Label textBlock = new Label();
+            Label label = new Label();
+            StackPanel stp = new StackPanel();
+            stp.Orientation = Orientation.Horizontal;
+            stp.VerticalAlignment = VerticalAlignment.Center;
+
+            label.Content = "Nombre de fois vendu";
+
+            textBlock.Content = CalculerNBFoisVendu(lstRF);
+            StpInfoFacture.Children.Add(stp);
+            StpInfoFacture.Children.Add(label);
+            StpInfoFacture.Children.Add(textBlock);
+        }
+
+        private string CalculerNBFoisVendu(List<RapportFacture> list)
+        {
+            float compteur = 0;
+
+            foreach (RapportFacture rf in list)
+            {
+                foreach (ProduitFacture pf in rf.Facture.LstProduitFacture)
+                {
+                    if (pf.Produit.Id == Produit.Id)
+                        compteur+= pf.Quantite;
+                }
+            }
+            return compteur.ToString();
+        }
+
+        private void AfficherArgentFaitAvecProduit(List<RapportFacture> lstRF)
+        {
+            Label textBlock = new Label();
+            Label label = new Label();
+            StackPanel stp = new StackPanel();
+            stp.Orientation = Orientation.Horizontal;
+            stp.VerticalAlignment = VerticalAlignment.Center;
+
+            label.Content = "Ce produit vous à rapporter:";
+
+            textBlock.Content = CalculerTotalArgentProduit(lstRF);
+            StpInfoFacture.Children.Add(stp);
+            StpInfoFacture.Children.Add(label);
+            StpInfoFacture.Children.Add(textBlock);
+        }
+
+        private string CalculerTotalArgentProduit(List<RapportFacture> list)
+        {
+            decimal compteur = 0;
+
+            foreach (RapportFacture rf in list)
+            {
+                foreach (ProduitFacture pf in rf.Facture.LstProduitFacture)
+                {
+                    if (pf.Produit.Id == Produit.Id)
+                        compteur += (decimal)(pf.Produit.Prix*pf.Quantite);
+                }
+            }
+            return compteur.ToString()+"$";
         }
     }
 }

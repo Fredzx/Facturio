@@ -1142,17 +1142,6 @@ INSERT INTO Factures (idClient, idGabarit, dateFacture)
 (SELECT idGabarit FROM Gabarits WHERE titreGabarit = 'Épicerie'), 
 '2017-08-03 04:12:15');
 
-
-INSERT INTO Factures (idClient, idGabarit, dateFacture)
- VALUES
-((SELECT idClient FROM Clients WHERE nom = 'Bélisle'
-								AND	 prenom = 'Charles'
-                                AND  adresse = '555, rue Lajeunesse'
-                                AND codePostal = 'J2K3E5'),
-(SELECT idGabarit FROM Gabarits WHERE titreGabarit = 'Épicerie'), 
-'2017-09-03 04:12:15');
-
-
 INSERT INTO Factures (idClient, idGabarit, dateFacture)
  VALUES
 ((SELECT idClient FROM Clients WHERE nom = 'Bélisle'

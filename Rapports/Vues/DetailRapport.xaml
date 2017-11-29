@@ -33,9 +33,10 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Label Grid.Column="1" Grid.ColumnSpan="3" Name="lblNoFacture"></Label>
-        <Label Grid.Column="2" Grid.ColumnSpan="5" Content="Liste des Facutres"/>
-
-        <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="9" Name="lblInfoRapport"/>
+        <Label Grid.Column="2" Grid.ColumnSpan="5" Content="Liste des Factures"/>
+        <Label Grid.Column="5" Grid.ColumnSpan="3" Content="Date de génération du rapport"/>
+        <Label Grid.Column="8" Grid.ColumnSpan="2" Name="lblDateGeneration"/>
+        <Label Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="9" Grid.RowSpan="2" Margin="0 25 0 0" Name="lblInfoRapport"/>
 
         <DataGrid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="6" Grid.RowSpan="6" Name="dtgProduits" 
                   AutoGenerateColumns="False" IsReadOnly="True" >
@@ -47,15 +48,23 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <StackPanel Grid.Column="7" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="9" Margin="10 0 0 0">
-            <Label Content="Sous-Total"/>
-            <TextBlock Name="txtSousTotal"/>
-            <Label Content="TPS"/>
-            <TextBlock Name="txtTPS" />
-            <Label Content="TVQ"/>
-            <TextBlock Name="txtTVQ" />
-            <Label Content="Total" FontWeight="Bold"/>
-            <TextBlock Name="txtTotal" />
+        <StackPanel Grid.Column="7" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="9" Margin="10 0 0 0" Name="stpInfoFacture">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Label Width="75px" Content="Sous-Total:"/>
+                <Label Name="txtSousTotal"/>
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal" VerticalAlignment="Center">
+                <Label Width="75px" Content="TPS:"/>
+                <Label Name="txtTPS" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Label Width="75px" Content="TVQ:"/>
+                <Label Name="txtTVQ" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" >
+                <Label  Width="75px" Content="Total:" FontWeight="Bold"/>
+                <Label Name="txtTotal"/>
+            </StackPanel>
         </StackPanel>
         
         <Button Name="btnPrecedent" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Content="Précédent" Margin="0 5 0 0" Padding="2" Click="Button_Click_Precedent"></Button>

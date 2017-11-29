@@ -43,17 +43,22 @@ namespace Facturio.Rapports.Vues
         private void btnRapportPDF_Click(object sender, RoutedEventArgs e)
         {
             RapportFacturationCliente RFC = new RapportFacturationCliente();
-           
 
             if (Valider())
             {
-                RFC.LstRapportFacture = new ObservableCollection<RapportFacture>(HibernateRapportFactureService.RetrieveFacturationCliente(cldDateDebut.SelectedDate.Value,
-                                                       cldDateFin.SelectedDate.Value,
-                                                       (Client)dtgAfficherClient.SelectedItem));
-
-                RFC.LeClient = (Client)dtgAfficherClient.SelectedItem;
-                RFC.Date = DateTime.Now;
-                RapportController.CreerPDF(RFC, "FacturationClient");
+                List<Facture> lstFactureLocal = new List<Facture>(HibernateFactureService.RetrieveFacturationCliente(cldDateDebut.SelectedDate.Value,
+                                                                                           cldDateFin.SelectedDate.Value,
+                                                                                           (Client)dtgAfficherClient.SelectedItem));
+                if (lstFactureLocal.Count == 0)
+                {
+                    MessageBoxResult mb = MessageBox.Show("Ce rapport ne contiendra aucune facture, il ne sera pas créé");
+                }
+                else
+                {
+                    RFC.Date = DateTime.Now;
+                    RFC.LstRapportFacture = RapportController.ConstruireRapportFacture(lstFactureLocal, RFC);
+                    RapportController.CreerPDF(RFC, "FacturationClient");
+                }
 
             }
         }
@@ -75,7 +80,7 @@ namespace Facturio.Rapports.Vues
                 {
                     RFC.Date = DateTime.Now;
 
-                    Window detailFacturationCliente = new DetailRapport(RapportController.ConstruireRapportFacture(lstFactureLocal,RFC));
+                    Window detailFacturationCliente = new DetailRapport(RapportController.ConstruireRapportFacture(lstFactureLocal,RFC),RFC.Date);
                     // ici, je créer un Rapport en BD, mais SANS sa liste de RapportFacture, Sans cela,
                     // la liste de RapportFacture essaie de faire référence au rapport mais le rapport n'a pas son ID, donc sa plante
                     // C'est bizzare mais ça fonctionne

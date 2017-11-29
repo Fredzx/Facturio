@@ -35,33 +35,40 @@ namespace Facturio.Rapports
 
         public static void CreerPDF(Rapport rapport, string nomPDF)
         {
-            //string nomClient = rapport.LstFacture[0].Facture.LeClient.Nom;
-            //string prenomClient = rapport.LstFacture[0].Facture.LeClient.Prenom;
-            //string header = "Factures de " + prenomClient + " " + nomClient;
+            string nomClient = rapport.LstRapportFacture[0].Facture.LeClient.Nom;
+            string prenomClient = rapport.LstRapportFacture[0].Facture.LeClient.Prenom;
+            string header = "Factures de " + prenomClient + " " + nomClient;
             
             FileStream fs = new FileStream(nomPDF + ".pdf", FileMode.Create, FileAccess.Write, FileShare.None);
             Document document = new Document();
             PdfWriter writer = PdfWriter.GetInstance(document, fs);
 
-
-
             document.Open();
-            //document.Add(new Paragraph(0, header));
+            Paragraph para = new Paragraph(0,header);
+            para.SpacingAfter = 40;
+
+            document.Add(para);
             foreach (RapportFacture rf in rapport.LstRapportFacture)
             {
-
-                PdfPTable tableau = new PdfPTable(3);
+                PdfPTable tableau = new PdfPTable(4);
                 PdfPCell cellule = new PdfPCell();
+
+                tableau.AddCell("Produit");
+                tableau.AddCell("Quantité");
+                tableau.AddCell("Prix");
+                tableau.AddCell("Sous-Total");
 
                 foreach (ProduitFacture p in rf.Facture.LstProduitFacture)
                 {
                     tableau.AddCell(p.Produit.Nom.ToString());
                     tableau.AddCell(p.Quantite.ToString());
-                    tableau.AddCell(p.Produit.Prix.ToString());
+                    tableau.AddCell(p.Produit.Prix.ToString()+"$");
+                    tableau.AddCell(p.SousTotal.ToString()+"$");
                 }
 
+                
+                tableau.SpacingAfter = 20;
                 document.Add(tableau);
-                document.NewPage();
             }
             document.Close();
         }
@@ -76,7 +83,7 @@ namespace Facturio.Rapports
         {
             ObservableCollection<RapportFacture> listRapportFacture = new ObservableCollection<RapportFacture>();
 
-            for (int i = 0; i < lstFacture.Count - 1; i++)
+            for (int i = 0; i <= lstFacture.Count - 1; i++)
             {
                 listRapportFacture.Add(new RapportFacture(rapport, lstFacture[i]));
             }

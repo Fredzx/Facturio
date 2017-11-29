@@ -55,7 +55,7 @@ namespace Facturio.Rapports.Vues
 
                 RVP.LstRapportFacture = RapportController.ConstruireRapportFacture(LstFactureFiltrer, RVP);
 
-                Window detailFacturationCliente = new DetailRapport(RVP.LstRapportFacture.ToList());
+                Window detailFacturationCliente = new DetailRapport(RVP,RVP.Produit);
                 detailFacturationCliente.Show();
                 RapportController.InsertRapportFacture(RVP.LstRapportFacture.ToList());
                 RapportController.LstRapport.Add(RVP);
@@ -124,8 +124,11 @@ namespace Facturio.Rapports.Vues
             {
                 AfficherErreur(5); return false;
             }
+            if (dtgAfficheProduit.SelectedItem == null)
+            {
+                AfficherErreur(6); return false;
+            }
 
-            
 
             return true;
         }
@@ -141,7 +144,7 @@ namespace Facturio.Rapports.Vues
                 case 3: lblInfoErreur.Content = "La date de début doit être plus petite qu'aujourd'hui"; break;
                 case 4: lblInfoErreur.Content = "La date de fin doit être plus petite qu'aujourd'hui"; break;
                 case 5: lblInfoErreur.Content = "La date de début doit être plus petite que la date de fin"; break;
-                case 6: lblInfoErreur.Content = "Vous devez sélectionner un client"; break;
+                case 6: lblInfoErreur.Content = "Vous devez sélectionner un produit"; break;
                 default:
                     break;
             }
@@ -152,12 +155,15 @@ namespace Facturio.Rapports.Vues
         private void cldDateDebut_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             btnObtenirRapport.IsEnabled = true;
-
+            btnRapportPDF.IsEnabled = true;
         }
 
         private void btnRapportPDF_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
+      
+
     }
 }
