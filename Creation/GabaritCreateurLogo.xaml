@@ -6,6 +6,16 @@
              xmlns:local="clr-namespace:Facturio.Creation"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="900">
+
+    <UserControl.Resources>
+        <Style x:Key="DataGridColumnHeaderStyle1" TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Background" Value="Orange"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderBrush" Value="Red"/>
+            <Setter Property="BorderThickness" Value="0 0 3 0"/>
+        </Style>
+    </UserControl.Resources>
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -17,53 +27,82 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"  />
-            <RowDefinition Height="60" />
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"  />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100"/>
             <RowDefinition Height="*" />
             <RowDefinition Height="30" />
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
 
 
-        <TextBlock Grid.Row="0" Grid.Column="1" FontSize="18px">Facture #0000</TextBlock>
+        <TextBlock VerticalAlignment="Center" TextAlignment="Center" Grid.Row="0" Grid.Column="1" FontSize="18px">Facture #0000</TextBlock>
 
-        <GroupBox Header="Informations du client" Grid.Column="3" Grid.RowSpan="3"/>
-
-
-
-
-
-        <Image Name="imgLogo" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" />
-                        
+        <StackPanel Grid.Column="2" Orientation="Horizontal" >
+            <Label Content="Titre" VerticalAlignment="Center" FontSize="18"/>
+            <TextBox Padding="5" VerticalAlignment="Center" Name="txtTitre" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" Width="200"/>
+        </StackPanel>
         
         
+        
+        <GroupBox Header="Information(s) du client" Grid.Column="3" Grid.RowSpan="2">
+            <StackPanel Orientation="Vertical">
+                <Label Name="lblInfosClient"/>               
+            </StackPanel>
+        </GroupBox>
+
+        <Image Name="imgLogo" Margin="20" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" />
+
+        <GroupBox Header="Critère(s) de la facture" Grid.Column="1" Grid.Row="3" Margin="0,0,0,20">
+            <StackPanel Orientation="Vertical">
+                <Label Name="lblCritereTabulaire" FontSize="12" />
+            </StackPanel>
+        </GroupBox>
 
 
-        <DataGrid Name="dtgCritere" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" 
-                  BorderBrush="Black"  IsReadOnly="True"
-                  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Critères" Width="4*" Binding="{Binding Titre}" />
+
+        <!--
+
+        <DataGrid Name="dtgCritere" 
+                  Grid.Row="3" 
+                  Grid.Column="1" 
+                  Margin="0,0,0,25" 
+                  VerticalAlignment="Top"
+                  
+                  IsReadOnly="True"
+                  AutoGenerateColumns="False" 
+                  CanUserAddRows="False" 
+                  CanUserDeleteRows="False" 
+                  Padding="5"
+                
+
+
+            >
+            
+            
+           
+            <DataGrid.Columns >
+                <DataGridTextColumn FontSize="12" Header="Critères de la facture" Width="*" Binding="{Binding Titre}" />
             </DataGrid.Columns>
-        </DataGrid>
+        </DataGrid> 
+            -->
 
 
-        <Rectangle Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Margin="30" Fill="LightBlue"/>
-        <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22px">Votre Facture</TextBlock>
+        <Rectangle  Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Fill="LightBlue" Margin="20,20,0,20"/>
+        <TextBlock  Margin="20,20,0,20" Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22px">Votre Facture</TextBlock>
 
 
 
 
-        
-       
-        
+
+
+
 
         <StackPanel Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3"
                     Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBox Name="txtLogo" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" Width="250"/>
+            <TextBox Padding="5" VerticalAlignment="Center" Name="txtLogo" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" Width="250"/>
             <Button Width="100" Name="btnImporterLogo" Grid.Column="1" Grid.Row="4" Content="Importer image" Click="btnImporterLogo_Click" />
-            
+
             <Button Name="btnEnregistrer" Content="Enregistrer" Width="150" Click="btnEnregistrer_Click" Margin="100,0,0,0" />
             <Button Name="btnOuvrir"  Content="Ouvrir" Width="150" Click="btnOuvrir_Click" Margin="10,0,0,0" />
         </StackPanel>

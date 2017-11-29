@@ -118,24 +118,6 @@ namespace Facturio.Creation
 
             if (chb.IsChecked == true)
             {
-                // Vérifier si les deux checkboxes sont bien remplies (> 0)...
-                // Doit faire un GabaritCritereViewModel, pour pouvoir binder TwoWay Position, Largeur, EstUtilise
-                // Chaque fois que la liste de GabaritCritereViewModel sera modifié, je vais faire:
-                // GabaritCriteres.Clear();
-                // foreach (var gabaritCritereViewModel in GabaritCritereViewModels)
-                // {
-                //     var gabaritCritere = new GabaritCritere
-                //     {
-                //         Gabarit = gabaritCritereViewModel.Gabarit,
-                //         Critere = gabaritCritereViewModel.Critere,
-                //         Largeur = gabaritCritereViewModel.Largeur,
-                //         Position = gabaritCritereViewModel.Position,
-                //         EstUtilise = gabaritCritereViewModel.EstUtilise
-                //     };
-                //
-                //     GabaritCriteres.Add(gabaritCritere);
-                // }
-
                 Colonnes.Add(dtgTxtCol);
                 return;
             }

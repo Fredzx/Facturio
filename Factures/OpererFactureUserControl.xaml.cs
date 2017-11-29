@@ -189,7 +189,7 @@ namespace Facturio.Factures
                 return;
             }
 
-            OpererFactureController.GenererPdf("Facture_Test", OpererFacture.Gabarit.Logo);
+            OpererFactureController.GenererPdf(OpererFacture.Gabarit.TitreGabarit, OpererFacture.Gabarit.Logo);
 		}
 		
         private void btn_AssocierClient_Click(object sender, RoutedEventArgs e)
