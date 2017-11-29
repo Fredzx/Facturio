@@ -1,4 +1,5 @@
 ﻿using Facturio.GabaritsCriteres;
+using Facturio.ProduitsFactures;
 using System.Collections;
 using System.Globalization;
 using System.Text;
@@ -17,14 +18,26 @@ namespace Facturio.Factures
     {
         public static System.Windows.Controls.DataGrid DtgFacture;
         public static TextBlock TxtPrenom { get; set; }
+        public static TextBlock TxtEscompte { get; set; }
+        public static TextBlock TxtNom{ get; set; }
+        public static System.Windows.Controls.TextBox TxtSousTotal { get; set; }
+        public static System.Windows.Controls.TextBox TxtTPS { get; set; }
+        public static System.Windows.Controls.TextBox TxtTVQ { get; set; }
+        public static System.Windows.Controls.TextBox TxtTotal { get; set; }
+        public static System.Windows.Controls.TextBox TxtEscomptePrix { get; set; }
+
         public OpererFactureUserControl()
         {
             InitializeComponent();
             DtgFacture = dtgFacture;
             TxtPrenom = txtPrenom;
-            //txtPrenom.DataContext = OpererFactureController.LeClient;
-            //txtNom.DataContext = OpererFactureController.LeClient;
-            //txtEscompte.DataContext = OpererFactureController.LeClient.Rang;
+            TxtNom = txtNom;
+            TxtEscomptePrix = txtEscomptePrix;
+            TxtSousTotal = txtSousTotal;
+            TxtTotal = txtTotal;
+            TxtTPS = txtTPS;
+            TxtTVQ = txtTVQ;
+            TxtEscompte = txtEscompte;
             CreerFacture();
         }
 
@@ -185,6 +198,16 @@ namespace Facturio.Factures
         {
             OpererFactureController.LaFacture.LstProduitFacture.Clear();
             dtgFacture.Items.Refresh();
+            // TODO: Mettre en fonction
+            txtTVQ.Text = "0 $";
+        }
+
+        private void btnSupprimer_Click(object sender, RoutedEventArgs e)
+        {
+            if(dtgFacture.SelectedIndex != -1)
+                OpererFactureController.LaFacture.LstProduitFacture.Remove((ProduitFacture)dtgFacture.SelectedItem);
+            dtgFacture.Items.Refresh();
+            // TODO: Recalculer
         }
     }
 }

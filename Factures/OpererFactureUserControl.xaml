@@ -56,9 +56,9 @@
 
                     <!-- On peut utiliser StringFormat ici pour afficher les valeurs -->
                     <!-- Ex: <TextBlock Text="{Binding Prenom, StringFormat='Prénom: {0}'}" /> -->
-                    <TextBlock Name="txtPrenom" Text="{Binding Prenom, Mode=TwoWay, StringFormat='Prénom: {0}'}" />
-                    <TextBlock Name="txtNom" Text="{Binding Nom, Mode=TwoWay, StringFormat='Nom: {0}'}" />
-                    <TextBlock Name="txtEscompte" Text="{Binding Escompte, Mode=TwoWay, StringFormat='Escompte: {0}'}" />
+                    <TextBlock Name="txtPrenom" />
+                    <TextBlock Name="txtNom" />
+                    <TextBlock Name="txtEscompte" />
                 </StackPanel>
             </GroupBox>
 
@@ -67,27 +67,27 @@
             <!-- Ex: <TextBlock Text="{Binding SousTotal, StringFormat='{0} $'}" /> -->
             <DockPanel>
                 <TextBlock Text="Sous-total" />
-                <TextBox Text="{Binding SousTotal, Mode=TwoWay, StringFormat=C, UpdateSourceTrigger=PropertyChanged, BindsDirectlyToSource=True}" />
+                <TextBox Name="txtSousTotal" Text="{Binding SousTotal, Mode=TwoWay, StringFormat=C, UpdateSourceTrigger=PropertyChanged, BindsDirectlyToSource=True}" />
             </DockPanel>
 
             <DockPanel>
                 <TextBlock Text="Escompte" />
-                <TextBox Text="0 $" />
+                <TextBox Name="txtEscomptePrix" Text="0 $" />
             </DockPanel>
 
             <DockPanel>
                 <TextBlock Text="TPS" />
-                <TextBox Text="0 $" />
+                <TextBox Name="txtTPS" Text="0 $" />
             </DockPanel>
 
             <DockPanel>
                 <TextBlock Text="TVQ" />
-                <TextBox Text="0 $" />
+                <TextBox Name="txtTVQ" Text="0 $" />
             </DockPanel>
 
             <DockPanel Margin="0">
                 <TextBlock Text="Total" />
-                <TextBox Text="0 $" />
+                <TextBox Name="txtTotal" Text="0 $" />
             </DockPanel>
         </StackPanel>
 
@@ -105,7 +105,7 @@
 
             <StackPanel>
                 <Button Content="Ajouter un produit" />
-                <Button Content="Supprimer" />
+                <Button Content="Supprimer" Click="btnSupprimer_Click" />
                 <Button Content="Vider" Click="ViderFacture" />
             </StackPanel>
 

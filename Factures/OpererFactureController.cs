@@ -49,7 +49,7 @@ namespace Facturio.Factures
             if (pourcentage == null)
                 return sousTotal;
 
-            return sousTotal * (float)pourcentage;
+            return sousTotal * ((float)pourcentage/100);
         }
 
         public static float CalculerTps()

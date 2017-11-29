@@ -48,8 +48,10 @@ namespace Facturio.Factures
             {
                 OpererFactureController.LaFacture.LeClient = (Client)dtgAfficheClient.SelectedItem;
                 dtgAfficheClient.SelectedIndex = -1;
-                BindingExpression binding = OpererFactureUserControl.TxtPrenom.GetBindingExpression(TextBlock.TextProperty);
-                binding.UpdateSource();
+                OpererFactureUserControl.TxtEscompte.Text = "Escompte: " + OpererFactureController.LaFacture.LeClient.Rang.Escompte.ToString() + " %";
+                OpererFactureUserControl.TxtNom.Text = "Nom: " + OpererFactureController.LaFacture.LeClient.Nom;
+                OpererFactureUserControl.TxtPrenom.Text = "Prénom: " + OpererFactureController.LaFacture.LeClient.Prenom;
+                // TODO: Recalculer Prix (Escompte)
             }
         }
 
