@@ -77,8 +77,10 @@ namespace Facturio.Factures
         // TODO: Sur le clique du bouton on doit enregistrer la facture et réduire les quantités en BD.
         public static void GenererPdf(string nomFichier, string logoUrl)
         {
+            DateTime dt = DateTime.Now;
+
             // Création du fichier PDF
-            FileStream fileStream = new FileStream($"{nomFichier}.pdf", FileMode.Create, FileAccess.Write);
+            FileStream fileStream = new FileStream($"{nomFichier}{dt.Millisecond}_{dt.Day}_{dt.Month}_{dt.Year}.pdf", FileMode.Create, FileAccess.Write);
             Document document = new Document();
             PdfWriter pdfWriter = PdfWriter.GetInstance(document, fileStream);
             var titreColonnes = new List<string>();
@@ -86,20 +88,65 @@ namespace Facturio.Factures
             // Ouvre le document
             document.Open();
 
-            PdfPTable tableLogoClient = new PdfPTable(2);
+            PdfPTable tableLogoClient = new PdfPTable(2) { WidthPercentage = 100, SpacingAfter = 25 };
 
-            // Le logo en haut à gauche
-            Image logo = Image.GetInstance(new Uri(logoUrl));
-            logo.ScaleToFit(100.0F, 100.0F);
-            tableLogoClient.AddCell(logo);
-            //document.Add(logo);
+            var cellLogo = new PdfPCell
+            {
+                Padding = 0,
+                HorizontalAlignment = Element.ALIGN_LEFT,
+                Border = Rectangle.NO_BORDER
+            };
 
-            // Les informations du client en haut à droite
-            Paragraph paragraph = new Paragraph(new Phrase($"Client: {LaFacture.LeClient.Nom}, {LaFacture.LeClient.Prenom}"));
-            paragraph.Alignment = Element.ALIGN_RIGHT;
-            tableLogoClient.AddCell(paragraph);
+            if (!string.IsNullOrEmpty(logoUrl))
+            {
+                Image logo = Image.GetInstance(new Uri(logoUrl));
+                logo.ScaleToFit(100, 100);
+            }
+            else
+            {
+                cellLogo.FixedHeight = 100;
+            }
+
+            tableLogoClient.AddCell(cellLogo);
+
+            /*
+            if (!string.IsNullOrEmpty(logoUrl))
+            {
+                Image logo = Image.GetInstance(new Uri(logoUrl));
+                logo.ScaleToFit(100.0F, 100.0F);
+
+                var cellLogo = new PdfPCell(logo)
+                {
+                    Padding = 0,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    Border = Rectangle.NO_BORDER
+                };
+
+                tableLogoClient.AddCell(cellLogo);
+            }
+            else
+            {
+                var cellLogo = new PdfPCell
+                {
+                    Padding = 0,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    Border = Rectangle.NO_BORDER,
+                    FixedHeight = 100.0F
+                };
+
+                tableLogoClient.AddCell(cellLogo);
+            }
+            */
+
+            var cellInfoClient = new PdfPCell(new Phrase($"Client: {LaFacture.LeClient.Nom}, {LaFacture.LeClient.Prenom}"))
+            {
+                Padding = 0,
+                HorizontalAlignment = Element.ALIGN_RIGHT,
+                Border = Rectangle.NO_BORDER
+            };
+            tableLogoClient.AddCell(cellInfoClient);
+
             document.Add(tableLogoClient);
-            //document.Add(paragraph);
 
             // Extrait le titre des colonnes utilisées par le gabarit
             foreach (var gc in OpererFacture.Gabarit.GabaritCriteres)
@@ -108,6 +155,7 @@ namespace Facturio.Factures
 
             // Création de la table pour les produits
             PdfPTable table = new PdfPTable(titreColonnes.Count);
+            table.WidthPercentage = 100;
             table.DefaultCell.Padding = 5;
             table.DefaultCell.VerticalAlignment = Element.ALIGN_CENTER;
 
@@ -121,6 +169,9 @@ namespace Facturio.Factures
                 var cell = new PdfPCell(phrase) { Padding = 5 };
                 table.AddCell(cell);
             }
+
+            // Change la police pour les cellules ordinaires
+            font = new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.NORMAL);
 
             // Ajoute les infos de chaque produit
             foreach (var pf in LaFacture.LstProduitFacture)
