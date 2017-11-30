@@ -34,7 +34,7 @@ namespace Facturio.Factures
                     ProduitFacture pf = new ProduitFacture(p, OpererFactureController.LaFacture, qte);
                     if (OpererFactureUserControl.DtgFacture.Items.Count > 0)
                     {
-                        for (int i = 0; i < OpererFactureUC.DtgListeProduitsFacture.Items.Count; i++)
+                        for (int i = 0; i < OpererFactureUserControl.DtgFacture.Items.Count; i++)
                         {
                             if (OpererFactureController.LaFacture.LstProduitFacture[i].Produit.Nom == pf.Produit.Nom && pf.Produit.Prix == OpererFactureController.LaFacture.LstProduitFacture[i].Produit.Prix && pf.Produit.Description == OpererFactureController.LaFacture.LstProduitFacture[i].Produit.Description)
                             {
@@ -61,7 +61,7 @@ namespace Facturio.Factures
                     OpererFactureUserControl.DtgFacture.Items.Refresh();
                 }
             }
-            OpererFactureController.SousTotal = OpererFactureController.CalculerSousTotal().ToString();
+            OpererFactureUserControl.RefreshAffichage();
             //TODO: Maintenant, je supprime la quantité dans la liste
             //      Il faut que je supprime la quantité en BD quand on confirme la facture
         }

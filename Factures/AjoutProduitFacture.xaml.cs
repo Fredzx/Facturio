@@ -48,18 +48,14 @@ namespace Facturio.Factures
             //OpererFacture.TbcProduitPublic.SelectedIndex = 1;
             //MessageBox.Show("Fonctionnalité pas implémentée");
             AjoutProduitFactureController.AjouterProduitFacture(float.Parse(txtQuantite.Value.ToString()));
-            txtQuantite.Value = 1;
-            OpererFactureUserControl.TxtSousTotal.Text = OpererFactureController.CalculerSousTotal().ToString();
-            OpererFactureUserControl.TxtTotal.Text = OpererFactureController.CalculerTotal().ToString();
-            OpererFactureUserControl.TxtTPS.Text = OpererFactureController.CalculerTps().ToString();
-            OpererFactureUserControl.TxtTVQ.Text = OpererFactureController.CalculerTvq().ToString();
-            OpererFactureUserControl.TxtEscomptePrix.Text = OpererFactureController.CalculerEscompte(OpererFactureController.LaFacture.LeClient.Rang.Escompte).ToString();
-
+            dtgAfficheProduits.SelectedIndex = -1;
+            OpererFactureUserControl.RefreshAffichage();
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)
         {
             OpererFacture.TbcProduitPublic.SelectedIndex = 0;
+            OpererFactureUserControl.RefreshAffichage();
         }
 
         private void dtgAfficheProduits_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -90,6 +86,24 @@ namespace Facturio.Factures
                     {
                         AjoutProduitFactureController.AjouterProduitFacture(float.Parse(txtQuantite.Maximum.ToString()));
                     }
+                }
+            }
+        }
+
+        private void txtQuantite_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (Int32.Parse(txtQuantite.Value.ToString()) > txtQuantite.Maximum)
+            {
+                MessageBoxResult resultat;
+                resultat = System.Windows.MessageBox.Show("Il n'y a pas suffisamment d'éléments en inventaire\nVoulez-vous ajouter le maximum à la facture ?"
+                    , "Info"
+                    , MessageBoxButton.YesNo
+                    , MessageBoxImage.Warning
+                    , MessageBoxResult.OK);
+
+                if (resultat == MessageBoxResult.Yes)
+                {
+                    AjoutProduitFactureController.AjouterProduitFacture(float.Parse(txtQuantite.Maximum.ToString()));
                 }
             }
         }

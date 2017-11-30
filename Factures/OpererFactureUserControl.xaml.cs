@@ -17,7 +17,7 @@ namespace Facturio.Factures
         public static System.Windows.Controls.DataGrid DtgFacture;
         public static TextBlock TxtPrenom { get; set; }
         public static TextBlock TxtEscompte { get; set; }
-        public static TextBlock TxtNom{ get; set; }
+        public static TextBlock TxtNom { get; set; }
         public static System.Windows.Controls.TextBox TxtSousTotal { get; set; }
         public static System.Windows.Controls.TextBox TxtTPS { get; set; }
         public static System.Windows.Controls.TextBox TxtTVQ { get; set; }
@@ -36,6 +36,7 @@ namespace Facturio.Factures
             TxtTPS = txtTPS;
             TxtTVQ = txtTVQ;
             TxtEscompte = txtEscompte;
+            RefreshAffichage();
             CreerFacture();
         }
 
@@ -52,7 +53,7 @@ namespace Facturio.Factures
                         var dtgTxtCol = new DataGridTextColumn { Header = gc.Critere.Titre };
                         dtgTxtCol.IsReadOnly = true;
                         dtgTxtCol.Binding = new System.Windows.Data.Binding(titre);
-                        if(titre == "Produit.Prix")
+                        if (titre == "Produit.Prix")
                         {
                             dtgTxtCol.Binding.StringFormat = "C";
                         }
@@ -110,7 +111,7 @@ namespace Facturio.Factures
                     }
                 }
             }
-            if(contientCritereLibre)
+            if (contientCritereLibre)
                 System.Windows.MessageBox.Show("Ce gabarit contient un critère libre\nVeuillez entrer les informations par vous-même");
         }
 
@@ -190,12 +191,13 @@ namespace Facturio.Factures
             }
 
             OpererFactureController.GenererPdf(OpererFacture.Gabarit.TitreGabarit, OpererFacture.Gabarit.Logo);
-		}
-		
+        }
+
         private void btn_AssocierClient_Click(object sender, RoutedEventArgs e)
         {
             AssignerClientFacture a = new AssignerClientFacture();
             a.ShowDialog();
+            RefreshAffichage();
         }
 
         private void ViderFacture(object sender, RoutedEventArgs e)
@@ -203,15 +205,28 @@ namespace Facturio.Factures
             OpererFactureController.LaFacture.LstProduitFacture.Clear();
             dtgFacture.Items.Refresh();
             // TODO: Mettre en fonction
-            txtTVQ.Text = "0 $";
+            RefreshAffichage();
         }
 
         private void btnSupprimer_Click(object sender, RoutedEventArgs e)
         {
-            if(dtgFacture.SelectedIndex != -1)
+            if (dtgFacture.SelectedIndex != -1)
                 OpererFactureController.LaFacture.LstProduitFacture.Remove((ProduitFacture)dtgFacture.SelectedItem);
             dtgFacture.Items.Refresh();
             // TODO: Recalculer
+            RefreshAffichage();
+        }
+
+        public static void RefreshAffichage()
+        {
+            TxtPrenom.Text = "Prénom: " + OpererFactureController.LaFacture.LeClient.Prenom;
+            TxtNom.Text = "Nom: " + OpererFactureController.LaFacture.LeClient.Nom;
+            TxtEscompte.Text = "Escompte: " + OpererFactureController.LaFacture.LeClient.Rang.Escompte.ToString() + " %";
+            TxtSousTotal.Text = OpererFactureController.CalculerSousTotal().ToString("c2");
+            TxtTPS.Text = OpererFactureController.CalculerTps().ToString("c2");
+            TxtTVQ.Text = OpererFactureController.CalculerTvq().ToString("c2");
+            TxtTotal.Text = OpererFactureController.CalculerTotal().ToString("c2");
+            TxtEscomptePrix.Text = OpererFactureController.CalculerEscompte(OpererFactureController.LaFacture.LeClient.Rang.Escompte).ToString("c2");
         }
     }
 }

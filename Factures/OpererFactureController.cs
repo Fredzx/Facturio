@@ -14,11 +14,11 @@ namespace Facturio.Factures
     {
         public static Facture LaFacture { get; set; }
         public string Titre { get; set; }
-        public static string Total { get { return CalculerTotal().ToString(); } set { Total = value; } }
-        public static string TPS { get { return CalculerTps().ToString(); } set { TPS = value; } }
-        public static string TVQ { get { return CalculerTvq().ToString(); } set { TVQ = value; } }
+        public static string Total { get; set; }
+        public static string TPS { get; set; }
+        public static string TVQ { get; set; }
         public static string SousTotal { get; set; }
-        public static string Escompte { get { return CalculerEscompte(LaFacture.LeClient.Rang.Escompte).ToString(); } set { Escompte = value; } }
+        public static string Escompte { get; set; }
 
         public OpererFactureController()
         {

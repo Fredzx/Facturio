@@ -67,27 +67,27 @@
             <!-- Ex: <TextBlock Text="{Binding SousTotal, StringFormat='{0} $'}" /> -->
             <DockPanel>
                 <TextBlock Text="Sous-total" />
-                <TextBox Name="txtSousTotal" Text="{Binding SousTotal, Mode=TwoWay, StringFormat=C, UpdateSourceTrigger=PropertyChanged, BindsDirectlyToSource=True}" />
+                <TextBox Name="txtSousTotal" />
             </DockPanel>
 
             <DockPanel>
                 <TextBlock Text="Escompte" />
-                <TextBox Name="txtEscomptePrix" Text="0 $" />
+                <TextBox Name="txtEscomptePrix" />
             </DockPanel>
 
             <DockPanel>
                 <TextBlock Text="TPS" />
-                <TextBox Name="txtTPS" Text="0 $" />
+                <TextBox Name="txtTPS" />
             </DockPanel>
 
             <DockPanel>
                 <TextBlock Text="TVQ" />
-                <TextBox Name="txtTVQ" Text="0 $" />
+                <TextBox Name="txtTVQ" />
             </DockPanel>
 
             <DockPanel Margin="0">
                 <TextBlock Text="Total" />
-                <TextBox Name="txtTotal" Text="0 $" />
+                <TextBox Name="txtTotal" />
             </DockPanel>
         </StackPanel>
 
