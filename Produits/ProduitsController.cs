@@ -124,7 +124,12 @@ namespace Facturio.Produits
                 case 8:
                     AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
                     AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
-                    AjoutModifUserControl.LblInfo.Content = "ERREUR: le produit existe déjà";
+                    AjoutModifUserControl.LblInfo.Content = "ERREUR: Le produit existe déjà";
+                    break;
+                case 9:
+                    AjoutModifUserControl.GrdTitre.SetValue(Grid.RowProperty, 2);
+                    AjoutModifUserControl.LblInfo.Foreground = Brushes.Red;
+                    AjoutModifUserControl.LblInfo.Content = "ERREUR: La description doit être inférieure à 255 caractères";
                     break;
             }
         }
@@ -192,71 +197,52 @@ namespace Facturio.Produits
                 GestionErreurs(0);
                 return false;
             }
-            else
+            if (AjoutModifUserControl.TxtNom.Text.Length < 3)
             {
-                if (AjoutModifUserControl.TxtNom.Text.Length < 3)
-                {
-                    GestionErreurs(1);
-                    return false;
-                }
-                else
-                {
-                    if (AjoutModifUserControl.TxtDescription.Text == "")
-                    {
-                        GestionErreurs(2);
-                        return false;
-                    }
-                    else
-                    {
-                        if (AjoutModifUserControl.TxtDescription.ToString().Length < 3)
-                        {
-                            GestionErreurs(3);
-                            return false;
-                        }
-                        else
-                        {
-                            if (AjoutModifUserControl.TxtPrix.Text == "")
-                            {
-                                GestionErreurs(4);
-                                return false;
-                            }
-                            else
-                            {
-                                var regex = new Regex(@"^[0-9]*([\,]?\d{1,2})");
-                                if (!regex.IsMatch(AjoutModifUserControl.TxtPrix.Text))
-                                {
-                                    GestionErreurs(5);
-                                    return false;
-                                }
-                                else
-                                {
-                                    if (AjoutModifUserControl.TxtQuantite.Text == "")
-                                    {
-                                        GestionErreurs(6);
-                                        return false;
-                                    }
-                                    else
-                                    {
-                                        regex = new Regex("^[0-9]*$");
-                                        if (!regex.IsMatch(AjoutModifUserControl.TxtQuantite.Text))
-                                        {
-                                            GestionErreurs(7);
-                                            return false;
-                                        }
-                                        else
-                                        {
-                                            if (Existe(AjoutModifUserControl.TxtNom.Text, AjoutModifUserControl.TxtDescription.Text, AjoutModifUserControl.TxtPrix.Text, AjoutModifUserControl.TxtQuantite.Text))
-                                            {
-                                                GestionErreurs(8);
-                                                return false;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                GestionErreurs(1);
+                return false;
+            }
+            if (AjoutModifUserControl.TxtDescription.Text == "")
+            {
+                GestionErreurs(2);
+                return false;
+            }
+            if (AjoutModifUserControl.TxtDescription.ToString().Length < 3)
+            {
+                GestionErreurs(3);
+                return false;
+            }
+            if (AjoutModifUserControl.TxtPrix.Text == "")
+            {
+                GestionErreurs(4);
+                return false;
+            }
+            var regex = new Regex(@"^[0-9]*([\,]?\d{1,2})");
+            if (!regex.IsMatch(AjoutModifUserControl.TxtPrix.Text))
+            {
+                GestionErreurs(5);
+                return false;
+            }
+            if (AjoutModifUserControl.TxtQuantite.Text == "")
+            {
+                GestionErreurs(6);
+                return false;
+            }
+            regex = new Regex("^[0-9]*$");
+            if (!regex.IsMatch(AjoutModifUserControl.TxtQuantite.Text))
+            {
+                GestionErreurs(7);
+                return false;
+            }
+            if (Existe(AjoutModifUserControl.TxtNom.Text, AjoutModifUserControl.TxtDescription.Text, AjoutModifUserControl.TxtPrix.Text, AjoutModifUserControl.TxtQuantite.Text))
+            {
+                GestionErreurs(8);
+                return false;
+            }
+            if (AjoutModifUserControl.TxtDescription.Text.Length > 255)
+            {
+                GestionErreurs(9);
+                return false;
             }
             return true;
         }

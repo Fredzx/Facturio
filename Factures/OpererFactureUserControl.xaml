@@ -104,7 +104,7 @@
             </DockPanel.Resources>
 
             <StackPanel>
-                <Button Content="Ajouter un produit" />
+                <Button Content="Ajouter un produit" Click="btnAjoutProduit_Click"/>
                 <Button Content="Supprimer" Click="btnSupprimer_Click" />
                 <Button Content="Vider" Click="ViderFacture" />
             </StackPanel>

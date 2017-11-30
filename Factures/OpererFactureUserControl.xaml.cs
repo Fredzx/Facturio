@@ -228,5 +228,10 @@ namespace Facturio.Factures
             TxtTotal.Text = OpererFactureController.CalculerTotal().ToString("c2");
             TxtEscomptePrix.Text = OpererFactureController.CalculerEscompte(OpererFactureController.LaFacture.LeClient.Rang.Escompte).ToString("c2");
         }
+
+        private void btnAjoutProduit_Click(object sender, RoutedEventArgs e)
+        {
+            OpererFacture.TbcProduitPublic.SelectedIndex = 1;
+        }
     }
 }

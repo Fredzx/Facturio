@@ -29,12 +29,14 @@
         <Grid Grid.Row="0"
                           Grid.Column="0"
                           Grid.ColumnSpan="6">
+            <Label Name="lblRechercher" Content="Rechercher un produit" Margin="0,0,0,51" HorizontalAlignment="Center" FontWeight="Bold" FontSize="13"></Label>
             <TextBox Name="txtRechercherProduit" Height="20" Margin="120 0 120 0" TextChanged="txtRechercherProduit_TextChanged" />
         </Grid>
         <Grid Grid.Row="1"
                           Grid.Column="0"
                           Grid.ColumnSpan="6"
                           Grid.RowSpan="4">
+            <Label Name="lblDataGridProduit" Content="Liste des produits" Margin="40,-26,0,292" HorizontalAlignment="Left" FontWeight="Bold" FontSize="13"></Label>
             <DataGrid ItemsSource="{Binding Produits}" SelectionMode="Single" Name="dtgAfficheProduits" LoadingRow="DataGrid_LoadingRow" 
                                       BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
                                       AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" CanUserDeleteRows="False" SelectionChanged="dtgAfficheProduits_SelectionChanged" Margin="40 0 40 10">
