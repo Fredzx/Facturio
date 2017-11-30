@@ -14,6 +14,7 @@ namespace Facturio.Factures
         private PdfWriter pdfWriter;
         private PdfPTable tableEntete;
         private PdfPTable tableProduit;
+        private PdfPTable tablePied;
 
         private string nomFichier;
         private string imageUrl;
@@ -33,6 +34,7 @@ namespace Facturio.Factures
             try { CreerFichierPdf(); } catch { return false; }
             AjouteEntete();
             AjouteTableProduits();
+            AjouteTablePied();
             document.Close();
             return true;
         }
@@ -126,7 +128,7 @@ namespace Facturio.Factures
 
         private void AjouteRangeesProduits()
         {
-            Font font = new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.NORMAL);
+            Font font = new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL);
 
             foreach (var pf in facture.LstProduitFacture)
             {
@@ -138,7 +140,10 @@ namespace Facturio.Factures
                             tableProduit.AddCell(pf.Quantite.ToString());
                             break;
                         case "Prix":
-                            tableProduit.AddCell(pf.Produit.Prix.ToString());
+                            PdfPCell cell = new PdfPCell(new Phrase($"{pf.Produit.Prix?.ToString("0.00")} $"));
+                            cell.Padding = 5;
+                            cell.HorizontalAlignment = Element.ALIGN_RIGHT;
+                            tableProduit.AddCell(cell);
                             break;
                         case "Nom produit":
                             tableProduit.AddCell(pf.Produit.Nom);
@@ -160,6 +165,41 @@ namespace Facturio.Factures
                     }
                 }
             }
+        }
+
+        private void AjouteTablePied()
+        {
+            tablePied = new PdfPTable(2) { WidthPercentage = 100, SpacingBefore = 25 };
+            tablePied.DefaultCell.Padding = 0;
+            tablePied.DefaultCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+            tablePied.DefaultCell.Border = Rectangle.NO_BORDER;
+
+            List<string> labels = new List<string> { "Sous-total", "Escompte", "TPS", "TVQ", "Total" };
+            List<string> montants = new List<string>
+            {
+                OpererFactureController.CalculerSousTotal().ToString("0.00"),
+                OpererFactureController.CalculerEscompte(facture.LeClient.Rang.Escompte).ToString("0.00"),
+                OpererFactureController.CalculerTps().ToString("0.00"),
+                OpererFactureController.CalculerTvq().ToString("0.00"),
+                OpererFactureController.CalculerTotal().ToString("0.00")
+            };
+
+            for (int i = 0; i < 5; ++i)
+            {
+                PdfPCell cellLabel = new PdfPCell(new Phrase(labels[i]));
+                cellLabel.Padding = 5;
+                cellLabel.HorizontalAlignment = Element.ALIGN_RIGHT;
+                cellLabel.Border = Rectangle.NO_BORDER | Rectangle.BOTTOM_BORDER;
+                tablePied.AddCell(cellLabel);
+
+                PdfPCell cellMontant = new PdfPCell(new Phrase($"{montants[i]} $"));
+                cellMontant.Padding = 5;
+                cellMontant.HorizontalAlignment = Element.ALIGN_RIGHT;
+                cellMontant.Border = Rectangle.NO_BORDER | Rectangle.BOTTOM_BORDER;
+                tablePied.AddCell(cellMontant);
+            }
+
+            document.Add(tablePied);
         }
     }
 }
