@@ -195,29 +195,44 @@ namespace Facturio.Clients
         }
         private bool ValiderInformationsClient()
         {
-            if (txtNom.Text.ToString() != "")
+            bool? tel = null;
+            bool? cp = null;
+
+            // Valider le nom.
+            if (txtNom.Text.ToString() != string.Empty && txtNom.Text.ToString().Length >= NOM_PRENOM_MIN)
             {
-                var regexNT = new Regex(@"^\d\d\d\d\d\d\d\d\d\d$");
-                if (txtTelephone.Text.ToString() != string.Empty)
+                // check le tel
+                if (txtTelephone.Text.ToString() != string.Empty )
                 {
+                    // Valider le tel
+                    var regexNT = new Regex(@"^\d\d\d\d\d\d\d\d\d\d$");
                     if (regexNT.IsMatch(txtTelephone.Text))
+                        tel = true;
+                    else
                     {
-                        var regexPC = new Regex(@"^[A-Z]\d[A-Z]\d[A-Z]\d$");
-                        if (txtCodePostal.Text.ToString() != string.Empty)
-                        {
-                            if (regexPC.IsMatch(txtCodePostal.Text))
-                            {
-                                return true;
-                            }
-                            AfficherErreur(5);
-                            return false;
-                        }
-                        return true;
+                        tel = false;
+                        AfficherErreur(6);
                     }
-                    AfficherErreur(6);
-                    return false;
                 }
-                return true;
+                // Check le cp
+                if (txtCodePostal.Text.ToString() != string.Empty)
+                {
+                    var regexPC = new Regex(@"^[A-Z]\d[A-Z]\d[A-Z]\d$");
+                    if (regexPC.IsMatch(txtCodePostal.Text))
+                        cp = true;
+                    else
+                    {
+                        cp = false;
+                        AfficherErreur(5);
+                    }
+                }
+                // si les 2 sont null
+                // si le tel est vrai et le cp est null
+                // si le cp est vrai et le cp est null
+                // si  les 2 sont vrai
+                if ((tel == null && cp == null) || (tel == true && cp == true) || (tel == true && cp == null) || (cp == true && tel == null))
+                    return true;
+                return false;
             }
             AfficherErreur(1);
             return false;

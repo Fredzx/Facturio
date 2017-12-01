@@ -45,13 +45,20 @@ namespace Facturio.Creation
         #region Méthodes
         private void ChargerListeCriteresTabulaire()
         {
+            int compt = 0;
             LstObCritereTabulaire = new ObservableCollection<Critere>();
             foreach (Critere c in LstObCritere)
+            {
                 if (!c.Titre.Contains("client"))
                 {
-                    lblCritereTabulaire.Content += c.Titre + "\n";
-                    LstObCritereTabulaire.Add(c);
+                    compt++;
+                    if(compt <= 10)
+                    {
+                        lblCritereTabulaire.Content += c.Titre + "\n";
+                        LstObCritereTabulaire.Add(c);
+                    }
                 }
+            }
             if (LstObCritereTabulaire.Count < 1)
                 lblCritereTabulaire.Content = AUCUN_CRIT;
         }
@@ -66,10 +73,7 @@ namespace Facturio.Creation
                 }
             }
             if (LstInfoClient.Count < 1)
-            {
                 lblInfosClient.Content = AUCUN_CRIT;
-                lblInfosClient.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
-            }
         }
         private void ChargerListeCriteres()
         {
