@@ -54,8 +54,8 @@ namespace Facturio.Creation
         }
         public static void AfficherInterfaceOperationFacture()
         {
+            FntOperationFacture = new OpererFacture(GabaritCreateurLogo.LstObCritereTabulaire);
             FntGabCreation.Close();
-            FntOperationFacture = new OpererFacture(Gabarit);
             FntOperationFacture.ShowDialog();
 
         }

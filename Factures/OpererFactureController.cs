@@ -7,6 +7,7 @@ using Facturio.ProduitsFactures;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.Windows;
+using Facturio.Produits;
 
 namespace Facturio.Factures
 {
@@ -57,7 +58,7 @@ namespace Facturio.Factures
         public static float CalculerTps()
         {
             const float TPS = 0.05F;
-            float MONTANT_SANS_ESCOMPTE = CalculerSousTotal() - CalculerEscompte(OpererFactureController.LaFacture.LeClient.Rang.Escompte);
+            float MONTANT_SANS_ESCOMPTE = CalculerSousTotal() - CalculerEscompte(LaFacture.LeClient.Rang.Escompte);
 
             return MONTANT_SANS_ESCOMPTE * TPS;
         }
@@ -65,14 +66,14 @@ namespace Facturio.Factures
         public static float CalculerTvq()
         {
             const float TVQ = 0.09975F;
-            float MONTANT_SANS_ESCOMPTE = CalculerSousTotal() - CalculerEscompte(OpererFactureController.LaFacture.LeClient.Rang.Escompte);
+            float MONTANT_SANS_ESCOMPTE = CalculerSousTotal() - CalculerEscompte(LaFacture.LeClient.Rang.Escompte);
 
             return MONTANT_SANS_ESCOMPTE * TVQ;
         }
 
         public static float CalculerTotal()
         {
-            return CalculerSousTotal() - CalculerEscompte(OpererFactureController.LaFacture.LeClient.Rang.Escompte) + CalculerTps() + CalculerTvq();
+            return CalculerSousTotal() - CalculerEscompte(LaFacture.LeClient.Rang.Escompte) + CalculerTps() + CalculerTvq();
         }
 
         public static void GenererPdf(string nomFichier, string logoUrl)
@@ -87,6 +88,15 @@ namespace Facturio.Factures
                 MessageBox.Show("Création du fichier terminée!");
             else
                 MessageBox.Show("Une erreur s'est produite lors de la création du fichier PDF.");
+        }
+
+        public static void MiseAJourInventaire()
+        {
+            foreach(var pf in LaFacture.LstProduitFacture)
+            {
+                //pf.Produit.Quantite -= pf.Quantite;
+                HibernateProduitService.Update(pf.Produit);
+            }
         }
     }
 }

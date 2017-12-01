@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Factures"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="400" d:DesignWidth="400">
 
     <UserControl.DataContext>
         <local:AssignerClientController/>
@@ -33,32 +33,34 @@
         <Grid Grid.Row="0"
                           Grid.Column="0"
                           Grid.ColumnSpan="6">
-            <TextBox Name="txtRechercherClient" Height="20" Margin="120 0 120 0" TextChanged="txtRechercherClient_TextChanged" />
+            <Label Name="lblRechercher" Content="Rechercher un client" Margin="83,0,83,42" HorizontalAlignment="Center" FontWeight="Bold" FontSize="13"></Label>
+            <TextBox Name="txtRechercherClient" Height="20" Margin="10,27" TextChanged="txtRechercherClient_TextChanged" />
         </Grid>
         <Grid Grid.Row="1"
                           Grid.Column="0"
                           Grid.ColumnSpan="6"
                           Grid.RowSpan="4">
+            <Label Name="lblListeClient" Content="Liste des clients" Margin="40,0,0,269" HorizontalAlignment="Left" FontWeight="Bold" FontSize="13"></Label>
             <DataGrid ItemsSource="{Binding Clients}" SelectionMode="Single" Name="dtgAfficheClient" 
                                       BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
-                                      AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" CanUserDeleteRows="False" Margin="40 0 40 10">
+                                      AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" CanUserDeleteRows="False" SelectionChanged="dtgAfficheClient_SelectionChanged"  Margin="40,32,40,10">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="No. Client" Width="3*" Binding="{Binding NoClient}" />
-                    <DataGridTextColumn Header="Prénom" Width="4*" Binding="{Binding Prenom}" />
-                    <DataGridTextColumn Header="Nom" Width="4*" Binding="{Binding Nom}"  />
+                    <DataGridTextColumn Header="No. Client" Width="75" Binding="{Binding NoClient}" />
+                    <DataGridTextColumn Header="Prénom" Width="65" Binding="{Binding Prenom}" />
+                    <DataGridTextColumn Header="Nom" Width="60" Binding="{Binding Nom}"  />
 
-                    <DataGridTextColumn Header="Téléphone" Width="3*" Binding="{Binding Telephone}" />
+                    <DataGridTextColumn Header="Téléphone" Width="55" Binding="{Binding Telephone}" />
 
-                    <DataGridTextColumn Header="Province" Width="3*" Binding="{Binding Province.Nom}"/>
-                    <DataGridTextColumn Header="Adresse" Width="7*" Binding="{Binding Adresse}"/>
-                    <DataGridTextColumn Header="Code postal" Width="4*" Binding="{Binding CodePostal}" />
-                    <DataGridTextColumn Header="Rang" Width="3*" Binding="{Binding Rang.Nom}" />
+                    <DataGridTextColumn Header="Province" Width="50" Binding="{Binding Province.Nom}"/>
+                    <DataGridTextColumn Header="Adresse" Width="50" Binding="{Binding Adresse}"/>
+                    <DataGridTextColumn Header="Code postal" Width="50" Binding="{Binding CodePostal}" />
+                    <DataGridTextColumn Header="Rang" Width="50" Binding="{Binding Rang.Nom}" />
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
         <DockPanel Grid.Row="5"
                    Grid.ColumnSpan="10">
-            <Button Margin="10,0,0,10" Content="Assigner" Name="btnAssigner" IsEnabled="True" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100" Click="btnAssigner_Click" />
+            <Button Margin="10,0,0,10" Content="Assigner" Name="btnAssigner" IsEnabled="False" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100" Click="btnAssigner_Click" />
             <Button Margin="0,0,10,10" Content="Retour" Name="btnRetour" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnRetour_Click" />
         </DockPanel>
     </Grid>

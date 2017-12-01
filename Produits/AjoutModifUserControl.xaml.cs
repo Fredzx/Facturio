@@ -148,5 +148,10 @@ namespace Facturio.Produits
             TxtPrix.Text = "";
             TxtQuantite.Text = "";
         }
+
+        private void txtDescription_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            lblNbCaracteres.Content = (txtDescription.MaxLength - txtDescription.Text.Length).ToString() + " caractères restant";
+        }
     }
 }

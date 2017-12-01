@@ -83,7 +83,8 @@
             <!--https://social.msdn.microsoft.com/Forums/vstudio/en-US/fc112396-e8e9-41b7-97d1-e413850a59c9/how-to-create-a-masked-textbox-usnig-wpf?forum=wpf
             <xctk:MaskedTextBox x:Name="txtNom" Mask:="0000-0000" CaretIndex="0" ValueDataType="{x:Type s:String}" FontSize="14"</xctk:MaskedTextBox>-->
             <TextBox  Name="txtNom" MaxLength="50" Style="{StaticResource styleTxtBox}"  />
-            <TextBox  Name="txtDescription" MaxLength="200" Height="150" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" MaxHeight="150" Style="{StaticResource styleTxtBox}" />
+            <Label Name="lblNbCaracteres" />
+            <TextBox  Name="txtDescription" MaxLength="200" TextChanged="txtDescription_TextChanged" Height="150" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" MaxHeight="150" Style="{StaticResource styleTxtBox}" />
             <TextBox  Name="txtPrix" MaxLength="10" Style="{StaticResource styleTxtBox}" />
             <TextBox  Name="txtQuantite" MaxLength="10" Style="{StaticResource styleTxtBox}" />
 

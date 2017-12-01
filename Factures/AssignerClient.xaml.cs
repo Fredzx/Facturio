@@ -52,7 +52,7 @@ namespace Facturio.Factures
                 //OpererFactureUserControl.TxtNom.Text = "Nom: " + OpererFactureController.LaFacture.LeClient.Nom;
                 //OpererFactureUserControl.TxtPrenom.Text = "Prénom: " + OpererFactureController.LaFacture.LeClient.Prenom;
                 OpererFactureUserControl.RefreshAffichage();
-                // TODO: Recalculer Prix (Escompte)
+                btnAssigner.IsEnabled = false;
             }
         }
 
@@ -60,6 +60,11 @@ namespace Facturio.Factures
         {
             var myWindow = Window.GetWindow(this);
             myWindow.Close();
+        }
+
+        private void dtgAfficheClient_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            btnAssigner.IsEnabled = true;
         }
     }
 }

@@ -35,15 +35,17 @@
         <Grid Grid.Row="0"
                           Grid.Column="0"
                           Grid.ColumnSpan="6">
-            <TextBox Name="txtRechercherProduit" Height="20" Margin="120 0 120 0" TextChanged="txtRechercherProduit_TextChanged" />
+            <Label Name="lblRechercher" Content="Rechercher un produit" Margin="119,0,35,51" HorizontalAlignment="Center" FontWeight="Bold" FontSize="13"></Label>
+            <TextBox Name="txtRechercherProduit" Height="20" Margin="163,30,77,26" TextChanged="txtRechercherProduit_TextChanged" />
         </Grid>
         <Grid Grid.Row="1"
                           Grid.Column="0"
                           Grid.ColumnSpan="6"
                           Grid.RowSpan="4">
+            <Label Name="lblDataGridProduit" Content="Liste des produits" Margin="10,-28,0,294" HorizontalAlignment="Left" FontWeight="Bold" FontSize="13"></Label>
             <DataGrid Name="dtgAfficheProduits" SelectionChanged="dtgAfficheProduits_SelectionChanged" SelectionMode="Single" ItemsSource="{Binding Produits}" LoadingRow="DataGrid_LoadingRow"
                                       BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
-                                      AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" CanUserDeleteRows="False" Margin="10,0,10,10" Width="381">
+                                      AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" CanUserDeleteRows="False" Margin="10,0,-89,10" Width="379">
 
 
                 <DataGrid.Columns>

@@ -110,7 +110,7 @@
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Right">
-                <Button Content="Sauvegarder" />
+                <Button x:Name="btnSauvegarder" IsEnabled="False" Content="Sauvegarder" Click="Btn_Sauvegarder_Click"/>
                 <Button x:Name="BtnGenererPdf" Content="Convertir en PDF" Margin="0" Click="BtnConvertirPdf_Click" />
             </StackPanel>
         </DockPanel>
