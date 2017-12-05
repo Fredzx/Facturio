@@ -28,7 +28,7 @@ namespace Facturio.Produits
         public static TextBox TxtPrix { get; set; } = new TextBox();
         public static TextBox TxtQuantite { get; set; } = new TextBox();
         public static Label LblInfo { get; set; } = new Label();
-        public static Grid GrdTitre { get; set; } = new Grid();
+        public static StackPanel GrdTitre { get; set; } = new StackPanel();
         public static bool EstModif { get; set; }
 
         public AjoutModifUserControl()
@@ -40,8 +40,8 @@ namespace Facturio.Produits
             TxtQuantite = txtQuantite;
             TxtDescription = txtDescription;
            // TxtCode = txtCode;
-            LblInfo = lblInfo;
-            GrdTitre = grdTitre;
+            //LblInfo = lblInfo;
+            //GrdTitre = grdTitre;
         }
 
         public void RemplirChampsModif(Produit p)

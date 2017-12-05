@@ -5,96 +5,70 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Produits"
              xmlns:xctk="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <UserControl.Resources>
-        <Style x:Key="styleLabel" TargetType="{x:Type Label}">
-            <Setter Property="FontSize" Value="15" />
-            <Setter Property="FontFamily" Value="tahoma" />
-        </Style>
-        <Style x:Key="styleTxtBox" TargetType="{x:Type TextBox}">
-            <Setter Property="Margin" Value="0" />
-            <Setter Property="Width" Value="150" />
-            <Setter Property="Padding" Value="5" />
-
-        </Style>
-        <Style  x:Key="styleButton" TargetType="{x:Type Button}">
-            <Setter Property="Margin" Value="5" />
-            <Setter Property="Width" Value="100" />
-            <Setter Property="Height" Value="30" />
-        </Style>
-    </UserControl.Resources>
-
-
-    <Grid Name="Contenu" HorizontalAlignment="Center" Background="Gray">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition  Width="2*" />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-
+             mc:Ignorable="d">
+    <Grid Name="Contenu" HorizontalAlignment="Center">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*"  />
-            <RowDefinition Height="0.1*"  />
-            <RowDefinition Height="0.1*"  />
-            <RowDefinition Height="0.2*"/>
-            <RowDefinition />
-            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
-<!--https://blogs.msdn.microsoft.com/bethmassi/2008/06/27/displaying-data-validation-messages-in-wpf/-->
-        <Grid  Name="grdTitre" Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                HorizontalAlignment="Center"              
-                Grid.RowSpan="2"
-                >
-
+        
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center">
             <Label Name="lblFormTitle" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" FontFamily="calibri" Content="Ajouter un produit" />
-        </Grid>
-
-        <Grid  Name="Info" Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                HorizontalAlignment="Center"              
-                Grid.RowSpan="2"
-                >
-
-            <Label Name="lblInfo" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" FontFamily="calibri" Content="" />
-        </Grid>
-
-
-        <StackPanel Orientation="Vertical"                   
-                    Grid.Column="0"
-                    Grid.Row="4"
-                    Background="LightGray"
-                    >
-
-            <Label Name="lblNom" Content="Nom"  Style="{StaticResource styleLabel}"  />
-            <Label Name="lblDescription" Content="Description"  Style="{StaticResource styleLabel}" />
-            <Label Name="lblPrix" Content="Prix" Margin="0, 125, 0, 0" Style="{StaticResource styleLabel}" />
-            <Label Name="lblQuantite" Content="Quantité"  Style="{StaticResource styleLabel}" />
         </StackPanel>
 
-        <StackPanel 
-                    Orientation="Vertical"
-                    Grid.Column="1"
-                    Grid.Row="4"
-            Background="LightGray">
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <StackPanel.Resources>
+                <Style TargetType="StackPanel">
+                    <Setter Property="Margin" Value="5" />
+                </Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="MinWidth" Value="400" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                </Style>
+                <Style TargetType="Label">
+                    <Setter Property="Width" Value="100" />
+                    <Setter Property="Margin" Value="5"/>
+                </Style>
+            </StackPanel.Resources>
 
-            <!--https://social.msdn.microsoft.com/Forums/vstudio/en-US/fc112396-e8e9-41b7-97d1-e413850a59c9/how-to-create-a-masked-textbox-usnig-wpf?forum=wpf
-            <xctk:MaskedTextBox x:Name="txtNom" Mask:="0000-0000" CaretIndex="0" ValueDataType="{x:Type s:String}" FontSize="14"</xctk:MaskedTextBox>-->
-            <TextBox  Name="txtNom" MaxLength="50" Style="{StaticResource styleTxtBox}"  />
-            <Label Name="lblNbCaracteres" />
-            <TextBox  Name="txtDescription" MaxLength="200" TextChanged="txtDescription_TextChanged" Height="150" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" MaxHeight="150" Style="{StaticResource styleTxtBox}" />
-            <TextBox  Name="txtPrix" MaxLength="10" Style="{StaticResource styleTxtBox}" />
-            <TextBox  Name="txtQuantite" MaxLength="10" Style="{StaticResource styleTxtBox}" />
-
-
+            <StackPanel Orientation="Horizontal">
+                <Label Name="lblNom" Content="Nom" />
+                <TextBox  Name="txtNom" MaxLength="50" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Name="lblDescription" BorderBrush="Chartreuse" BorderThickness="2" Content="Description" />
+                    <Label Grid.Row="0" HorizontalAlignment="Left" BorderBrush="AliceBlue" BorderThickness="2" Grid.Column="1" Name="lblNbCaracteres" Content="caca" />
+                    <TextBox Grid.Row="1" Grid.Column="1" MaxWidth="200" VerticalContentAlignment="Top" Name="txtDescription" Height="150" MaxLength="200" TextChanged="txtDescription_TextChanged" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+                </Grid>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Name="lblPrix" Content="Prix" />
+                <TextBox  Name="txtPrix" MaxLength="10"  />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Name="lblQuantite" Content="Quantité" />
+                <TextBox  Name="txtQuantite" MaxLength="10"  />
+            </StackPanel>
         </StackPanel>
 
-        <Grid Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" >
-
-            <Button  Content="Enregistrer" HorizontalAlignment="Left" Style="{StaticResource styleButton}" Click="btnEnregister_Click" />
-            <Button  Content="Retour" HorizontalAlignment="Right" Style="{StaticResource styleButton}" Click="btnRetour_Click" />
-        </Grid>
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <Button  Content="Enregistrer" Click="btnEnregister_Click" Margin="5" />
+            <Button  Content="Retour" Click="btnRetour_Click" Margin="5" />
+        </StackPanel>
     </Grid>
 </UserControl>
+<!--<StackPanel  Name="Info" Grid.Row="0"
+                HorizontalAlignment="Center"              
+                Grid.RowSpan="2">
+        <Label Name="lblInfo" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" FontFamily="calibri" Content="" />
+        </StackPanel>-->
