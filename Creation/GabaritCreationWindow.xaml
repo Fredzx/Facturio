@@ -7,7 +7,11 @@
         xmlns:ucCreation="clr-namespace:Facturio.Creation"
         
         mc:Ignorable="d"
-        Title="Apperçu de la facture" Height="750" Width="950">
+        Title="Apperçu de la facture" Height="750" Width="950"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto">
     <Grid>
 
         <ucCreation:GabaritCreateurLogo />

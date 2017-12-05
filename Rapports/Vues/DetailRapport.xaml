@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Facturio.Rapports.Vues"
         mc:Ignorable="d"
-        Title="Détails des factures" Height="500" Width="600">
+        Title="Détails des factures" Height="500" Width="600"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
