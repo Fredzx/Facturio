@@ -134,10 +134,5 @@ namespace Facturio.Produits
                 btnSupprimer.IsEnabled = false;
             }
         }
-
-        private void btnTest_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
     }
 }

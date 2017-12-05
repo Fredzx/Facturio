@@ -57,7 +57,6 @@
             <Button Content="Ajouter" Name="btnAjouter" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnAjouter_Click" />
             <Button Content="Modifier" Name="btnModifier" Height="20" IsEnabled="False" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnModifier_Click" />
             <Button Content="Supprimer" Name="btnSupprimer" Height="20" IsEnabled="False" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnSupprimer_Click" />
-            <Button Content="Test" Name="btnTest" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnTest_Click" />
         </StackPanel>
     </Grid>
 </UserControl>
