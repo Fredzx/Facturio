@@ -17,10 +17,10 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <GroupBox Header="Critères" Margin="10, 5, 5, 5" Padding="10, 15, 10, 10">
+        <GroupBox Header="Critères" Margin="10, 5, 5, 5" Padding="10, 10, 10, 10">
             <DockPanel LastChildFill="True">
                 <Grid Width="260" DockPanel.Dock="Bottom" Margin="0, 20, 0, 0">
                     <Grid.RowDefinitions>
@@ -29,20 +29,20 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="1.8*" />
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Critère libre:" Padding="0, 4, 4, 4" />
-                    <TextBox Grid.Row="0" Grid.Column="1" Padding="4" Margin="0, 0, 0, 10" MaxLength="30"
+                    <Label Grid.Row="0" Grid.Column="0" Content="Critère libre:" />
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="15, 0, 0, 10" MaxLength="20"
                              Text="{Binding TitreCritereLibre, UpdateSourceTrigger=PropertyChanged}" />
                     
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Type du critère:" Padding="0, 4, 4, 4" />
-                    <ComboBox Grid.Row="1" Grid.Column="1" Padding="4" Margin="0, 0, 0, 10"
+                    <Label Grid.Row="1" Grid.Column="0" Content="Type du critère:" />
+                    <ComboBox Grid.Row="1" Grid.Column="1" Margin="15, 0, 0, 10"
                               ItemsSource="{Binding TypesCriteres}" SelectedItem="{Binding TypeCritereSelectionne}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Nom}" Padding="4, 0, 0, 0" />
+                                <TextBlock Text="{Binding Nom}" />
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ComboBox>
@@ -63,21 +63,22 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <DockPanel LastChildFill="True" Margin="0, 0, 6, 6">
+                                <DockPanel LastChildFill="True" Margin="0, 0, 6, 8">
                                     <DockPanel.Resources>
-                                        <Style TargetType="TextBox">
-                                            <Setter Property="Width" Value="30" />
-                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        <Style TargetType="Button">
+                                            <Setter Property="Foreground" Value="Red" />
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="BorderThickness" Value="0" />
+                                            <Setter Property="FontWeight" Value="Bold" />
                                             <Setter Property="VerticalContentAlignment" Value="Center" />
-                                            <Setter Property="Margin" Value="0, 0, 6, 0" />
-                                            <Setter Property="MaxLength" Value="3" />
                                         </Style>
                                     </DockPanel.Resources>
                                     
                                     <Button Content="X"
-                                            DockPanel.Dock="Right" VerticalAlignment="Center" Width="20" Height="20"
+                                            DockPanel.Dock="Right" Width="20" Height="20"
                                             Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.SupprimeCritere}"
                                             CommandParameter="{Binding}" />
+
                                     <CheckBox DockPanel.Dock="Left"
                                               Content="{Binding Critere.Titre}"
                                               IsChecked="{Binding EstUtilise, Mode=TwoWay}"
@@ -103,7 +104,11 @@
                         </Style>
                     </StackPanel.Resources>
                     
-                    <Button Name="btnSuivant" Content="Suivant" Margin="8, 0, 0, 0" Click="btnSuivant_Click" />
+                    <Button Name="btnSuivant" Content="Suivant" Margin="8, 0, 0, 0"
+                            ToolTip="Poursuivre la création du gabarit."
+                            ToolTipService.HorizontalOffset="-10"
+                            ToolTipService.Placement="Left"
+                            Click="btnSuivant_Click" />
                 </StackPanel>
 
                 <DataGrid
