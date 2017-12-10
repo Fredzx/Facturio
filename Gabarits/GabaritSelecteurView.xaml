@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:gabarits="clr-namespace:Facturio.Gabarits"
              mc:Ignorable="d">
     <Grid>
         <!-- Rangées -->
         <Grid.RowDefinitions>
             <RowDefinition />
+            <RowDefinition Height="50" />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
@@ -33,8 +33,8 @@
             <ListBox.ItemContainerStyle>
                 <Style TargetType="{x:Type ListBoxItem}">
                     <Style.Setters>
-                        <Setter Property="Width" Value="150" />
-                        <Setter Property="Height" Value="150" />
+                        <Setter Property="Width" Value="200" />
+                        <Setter Property="Height" Value="200" />
                         <Setter Property="Margin" Value="10" />
                         <Setter Property="Padding" Value="0" />
                         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -96,9 +96,11 @@
             </ListBox.ItemContainerStyle>
         </ListBox>
 
+        <Rectangle x:Name="EmplacementToolTip" Grid.Row="1" />
+
         <!-- Boutons -->
         <WrapPanel
-            Grid.Row="1"
+            Grid.Row="2"
             Orientation="Horizontal"
             VerticalAlignment="Center"
             HorizontalAlignment="Center">
@@ -108,24 +110,31 @@
                         <Setter Property="Margin" Value="5" />
                         <Setter Property="Width" Value="100" />
                         <Setter Property="Height" Value="30" />
+                        <Setter Property="ToolTipService.ShowOnDisabled" Value="True" />
+                        <Setter Property="ToolTipService.PlacementTarget" Value="{Binding ElementName=EmplacementToolTip}" />
+                        <Setter Property="ToolTipService.VerticalOffset" Value="-50" />
                     </Style.Setters>
                 </Style>
             </WrapPanel.Resources>
 
             <Button Content="Nouveau"
+                    ToolTip="Créer un nouveau gabarit de facture."
                     Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabControl}},
                                       Path=DataContext.VaOngletCreation}" />
             
             <Button Content="Ouvrir"
+                    ToolTip="Ouvre une nouvelle facture en utilisant le gabarit sélectionné."
                     Command="{Binding OuvrirFacture}"
                     CommandParameter="{Binding GabaritSelectionne}" />
             
             <Button Content="Modifier"
+                    ToolTip="Modifier le gabarit sélectionné."
                     Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabControl}},
                                       Path=DataContext.VaOngletCreationModifier}"
                     CommandParameter="{Binding GabaritSelectionne}" />
             
             <Button Content="Supprimer"
+                    ToolTip="Supprime le gabarit sélectionné."
                     Command="{Binding SupprimerGabarit}" />
         </WrapPanel>
     </Grid>
