@@ -3,24 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Facturio"
         xmlns:gabarits="clr-namespace:Facturio.Gabarits"
         xmlns:creation="clr-namespace:Facturio.Creation"
         xmlns:ucProduits="clr-namespace:Facturio.Produits"
         xmlns:ucClients="clr-namespace:Facturio.Clients"
         xmlns:ucRapports="clr-namespace:Facturio.Rapports"
         xmlns:ucRapports1="clr-namespace:Facturio.Rapports.Vues"
+        xmlns:aide="clr-namespace:Facturio.Aide"
         mc:Ignorable="d"
         Title="Facturio Inc." Height="750" MinHeight="500" Width="900" MinWidth="750"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontSize="14"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto">
-    <!-- DataContext -->
-    <Window.DataContext>
-        <local:FacturioViewModel />
-    </Window.DataContext>
-
     <Grid>
         <TabControl ItemsSource="{Binding Onglets}" SelectedItem="{Binding OngletSelectionne}">
             <TabControl.Resources>
@@ -38,6 +33,9 @@
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type ucRapports:RapportController}">
                     <ucRapports1:RapportUserControle />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type aide:AideViewModel}">
+                    <aide:AideView />
                 </DataTemplate>
             </TabControl.Resources>
 

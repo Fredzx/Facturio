@@ -133,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Aide\AideView.xaml.cs">
+      <DependentUpon>AideView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Aide\AideViewModel.cs" />
     <Compile Include="Clients\StatusConverter.cs" />
     <Compile Include="Creation\BindableColumns.cs" />
     <Compile Include="Creation\BooleanToVisibilityConverter.cs" />
@@ -244,6 +248,10 @@
     <Compile Include="Rapports\Vues\VenteProduit.xaml.cs">
       <DependentUpon>VenteProduit.xaml</DependentUpon>
     </Compile>
+    <Page Include="Aide\AideView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Clients\ClientsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

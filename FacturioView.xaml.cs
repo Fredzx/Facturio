@@ -9,6 +9,7 @@ namespace Facturio
     {
         public FacturioView()
         {
+            DataContext = new FacturioViewModel();
             InitializeComponent();
         }
     }

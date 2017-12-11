@@ -6,6 +6,7 @@ using Facturio.Gabarits;
 using Facturio.Clients;
 using Facturio.Produits;
 using Facturio.Rapports;
+using Facturio.Aide;
 
 namespace Facturio
 {
@@ -14,20 +15,7 @@ namespace Facturio
         #region Propriétés
 
         public ObservableCollection<IOngletViewModel> Onglets { get; set; }
-
-        private IOngletViewModel _ongletSelectionne;
-        public IOngletViewModel OngletSelectionne
-        {
-            get => _ongletSelectionne;
-            set
-            {
-                if (value == _ongletSelectionne)
-                    return;
-
-                _ongletSelectionne = value;
-                RaisePropertyChanged(nameof(OngletSelectionne));
-            }
-        }
+        public IOngletViewModel OngletSelectionne { get; set; }
 
         #endregion
 
@@ -38,7 +26,7 @@ namespace Facturio
 
         #endregion
 
-        #region Constructeur
+        #region Constructeurs
 
         public FacturioViewModel()
         {
@@ -48,7 +36,8 @@ namespace Facturio
                 new GabaritCreateurViewModel(),
                 new ClientsController(),
                 new ProduitsController(),
-                new RapportController()
+                new RapportController(),
+                new AideViewModel()
             };
 
             VaOngletCreation = new RelayCommand(SelectionneOngletCreation, parameter => true);
