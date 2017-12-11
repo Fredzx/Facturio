@@ -23,13 +23,7 @@
                 </Paragraph>
 
                 <Paragraph>
-                    <Run Text="Bonjour, je suis un paragraphe." />
-                    <LineBreak />
-                    <Run Text="Une deuxième ligne dans le paragraphe." />
-                </Paragraph>
-
-                <Paragraph>
-                    <Run Text="Je suis un deuxième paragraphe!" />
+                    <Run Text="Dans l'onglet 'Gabarits', vous pouvez voir tous les gabarits que vous avez créés du plus récent au plus vieux. Chaque gabarit affiche leur titre ainsi que la date à laquelle il a été créé. Pour ce qui a trait à la fonctionnalité, il est possible de sélectionner un gabarit à l'aide du clique gauche de votre souris. Lorsqu'un gabarit est sélectionné, trois des quatre boutons s'activent. Le premier bouton 'Nouveau' est toujours actif et lorsque vous cliquez dessus, vous serez dirigé vers l'onglet 'Création'. Cet onglet vous permettra de créer un nouveau gabarit de facture. Le deuxième bouton 'Ouvrir' ouvrira une nouvelle fenêtre 'Opérations sur la facture' qui vous permet de créer une facture à partir du gabarit que vous avez sélectionné. Le troisième bouton 'Modifier' vous permet de modifier le gabarit sélectionné. Lorsque vous cliquerez sur ce bouton, vous serez dirigé vers l'onglet 'Création' et vous serez prêt à modifier votre gabarit de facture. Finalement, le dernier bouton 'Supprimer' vous permet de supprimer le gabarit sélectionné. Faites attention, car lorsque vous supprimez un gabarit, il n'est pas possible de le récupérer par la suite." />
                 </Paragraph>
             </FlowDocument>
         </FlowDocumentScrollViewer>
