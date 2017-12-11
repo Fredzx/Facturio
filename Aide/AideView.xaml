@@ -54,16 +54,6 @@
 
         <Rectangle Grid.Row="0" Height="3" Fill="#34495e" VerticalAlignment="Bottom" />
 
-        <FlowDocumentScrollViewer Grid.Row="1" Background="#ecf0f1" VerticalScrollBarVisibility="Hidden" IsSelectionEnabled="False">
-            <FlowDocument PagePadding="20">
-                <Paragraph Margin="0, 0, 0, 10">
-                    <Run FontSize="16" FontWeight="Bold" Foreground="#3498db" Text="{Binding TitreParagraphe}" />
-                </Paragraph>
-                
-                <Paragraph LineHeight="20">
-                    <Run FontSize="14" Foreground="#2c3e50" Text="{Binding Paragraphe}" />
-                </Paragraph>
-            </FlowDocument>
-        </FlowDocumentScrollViewer>
+        <Frame Grid.Row="1" Background="#ecf0f1" NavigationUIVisibility="Hidden" Source="{Binding PageCourante}" />
     </Grid>
 </UserControl>

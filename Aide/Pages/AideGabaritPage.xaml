@@ -1,0 +1,37 @@
+﻿<Page x:Class="Facturio.Aide.Pages.AideGabaritPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      Title="AideGabaritPage">
+    <Grid>
+        <FlowDocumentScrollViewer Background="#ecf0f1" VerticalScrollBarVisibility="Hidden" IsSelectionEnabled="False">
+            <FlowDocument PagePadding="20">
+                <FlowDocument.Resources>
+                    <Style TargetType="{x:Type Paragraph}">
+                        <Setter Property="Margin" Value="0, 0, 0, 10" />
+                        <Setter Property="LineHeight" Value="20" />
+                        <Setter Property="TextAlignment" Value="Justify" />
+                        <Setter Property="FontSize" Value="14" />
+                        <Setter Property="Foreground" Value="#2c3e50" />
+                    </Style>
+                </FlowDocument.Resources>
+
+                <Paragraph FontSize="16" FontWeight="Bold" Foreground="#3498db">
+                    <Run Text="Aide pour l'onglet GABARITS" />
+                </Paragraph>
+
+                <Paragraph>
+                    <Run Text="Bonjour, je suis un paragraphe." />
+                    <LineBreak />
+                    <Run Text="Une deuxième ligne dans le paragraphe." />
+                </Paragraph>
+
+                <Paragraph>
+                    <Run Text="Je suis un deuxième paragraphe!" />
+                </Paragraph>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
+    </Grid>
+</Page>

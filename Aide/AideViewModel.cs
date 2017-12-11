@@ -8,8 +8,7 @@ namespace Facturio.Aide
         #region Propriétés
 
         public string Titre { get; set; }
-        public string TitreParagraphe { get; set; }
-        public string Paragraphe { get; set; }
+        public string PageCourante { get; set; }
 
         #endregion
 
@@ -29,13 +28,13 @@ namespace Facturio.Aide
         {
             Titre = "Aide";
 
+            PageCourante = "Pages/AideGabaritPage.xaml";
+
             AideGabarit = new RelayCommand(AfficherAideGabarit);
             AideCreation = new RelayCommand(AfficherAideCreation);
             AideProduit = new RelayCommand(AfficherAideProduit);
             AideClient = new RelayCommand(AfficherAideClient);
             AideRapport = new RelayCommand(AfficherAideRapport);
-
-            AideGabarit.Execute(null);
         }
 
         #endregion
@@ -44,33 +43,27 @@ namespace Facturio.Aide
 
         private void AfficherAideGabarit(object obj)
         {
-            // Ça me tentais pas de me casser la tête... So, c'est ici qu'on écrit notre documentation LOL!
-            TitreParagraphe = "What's up?!";
-            Paragraphe = "Salut, je suis un paragraphe.\nUne deuxième ligne...";
+            PageCourante = "Pages/AideGabaritPage.xaml";
         }
 
         private void AfficherAideCreation(object obj)
         {
-            TitreParagraphe = "Création";
-            Paragraphe = "";
+            PageCourante = "Pages/AideCreationPage.xaml";
         }
 
         private void AfficherAideProduit(object obj)
         {
-            TitreParagraphe = "Produits";
-            Paragraphe = "";
+            PageCourante = "Pages/AideProduitPage.xaml";
         }
 
         private void AfficherAideClient(object obj)
         {
-            TitreParagraphe = "Clients";
-            Paragraphe = "";
+            PageCourante = "Pages/AideClientPage.xaml";
         }
 
         private void AfficherAideRapport(object obj)
         {
-            TitreParagraphe = "Rapports";
-            Paragraphe = "";
+            PageCourante = "Pages/AideRapportPage.xaml";
         }
 
         #endregion
