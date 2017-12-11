@@ -137,6 +137,21 @@
       <DependentUpon>AideView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Aide\AideViewModel.cs" />
+    <Compile Include="Aide\Pages\AideClientPage.xaml.cs">
+      <DependentUpon>AideClientPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Aide\Pages\AideCreationPage.xaml.cs">
+      <DependentUpon>AideCreationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Aide\Pages\AideGabaritPage.xaml.cs">
+      <DependentUpon>AideGabaritPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Aide\Pages\AideProduitPage.xaml.cs">
+      <DependentUpon>AideProduitPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Aide\Pages\AideRapportPage.xaml.cs">
+      <DependentUpon>AideRapportPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Clients\StatusConverter.cs" />
     <Compile Include="Creation\BindableColumns.cs" />
     <Compile Include="Creation\BooleanToVisibilityConverter.cs" />
@@ -251,6 +266,26 @@
     <Page Include="Aide\AideView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Aide\Pages\AideClientPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Aide\Pages\AideCreationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Aide\Pages\AideGabaritPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Aide\Pages\AideProduitPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Aide\Pages\AideRapportPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Clients\ClientsUserControl.xaml">
       <SubType>Designer</SubType>
