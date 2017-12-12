@@ -142,6 +142,31 @@ namespace Facturio.Clients
         {
             txtRecherche.Text = "";
         }
+
+        private void dtgAfficheClients_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            // Lorsqu'il clique sur modifier on veut : 
+            // Que le usercontrol Client change d'onglet > direction : onglet Modifier.
+            ClientsUserControl.TbcClientPublic.SelectedIndex = 1;
+
+            // Ajuster le titre
+            AjoutModifUserControl.LblFormTitle.Content = "Modifier un client";
+            AjoutModifUserControl.CbxActif.IsEnabled = true;
+
+
+            // Setter le client a modifier
+            ClientsController.LeClient = (Client)dtgAfficheClients.SelectedItem;
+
+            // Passer le client au controleur
+            ClientsController.AfficherClient();
+            e.Handled = true;
+        }
+
         #endregion
+
+        private void dtgAfficheClients_MouseDoubleClick_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

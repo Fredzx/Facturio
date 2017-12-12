@@ -47,8 +47,8 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Name="lblDescription" BorderBrush="Chartreuse" BorderThickness="2" Content="Description" />
-                    <Label Grid.Row="0" HorizontalAlignment="Left" BorderBrush="AliceBlue" BorderThickness="2" Grid.Column="1" Name="lblNbCaracteres" Content="caca" />
+                    <Label Grid.Row="0" Grid.Column="0" Name="lblDescription" Content="Description" />
+                    <Label Grid.Row="0" HorizontalAlignment="Left" Grid.Column="1" Name="lblNbCaracteres" Content="200 caractères restants" Width="218" />
                     <TextBox Grid.Row="1" Grid.Column="1" MaxWidth="200" VerticalContentAlignment="Top" Name="txtDescription" Height="150" MaxLength="200" TextChanged="txtDescription_TextChanged" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" />
                 </Grid>
             </StackPanel>
@@ -62,14 +62,9 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <Button  Content="Enregistrer" Click="btnEnregister_Click" Margin="5" />
-            <Button  Content="Retour" Click="btnRetour_Click" Margin="5" />
-        </StackPanel>
+        <DockPanel Grid.Row="2">
+            <Button  Content="Retour" Click="btnRetour_Click" HorizontalAlignment="Left" Margin="25, 5, 5, 5" />
+            <Button  Content="Enregistrer" HorizontalAlignment="Right" Click="btnEnregister_Click" Margin="5, 5, 25, 5"/>
+        </DockPanel>
     </Grid>
 </UserControl>
-<!--<StackPanel  Name="Info" Grid.Row="0"
-                HorizontalAlignment="Center"              
-                Grid.RowSpan="2">
-        <Label Name="lblInfo" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" FontFamily="calibri" Content="" />
-        </StackPanel>-->

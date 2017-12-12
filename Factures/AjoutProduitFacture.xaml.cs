@@ -1,4 +1,5 @@
 ﻿using Facturio.Produits;
+using Facturio.ProduitsFactures;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -48,8 +49,19 @@ namespace Facturio.Factures
             //OpererFacture.TbcProduitPublic.SelectedIndex = 1;
             //MessageBox.Show("Fonctionnalité pas implémentée");
             AjoutProduitFactureController.AjouterProduitFacture(float.Parse(txtQuantite.Value.ToString()));
+            lblNbProduit.Content = "Nombre d'items dans la facture: " + compterItemFacture().ToString();
             dtgAfficheProduits.SelectedIndex = -1;
             OpererFactureUserControl.RefreshAffichage();
+        }
+
+        private double? compterItemFacture()
+        {
+            double? quantite = 0;
+            foreach (ProduitFacture pf in OpererFactureController.LaFacture.LstProduitFacture)
+            {
+                quantite += pf.Quantite;
+            }
+            return quantite;
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)
@@ -60,10 +72,10 @@ namespace Facturio.Factures
 
         private void dtgAfficheProduits_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(dtgAfficheProduits.SelectedItem != null)
+            if (dtgAfficheProduits.SelectedItem != null)
             {
                 Produit p = (Produit)dtgAfficheProduits.SelectedItem;
-                if(p != null)
+                if (p != null)
                     txtQuantite.Maximum = p.Quantite;
             }
         }
