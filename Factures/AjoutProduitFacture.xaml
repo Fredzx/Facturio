@@ -42,6 +42,7 @@
                           Grid.Column="0"
                           Grid.ColumnSpan="6"
                           Grid.RowSpan="4">
+            <Label Name="lblNbProduit" Content="Nombre d'items dans la facture: 0" Margin="168,-28,-115,289"/>
             <Label Name="lblDataGridProduit" Content="Liste des produits" Margin="10,-28,0,294" HorizontalAlignment="Left" FontWeight="Bold" FontSize="13"></Label>
             <DataGrid Name="dtgAfficheProduits" SelectionChanged="dtgAfficheProduits_SelectionChanged" SelectionMode="Single" ItemsSource="{Binding Produits}" LoadingRow="DataGrid_LoadingRow"
                                       BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
