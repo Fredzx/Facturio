@@ -60,8 +60,8 @@
                         HorizontalAlignment="Right"
                         Orientation="Horizontal"
                         Grid.ColumnSpan="4" Grid.Column="2">
-            <Button Content="Ajouter à la facture" Margin="5" x:Name="btnAjouter" IsEnabled="True" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="158" Click="btnAjouter_Click" />
-            <Button Content="Retour" x:Name="btnRetour" Margin="5" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Click="btnRetour_Click" />
+            <Button Content="Ajouter à la facture" Margin="5" x:Name="btnAjouter" IsEnabled="True" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="158" Click="btnAjouter_Click" ToolTip="Ajoute le produit à la facture"/>
+            <Button Content="Retour" x:Name="btnRetour" Margin="5" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Click="btnRetour_Click" ToolTip="Retourve à la fenêtre d'opération de facture"/>
             <xctk:DoubleUpDown x:Name="txtQuantite" FormatString="G0" Margin="5" ClipValueToMinMax="True"  Increment="1" DefaultValue="1"  Minimum="1" PreviewTextInput="txtQuantite_PreviewTextInput" Watermark="Entrez la quantité" MouseWheelActiveTrigger="Focused" Height="35" Width="118" />
         </StackPanel>
     </Grid>

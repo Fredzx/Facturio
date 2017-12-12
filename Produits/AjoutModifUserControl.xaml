@@ -63,8 +63,8 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <Button  Content="Enregistrer" Click="btnEnregister_Click" Margin="5" />
-            <Button  Content="Retour" Click="btnRetour_Click" Margin="5" />
+            <Button  Content="Enregistrer" Click="btnEnregister_Click" Margin="5" ToolTip="Créer le produit"/>
+            <Button  Content="Retour" Click="btnRetour_Click" Margin="5" ToolTip="Retourne à la liste de produit"/>
         </StackPanel>
     </Grid>
 </UserControl>

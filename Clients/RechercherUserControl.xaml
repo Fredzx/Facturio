@@ -79,9 +79,9 @@
                     Grid.ColumnSpan="6" 
                     >
 
-            <Button Name="btnAjouter" Content="Ajouter" HorizontalAlignment="Right"  Click="btnAjouter_Click" Style="{StaticResource styleButton}"  />
-            <Button Name="btnModifier" IsEnabled="False" Content="Modifier"  Click="btnModifier_Click"  Style="{StaticResource styleButton}"/>
-            <Button Name="btnSupprimer" IsEnabled="False" Content="Supprimer"  Click="btnSupprimer_Click" Style="{StaticResource styleButton}"/>
+            <Button Name="btnAjouter" Content="Ajouter" HorizontalAlignment="Right"  Click="btnAjouter_Click" Style="{StaticResource styleButton}" ToolTip="Permet d'ajouter un client" />
+            <Button Name="btnModifier" IsEnabled="False" Content="Modifier"  Click="btnModifier_Click"  Style="{StaticResource styleButton}" ToolTip="Permet de modifier un client"/>
+            <Button Name="btnSupprimer" IsEnabled="False" Content="Supprimer"  Click="btnSupprimer_Click" Style="{StaticResource styleButton}" ToolTip="Supprime le client"/>
         </StackPanel>
     </Grid>
 </UserControl>

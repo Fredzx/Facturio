@@ -60,8 +60,8 @@
         </Grid>
         <DockPanel Grid.Row="5"
                    Grid.ColumnSpan="10">
-            <Button Margin="10,0,0,10" Content="Assigner" Name="btnAssigner" IsEnabled="False" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100" Click="btnAssigner_Click" />
-            <Button Margin="0,0,10,10" Content="Retour" Name="btnRetour" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnRetour_Click" />
+            <Button Margin="10,0,0,10" Content="Assigner" Name="btnAssigner" IsEnabled="False" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100" Click="btnAssigner_Click" ToolTip="Assigne le client à la facture"/>
+            <Button Margin="0,0,10,10" Content="Retour" Name="btnRetour" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnRetour_Click" ToolTip="Retourne à la fenêtre d'opération de facture"/>
         </DockPanel>
     </Grid>
 </UserControl>

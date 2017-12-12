@@ -367,16 +367,16 @@ namespace Facturio.Factures
             }
             else
             {
-               // Facture f = new Facture(OpererFactureController.LaFacture.LeClient, DateTime.Now);
-               // HibernateFactureService.Create(f);
-                //f.LstProduitFacture = ConstruireFacture(OpererFactureController.LaFacture.LstProduitFacture.ToList(), f);
-               // f.LstProduitFacture = OpererFactureController.LaFacture.LstProduitFacture;
-               // InsertProduitFacture(f.LstProduitFacture.ToList());
+                //OpererFactureController.LaFacture.Date = DateTime.Now;
+                Facture f = new Facture(OpererFactureController.LaFacture.LeClient, DateTime.Now, OpererFacture.Gabarit);
+                //HibernateFactureService.Create(OpererFactureController.LaFacture);
+                HibernateFactureService.Create(f);
+                f.LstProduitFacture = ConstruireFacture(OpererFactureController.LaFacture.LstProduitFacture.ToList(), f);
+                //f.LstProduitFacture = OpererFactureController.LaFacture.LstProduitFacture;
+                InsertProduitFacture(f.LstProduitFacture.ToList());
 
 
                 OpererFactureController.MiseAJourInventaire();
-                //OpererFactureController.LaFacture.Date = DateTime.Now;
-                //HibernateFactureService.Create(OpererFactureController.LaFacture);
                 btnSauvegarder.IsEnabled = false;
             }
         }

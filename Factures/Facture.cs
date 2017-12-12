@@ -21,7 +21,9 @@ namespace Facturio.Factures
         public virtual Client LeClient { get; set; } = new Client();
 
         public virtual DateTime? Date { get; set; } = null;
-        
+
+        public virtual Gabarit LeGabarit { get; set; } = new Gabarit();
+
         public virtual IList<ProduitFacture> LstProduitFacture { get; set; }
 
 
@@ -32,6 +34,14 @@ namespace Facturio.Factures
         {
             LeClient = client;
             Date = date;
+            LstProduitFacture = new ObservableCollection<ProduitFacture>();
+        }
+
+        public Facture(Client client, DateTime date, Gabarit gabarit)
+        {
+            LeClient = client;
+            Date = date;
+            LeGabarit = gabarit;
             LstProduitFacture = new ObservableCollection<ProduitFacture>();
         }
 

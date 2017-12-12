@@ -40,6 +40,15 @@ namespace Facturio.Rapports.Vues
             cldDateFin.SelectedDate = DateTime.Now;
         }
 
+        protected override void OnPreviewMouseUp(MouseButtonEventArgs e)
+        {
+            base.OnPreviewMouseUp(e);
+            if (Mouse.Captured is Calendar || Mouse.Captured is System.Windows.Controls.Primitives.CalendarItem)
+            {
+                Mouse.Capture(null);
+            }
+        }
+
         private void btnRapportPDF_Click(object sender, RoutedEventArgs e)
         {
             RapportFacturationCliente RFC = new RapportFacturationCliente();

@@ -11,7 +11,7 @@
         xmlns:ucRapports1="clr-namespace:Facturio.Rapports.Vues"
         xmlns:aide="clr-namespace:Facturio.Aide"
         mc:Ignorable="d"
-        Title="Facturio Inc." Height="750" MinHeight="500" Width="900" MinWidth="750"
+        Title="Facturio Inc." Height="850" MinHeight="500" Width="1100" MinWidth="750"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontSize="14"

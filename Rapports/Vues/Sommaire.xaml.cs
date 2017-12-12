@@ -43,6 +43,15 @@ namespace Facturio.Rapports.Vues
             cldDateFin.SelectedDate = DateTime.Now;
         }
 
+        protected override void OnPreviewMouseUp(MouseButtonEventArgs e)
+        {
+            base.OnPreviewMouseUp(e);
+            if (Mouse.Captured is Calendar || Mouse.Captured is System.Windows.Controls.Primitives.CalendarItem)
+            {
+                Mouse.Capture(null);
+            }
+        }
+
         public decimal CalculerTotalLigne(ProduitFacture pf)
         {
             return (decimal)(pf.Quantite * pf.Produit.Prix);

@@ -34,19 +34,23 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="1"
+            <Grid Grid.Row="0"
                   Grid.Column="0"
                   Grid.ColumnSpan="3"
-                  Grid.RowSpan="7">
+                  Grid.RowSpan="10">
                 <!--<local:CalendarUI/>-->
                 <Grid>
                     <StackPanel>
                         <Label Content="Date de Début"  HorizontalAlignment="Center" Background="#E8E8E8" MaxWidth="180px"></Label>
-                        <Calendar Name="cldDateDebut" Margin="0 0 0 20" SelectedDatesChanged="cldDateDebut_SelectedDatesChanged">
+                        <Viewbox MaxHeight="300px">
+                            <Calendar Name="cldDateDebut" Margin="0 0 0 20" SelectedDatesChanged="cldDateDebut_SelectedDatesChanged"/>
+                        </Viewbox>
 
-                        </Calendar>
+
                         <Label Content="Date de Fin"  HorizontalAlignment="Center" Background="#E8E8E8" MaxWidth="180px"></Label>
-                        <Calendar Name="cldDateFin"></Calendar>
+                        <Viewbox MaxHeight="300">
+                            <Calendar Name="cldDateFin"/>
+                        </Viewbox>
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -68,11 +72,11 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
-            <StackPanel Grid.Row="8" Grid.ColumnSpan="3" Grid.RowSpan="1">
-                <Button Name="btnObtenirRapport" Content="Obtenir Rapport" Margin="10 0 0 10" MaxWidth="180px" Height="25" Click="btnObtenirRapport_Click"></Button>
-                <Button Name="btnRapportPDF" Content="Convertir en PDF" Margin="10 0 0 10" MaxWidth="180px" Height="25" Click="btnRapportPDF_Click"></Button>
+            <StackPanel Grid.Row="9" Grid.ColumnSpan="3" Grid.RowSpan="1" Margin="0 0 0 2">
+                <Button Name="btnObtenirRapport" Content="Obtenir Rapport" Margin="10 0 0 10" MaxWidth="180px" Height="25" Click="btnObtenirRapport_Click" ToolTip="Ouvrira un écran contenant les détails du rapport"></Button>
+                <Button Name="btnRapportPDF" Content="Convertir en PDF" Margin="10 0 0 10" MaxWidth="180px" Height="25" Click="btnRapportPDF_Click" ToolTip="Génère un PDF du rapport"></Button>
             </StackPanel>
-            <Label Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="8" Name="lblInfoErreur" FontWeight="Bold" Margin=" 0 20 0 0"/>
+            <Label Grid.Row="10" Grid.Column="3" Grid.ColumnSpan="7" Name="lblInfoErreur" FontWeight="Bold" Margin=" 0 20 0 0"/>
         </Grid>
     </Grid>
 </UserControl>
