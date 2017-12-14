@@ -10,7 +10,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         
-        <UniformGrid Grid.Row="0" Columns="5" VerticalAlignment="Top" Cursor="Hand">
+        <UniformGrid Grid.Row="0" Columns="6" VerticalAlignment="Top" Cursor="Hand">
             <UniformGrid.Resources>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Height" Value="60" />
@@ -50,6 +50,7 @@
             <Button Content="Produits" Command="{Binding AideProduit}" />
             <Button Content="Clients" Command="{Binding AideClient}" />
             <Button Content="Rapports" Command="{Binding AideRapport}" />
+            <Button Content="Facturation" Command="{Binding AideFacturation}" />
         </UniformGrid>
 
         <Rectangle Grid.Row="0" Height="3" Fill="#34495e" VerticalAlignment="Bottom" />

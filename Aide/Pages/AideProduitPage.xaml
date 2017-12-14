@@ -6,6 +6,34 @@
       mc:Ignorable="d" 
       Title="AideProduitPage">
     <Grid>
-        <Label Content="Aide produit" />
+        <FlowDocumentScrollViewer Background="#ecf0f1" VerticalScrollBarVisibility="Hidden" IsSelectionEnabled="False">
+            <FlowDocument PagePadding="20">
+                <FlowDocument.Resources>
+                    <Style TargetType="{x:Type Paragraph}">
+                        <Setter Property="Margin" Value="0, 0, 0, 10" />
+                        <Setter Property="LineHeight" Value="20" />
+                        <Setter Property="TextAlignment" Value="Justify" />
+                        <Setter Property="FontSize" Value="14" />
+                        <Setter Property="Foreground" Value="#2c3e50" />
+                    </Style>
+                </FlowDocument.Resources>
+
+                <Paragraph FontSize="16" FontWeight="Bold" Foreground="#3498db">
+                    <Run Text="Aide pour l'onglet Produit" />
+                </Paragraph>
+
+                <Paragraph>
+                    <Run Text="Dans l'onglet Produit, il y a 3 onglets. Dans l'onglet Rechercher, vous pourrez voir votre banque de produits. De base, la liste affichera tous les produits actifs en inventaire. Vous pouvez aussi rechercher un produit par son nom ou sa description dans la barre de recherche prévue à cet effet tout en haut de la page. Si vous cliquez sur le bouton « Ajouter », le programme vous transportera dans l'onglet d'ajout d'un produit. Si vous sélectionnez un produit dans la liste, vous pourrez supprimer celui-ci en cliquant sur le bouton « Supprimer » ou le modifier en cliquant sur le bouton « Modifier » qui vous transportera vers l'onglet de modification d'un produit."/>
+                </Paragraph>
+
+                <Paragraph>
+                    <Run Text="Dans l'onglet ajouter, lorsque vous voulez ajouter un produit, tous les champs sont vides. Vous devrez ajouter un nom qui ne contiendra pas plus de 50 caractères. Vous devrez ajouter une description d'un maximum de 200 caractères. Vous devrez un prix et une quantité en inventaire. Si vous cliquez sur le bouton « Enregistrer », le produit sera ajouté en inventaire. En cliquant sur ce bouton, le logiciel validera si tous les champs sont valides et vous informera du cas contraire. En cliquant sur le bouton « Retour », vous retournerez à la liste des produits en inventaire."/>
+                </Paragraph>
+
+                <Paragraph>
+                    <Run Text="Dans l'onglet facturation Modifier, comme le nom l'indique, vous pourrez modifier un produit sélectionné. Les champs seront déjà remplis avec les informations du produit sélectionné précédemment. Il ne vous reste qu'à le modifier à votre guise tout en respectant les mêmes limites que lors de l'ajout d'un produit et de cliquer sur « Enregistrer » en bas de l'écran. En cliquant sur ce bouton, le logiciel validera si tous les champs sont valides et vous informera du cas contraire. Aussi, si vous voulez retourner à l'écran de recherche, vous pouvez cliquer sur le bouton « Retour »."/>
+                </Paragraph>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
     </Grid>
 </Page>

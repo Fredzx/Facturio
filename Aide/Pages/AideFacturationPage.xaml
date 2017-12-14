@@ -1,0 +1,47 @@
+﻿<Page x:Class="Facturio.Aide.Pages.AideFacturationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d" 
+      Title="AideFacturationPage">
+    <Grid>
+        <FlowDocumentScrollViewer Background="#ecf0f1" VerticalScrollBarVisibility="Hidden" IsSelectionEnabled="False">
+            <FlowDocument PagePadding="20">
+                <FlowDocument.Resources>
+                    <Style TargetType="{x:Type Paragraph}">
+                        <Setter Property="Margin" Value="0, 0, 0, 10" />
+                        <Setter Property="LineHeight" Value="20" />
+                        <Setter Property="TextAlignment" Value="Justify" />
+                        <Setter Property="FontSize" Value="14" />
+                        <Setter Property="Foreground" Value="#2c3e50" />
+                    </Style>
+                </FlowDocument.Resources>
+
+                <Paragraph FontSize="16" FontWeight="Bold" Foreground="#3498db">
+                    <Run Text="Aide pour la page Facturation" />
+                </Paragraph>
+
+                <Paragraph>
+                    <Run Text="Il s'agit ici de l'écran qui affichera votre facture juste avant de l'émettre. L'écran affiche seulement les critères que vous avez sélectionnés précédemment. Pour ce qui est des critères libres, vous devez entrer les informations vous-même. À droite de l'écran, les calculs de la facture s'effectuent en temps réel. Si vous cliquez sur le bouton « Supprimer » et que vous avez sélectionné une ligne, celle-ci sera supprimée de la facture. Si vous cliquez sur le bouton « Vider », la facture sera vidée complètement. Si vous cliquez sur le bouton « Associer un client », une nouvelle fenêtre ouvrira et vous pourrez associer un client à la facture. Ensuite, les informations du client s'afficheront et les calculs de la facture s'adapteront. Si vous cliquez sur le bouton « Ajouter un produit », l'écran changera d'onglet pour vous permettre d'ajouter un produit à la facture. Si vous cliquez sur le bouton « Convertir en PDF », la facture en cours sera enregistrée au format PDF dans le répertoire de l'application. Si vous cliquez sur le bouton « Sauvegarder » la facture sera sauvegardée en base de donnée."/>
+                </Paragraph>
+
+                <Paragraph FontSize="16" FontWeight="DemiBold" Foreground="#3498db">
+                    <Run Text="Associer un client" />
+                </Paragraph>
+                
+                <Paragraph>
+                    <Run Text="Cette fenêtre s'affichera après avoir cliqué sur le bouton « Associer un client » de la fenêtre « Opérer une facture ». La barre de recherche en haut de l'écran permet de rechercher des clients selon leur nom ou leur numéro de client. Vous devez sélectionner un client dans la liste et appuyer sur le bouton « Assigner » pour l'assigner à la facture en cours. Si vous voulez retourner à l'opération de la facture, vous devez appuyer sur le bouton « Retour »."/>
+                </Paragraph>
+
+                <Paragraph FontSize="16" FontWeight="DemiBold" Foreground="#3498db">
+                    <Run Text="Ajouter un produit à la facture" />
+                </Paragraph>
+                
+                <Paragraph>
+                    <Run Text="Cet écran sert à rechercher et à ajouter les produits à votre facture. La barre de recherche en haut de l'écran vous permet de rechercher des produits selon leur nom ou leur description. Pour ajouter un produit à la facture, vous devez sélectionner un produit dans la liste de produits et ajouter sa quantitée à l'aide de l'entrée texte en bas à droite de l'écran. Si vous n'entrez pas de quantité, elle sera de 1 par défaut. Si vous entrez une quantité supérieure à celle en inventaire, le programme vous avertira et si vous ajoutez la quantité maximale, le programme vous avertira aussi que l'inventaire se retrouvera vide pour ce produit. La quantité doit être un nombre entier positif. Appuyez sur le bouton « Retour » pour revenir à l'opération de la facture."/>
+                </Paragraph>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
+    </Grid>
+</Page>
