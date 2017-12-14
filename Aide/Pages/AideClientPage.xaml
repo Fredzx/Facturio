@@ -6,6 +6,41 @@
       mc:Ignorable="d" 
       Title="AideClientPage">
     <Grid>
-        <Label Content="Aide client" />
+        <FlowDocumentScrollViewer Background="#ecf0f1" VerticalScrollBarVisibility="Hidden" IsSelectionEnabled="False">
+            <FlowDocument PagePadding="20">
+                <FlowDocument.Resources>
+                    <Style TargetType="{x:Type Paragraph}">
+                        <Setter Property="Margin" Value="0, 0, 0, 10" />
+                        <Setter Property="LineHeight" Value="20" />
+                        <Setter Property="TextAlignment" Value="Justify" />
+                        <Setter Property="FontSize" Value="14" />
+                        <Setter Property="Foreground" Value="#2c3e50" />
+                    </Style>
+                </FlowDocument.Resources>
+
+                <Paragraph FontSize="16" FontWeight="Bold" Foreground="#3498db">
+                    <Run Text="Aide pour l'onglet Clients" />
+                </Paragraph>
+
+                <Paragraph>
+                    <Run Text="Dans cet onglet, il y a 2 onglets disponibles, on parle de l'onglet Rechercher et Ajout/Modif."/>
+                </Paragraph>
+
+                <Paragraph>
+                    <Run Text="Commençons par celui nommé Rechercher. Dans cet onglet vous y retrouverez la liste de vos client en inventaire. Chaque client à des critères propres à lui avec les information que vous avez entré pour lui. Chaque client à aussi un statut; actif et inactif, lorsqu'un client est inactif, c'est qu'il est supprimé. Ensuite, il y a les 3 boutons : Ajouter, modifier et supprimer.
+                         
+                         "/>
+                </Paragraph>
+
+                <Paragraph>
+                    <Run Text="Ajouter vous dirigera dans le second onglet. Dans cet onglet, vous aller voir un formulaire d'ajout. Il faut savoir que seulement le nom est obligatoire pour l'ajout d'un client. Aussi, un client est actif par défaut lors de son ajout, il est impossible de créer un client inactif, par contre il sera possible de le rendre inactif plus tard. Pour le bouton modifier, il est utilisable seulement si vous avez sélectionné un client dans la liste avant. Lorsque vous cliquez dessus, il vous dirigera vers l'onglet Ajout/Modif, mais cette fois-ci en mode modification. C'est à dire que le formulaire sera remplit des informations du client. Pour le bouton supprimer, il faut également sélectionner un client de la liste, puis cliquer dessus et cela vous permet de supprimer un client, de le rendre inactif."/>
+                </Paragraph>
+
+                <Paragraph>
+                    <Run Text="Ensuite, pour l'onglet Rechercher, il est possible de faire une recherche par nom ou numéro de client dans la barre de recherche en haut de la liste. Elle affichera les clients qui correspond aux critères entrés. Finalement, dans l'onglet Ajout et modification, il vous est possible d'enregistrer un client, de vider les champs du formulaire et de revenir à l'onglet de recherche par l'onglet elle-même ou simplement de cliquer sur le bouton Retour."/>
+                </Paragraph>
+
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
     </Grid>
 </Page>

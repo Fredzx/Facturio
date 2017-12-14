@@ -61,31 +61,7 @@
 
 
 
-        <!--
-
-        <DataGrid Name="dtgCritere" 
-                  Grid.Row="3" 
-                  Grid.Column="1" 
-                  Margin="0,0,0,25" 
-                  VerticalAlignment="Top"
-                  
-                  IsReadOnly="True"
-                  AutoGenerateColumns="False" 
-                  CanUserAddRows="False" 
-                  CanUserDeleteRows="False" 
-                  Padding="5"
-                
-
-
-            >
-            
-            
-           
-            <DataGrid.Columns >
-                <DataGridTextColumn FontSize="12" Header="Critères de la facture" Width="*" Binding="{Binding Titre}" />
-            </DataGrid.Columns>
-        </DataGrid> 
-            -->
+       
 
 
         <Rectangle  Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Fill="LightBlue" Margin="20,20,0,20"/>
@@ -100,8 +76,8 @@
 
         <StackPanel Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3"
                     Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBox Padding="5" VerticalAlignment="Center" Name="txtLogo" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" Width="250"/>
-            <Button Width="100" Name="btnImporterLogo" Grid.Column="1" Grid.Row="4" Content="Importer image" Click="btnImporterLogo_Click" />
+            <TextBox Padding="5" ToolTip="Insérer ici le lien d'une image prise sur internet. Ce lien doit terminer par une extention d'image. Tel que : .png, .jpg, etc." Name="txtLogo" Grid.Column="2" Grid.Row="4" Width="250"/>
+            <Button Width="150" ToolTip="Permet d'importer une image en collant le lien de celle-ci dans la zone de texte à gauche. Ce lien doit terminer par une extention d'image connue." Name="btnImporterLogo" Grid.Column="1" Grid.Row="4" Content="Importer image" Click="btnImporterLogo_Click" />
 
             <Button Name="btnEnregistrer" Content="Enregistrer" Width="150" Click="btnEnregistrer_Click" Margin="100,0,0,0" />
             <Button Name="btnOuvrir"  Content="Ouvrir" Width="150" Click="btnOuvrir_Click" Margin="10,0,0,0" />

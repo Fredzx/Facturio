@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Facturio.Clients"
-             mc:Ignorable="d" Height="650" Width="850"
-             Background="#F5F3EE">
+             mc:Ignorable="d" Height="650" Width="850"             >
     <UserControl.Resources>
         <Style x:Key="styleLabel" TargetType="{x:Type Label}">
             <Setter Property="FontSize" Value="15" />
@@ -61,7 +60,7 @@
 
         <Grid   Grid.Row="0" Grid.Column="0"
                 Grid.ColumnSpan="5"
-                Background="LightBlue">            
+                >            
             <Label Name="lblFormTitle" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="24" Foreground="Black" FontFamily="tahoma" Content="Ajouter un client" />
         </Grid>
 
