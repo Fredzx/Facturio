@@ -11,11 +11,11 @@
 
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="30" />
+            <RowDefinition MaxHeight="500" MinHeight="500" />
             <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="215" />
-            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0">
@@ -27,10 +27,10 @@
         <StackPanel Grid.Row="2">
             <Label Name="lblDataGridProduit" Content="Liste des produits" HorizontalAlignment="Left" FontWeight="Bold" FontSize="13"></Label>
         </StackPanel>
-        <StackPanel Grid.Row="3" >
-            <DataGrid ItemsSource="{Binding Produits}" SelectionMode="Single" Name="dtgAfficheProduits" LoadingRow="DataGrid_LoadingRow" 
-                                      BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch" MouseDoubleClick="dtgAfficheProduits_MouseDoubleClick"
-                                      AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" CanUserDeleteRows="False" SelectionChanged="dtgAfficheProduits_SelectionChanged" Margin="40 0 40 10">
+        <StackPanel Grid.Row="3" Margin="0, 0, 0, 0">
+            <DataGrid ItemsSource="{Binding Produits}" SelectionMode="Single" Name="dtgAfficheProduits" LoadingRow="DataGrid_LoadingRow" HorizontalScrollBarVisibility="Visible" 
+                                      BorderBrush="Black" MaxHeight="500" MinHeight="500" HorizontalAlignment="Center" VerticalAlignment="Stretch" MouseDoubleClick="dtgAfficheProduits_MouseDoubleClick" VerticalScrollBarVisibility="Visible"
+                                      AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" CanUserDeleteRows="False" SelectionChanged="dtgAfficheProduits_SelectionChanged" Margin="40 0 40 10" Height="408">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Nom" Width="4.5*" Binding="{Binding Nom}" />
                     <DataGridTextColumn Header="Description" Width="9*" Binding="{Binding Description}"/>
@@ -39,10 +39,10 @@
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
-        <StackPanel Grid.Row="4" HorizontalAlignment="Right" Orientation="Horizontal">
-            <Button Content="Ajouter" Name="btnAjouter" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnAjouter_Click" />
-            <Button Content="Modifier" Name="btnModifier" Height="20" IsEnabled="False" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnModifier_Click" />
-            <Button Content="Supprimer" Name="btnSupprimer" Height="20" IsEnabled="False" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnSupprimer_Click" />
-        </StackPanel>
+        <DockPanel Grid.Row="4" HorizontalAlignment="Right">
+            <Button Content="Ajouter" Margin="5" Name="btnAjouter" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnAjouter_Click" />
+            <Button Content="Modifier" Margin="5" Name="btnModifier" IsEnabled="False" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnModifier_Click" />
+            <Button Content="Supprimer" Margin="5" Name="btnSupprimer" IsEnabled="False" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnSupprimer_Click" />
+        </DockPanel>
     </Grid>
 </UserControl>
