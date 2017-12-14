@@ -12,6 +12,7 @@ using FluentNHibernate.MappingModel.Collections;
 using Facturio.Rapports;
 using Facturio.Rapports.Entities;
 using Facturio.RapportsFactures;
+using Facturio.Gabarits;
 
 namespace Facturio.Factures
 {
@@ -37,6 +38,13 @@ namespace Facturio.Factures
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
                 .Columns("idClient");
+
+            References(x => x.LeGabarit)
+                .Class<Gabarit>()
+                .Access.Property()
+                .LazyLoad(Laziness.False)
+                .Cascade.None()
+                .Columns("idGabarit");
 
             Map(x => x.Date)
                 .Column("dateFacture ")

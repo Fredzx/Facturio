@@ -126,9 +126,9 @@
         </GroupBox>
 
         <Grid Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="5" Background="Blue"/>
-        <Button Name="btnRetour"  Grid.Row="13" Grid.Column="1"  Content="Retour" Style="{StaticResource styleButton}" Click="btnRetour_Click"/>
-        <Button Name="btnViderChamps" Grid.Row="13" Grid.Column="2"  Content="Vider les champs" Style="{StaticResource styleButton}"    Click="btnViderChamps_Click"/>
-        <Button Name="btnEnregistrer" Grid.Row="13" Grid.Column="3"  Content="Enregistrer"      Style="{StaticResource styleButton}"    Click="btnEnregistrer_Click"/>
+        <Button Name="btnRetour"  Grid.Row="13" Grid.Column="1"  Content="Retour" Style="{StaticResource styleButton}" Click="btnRetour_Click" ToolTip="Retourne à la liste de client"/>
+        <Button Name="btnViderChamps" Grid.Row="13" Grid.Column="2"  Content="Vider les champs" Style="{StaticResource styleButton}"    Click="btnViderChamps_Click" />
+        <Button Name="btnEnregistrer" Grid.Row="13" Grid.Column="3"  Content="Enregistrer"      Style="{StaticResource styleButton}"    Click="btnEnregistrer_Click" ToolTip="Créer le client"/>
 
 
 

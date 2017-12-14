@@ -104,14 +104,14 @@
             </DockPanel.Resources>
 
             <StackPanel>
-                <Button Content="Ajouter un produit" Click="btnAjoutProduit_Click"/>
-                <Button Content="Supprimer" Click="btnSupprimer_Click" />
-                <Button Content="Vider" Click="ViderFacture" />
+                <Button Content="Ajouter un produit" Click="btnAjoutProduit_Click" ToolTip="Permet d'ajouter un produit dans la facture"/>
+                <Button Content="Supprimer" Click="btnSupprimer_Click" ToolTip="Retire un produit de la liste de produit"/>
+                <Button Content="Vider" Click="ViderFacture" ToolTip="Vider la liste de produit et retire le client assigné"/>
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Right">
-                <Button x:Name="btnSauvegarder" IsEnabled="False" Content="Sauvegarder" Click="Btn_Sauvegarder_Click"/>
-                <Button x:Name="BtnGenererPdf" Content="Convertir en PDF" Margin="0" Click="BtnConvertirPdf_Click" />
+                <Button x:Name="btnSauvegarder" IsEnabled="False" Content="Sauvegarder" Click="Btn_Sauvegarder_Click" ToolTip="Enregistre la facture dans la base de données"/>
+                <Button x:Name="BtnGenererPdf" Content="Convertir en PDF" Margin="0" Click="BtnConvertirPdf_Click" ToolTip="Génère un PDF de la facture"/>
             </StackPanel>
         </DockPanel>
     </Grid>

@@ -35,8 +35,6 @@
                 <DataGrid Name="dtgAfficheProduits" SelectionChanged="dtgAfficheProduits_SelectionChanged" SelectionMode="Single" ItemsSource="{Binding Produits}" LoadingRow="DataGrid_LoadingRow"
                                       BorderBrush="Black" Height="250" HorizontalAlignment="Center" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible"
                                       AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" CanUserDeleteRows="False" Margin="10" Width="auto">
-
-
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Nom" Width="2*" Binding="{Binding Nom}" />
                         <DataGridTextColumn Header="Description" Width="4*" Binding="{Binding Description}"/>

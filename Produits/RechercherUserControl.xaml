@@ -39,6 +39,7 @@
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
+
         <DockPanel Grid.Row="4" HorizontalAlignment="Right">
             <Button Content="Ajouter" Margin="5" Name="btnAjouter" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnAjouter_Click" />
             <Button Content="Modifier" Margin="5" Name="btnModifier" IsEnabled="False" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="btnModifier_Click" />
