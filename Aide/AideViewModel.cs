@@ -19,6 +19,7 @@ namespace Facturio.Aide
         public ICommand AideProduit { get; set; }
         public ICommand AideClient { get; set; }
         public ICommand AideRapport { get; set; }
+        public ICommand AideFacturation { get; set; }
 
         #endregion
 
@@ -35,6 +36,7 @@ namespace Facturio.Aide
             AideProduit = new RelayCommand(AfficherAideProduit);
             AideClient = new RelayCommand(AfficherAideClient);
             AideRapport = new RelayCommand(AfficherAideRapport);
+            AideFacturation = new RelayCommand(AfficherAideFacturation);
         }
 
         #endregion
@@ -64,6 +66,11 @@ namespace Facturio.Aide
         private void AfficherAideRapport(object obj)
         {
             PageCourante = "Pages/AideRapportPage.xaml";
+        }
+
+        private void AfficherAideFacturation(object obj)
+        {
+            PageCourante = "Pages/AideFacturationPage.xaml";
         }
 
         #endregion

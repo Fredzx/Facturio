@@ -11,60 +11,43 @@
     <UserControl.DataContext>
         <local:AjoutProduitFactureController/>
     </UserControl.DataContext>
-    <Grid VerticalAlignment="Stretch">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+    <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition MaxHeight="250" />
+            <RowDefinition  Height="50"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0"
-                          Grid.Column="0"
-                          Grid.ColumnSpan="6">
-            <Label Name="lblRechercher" Content="Rechercher un produit" Margin="119,0,35,51" HorizontalAlignment="Center" FontWeight="Bold" FontSize="13"></Label>
-            <TextBox Name="txtRechercherProduit" Height="20" Margin="163,30,77,26" TextChanged="txtRechercherProduit_TextChanged" />
-        </Grid>
-        <Grid Grid.Row="1"
-                          Grid.Column="0"
-                          Grid.ColumnSpan="6"
-                          Grid.RowSpan="4">
-            <Label Name="lblNbProduit" Content="Nombre d'items dans la facture: 0" Margin="168,-28,-115,289"/>
-            <Label Name="lblDataGridProduit" Content="Liste des produits" Margin="10,-28,0,294" HorizontalAlignment="Left" FontWeight="Bold" FontSize="13"></Label>
-            <DataGrid Name="dtgAfficheProduits" SelectionChanged="dtgAfficheProduits_SelectionChanged" SelectionMode="Single" ItemsSource="{Binding Produits}" LoadingRow="DataGrid_LoadingRow"
-                                      BorderBrush="Black" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Stretch"
-                                      AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" CanUserDeleteRows="False" Margin="10,0,-89,10" Width="379">
-
-
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Nom" Width="2*" Binding="{Binding Nom}" />
-                    <DataGridTextColumn Header="Description" Width="4*" Binding="{Binding Description}"/>
-                    <DataGridTextColumn Header="Prix" Width="2*" Binding="{Binding Prix}" />
-                    <DataGridTextColumn Header="Quantité" Width="2*" Binding="{Binding Quantite}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
-        <StackPanel Grid.Row="6"
-                        HorizontalAlignment="Right"
-                        Orientation="Horizontal"
-                        Grid.ColumnSpan="4" Grid.Column="2">
-            <Button Content="Ajouter à la facture" Margin="5" x:Name="btnAjouter" IsEnabled="True" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="158" Click="btnAjouter_Click" ToolTip="Ajoute le produit à la facture"/>
-            <Button Content="Retour" x:Name="btnRetour" Margin="5" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Click="btnRetour_Click" ToolTip="Retourve à la fenêtre d'opération de facture"/>
-            <xctk:DoubleUpDown x:Name="txtQuantite" FormatString="G0" Margin="5" ClipValueToMinMax="True"  Increment="1" DefaultValue="1"  Minimum="1" PreviewTextInput="txtQuantite_PreviewTextInput" Watermark="Entrez la quantité" MouseWheelActiveTrigger="Focused" Height="35" Width="118" />
+            <StackPanel Grid.Row="0" HorizontalAlignment="Center">
+                <Label Name="lblRechercher" Content="Rechercher un produit" HorizontalAlignment="Center" FontWeight="Bold" FontSize="13"></Label>
+                <TextBox Name="txtRechercherProduit" TextChanged="txtRechercherProduit_TextChanged" />
+            </StackPanel>
+            <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+            </StackPanel>
+        <StackPanel Grid.Row="2">
+            <Label Name="lblNbProduit" Content="Nombre d'items dans la facture: 0" />
+            <Label Name="lblDataGridProduit" Content="Liste des produits" HorizontalAlignment="Left" FontWeight="Bold" FontSize="13"></Label>
         </StackPanel>
+        <StackPanel Grid.Row="3">
+                <DataGrid Name="dtgAfficheProduits" SelectionChanged="dtgAfficheProduits_SelectionChanged" SelectionMode="Single" ItemsSource="{Binding Produits}" LoadingRow="DataGrid_LoadingRow"
+                                      BorderBrush="Black" Height="250" HorizontalAlignment="Center" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible"
+                                      AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" CanUserDeleteRows="False" Margin="10" Width="auto">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Nom" Width="2*" Binding="{Binding Nom}" />
+                        <DataGridTextColumn Header="Description" Width="4*" Binding="{Binding Description}"/>
+                        <DataGridTextColumn Header="Prix" Width="2*" Binding="{Binding Prix}" />
+                        <DataGridTextColumn Header="Quantité" Width="2*" Binding="{Binding Quantite}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        <DockPanel Grid.Row="4" HorizontalAlignment="Center">
+            <Button Content="Ajouter à la facture" Margin="5" x:Name="btnAjouter" IsEnabled="True" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="158" Click="btnAjouter_Click" />
+            <Button Content="Retour" x:Name="btnRetour" Margin="5" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Click="btnRetour_Click" />
+            <xctk:DoubleUpDown x:Name="txtQuantite" FormatString="G0" Margin="5" ClipValueToMinMax="True"  Increment="1" DefaultValue="1"  Minimum="1" PreviewTextInput="txtQuantite_PreviewTextInput" Watermark="Entrez la quantité" MouseWheelActiveTrigger="Focused" Height="35" Width="118" />
+        </DockPanel>
     </Grid>
 
 </UserControl>
